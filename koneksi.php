@@ -1,0 +1,1349 @@
+<?php
+define('HOST', 'localhost');
+define('USER', 'root');
+define('PASS', '');
+define('DB', 'bkkmuh');
+// define('DB','sosial');
+define ('SITE_ROOT', realpath(dirname(__FILE__)));
+
+$con = mysqli_connect(HOST, USER, PASS, DB) or die('Unable to Connect');
+
+function LoginUser()
+{
+  global $con;
+
+  $sql_login = "SELECT * FROM `user` WHERE status='1' AND `username`='" . $_POST['txtusm'] . "' AND `password`='" . $_POST['txtpassword'] . "'";
+  $query_login = mysqli_query($con, $sql_login);
+  $data_login = mysqli_fetch_array($query_login, MYSQLI_BOTH);
+  $jumlah_login = mysqli_num_rows($query_login);
+
+  if ($jumlah_login >= 1) {
+    session_start();
+    $_SESSION["ses_username"] = $data_login["username"];
+    $_SESSION["ses_nama"] = $data_login["nama"];
+    $_SESSION["ses_idLevel"] = $data_login["idLevel"];
+    $_SESSION["ses_idDaftar"] = $data_login['idDaftar'];
+    $_SESSION["ses_idUser"] = $data_login['idUser'];
+
+    echo "<script>alert('Login Berhasil')</script>";
+    // echo "<meta http-equiv='refresh' content='0; url=indexAdm.php'>";
+    switch ($data_login['idLevel']) {
+      case '1':
+        echo "<meta http-equiv='refresh' content='0; url=indexAdm.php'>";
+        break;
+
+      case '2':
+        echo "<meta http-equiv='refresh' content='0; url=indexAdm.php'>";
+        break;
+
+      case '3':
+        echo "<meta http-equiv='refresh' content='0; url=indexAdm.php'>";
+        break;
+
+      case '4':
+        echo "<meta http-equiv='refresh' content='0; url=indexAdm.php'>";
+        break;
+    }
+  } else {
+    echo "<script>alert('Login Gagal!!')</script>";
+  }
+}
+
+function registrasiData()
+{
+  global $con;
+  
+  $cekNisn = "SELECT idSiswa, nisn, nama FROM siswa WHERE nisn = '" . $_POST['nisn'] . "' ";
+  $query = mysqli_query($con, $cekNisn);
+  $row = mysqli_fetch_row($query);
+    $idDaftar = $row[0];
+    $nisn = $row[1];
+    $nama = $row[2];
+  $pass = $_POST['password'];
+  $repass = $_POST['rePassword'];
+  
+  $tgl = date('Y-m-d H:i:s');
+  if($nisn == NULL){
+    echo "<script>alert('NISN tidak Terdaftar, Registrasi Gagal !!')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=index.php>";
+    // echo 'A';
+    
+  }else
+      {
+        if($pass != $repass){
+          echo "<script>alert('Password tidak sama, Simpan Gagal !!')</script>";
+          echo "<meta http-equiv='refresh' content='0; url=index.php>";
+          
+          
+        }else
+            {
+              $sql_insert = "INSERT INTO anggota (nisn, noWa, tglDaftar) VALUES (
+                '$nama',
+                '" . $_POST['username'] . "',
+                '" . $_POST['password'] . "',
+                '2',
+                '" . $idDaftar . "',
+                '1',
+                '" . $tgl . "')";
+                $query_insert = mysqli_query($con, $sql_insert) or die(mysqli_connect_error());
+
+              $sql_insertUser = "INSERT INTO user (nama, username, password, idLevel, idDaftar, status, tglDaftar) VALUES (
+                '$nama',
+                '" . $_POST['username'] . "',
+                '" . $_POST['password'] . "',
+                '2',
+                '" . $idDaftar . "',
+                '1',
+                '" . $tgl . "')";
+          
+                $query_insertUser = mysqli_query($con, $sql_insertUser) or die(mysqli_connect_error());
+                
+                if ($query_insert && $query_insertUser) {
+                  echo "<script>alert('Simpan Berhasil')</script>";
+                  echo "<meta http-equiv='refresh' content='0; url=login.php'>";
+                } else {
+                  echo "<script>alert('Simpan Gagal')</script>";
+                  echo "<meta http-equiv='refresh' content='0; url=index.php'>";
+                }
+            }
+      }
+    }
+
+function registrasiPer()
+{
+  global $con;
+  $cekIdDaftar = "SELECT `AUTO_INCREMENT` as idDaftar FROM INFORMATION_SCHEMA.TABLES
+  WHERE TABLE_SCHEMA = 'bkkmuh' AND TABLE_NAME = 'perusahaan' ";
+  $query = mysqli_query($con, $cekIdDaftar);
+  $row = mysqli_fetch_row($query);
+    $idDaftar = $row[0];
+  //   echo '<pre>';
+  //   print_r($idDaftar);
+  //   echo '<br>';
+  //   echo '</pre>';
+  // die();
+  $pass = $_POST['password'];
+  $repass = $_POST['rePassword'];
+  
+  $tgl = date('Y-m-d H:i:s');
+  if($pass != $repass){
+    echo "<script>alert('Password tidak sama, Simpan Gagal !!')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=../login.php>";
+    
+    
+  }else
+      {
+        $sql_insertPer = "INSERT INTO perusahaan (nmPerusahaan, email, stsPerusahaan, noTelp, tglDaftar) VALUES (
+          '" . $_POST['namaper'] . "',
+          '" . $_POST['email'] . "',
+          '" . $_POST['status'] . "',
+          '" . $_POST['noTelp'] . "'
+          '" . $tgl . "')";
+
+        $sql_insert = "INSERT INTO user (nama, username, password, idLevel, idDaftar, status, tglDaftar) VALUES (
+          '" . $_POST['namaper'] . "',
+          '" . $_POST['username'] . "',
+          '" . $_POST['password'] . "',
+          '4',
+          '" . $idDaftar . "',
+          '1',
+          '" . $tgl . "')";
+    
+          $query_insertPer = mysqli_query($con, $sql_insertPer) or die(mysqli_connect_error());
+          $query_insert = mysqli_query($con, $sql_insert) or die(mysqli_connect_error());
+          // echo'<pre>';
+          // print_r($query_insert);
+          // echo'<pre>';
+          // die();
+          if ($query_insertPer) {
+            echo "<script>alert('Simpan Berhasil')</script>";
+            echo "<meta http-equiv='refresh' content='0; url=../login.php'>";
+          } else {
+            echo "<script>alert('Simpan Gagal')</script>";
+            echo "<meta http-equiv='refresh' content='0; url=../login.php'>";
+          }
+      }
+}
+
+function regAlumni()
+{
+  global $con;
+  $cekNisn = "SELECT idSiswa, nisn, nama FROM siswa WHERE nisn = '" . $_POST['nisn'] . "' ";
+  $query = mysqli_query($con, $cekNisn);
+  $row = mysqli_fetch_row($query);
+    $idDaftar = $row[0];
+    $nisn = $row[1];
+
+  $tgl = date('Y-m-d H:i:s');
+  if($nisn == NULL){
+    echo "<script>alert('NISN tidak Terdaftar, Registrasi Alumni Gagal !!')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=index.php>";
+  }else
+              $sql_insert = "INSERT INTO alumni (`nisn`, `status`, `nmInstansi`, `mulai`, `pekerjaan`, `waktu`, `jnsPerusahaan`, `gaji`, `thnLulus`, `tglDaftar`) VALUES (
+                '$nisn',
+                '" . $_POST['status'] . "',
+                '" . $_POST['nmInstansi'] . "',
+                '" . $_POST['mulai'] . "',
+                '" . $_POST['pekerjaan'] . "',
+                '" . $_POST['waktu'] . "',
+                '" . $_POST['jnsPerusahaan'] . "',
+                '" . $_POST['gaji'] . "',
+                '" . $_POST['tahun'] . "',
+                '" . $tgl . "')";
+                $query_insert = mysqli_query($con, $sql_insert) or die(mysqli_connect_error());
+                
+                if ($query_insert) {
+                  echo "<script>alert('Registrasi Alumni Berhasil')</script>";
+                  echo "<meta http-equiv='refresh' content='0; url=index.php'>";
+                } else {
+                  echo "<script>alert('Registrasi Alumni Gagal')</script>";
+                  echo "<meta http-equiv='refresh' content='0; url=index.php'>";
+                }
+}
+
+function getYear()
+{
+  global $con;
+  $sql = "SELECT DISTINCT YEAR(tahunMasuk) as tahun FROM siswa ORDER BY tahunMasuk ASC ";
+  $query = mysqli_query($con, $sql);
+
+  return $query;
+}
+function getLokerIndex()
+{
+  global $con;
+  // $sql = "SELECT * FROM tb_loker WHERE status='Tampil' ORDER BY id_loker DESC LIMIT 3";
+  $sql = "SELECT * FROM lowongan WHERE status='2' ORDER BY idLowongan DESC LIMIT 3";
+  $query = mysqli_query($con, $sql);
+
+  return $query;
+}
+
+function getLokerAll()
+{
+  global $con;
+  // $sql = "SELECT * FROM `tb_loker` WHERE status='Tampil' ORDER BY id_loker ";
+  $sql = "SELECT * FROM `lowongan` WHERE status='2' ORDER BY idLowongan DESC";
+  $query = mysqli_query($con, $sql);
+
+  return $query;
+}
+
+function getJurusan()
+{
+  global $con;
+  // $sql = "SELECT * FROM `tb_loker` WHERE status='Tampil' ORDER BY id_loker ";
+  $sql = "SELECT * FROM `jurusan`";
+  $query = mysqli_query($con, $sql);
+
+  return $query;
+}
+
+function getHistoryAnggota($id)
+{
+  global $con;
+  $sql = "SELECT a.idDaftar, a.berkas, a.status, a.tglDaftar, b.nisn, b.nama, c.perusahaan, c.nmLoker FROM `pendaftaran` `a` JOIN `siswa` `b` JOIN `lowongan` `c` ON a.idAnggota=b.idSiswa AND a.idLoker=c.idLowongan WHERE a.idAnggota='$id'";
+  $query = mysqli_query($con, $sql);
+
+  return $query;
+}
+
+function getDateTest()
+{
+  global $con;
+  // $date = date('Y-m-d');
+  $sql = "SELECT a.*, b.noLoker, b.perusahaan, b.nmLoker FROM jadwal a, lowongan b WHERE a.idLoker=b.idLowongan AND b.status='2' AND a.tglSeleksi >= 'CURRENT_DATE()'";
+  $query = mysqli_query($con, $sql);
+
+  return $query;
+}
+
+function getJadwal()
+{
+  global $con;
+  // $sql ="SELECT a.*, b.nm_perusahaan, b.nm_loker FROM tb_jadwal a, tb_loker b WHERE a.id_loker=b.id_loker";
+  $sql ="SELECT a.*, b.perusahaan, b.nmLoker FROM jadwal a, lowongan b WHERE a.idLoker=b.idLowongan";
+  $query = mysqli_query($con, $sql);
+  return $query;
+}
+
+function getDateTestAnggota($id)
+{
+  global $con;
+  $sql = "SELECT a.perusahaan, a.nmLoker, c.* FROM lowongan a, pendaftaran b, jadwal c WHERE b.idLoker=a.idLowongan AND c.idLoker=a.idLowongan AND c.tglSeleksi <= CURRENT_DATE() AND b.idAnggota='$id'";
+  $query = mysqli_query($con, $sql);
+
+  return $query;
+}
+
+function getJadwalPerusahaan($id)
+{
+  global $con;
+  // $sql ="SELECT a.*, b.nm_perusahaan, b.nm_loker FROM tb_jadwal a, tb_loker b WHERE a.id_loker=b.id_loker";
+  $sql ="SELECT a.*, b.perusahaan, b.nmLoker FROM jadwal a, lowongan b WHERE a.idLoker=b.idLowongan AND b.usrInput = '$id'";
+  $query = mysqli_query($con, $sql);
+  return $query;
+}
+
+function getHasilAll()
+{
+  global $con;
+  // $sql = "SELECT a.*, b.nm_perusahaan, b.nm_loker FROM `tb_kelulusan` a, `tb_loker` b WHERE a.id_loker=b.id_loker AND a.keterangan='Tampil'";
+  $sql = "SELECT a.*, b.nmLoker, b.perusahaan FROM hasil a, lowongan b WHERE a.idLoker=b.idLowongan AND a.status='2'";
+  $query = mysqli_query($con, $sql);
+  return $query;
+}
+
+function SelectSiswa()
+{
+  global $con;
+  
+  // $sql = "SELECT * from tb_peserta, tb_sekolah WHERE tb_peserta.id_sekolah=tb_sekolah.id_sekolah ORDER BY tahun_lulus DESC ";
+  $sql = "SELECT a.*, b.nmJurusan FROM siswa a JOIN jurusan b ON a.jurusan=b.idJurusan ORDER BY a.tahunMasuk ASC ";
+  $query = mysqli_query($con, $sql);
+
+  return $query;
+}
+
+function SelectLowongan()
+{
+  global $con;
+  // $sql = "SELECT * FROM `tb_loker` ";
+  $sql = "SELECT * FROM `lowongan` ORDER BY idLowongan DESC";
+  $query = mysqli_query($con, $sql);
+  return $query;
+}
+
+function SelectLowonganAnggota()
+{
+  global $con;
+  // $sql = "SELECT * FROM `tb_loker` ";
+  $sql = "SELECT * FROM `lowongan` WHERE status = '2' ORDER BY idLowongan DESC";
+  $query = mysqli_query($con, $sql);
+  return $query;
+}
+
+function getLowongan($id)
+{
+  global $con;
+  // $sql = "SELECT * FROM `tb_loker` ";
+  $sql = "SELECT * FROM `lowongan` WHERE usrInput = '$id' AND `status` ='2' ORDER BY idLowongan DESC";
+  $query = mysqli_query($con, $sql);
+  return $query;
+}
+
+function SelectLowonganperusahaan($id)
+{
+  global $con;
+  // $sql = "SELECT * FROM `tb_loker` ";
+  $sql = "SELECT * FROM `lowongan` WHERE usrInput = '$id' ";
+  $query = mysqli_query($con, $sql);
+  return $query;
+}
+
+function MaxIdProgram()
+{
+  global $con;
+
+  $carikode = mysqli_query($con, "SELECT MAX(idLowongan) FROM lowongan");
+  $datakode = mysqli_fetch_array($carikode);
+  // echo 'AAA';
+  if ($datakode) {
+    // $nilaikode = substr($datakode[0], 3);
+    $tahun = date ('Y');
+    $nilaikode = substr($datakode[0],3);
+    $kode = (int) $nilaikode;
+    $kode = $kode + 1;
+    // $data_username."/".$tahun."/LK/".str_pad($kode,4, "0", STR_PAD_LEFT)
+    $hasilkode = "LK" ."-". $tahun . "-" . str_pad($kode, 4, "0", STR_PAD_LEFT);
+  } else {
+    $hasilkode = "LK";
+  }
+
+  return $hasilkode;
+}
+
+function ArsipOto()
+{
+  global $con;
+  // $sql = "UPDATE tb_loker SET status='Arsip' WHERE batas=curdate() ";
+  $sql = "UPDATE lowongan SET status='3' WHERE batas=curdate() ";
+  $query = mysqli_query($con, $sql);
+
+  return $query;
+}
+
+function getAllPerusahaan()
+{
+  global $con;
+
+  // $sql = "SELECT * FROM `user` WHERE level='Perusahaan / CV' and status='Aktif' ";
+  $sql = "SELECT a.* FROM perusahaan a, user b WHERE b.idDaftar=a.idPerusahaan AND idLevel='4' AND b.status='1'";
+  $query = mysqli_query($con, $sql);
+
+  return $query;
+}
+
+function cekLoker($id)
+{
+  global $con;
+  $cekUser = "SELECT idLevel from user WHERE idUser='$id'"; 
+  $query = mysqli_query($con, $cekUser);
+  $row = mysqli_fetch_row($query);
+  $level = $row[0];
+
+  switch ($level) {
+    case '1':
+      $sql = "SELECT COUNT(idLowongan) from lowongan WHERE status='1' AND status !='3'"; 
+      break;
+    case '2':
+      $sql = "SELECT COUNT(idLowongan) from lowongan WHERE status='2' AND status !='3' ORDER BY idLowongan DESC LIMIT 1"; 
+      break;
+    case '3':
+      $sql = "SELECT COUNT(idLowongan) from lowongan WHERE status='1' AND status !='3' "; 
+      break;
+    case '4':
+      $sql = "SELECT COUNT(idLowongan) from lowongan WHERE usrInput='$id' AND status='1' AND status !='3'"; 
+      break;
+    // default:
+    //   $sql = "SELECT COUNT(idLowongan) from lowongan WHERE status='1'";
+    // break;
+  }
+  
+  $query = mysqli_query($con, $sql);
+
+  return $query;
+}
+
+function getAlumniStudi()
+{
+  global $con;
+  // $sql ="SELECT b.nisn, a.nama_instansi, b.nama, b.jurusan, b.telp, b.tahun_lulus FROM tb_tracer a, tb_peserta b WHERE a.nisn=b.nisn AND a.status='Studi'";
+  $sql ="SELECT b.nisn, a.nmInstansi, b.nama, b.jurusan, b.noTelp, a.thnLulus FROM alumni a, siswa b WHERE a.nisn=b.nisn AND a.status='1'";
+  $query = mysqli_query($con, $sql);
+  return $query;
+}
+
+function getAlumniKerja()
+{
+  global $con;
+  // $sql ="SELECT b.nisn, a.nama_instansi, b.nama, b.jurusan, b.telp, b.tahun_lulus FROM tb_tracer a, tb_peserta b WHERE a.nisn=b.nisn AND a.status='Bekerja'";
+  $sql ="SELECT b.nisn, a.nmInstansi, b.nama, c.nmJurusan, b.noTelp, a.thnLulus FROM alumni a, siswa b, jurusan c WHERE a.nisn=b.nisn AND b.jurusan=c.idJurusan AND a.status='Bekerja'";
+  $query = mysqli_query($con, $sql);
+  return $query;
+}
+
+function getPendaftar()
+{
+  global $con;
+  // $sql ="SELECT a.nisn, b.nama, b.jurusan, c.nm_perusahaan, c.nm_loker FROM tb_pendaftaran a, tb_peserta b, tb_loker c WHERE a.nisn=b.nisn AND a.id_loker=c.id_loker AND a.status='Proses'";
+  // $sql ="SELECT b.nisn, d.nama, d.jurusan, a.berkas, a.tglDaftar, c.perusahaan, c.nmLoker FROM pendaftaran a, anggota b, lowongan c, siswa d WHERE a.idAnggota=b.idAnggota AND a.idLoker=c.idLowongan AND b.nisn=d.nisn AND a.status='Proses'";
+  $sql = "SELECT a.*, b.perusahaan, b.nmLoker, c.nisn, c.nama, d.nmJurusan FROM pendaftaran a, lowongan b, siswa c, jurusan d WHERE a.idLoker=b.idLowongan AND a.idAnggota=c.idSiswa AND c.jurusan=d.idJurusan";
+  $query = mysqli_query($con, $sql);
+  return $query;
+}
+
+function getPendaftarHistory()
+{
+  global $con;
+  // $sql ="SELECT a.nisn, b.nama, b.jurusan, c.nm_perusahaan, c.nm_loker, a.status FROM tb_pendaftaran a, tb_peserta b, tb_loker c WHERE a.nisn=b.nisn AND a.id_loker=c.id_loker AND a.status !='Proses'";
+  // $sql ="SELECT b.nisn, d.nama, d.jurusan, a.berkas, a.tglDaftar, c.perusahaan, c.nmLoker, a.status FROM pendaftaran a, anggota b, lowongan c, siswa d WHERE a.idAnggota=b.idAnggota AND a.idLoker=c.idLowongan AND b.nisn=d.nisn AND a.status !='Proses'";
+  $sql = "SELECT a.*, b.perusahaan, b.nmLoker, c.nisn, c.nama, d.nmJurusan FROM pendaftaran a, lowongan b, siswa c, jurusan d WHERE a.idLoker=b.idLowongan AND a.idAnggota=c.idSiswa AND c.jurusan=d.idJurusan AND b.status='Arsip'";
+  $query = mysqli_query($con, $sql);
+  return $query;
+}
+
+function getHasil()
+{
+  global $con;
+  // $sql ="SELECT a.kode_hasil, a.berkas, b.nm_perusahaan, b.nm_loker FROM tb_kelulusan a, tb_loker b WHERE a.id_loker=b.id_loker";
+  $sql ="SELECT a.*, b.perusahaan, b.nmLoker FROM hasil a, lowongan b WHERE a.idLoker=b.idLowongan";
+  $query = mysqli_query($con, $sql);
+  return $query;
+}
+
+function getHasilAnggota($id)
+{
+  global $con;
+  $sql ="SELECT a.perusahaan, a.nmLoker, c.file, c.keterangan, c.tglInput FROM lowongan a, pendaftaran b, hasil c WHERE b.idLoker=a.idLowongan AND c.idLoker=a.idLowongan AND c.status='2' AND b.idAnggota='$id' ORDER BY c.idHasil DESC ";
+  $query = mysqli_query($con, $sql);
+  return $query;
+}
+function getHasilPerusahaan($id)
+{
+  global $con;
+  $sql ="SELECT a.noLoker, a.perusahaan, a.nmLoker, b.file, b.keterangan, b.tglInput FROM lowongan a, hasil b WHERE b.idLoker=a.idLowongan AND b.usrInput='$id' ORDER BY b.idHasil DESC";
+  $query = mysqli_query($con, $sql);
+  return $query;
+}
+
+function jurusan()
+{
+  global $con;
+  $sql ="SELECT * FROM `jurusan`";
+  $query = mysqli_query($con, $sql);
+  return $query;
+}
+
+function insertJurusan()
+{
+  global $con;
+  $sql_insert = "INSERT INTO jurusan (nmJurusan, keterangan) VALUES (
+					'" . $_POST['nmJurusan'] . "',
+          '" . $_POST['ket'] . "')";
+
+  $query_insert = mysqli_query($con, $sql_insert) or die(mysqli_connect_error());
+
+  if ($query_insert) {
+    echo "<script>alert('Simpan Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=jurusan'>";
+  } else {
+    echo "<script>alert('Simpan Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=jurusan'>";
+  }
+}
+
+function updateJurusan()
+{
+  global $con;
+
+  $sql_ubah = "UPDATE jurusan SET
+        nmJurusan='" . $_POST['nmJurusan'] . "',
+        keterangan='" . $_POST['ket'] . "'
+        WHERE idJurusan='" . $_POST['idJurusan'] . "'";
+  $query_ubah = mysqli_query($con, $sql_ubah);
+
+  if ($query_ubah) {
+    echo "<script>alert('Ubah Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=jurusan'>";
+  } else {
+    echo "<script>alert('Ubah Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=jurusan'>";
+  }
+}
+function deleteJurusan($id)
+{
+  global $con;
+
+  $sql_hapus = "DELETE FROM jurusan WHERE id='$id' ";
+  $query_hapus = mysqli_query($con, $sql_hapus);
+
+  if ($query_hapus) {
+    echo "<script>alert('Hapus Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=jurusan''>";
+  } else {
+    echo "<script>alert('Hapus Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=jurusan''>";
+  }
+}
+
+function Upload_Files($namePost, $codePost)
+{
+  $ekstensi_diperbolehkan  = array('jpg', 'png', 'jpeg', 'pdf');
+  $date = date('Y-m-d');
+  $nama = $_FILES[$namePost]['name'];
+  $x = explode('.', $nama);
+  $ekstensi = strtolower(end($x));
+  $namas = 'Loker_' . $_POST[$codePost] . "_" . $date ."." . $ekstensi;
+  $ukuran = $_FILES[$namePost]['size'];
+  $file_tmp = $_FILES[$namePost]['tmp_name'];
+
+  if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
+    if ($ukuran < 41943040) {
+      // print_r(__DIR__ . '\file_data/loker/' . $namas);
+      // die();
+      // $location = "http://localhost/bkksmk/file_data/loker/";
+      $destination_path = getcwd().DIRECTORY_SEPARATOR . 'file_data\loker' . '/';
+
+      $target_path = $destination_path . $namas;
+
+      @move_uploaded_file($file_tmp, $target_path);
+      return $namas;
+    } else {
+      return;
+    }
+  } else {
+    return;
+  }
+}
+
+function insertLowongan($upload)
+{
+  global $con;
+  // print_r($_FILES[$upload]);
+  // die();
+  $tgl = date('Y-m-d H:i:s');
+  $idLevel = $_SESSION["ses_idLevel"];
+  switch ($idLevel) {
+    case '1':
+      $sql_insert = "INSERT INTO lowongan (`noLoker`, `perusahaan`, `nmLoker`, `jekel`, `file`, `keterangan`, `sumber`, `batas`, `status`, `tglInput`, `usrInput`) VALUES (
+        '" . $_POST['noLoker'] . "',
+        '" . $_POST['perusahaan'] . "',
+        '" . $_POST['nmloker'] . "',
+        '" . $_POST['jekel'] . "',
+        '" . $upload . "',
+        '" . $_POST['ket'] . "',
+        '" . $_POST['sumber'] . "',
+        '" . $_POST['batas'] . "',
+        '2',
+        '$tgl',
+        '" . $_POST['usrInput'] . "')";
+
+      break;
+    case '4':
+      $sql_insert = "INSERT INTO lowongan (`noLoker`, `perusahaan`, `nmLoker`, `jekel`, `file`, `keterangan`, `sumber`, `batas`, `status`, `tglInput`, `usrInput`) VALUES (
+        '" . $_POST['noLoker'] . "',
+        '" . $_POST['perusahaan'] . "',
+        '" . $_POST['nmloker'] . "',
+        '" . $_POST['jekel'] . "',
+        '" . $upload . "',
+        '" . $_POST['ket'] . "',
+        '" . $_POST['sumber'] . "',
+        '" . $_POST['batas'] . "',
+        '1',
+        '$tgl',
+        '" . $_POST['usrInput'] . "')";
+
+      break;
+  }
+  
+  $query_insert = mysqli_query($con, $sql_insert) or die(mysqli_connect_error());
+
+  if ($query_insert) {
+    echo "<script>alert('Simpan Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=lowongan'>";
+  } else {
+    echo "<script>alert('Simpan Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=lowongan'>";
+  }
+}
+
+function updateLowongan()
+{
+  global $con;
+
+  $sql_ubah = "UPDATE lowongan SET
+        perusahaan = '" . $_POST['editNmPer'] . "',
+        nmLoker = '" . $_POST['editNmLoker'] . "',
+        jekel = '" . $_POST['editJekel'] . "',
+        file = '" . $_POST['editNmPer'] . "',
+        keterangan = '" . $_POST['editKet'] . "',
+        batas ='" . $_POST['editBatas'] . "'
+        WHERE idLowongan='" . $_POST['editID'] . "'";
+  $query_ubah = mysqli_query($con, $sql_ubah);
+
+  if ($query_ubah) {
+    echo "<script>alert('Ubah Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=lowongan'>";
+  } else {
+    echo "<script>alert('Ubah Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=lowongan'>";
+  }
+}
+function deleteLowongan($id)
+{
+  global $con;
+
+  $sql_hapus = "DELETE FROM lowongan WHERE idLowongan='$id' ";
+  $query_hapus = mysqli_query($con, $sql_hapus);
+
+  if ($query_hapus) {
+    echo "<script>alert('Hapus Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=lowongan''>";
+  } else {
+    echo "<script>alert('Hapus Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=lowongan''>";
+  }
+}
+
+function validasiLowongan($id)
+{
+  global $con;
+
+  $sql_validasi = "UPDATE lowongan SET
+        status = '2'
+        WHERE idLowongan='$id'";
+  $query_validasi = mysqli_query($con, $sql_validasi);
+
+  if ($query_validasi) {
+    echo "<script>alert('Validasi Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=lowongan''>";
+  } else {
+    echo "<script>alert('Validasi Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=lowongan''>";
+  }
+}
+
+function insertJadwal()
+{
+  global $con;
+  $tgl = date('Y-m-d H:i:s');
+  $sql_insert = "INSERT INTO jadwal (`idLoker`, `tempat`, `tglSeleksi`, `waktu`, `keterangan`, `tglInput`, `usrInput`) VALUES (
+					'" . $_POST['noLoker'] . "',
+					'" . $_POST['tempat'] . "',
+					'" . $_POST['tanggal'] . "',
+					'" . $_POST['waktu'] . "',
+					'" . $_POST['ket'] . "',
+					'" . $tgl . "',
+          '" . $_POST['usrInput'] . "')";
+
+  $query_insert = mysqli_query($con, $sql_insert) or die(mysqli_connect_error());
+
+  // if($query_insert) {
+  //   echo '<script> 
+  //   swal({
+  //     title: "Berhasil !!!",
+  //     text: "Menambahkan User Group",
+  //     icon: "success"
+  //   })
+  //   .then((done) => {
+  //     window.location = "indexAdm.php?pages=jadwal;
+  //   }); 
+  //   </script>';
+  // } else {
+  //   echo '<script type="text/javascript"> alert("gagal") </script>';
+  // }
+  if ($query_insert) {
+    echo "<script>alert('Simpan Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=jadwal'>";
+  } else {
+    echo "<script>alert('Simpan Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=jadwal'>";
+  }
+}
+
+function updateJadwal()
+{
+  global $con;
+
+  $sql_ubah = "UPDATE jadwal SET
+        tempat='" . $_POST['tempat'] . "',
+        tglSeleksi='" . $_POST['tanggal'] . "',
+        waktu='" . $_POST['waktu'] . "',
+        keterangan='" . $_POST['ket'] . "'
+        WHERE idJadwal='" . $_POST['idJadwal'] . "'";
+  $query_ubah = mysqli_query($con, $sql_ubah);
+
+  if ($query_ubah) {
+    echo "<script>alert('Ubah Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=jadwal'>";
+  } else {
+    echo "<script>alert('Ubah Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=jadwal'>";
+  }
+}
+function deleteJadwal($id)
+{
+  global $con;
+
+  $sql_hapus = "DELETE FROM jadwal WHERE idJadwal='$id' ";
+  $query_hapus = mysqli_query($con, $sql_hapus);
+
+  if ($query_hapus) {
+    echo "<script>alert('Hapus Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=jadwal''>";
+  } else {
+    echo "<script>alert('Hapus Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=jadwal''>";
+  }
+}
+
+function uploadHasil($namePost)
+{
+  $name = $_SESSION["ses_nama"];
+  $namaPengirim = str_replace(' ', '', $name);
+  $date = date('Y-m-d');
+  $ekstensi_diperbolehkan  = array('jpg', 'png', 'jpeg', 'pdf');
+  $nama = $_FILES[$namePost]['name'];
+  
+  $x = explode('.', $nama);
+  $ekstensi = strtolower(end($x));
+  $namas = 'Hasil_' . $namaPengirim . '_' . $date . "." . $ekstensi;
+  $ukuran  = $_FILES[$namePost]['size'];
+  $file_tmp = $_FILES[$namePost]['tmp_name'];
+  
+
+  if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
+    if ($ukuran < 41943040) {
+      $destination_path = getcwd().DIRECTORY_SEPARATOR . 'file_data\hasil' . '/';
+
+      $target_path = $destination_path . $namas;
+
+      @move_uploaded_file($file_tmp, $target_path);
+      return $namas;
+    } else {
+      return;
+    }
+  } else {
+    return;
+  }
+}
+
+function insertHasil($uploadFiles)
+{
+  global $con;
+  $tgl = date('Y-m-d H:i:s');
+  $idLevel = $_SESSION["ses_idLevel"];
+  switch ($idLevel) {
+    
+    case '1':
+      $sql_insert = "INSERT INTO hasil (`idLoker`, `file`, `keterangan`, `status`, `tglInput`, `usrInput`) VALUES (
+        '" . $_POST['noLoker'] . "',
+        '" . $uploadFiles . "',
+        '" . $_POST['ket'] . "',
+        '2',
+        '" . $tgl . "',
+        '" . $_POST['usrInput'] . "')";
+      break;
+
+    case '4':
+      $sql_insert = "INSERT INTO hasil (`idLoker`, `file`, `keterangan`, `status`, `tglInput`, `usrInput`) VALUES (
+        '" . $_POST['noLoker'] . "',
+        '" . $uploadFiles . "',
+        '" . $_POST['ket'] . "',
+        '1',
+        '" . $tgl . "',
+        '" . $_POST['usrInput'] . "')";
+      break;
+  }
+  $query_insert = mysqli_query($con, $sql_insert) or die(mysqli_connect_error());
+
+  
+  if ($query_insert) {
+    echo "<script>alert('Simpan Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=hasil'>";
+  } else {
+    echo "<script>alert('Simpan Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=hasil'>";
+  }
+}
+
+function updateHasil()
+{
+  global $con;
+
+  $sql_ubah = "UPDATE hasil SET
+        idLoker='" . $_POST['noLoker'] . "',
+        keterangan='" . $_POST['ket'] . "'
+        WHERE idHasil='" . $_POST['idHasil'] . "'";
+  $query_ubah = mysqli_query($con, $sql_ubah);
+
+  if ($query_ubah) {
+    echo "<script>alert('Ubah Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=hasil'>";
+  } else {
+    echo "<script>alert('Ubah Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=hasil'>";
+  }
+}
+function deleteHasil($id)
+{
+  global $con;
+
+  $sql_hapus = "DELETE FROM hasil WHERE idHasil='$id' ";
+  $query_hapus = mysqli_query($con, $sql_hapus);
+
+  if ($query_hapus) {
+    echo "<script>alert('Hapus Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=hasil''>";
+  } else {
+    echo "<script>alert('Hapus Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=hasil''>";
+  }
+}
+
+function validasiHasil($id)
+{
+  global $con;
+
+  $sql_validasi = "UPDATE hasil SET
+        status = '2'
+        WHERE idhasil='$id'";
+  $query_validasi = mysqli_query($con, $sql_validasi);
+
+  if ($query_validasi) {
+    echo "<script>alert('Validasi Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=hasil''>";
+  } else {
+    echo "<script>alert('Validasi Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=hasil''>";
+  }
+}
+
+function uploadBerkas($namePost, $nmLoker)
+{
+  $name = $_SESSION["ses_nama"];
+  $namaPengirim = str_replace(' ', '_', $name);
+  // print_r($_FILES[$namePost]);
+  // echo '<br>';
+  // echo $namaPengirim;
+  // echo '<br>';
+  // echo $nmLoker;
+  // die();
+  $date = date('Y-m-d');
+  $ekstensi_diperbolehkan  = array('jpg', 'png', 'jpeg', 'pdf');
+  $nama = $_FILES[$namePost]['name'];
+  
+  $x = explode('.', $nama);
+  $ekstensi = strtolower(end($x));
+  $namas = 'Daftar_' . $nmLoker . "_" . $namaPengirim . "_" . $date ."." . $ekstensi;
+  $ukuran  = $_FILES[$namePost]['size'];
+  $file_tmp = $_FILES[$namePost]['tmp_name'];
+  
+
+  if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
+    if ($ukuran < 41943040) {
+      $destination_path = getcwd().DIRECTORY_SEPARATOR . 'file_data\pendaftaran' . '/';
+
+      $target_path = $destination_path . $namas;
+
+      @move_uploaded_file($file_tmp, $target_path);
+      return $namas;
+    } else {
+      return;
+    }
+  } else {
+    return;
+  }
+}
+
+function insertDaftar($uploadFiles)
+{
+  global $con;
+  $tgl = date('Y-m-d H:i:s');
+  $sql_insert = "INSERT INTO pendaftaran (`idLoker`, `idAnggota`, `berkas`, `status`, `tglDaftar`) VALUES (
+    '" . $_POST['idLoker'] . "',
+    '" . $_POST['idDaftar'] . "',
+    '" . $uploadFiles . "',
+    '1',
+    '" . $tgl . "')";
+  $query_insert = mysqli_query($con, $sql_insert) or die(mysqli_connect_error());
+
+  
+  if ($query_insert) {
+    echo "<script>alert('Pendaftaran Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=history'>";
+  } else {
+    echo "<script>alert('Pendaftaran Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=lowongan'>";
+  }
+}
+
+function updateDaftar($upload)
+{
+  global $con;
+  $cekNisn = "SELECT idDaftar, berkas FROM pendaftaran WHERE idDaftar = '" . $_POST['idDaftar'] . "' ";
+  $query = mysqli_query($con, $cekNisn);
+  $row = mysqli_fetch_row($query);
+    $idDaftar = $row[0];
+    $berkas = $row[1];
+    die();
+    unlink('file_data/pendaftaran/' . $berkas);
+  $sql_ubah = "UPDATE pendaftaran SET
+        idLoker ='" . $_POST['idLoker'] . "',
+        berkas ='" . $upload . "',
+        keterangan='" . $_POST['ket'] . "'
+        WHERE idDaftar='" . $_POST['idHasil'] . "'";
+  $query_ubah = mysqli_query($con, $sql_ubah);
+
+  if ($query_ubah) {
+    echo "<script>alert('Ubah Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=daftar'>";
+  } else {
+    echo "<script>alert('Ubah Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=daftar'>";
+  }
+}
+function deleteDaftar($id)
+{
+  global $con;
+
+  $sql_hapus = "DELETE FROM pendaftaran WHERE idDaftar='$id' ";
+  $query_hapus = mysqli_query($con, $sql_hapus);
+
+  if ($query_hapus) {
+    echo "<script>alert('Hapus Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=daftar''>";
+  } else {
+    echo "<script>alert('Hapus Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=daftar''>";
+  }
+}
+
+function validasiAdministrasi($id)
+{
+  global $con;
+
+  $sql_validasi = "UPDATE pendaftaran SET
+        status = '3'
+        WHERE idDaftar='$id'";
+  $query_validasi = mysqli_query($con, $sql_validasi);
+
+  if ($query_validasi) {
+    echo "<script>alert('Validasi Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=daftar'>";
+  } else {
+    echo "<script>alert('Validasi Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=daftar'>";
+  }
+}
+
+function validasiLulus($id)
+{
+  global $con;
+
+  $sql_validasi = "UPDATE pendaftaran SET
+        status = '4'
+        WHERE idDaftar='$id'";
+  $query_validasi = mysqli_query($con, $sql_validasi);
+
+  if ($query_validasi) {
+    echo "<script>alert('Validasi Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=daftar'>";
+  } else {
+    echo "<script>alert('Validasi Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=daftar'>";
+  }
+}
+
+function gagalLulus($id)
+{
+  global $con;
+
+  $sql_validasi = "UPDATE pendaftaran SET
+        status = '5'
+        WHERE idDaftar='$id'";
+  $query_validasi = mysqli_query($con, $sql_validasi);
+
+  if ($query_validasi) {
+    echo "<script>alert('Validasi Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=daftar'>";
+  } else {
+    echo "<script>alert('Validasi Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=daftar'>";
+  }
+}
+
+function gagalAdm($id)
+{
+  global $con;
+
+  $sql_validasi = "UPDATE pendaftaran SET
+        status = '2'
+        WHERE idDaftar='$id'";
+  $query_validasi = mysqli_query($con, $sql_validasi);
+
+  if ($query_validasi) {
+    echo "<script>alert('Validasi Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=daftar'>";
+  } else {
+    echo "<script>alert('Validasi Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=daftar'>";
+  }
+}
+
+function perusahaan()
+{
+  global $con;
+  $sql ="SELECT * FROM `perusahaan`";
+  $query = mysqli_query($con, $sql);
+  return $query;
+}
+
+function insertPerusahaan()
+{
+  global $con;
+  $date = date('Y-m-d');
+  $cekIdDaftar = "SELECT `AUTO_INCREMENT` as idDaftar FROM INFORMATION_SCHEMA.TABLES
+  WHERE TABLE_SCHEMA = 'bkkmuh' AND TABLE_NAME = 'perusahaan' ";
+  $query = mysqli_query($con, $cekIdDaftar);
+  $row = mysqli_fetch_row($query);
+  $idDaftar = $row[0];
+
+  $sql_insert = "INSERT INTO perusahaan (`nmPerusahaan`, `email`, `stsPerusahaan`, `noTelp`, `tglKerjasama`, `tglDaftar`) VALUES (
+					'" . $_POST['nmPerusahaan'] . "',
+          '" . $_POST['email'] . "',
+					'" . $_POST['statusPer'] . "',
+					'" . $_POST['telepon'] . "',
+					'" . $_POST['tglKerjasama'] . "',
+          '$date')";
+
+  $query_insert = mysqli_query($con, $sql_insert) or die(mysqli_connect_error());
+
+  $sql_insertUser = "INSERT INTO user (`nama`,`username`, `password`, `idLevel`, `idDaftar`, `status`, `tglDaftar`) VALUES (
+					'" . $_POST['nmPerusahaan'] . "',
+					'" . $_POST['username'] . "',
+          '" . $_POST['password'] . "',
+					'4',
+					'" . $idDaftar . "',
+					'1',
+          '$date')";
+
+  $query_insertUser = mysqli_query($con, $sql_insertUser) or die(mysqli_connect_error());
+
+  if ($query_insert && $query_insertUser) {
+    echo "<script>alert('Simpan Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=perusahaan'>";
+  } else {
+    echo "<script>alert('Simpan Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=perusahaan'>";
+  }
+}
+
+function updatePerusahaan()
+{
+  global $con;
+
+  $sql_ubah = "UPDATE perusahaan SET
+        nmPerusahaan ='" . $_POST['nmPerusahaan'] . "',
+        email ='" . $_POST['email'] . "',
+        stsPerusahaan ='" . $_POST['status'] . "',
+        noTelp ='" . $_POST['telepon'] . "',
+        tglKerjasama ='" . $_POST['tglKerjasama'] . "'
+        WHERE idPerusahaan ='" . $_POST['idPerusahaan'] . "'";
+  $query_ubah = mysqli_query($con, $sql_ubah);
+
+  if ($query_ubah) {
+    echo "<script>alert('Ubah Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=perusahaan'>";
+  } else {
+    echo "<script>alert('Ubah Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=perusahaan'>";
+  }
+}
+function deletePerusahaan($id)
+{
+  global $con;
+
+  $sql_hapus = "DELETE FROM perusahaan WHERE idPerusahaan='$id' ";
+  $query_hapus = mysqli_query($con, $sql_hapus);
+
+  if ($query_hapus) {
+    echo "<script>alert('Hapus Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=perusahaan''>";
+  } else {
+    echo "<script>alert('Hapus Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=perusahaan''>";
+  }
+}
+
+function UsrGroup()
+{
+  global $con;
+  $sql ="SELECT * FROM `usrgrup`";
+  $query = mysqli_query($con, $sql);
+  return $query;
+}
+
+function insertUsrGroup()
+{
+  global $con;
+  $sql_insert = "INSERT INTO usrgrup (nmGroup, ket) VALUES (
+					'" . $_POST['nmGroup'] . "',
+          '" . $_POST['ket'] . "')";
+
+  $query_insert = mysqli_query($con, $sql_insert) or die(mysqli_connect_error());
+  if($query_insert) {
+    echo '<script> 
+    swal({
+      title: "Berhasil !!!",
+      text: "Menambahkan User Group",
+      icon: "success"
+    })
+    .then((done) => {
+      window.location = "indexAdm.php?pages=usrgroup";
+    }); 
+    </script>';
+  } else {
+    echo '<script type="text/javascript"> alert("gagal") </script>';
+  }
+  // if ($query_insert) {
+  //   echo "<script>alert('Simpan Berhasil')</script>";
+  //   echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=usrgroup'>";
+  // } else {
+  //   echo "<script>alert('Simpan Gagal')</script>";
+  //   echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=usrgroup'>";
+  // }
+}
+
+function updateUsrGroup()
+{
+  global $con;
+
+  $sql_ubah = "UPDATE usrgrup SET
+        nmGroup='" . $_POST['nmGroup'] . "',
+        ket='" . $_POST['ket'] . "'
+        WHERE idGroup='" . $_POST['idGroup'] . "'";
+  $query_ubah = mysqli_query($con, $sql_ubah);
+
+  if ($query_ubah) {
+    echo "<script>alert('Ubah Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=usrgroup'>";
+  } else {
+    echo "<script>alert('Ubah Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=usrgroup'>";
+  }
+}
+function deleteUsrGroup($id)
+{
+  global $con;
+
+  $sql_hapus = "DELETE FROM usrgrup WHERE idGroup='$id' ";
+  $query_hapus = mysqli_query($con, $sql_hapus);
+
+  if ($query_hapus) {
+    echo "<script>alert('Hapus Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=usrgroup''>";
+  } else {
+    echo "<script>alert('Hapus Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=usrgroup''>";
+  }
+}
+
+function selectUser()
+{
+  global $con;
+  $sql ="SELECT * FROM `user` `a` JOIN `usrgrup` `b` ON a.idLevel=b.idGroup";
+  $query = mysqli_query($con, $sql);
+  return $query;
+}
+
+function insertUser()
+{
+  global $con;
+  
+
+  $pass = $_POST['password'];
+  $repass = $_POST['rePassword'];
+  
+  $tgl = date('Y-m-d H:i:s');
+  if($pass != $repass){
+    echo "<script>alert('Password tidak sama, Simpan Gagal !!')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=user'>";
+    
+  }else
+      {
+        $sql_insert = "INSERT INTO user (nama, username, password, idLevel, idDaftar, status, tglDaftar) VALUES (
+          '" . $_POST['nmUser'] . "',
+          '" . $_POST['username'] . "',
+          '" . $_POST['password'] . "',
+          '" . $_POST['idGroup'] . "',
+          '" . $_POST['idDaftar'] . "',
+          '1',
+          '" . $tgl . "')";
+    
+          $query_insert = mysqli_query($con, $sql_insert) or die(mysqli_connect_error());
+          // echo'<pre>';
+          // print_r($query_insert);
+          // echo'<pre>';
+          // die();
+          if ($query_insert) {
+            echo "<script>alert('Simpan Berhasil')</script>";
+            echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=user'>";
+          } else {
+            echo "<script>alert('Simpan Gagal')</script>";
+            echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=user'>";
+          }
+      }
+}
+
+function updateUser()
+{
+  global $con;
+
+  $sql_ubah = "UPDATE usrgrup SET
+        nmGroup='" . $_POST['nmGroup'] . "',
+        ket='" . $_POST['ket'] . "'
+        WHERE idGroup='" . $_POST['idGroup'] . "'";
+  $query_ubah = mysqli_query($con, $sql_ubah);
+
+  if ($query_ubah) {
+    echo "<script>alert('Ubah Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=user'>";
+  } else {
+    echo "<script>alert('Ubah Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=user'>";
+  }
+}
+function deleteUser($id)
+{
+  global $con;
+
+  $sql_hapus = "DELETE FROM usrgrup WHERE idGroup='$id' ";
+  $query_hapus = mysqli_query($con, $sql_hapus);
+
+  if ($query_hapus) {
+    echo "<script>alert('Hapus Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=user''>";
+  } else {
+    echo "<script>alert('Hapus Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=user''>";
+  }
+}
+
+function confirmUser()
+{
+  global $con;
+  if (isset($_GET['kode'])) {
+    $sql_arsip = "UPDATE user SET status = 'Aktif' where id = '" . $_GET['kode'] . "'";
+    $query_arsip = mysqli_query($con, $sql_arsip);
+
+    if ($query_arsip) {
+      echo "<script>alert('Akun Diaktifkan')</script>";
+      echo "<meta http-equiv='refresh' content='0; url=?page=user'>";
+    } else {
+      echo "<script>alert('Akun Gagal Diaktifkan')</script>";
+      echo "<meta http-equiv='refresh' content='0; url=?page=user'>";
+    }
+  }
+}
+
+function broadcast()
+{
+  function confirmProg($id)
+  {
+    global $con;
+
+    $sql_arsip = "UPDATE program SET status = 'P' where id = '$id'";
+    $query_arsip = mysqli_query($con, $sql_arsip);
+
+        if ($query_arsip) {
+            echo "<script>alert('Konfirmasi Berhasil')</script>";
+            echo "<meta http-equiv='refresh' content='0; url=?page=progAcc'>";
+        }else{
+            echo "<script>alert('konfirmasi Gagal')</script>";
+            echo "<meta http-equiv='refresh' content='0; url=?page=progAcc'>";
+        }
+  }
+
+  global $con;
+  $sql_no = "SELECT noWa FROM anggota";
+  $query_no = mysqli_query($con, $sql_no);
+  define('BOT_TOKENS', '1860399808:AAGIDR6LzARUQn5luzkwu3yonZg5ZOiBXoc');
+  // 1860399808:AAGIDR6LzARUQn5luzkwu3yonZg5ZOiBXoc
+  $id_teles = [];
+  foreach($query_no as $item){
+    array_push($id_teles, $item['id_chat']);
+  }
+
+   function kirimTelegrams($pesan, $ar) {
+      $pesan = json_encode($pesan);
+      $c = [];
+      foreach ($ar as $value) {
+        $API = "https://api.telegram.org/bot".BOT_TOKENS."/sendmessage?chat_id=".$value."&text=$pesan";
+        array_push($c, $API);
+      }
+
+      foreach ($c as $value) {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+        // var_dump($value);
+        curl_setopt($ch, CURLOPT_URL, $value);
+        curl_exec($ch);
+        curl_close($ch);
+      }
+  }
+   
+  kirimTelegrams("Halo Para Donatur yang terhormat. Peduliku mempunyai program donasi terbaru yang telah dipublish. Semoga ada waktu untuk mengecek donasi, Terimakasih", $id_teles);
+}
