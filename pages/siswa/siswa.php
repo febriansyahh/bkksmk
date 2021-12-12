@@ -42,8 +42,9 @@ include_once("koneksi.php");
                           <td><?php echo $data['nmJurusan']; ?></td>
                           <td><?php echo $data['tahunMasuk']; ?></td>
                           <td>
+                            <a href="javascript:void(0)" data-toggle="modal" data-target="#detailSiswa" onclick="editableDataSiswa(this)" data-id="<?php echo $data['idSiswa'] . "~" . $data['nisn'] . "~" . $data['nama'] . "~" . $data['jekel'] . "~" . $data['tempatLhr'] . "~" . $data['tglLhr'] . "~" . $data['nmJurusan'] . "~" . $data['tahunMasuk'] . "~" . $data['nmOrtu'] . "~" . $data['alamat'] . "~" . $data['noTelp'] . "~" . $data['nmJurusan'] ?>" class="btn btn-success btn-sm"><i class="fas fa-eye"></i></a>
                             <a href="javascript:void(0)" data-toggle="modal" data-target="#editSiswa" onclick="editableDataSiswa(this)" data-id="<?php echo $data['idSiswa'] . "~" . $data['nisn'] . "~" . $data['nama'] . "~" . $data['jekel'] . "~" . $data['tempatLhr'] . "~" . $data['tglLhr'] . "~" . $data['nmJurusan'] . "~" . $data['tahunMasuk'] ?>" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
-                            <a href="?halaman=siswa_aksi&kode=<?php echo $data['nisn']; ?>"
+                            <a href="?page=siswaAksi&kode=<?php echo $data['idSiswa']; ?>"
                               onclick="return confirm('Apakah anda yakin hapus data ini ?')"
                               class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></a>
                           </td>
@@ -66,7 +67,7 @@ include_once("koneksi.php");
       </div>
 
 </body>
-<div id="mySiswa" class="modal fade">
+<!-- <div id="mySiswa" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -88,7 +89,7 @@ include_once("koneksi.php");
 
           <div class="form-group">
             <label>Keterangan</label>
-            <!-- <textarea name="ket" id="" class="form-control" rows="3"></textarea> -->
+            <textarea name="ket" id="" class="form-control" rows="3"></textarea>
             <input class="form-control " type="text" name="ket">
           </div>
 
@@ -96,6 +97,142 @@ include_once("koneksi.php");
             <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
             <input class="btn btn-success" type="submit" name="btn" value="Save" />
           </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div id="mySiswa" class="modal fade">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <p class="modal-title" style="font-family: Poppins">Detail Data Siswa</p>
+      </div>
+      <div class="modal-body">
+        <form action="?page=siswaAksi" method="post" enctype="multipart/form-data">
+        <div class="row">
+        <div class="col md-6">
+            <label for=""><b>NISN Siswa </b></label>
+            <input type="text" name="Nisn" class="form-control">
+          </div>
+          <div class="col md-6">
+            <label for=""><b>Nama Siswa </b></label>
+            <input type="text" name="nama" class="form-control">
+          </div>
+      </div>
+      <div class="row">
+        <div class="col md-6">
+          <label for=""><b>Jenis Kelamin</b></label>
+          <select name="jekel" id="" class="form-control">
+            <option value="">- Pilih -</option>
+            <option value="Pria">Pria</option>
+            <option value="Wanita">Wanita</option>
+          </select>
+          </div>
+          <div class="col md-6">
+            <label for=""><b>email </b></label>
+            <input type="text" name="email" class="form-control">
+          </div>
+        </div>
+        <div class="row">
+        <div class="col md-6">
+            <label for=""><b>Tempat Lahir </b></label>
+            <input type="text" name="tempat" class="form-control">
+          </div>
+          <div class="col md-6">
+            <label for=""><b>Tanggal Lahir </b></label>
+            <input type="date" name="tgl" class="form-control">
+          </div>
+        </div>
+        <div class="row">
+        <div class="col md-6">
+            <label for=""><b>Nama Orang Tua </b></label>
+            <input type="text" name="nmOrtu" class="form-control">
+          </div>
+          <div class="col md-6">
+            <label for=""><b>Alamat</b></label>
+            <input type="text" name="alamat" class="form-control">
+          </div>
+        </div>
+        <div class="row">
+        <div class="col md-6">
+            <label for=""><b>No Telepon </b></label>
+            <input type="text" name="telp" class="form-control">
+          </div>
+          <div class="col md-6">
+            <label for=""><b>Jurusan</b></label>
+            <select name="jurusan" id="" class="form-control">
+            <option value="">-Pilih-</option>
+                <?php
+                $dt = getJurusan();
+                foreach ($dt as $value) {
+                  echo '<option value="'.$value['idJurusan'].'">'.$value['nmJurusan'].'</option>';
+                }
+              ?>
+          </select>
+          </div>
+          <div class="col md-6">
+            <label for=""><b>Tahun Masuk</b></label>
+            <input type="text" name="tahun" class="form-control">
+          </div>
+        </div>
+        <br>
+        <br>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+            <input class="btn btn-success" type="submit" name="btnSimpan" value="Simpan" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="detailSiswa" class="modal fade">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <p class="modal-title" style="font-family: Poppins">Detail Data Siswa</p>
+      </div>
+      <div class="modal-body">
+        <form action="" method="post" enctype="multipart/form-data">
+        <div class="row">
+        <div class="col md-6">
+            <label for=""><b>NISN Siswa </b></label>
+            <input type="text" name="Nisn" id="editNisn" class="form-control" readonly>
+          </div>
+          <div class="col md-6">
+            <label for=""><b>Nama Siswa </b></label>
+            <input type="text" name="Nama" id="editNama" class="form-control" readonly>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col md-6">
+          <label for=""><b>Jenis Kelamin</b></label>
+          <input type="text" name="Jekel" id="editJekel" class="form-control" readonly>
+          </div>
+          <div class="col md-6">
+            <label for=""><b>Jurusan </b></label>
+            <input type="text" name="Ket" id="editJurusan" class="form-control" readonly>
+          </div>
+        </div>
+        <div class="row">
+        <div class="col md-6">
+            <label for=""><b>Tempat Lahir </b></label>
+            <input type="text" name="Ket" id="editTmptLhr" class="form-control" readonly>
+          </div>
+          <div class="col md-6">
+            <label for=""><b>Tanggal Lahir </b></label>
+            <input type="text" name="Ket" id="editTglLhr" class="form-control" readonly>
+          </div>
+          <div class="col md-6">
+            <label for=""><b>Tahun Masuk </b></label>
+            <input type="text" name="Ket" id="editTahun" class="form-control" readonly>
+          </div>
+        </div>
         </form>
       </div>
     </div>
@@ -112,7 +249,7 @@ include_once("koneksi.php");
           <hr>
           <div class="form-group">
             <label for=""><b>NISN Siswa </b></label>
-            <input type="text" name="ID" id="editSiswa" class="form-control">
+            <input type="text" name="ID" id="editNisns" class="form-control">
             <input type="text" name="Nisn" id="editNisn" class="form-control">
           </div>
           <div class="form-group">
@@ -138,6 +275,49 @@ include_once("koneksi.php");
           <div class="form-group">
             <label for=""><b>Tahun Masuk </b></label>
             <input type="text" name="Ket" id="editTahun" class="form-control">
+          </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Simpan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="modal" id="detSiswa" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog pt-5" role="document">
+    <div class="modal-content">
+    <form action="" method="post" enctype="multipart/form-data">
+        <div class="modal-body">
+          <h2 class="text-center"><b>Edit Siswa</b></h2>
+          <hr>
+          <div class="form-group">
+            <label for=""><b>NISN Siswa </b></label>
+            <input type="text" name="ID" id="editNisns" class="form-control" readonly>
+            <input type="text" name="Nisn" id="editNisn" class="form-control" readonly>
+          </div>
+          <div class="form-group">
+            <label for=""><b>Nama Siswa </b></label>
+            <input type="text" name="Nama" id="editNama" class="form-control" readonly>
+          </div>
+          <div class="form-group">
+            <label for=""><b>Jenis Kelamin</b></label>
+            <input type="text" name="Jekel" id="editJekel" class="form-control" readonly>
+          </div>
+          <div class="form-group">
+            <label for=""><b>Jurusan </b></label>
+            <input type="text" name="Ket" id="editJurusan" class="form-control" readonly>
+          </div>
+          <div class="form-group">
+            <label for=""><b>Tempat Lahir </b></label>
+            <input type="text" name="Ket" id="editTmptLhr" class="form-control" readonly>
+          </div>
+          <div class="form-group">
+            <label for=""><b>Tanggal Lahir </b></label>
+            <input type="text" name="Ket" id="editTglLhr" class="form-control" readonly>
+          </div>
+          <div class="form-group">
+            <label for=""><b>Tahun Masuk </b></label>
+            <input type="text" name="Ket" id="editTahun" class="form-control" readonly>
           </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary">Simpan</button>

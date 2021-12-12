@@ -336,7 +336,7 @@ function SelectLowonganperusahaan($id)
 {
   global $con;
   // $sql = "SELECT * FROM `tb_loker` ";
-  $sql = "SELECT * FROM `lowongan` WHERE usrInput = '$id' ";
+  $sql = "SELECT * FROM `lowongan` WHERE usrInput = '$id' ORDER BY idLowongan DESC";
   $query = mysqli_query($con, $sql);
   return $query;
 }
@@ -480,6 +480,76 @@ function jurusan()
   $sql ="SELECT * FROM `jurusan`";
   $query = mysqli_query($con, $sql);
   return $query;
+}
+
+function insertSiswa()
+{
+  global $con;
+  $sql_insert = "INSERT INTO siswa (`nisn`, `nama`, `email`, `jekel`, `tempatLhr`, `tglLhr`, `nmOrtu`, `alamat`, `noTelp`, `jurusan`, `tahunMasuk`) VALUES (
+					'" . $_POST['nisn'] . "',
+					'" . $_POST['nama'] . "',
+					'" . $_POST['email'] . "',
+					'" . $_POST['jekel'] . "',
+					'" . $_POST['tempat'] . "',
+					'" . $_POST['tgl'] . "',
+					'" . $_POST['nmOrtu'] . "',
+					'" . $_POST['alamat'] . "',
+					'" . $_POST['telp'] . "',
+					'" . $_POST['jurusan'] . "',
+          '" . $_POST['tahun'] . "')";
+
+  $query_insert = mysqli_query($con, $sql_insert) or die(mysqli_connect_error());
+
+  if ($query_insert) {
+    echo "<script>alert('Simpan Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=siswa'>";
+  } else {
+    echo "<script>alert('Simpan Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=siswa'>";
+  }
+}
+
+function updateSiswa()
+{
+  global $con;
+
+  $sql_ubah = "UPDATE siswa SET
+        nisn ='" . $_POST['nisn'] . "',
+        nama ='" . $_POST['nama'] . "',
+        email ='" . $_POST['email'] . "',
+        jekel ='" . $_POST['jekel'] . "',
+        tempatLhr ='" . $_POST['tempat'] . "',
+        tglLhr ='" . $_POST['tglLhr'] . "',
+        nmOrtu ='" . $_POST['nmOrtu'] . "',
+        alamat ='" . $_POST['alamat'] . "',
+        noTelp ='" . $_POST['noTelp'] . "',
+        jurusan ='" . $_POST['jurusan'] . "',
+        tahunMasuk ='" . $_POST['tahun'] . "'
+        WHERE idSiswa ='" . $_POST['idSiswa'] . "'";
+  $query_ubah = mysqli_query($con, $sql_ubah);
+
+  if ($query_ubah) {
+    echo "<script>alert('Ubah Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=siswa'>";
+  } else {
+    echo "<script>alert('Ubah Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=siswa'>";
+  }
+}
+function deleteSiswa($id)
+{
+  global $con;
+
+  $sql_hapus = "DELETE FROM siswa WHERE idSiswa ='$id' ";
+  $query_hapus = mysqli_query($con, $sql_hapus);
+
+  if ($query_hapus) {
+    echo "<script>alert('Hapus Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=siswa'>";
+  } else {
+    echo "<script>alert('Hapus Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=siswa'>";
+  }
 }
 
 function insertJurusan()

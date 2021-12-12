@@ -50,16 +50,18 @@ $maxID = MaxIdProgram();
                   <td><?php echo $data['sumber']; ?></td>
                   <td><?php echo date('d F Y', strtotime($data['batas'])); ?></td>
                   <td>
-                  <a href="javascript:void(0)" data-toggle="modal" data-target="#editLoker"
+                    <?php
+                    if($data['status'] == '2'){
+                      ?>
+                      <a href="javascript:void(0)" data-toggle="modal" data-target="#editLoker"
                       data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] . "~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel'] . "~" . $data['file'] . "~" . $data['keterangan'] . "~" . $data['sumber'] . "~" . $data['tglInput'] . "~" . $data['batas']. "~" . $data['status'] ?>"
                       onclick="editableLowongan(this)" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
                     <a href="?pages=lokerAksi&kode=<?php echo $data['idLowongan']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')"
                       class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></a>
                     <?php
-                    if($data['status'] == '1'){
-                      ?>
-                      <a href="?pages=lokerAksi&kodes=<?php echo $data['idLowongan']; ?>" onclick="return confirm('Yakin untuk konfirmasi data ini ?')"
-                      class='btn btn-warning btn-sm'><i class="fa fa-check"></i></a>
+                    }else{
+                    ?>
+                     <a href="#" class="btn btn-warning btn-sm">Menunggu Konfirmasi</a>
                     <?php
                     }
                     ?>
@@ -462,7 +464,7 @@ $maxID = MaxIdProgram();
     </div>
   </div>
 
-  <div class="modal fade" id="editLoker" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  <div class="modal" id="editLoker" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog pt-5" role="document">
       <div class="modal-content">

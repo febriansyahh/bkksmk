@@ -68,7 +68,8 @@ function editableDataSiswa(param) {
   console.log('AAAAA');
   console.log(exp[0]);
   console.log(data);
-  $("#editSiswa").val(exp[0]);
+  // $("#editidSiswa").val(exp[0]);
+  $("#editNisns").val(exp[0]); 
   $("#editNisn").val(exp[1]); 
   $("#editNama").val(exp[2]);
   $("#editJekel").val(exp[3]);
@@ -76,6 +77,27 @@ function editableDataSiswa(param) {
   $("#editTglLhr").val(exp[5]);
   $("#editJurusan").val(exp[6]);
   $("#editTahun").val(exp[7]);
+}
+
+function editableDataSiswas(param) {
+  let data = $(param).data("id");
+  let exp = data.split("~");
+  console.log('AAAAA');
+  console.log(exp[0]);
+  console.log(data);
+  // $("#editidSiswa").val(exp[0]);
+  $("#editNisns").val(exp[0]); 
+  $("#editNisn").val(exp[1]); 
+  $("#editNama").val(exp[2]);
+  $("#editJekel").val(exp[3]);
+  $("#editTmptLhr").val(exp[4]);
+  $("#editTglLhr").val(exp[5]);
+  $("#editJurusan").val(exp[6]);
+  $("#editTahun").val(exp[7]);
+  $("#editOrtu").val(exp[8]);
+  $("#editalamat").val(exp[9]);
+  $("#editnoTelp").val(exp[10]);
+  $("#editnmJurusan").val(exp[11]);
 }
 
 
