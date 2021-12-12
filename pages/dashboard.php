@@ -59,7 +59,7 @@
               <div class="icon">
                 <i class="ion ion-person"></i>
               </div>
-              <a href="?pages=siswa" class="small-box-footer">Lihat selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="?pages=siswa" class="small-box-footer" style="color:white">Lihat selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

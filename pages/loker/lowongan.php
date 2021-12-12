@@ -192,6 +192,14 @@ $maxID = MaxIdProgram();
                       onclick="editableLowongan(this)" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
                     <a href="#" onclick="return confirm('Apakah anda yakin hapus data ini ?')"
                       class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></a>
+                      <?php
+                    if($data['status'] == '1'){
+                      ?>
+                      <a href="?pages=lokerAksi&kodes=<?php echo $data['idLowongan']; ?>" onclick="return confirm('Yakin untuk konfirmasi data ini ?')"
+                      class='btn btn-warning btn-sm'><i class="fa fa-check"></i></a>
+                    <?php
+                    }
+                    ?>
                   </td>
                 </tr>
                 <?php

@@ -405,9 +405,6 @@ function cekLoker($id)
     case '4':
       $sql = "SELECT COUNT(idLowongan) from lowongan WHERE usrInput='$id' AND status='1' AND status !='3'"; 
       break;
-    // default:
-    //   $sql = "SELECT COUNT(idLowongan) from lowongan WHERE status='1'";
-    // break;
   }
   
   $query = mysqli_query($con, $sql);
