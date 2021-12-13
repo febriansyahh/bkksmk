@@ -9,6 +9,7 @@ if (isset($_POST['btnLogin'])) LoginUser();
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bursa Kerja - SMK Muhammadiyah Kudus</title>
+  <link href="images/muh.png" rel="icon">
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -29,7 +30,7 @@ if (isset($_POST['btnLogin'])) LoginUser();
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body" style="border-radius: 25%;">
-      <p class="login-box-msg" style="font-family: Poppins"><b>Masukkan Username & Password Anda</b></p>
+      <p class="login-box-msg" style="font-family: Poppins" ><b>Masukkan Username & Password Anda</b></p>
 
       <form action="" method="post">
         <div class="input-group mb-3">
@@ -62,7 +63,9 @@ if (isset($_POST['btnLogin'])) LoginUser();
 
       <p class="mb-0">
         <!-- <a href="landing/reg_perusahaan.php" class="text-center">Register Perusahaan</a> -->
-        <a data-toggle="modal" data-target="#register" class="btn-get-started scrollto">Register Perusahaan</a>
+
+        <!-- Modal Untuk Registrasi Perusahaan-->
+        <!-- <a data-toggle="modal" data-target="#register" class="btn-get-started scrollto">Register Perusahaan</a> -->
       </p>
     </div>
     <!-- /.login-card-body -->

@@ -192,7 +192,7 @@ $maxID = MaxIdProgram();
                     <a href="javascript:void(0)" data-toggle="modal" data-target="#editLoker"
                       data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] . "~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel'] . "~" . $data['file'] . "~" . $data['keterangan'] . "~" . $data['sumber'] . "~" . $data['tglInput'] . "~" . $data['batas']. "~" . $data['status'] ?>"
                       onclick="editableLowongan(this)" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
-                    <a href="#" onclick="return confirm('Apakah anda yakin hapus data ini ?')"
+                      <a href="?pages=lokerAksi&kode=<?php echo $data['idLowongan']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')"
                       class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></a>
                       <?php
                     if($data['status'] == '1'){

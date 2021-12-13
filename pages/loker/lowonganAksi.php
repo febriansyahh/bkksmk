@@ -14,8 +14,8 @@ if (isset($_POST['btnSimpan'])) {
 	// die();
 	insertLowongan(Upload_Files('fileLoker', 'noLoker'));
 } elseif (isset($_POST['btnUBAH'])) {
-	print_r("C");
-	die();
+	// print_r("C");
+	// die();
   updateLowongan();
 } else {
 	// print_r("A");

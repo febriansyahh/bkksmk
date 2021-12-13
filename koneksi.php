@@ -592,7 +592,7 @@ function deleteJurusan($id)
 {
   global $con;
 
-  $sql_hapus = "DELETE FROM jurusan WHERE id='$id' ";
+  $sql_hapus = "DELETE FROM jurusan WHERE idJurusan='$id' ";
   $query_hapus = mysqli_query($con, $sql_hapus);
 
   if ($query_hapus) {
