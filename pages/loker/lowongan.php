@@ -265,9 +265,18 @@ $maxID = MaxIdProgram();
                   <td>
                     <a href="javascript:void(0)" data-toggle="modal" data-target="#editLokers"
                       data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] . "~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel'] . "~" . $data['file'] . "~" . $data['keterangan'] . "~" . $data['sumber'] . "~" . $data['tglInput'] . "~" . $data['batas']. "~" . $data['status'] ?>"
-                      onclick="editableLowongan(this)" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
+                      onclick="editableLowongan(this)" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
                     <a href="?pages=lokerAksi&kode=<?php echo $data['idLowongan']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')"
                       class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></a>
+                    <?php
+                    if($data['status'] == '1'){
+                    ?>
+                    <!-- <a href="https://wa.me/6287729356414&text=Sdr/i%20<?php echo $data['nama']; ?>,
+								%20Anda%20belum%20melakukan%20pembayaran%20Tagihan%20Internet%20untuk%20Bulan%20<?php echo $bulan; ?>%20Tahun%20<?php echo $tahun; ?>%20*Admin RT RW Net*" target ="_blank" class='btn btn-success btn-sm'><i class="fa fa-whatsapp"></i></a> -->
+                    <a href="https://wa.me/6287729356414&text=Permisi%2C%20yang%20terhormat%20ketua%20bkk%2C%20kami%20dari%20perusahaan%20<?php echo $data_nama ?>%20telah%20mengajukan%20lowongan%20<?php echo $data['nmLoker']?>%2C%20untuk%20itu%20mohon%20konfirmasi%20terkait%20lowongan%20tersebut.%20Terima%20Kasih" target ="_blank" class='btn btn-success btn-sm'><i class="fa fa-whatsapp"></i></a>
+                    <?php
+                    }
+                    ?>
                   </td>
                 </tr>
                 <?php

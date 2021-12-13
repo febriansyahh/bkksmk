@@ -1185,7 +1185,10 @@ function deletePerusahaan($id)
   $sql_hapus = "DELETE FROM perusahaan WHERE idPerusahaan='$id' ";
   $query_hapus = mysqli_query($con, $sql_hapus);
 
-  if ($query_hapus) {
+  $sql_hapusUser = "DELETE FROM user WHERE idDaftar='$id' ";
+  $query_hapusUser = mysqli_query($con, $sql_hapusUser);
+
+  if ($query_hapus && $query_hapusUser) {
     echo "<script>alert('Hapus Berhasil')</script>";
     echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=perusahaan''>";
   } else {
