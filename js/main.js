@@ -66,17 +66,21 @@ function editableDataSiswa(param) {
   let data = $(param).data("id");
   let exp = data.split("~");
   console.log('AAAAA');
-  console.log(exp[0]);
+  console.log(exp[12]);
   console.log(data);
   // $("#editidSiswa").val(exp[0]);
-  $("#editNisns").val(exp[0]); 
-  $("#editNisn").val(exp[1]); 
-  $("#editNama").val(exp[2]);
-  $("#editJekel").val(exp[3]);
-  $("#editTmptLhr").val(exp[4]);
-  $("#editTglLhr").val(exp[5]);
-  $("#editJurusan").val(exp[6]);
-  $("#editTahun").val(exp[7]);
+  $("#editID").val(exp[0]); 
+  $("#editNisnSiswa").val(exp[1]); 
+  $("#editNamaSiswa").val(exp[2]);
+  $("#editJekelSiswa").val(exp[3]);
+  $("#editTmptLhrSiswa").val(exp[4]);
+  $("#editTglLhrSiswa").val(exp[5]);
+  $("#editJurusanSiswa").val(exp[6]);
+  $("#editTahunSiswa").val(exp[7]);
+  $("#editOrtuSiswa").val(exp[8]);
+  $("#editalamatSiswa").val(exp[9]);
+  $("#editnoTelpSiswa").val(exp[10]);
+  $("#editidJurusanSiswa").val(exp[12]);
 }
 
 function editableDataSiswas(param) {
@@ -97,7 +101,7 @@ function editableDataSiswas(param) {
   $("#editOrtu").val(exp[8]);
   $("#editalamat").val(exp[9]);
   $("#editnoTelp").val(exp[10]);
-  $("#editnmJurusan").val(exp[11]);
+  // $("#editnmJurusan").val(exp[11]);
 }
 
 
@@ -234,6 +238,7 @@ function editableUser(param) {
   $("#editUsername").val(exp[2]);
   $("#editPassword").val(exp[3]);
   $("#editLevel").val(exp[4]);
+  $("#editStatus").val(exp[6]);
 }
 
 function daftarLoker(param) {

@@ -536,14 +536,8 @@ if (isset($_SESSION['ses_username']) == "") {
                             case 'siswa':
                                 include "pages/siswa/siswa.php";
                                 break;
-                            case 'siswa_tambah':
-                                include "pages/peserta/siswa_tambah.php";
-                                break;
-                            case 'siswa_detail':
-                                include "pages/peserta/siswa_detail.php";
-                                break;	
                             case 'siswa_aksi':
-                                include "pages/peserta/siswa_aksi.php";
+                              include "pages/siswa/aksi.php";
                                 break;
                             
                             case 'lowongan':
@@ -605,6 +599,10 @@ if (isset($_SESSION['ses_username']) == "") {
                               break;
                             case 'groupAksi':
                               include "pages/user/usrGroupAksi.php";
+                              break;
+
+                            case 'alumni_aksi':
+                              include "pages/alumni/aksi.php";
                               break;
 
                             case 'user':

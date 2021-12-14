@@ -44,10 +44,12 @@ $maxID = MaxIdProgram();
                   <td><?php echo $data['noTelp']; ?></td>
                   <td>
                     <!-- <a href="javascript:void(0)" data-toggle="modal" data-target="#editLoker"
-                      data-id="<?php echo $data['id_alumni'] . "~" . $data['nisn'] . "~" . $data['nm_loker'] . "~" . $data['jekel']. "~" . $data['keterangan']. "~" . $data['sumber']. "~" . $data['tanggal']. "~" . $data['batas']. "~" . $data['status'] ?>"
+                      data-id="<?php echo $data['idAlumni'] . "~" . $data['nisn'] . "~" . $data['nm_loker'] . "~" . $data['jekel']. "~" . $data['keterangan']. "~" . $data['sumber']. "~" . $data['tanggal']. "~" . $data['batas']. "~" . $data['status'] ?>"
                       onclick="editableLowongan(this)" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a> -->
-                    <a href="#" onclick="return confirm('Apakah anda yakin hapus data ini ?')"
+                    <a href="?pages=alumni_aksi&kodes=<?php echo $data['idAlumni']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')"
                       class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></a>
+                      <!-- <a href="?pages=lokerAksi&kode=<?php echo $data['idLowongan']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')"
+                      class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></a> -->
                   </td>
                 </tr>
                 <?php

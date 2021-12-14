@@ -40,8 +40,8 @@ include_once("koneksi.php");
                           <td><?php echo $data['nmGroup']; ?></td>
                           <td><?php echo date('d-m-Y', strtotime($data['tglDaftar'])); ?></td>
                           <td>
-                            <a href="javascript:void(0)" data-toggle="modal" data-target="#editSiswa" onclick="editableUser(this)" data-id="<?php echo $data['idUser'] . "~" . $data['nama'] . "~" . $data['username'] . "~" . $data['password'] . "~" . $data['idLevel'] . "~" . $data['nmGroup']  ?>"  class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
-                            <a href="?pages=userAksi&kode=<?php echo $data['idGroup']; ?>"
+                            <a href="javascript:void(0)" data-toggle="modal" data-target="#editSiswa" onclick="editableUser(this)" data-id="<?php echo $data['idUser'] . "~" . $data['nama'] . "~" . $data['username'] . "~" . $data['password'] . "~" . $data['idLevel'] . "~" . $data['nmGroup'] . "~" . $data['status'] ?>"  class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
+                            <a href="?pages=userAksi&kode=<?php echo $data['idUser']; ?>"
                               onclick="return confirm('Apakah anda yakin hapus data ini ?')"
                               class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></a>
                           </td>
@@ -130,8 +130,8 @@ include_once("koneksi.php");
           <hr>
           <div class="form-group">
             <label for=""><b>Nama Pengguna </b></label>
-            <input class="form-control" type="hidden" id="editId" name="idGroup">
-            <input class="form-control" type="text" id="editNm" name="nama">
+            <input class="form-control" type="hidden" id="editId" name="editId">
+            <input class="form-control" type="text" id="editNm" name="editNm">
           </div>
           <div class="form-group">
             <label for=""><b>Username </b></label>
@@ -142,13 +142,21 @@ include_once("koneksi.php");
             <input type="text" name="editPass" id="editPassword" class="form-control">
           </div>
           <div class="form-group">
-            <label for=""><b>Password </b></label>
+            <label for=""><b>Level </b></label>
             <select name="level" id="editLevel" class="form-control">
               <option value="">Pilih</option>
               <option value="1">Admin</option>
               <option value="3">Ketua</option>
               <option value="2">Anggota</option>
               <option value="4">Perusahaan</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for=""><b>Status User </b></label>
+            <select name="status" id="editStatus" class="form-control">
+              <option value="">Pilih</option>
+              <option value="1">Aktif</option>
+              <option value="2">Nonaktif</option>
             </select>
           </div>
         <div class="modal-footer">

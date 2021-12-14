@@ -53,11 +53,25 @@ $maxID = MaxIdProgram();
                     <?php
                     if($data['status'] == '2'){
                       ?>
+                      <?php
+                      if($data['usrInput'] == $data_idUser){
+                      ?>
                       <a href="javascript:void(0)" data-toggle="modal" data-target="#editLoker"
                       data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] . "~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel'] . "~" . $data['file'] . "~" . $data['keterangan'] . "~" . $data['sumber'] . "~" . $data['tglInput'] . "~" . $data['batas']. "~" . $data['status'] ?>"
                       onclick="editableLowongan(this)" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
-                    <a href="?pages=lokerAksi&kode=<?php echo $data['idLowongan']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')"
+                      <a href="?pages=lokerAksi&kode=<?php echo $data['idLowongan']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')"
                       class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></a>
+                      <?php
+                      }else{
+                      ?>
+                      <a href="javascript:void(0)" data-toggle="modal" data-target="#editLoker"
+                      data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] . "~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel'] . "~" . $data['file'] . "~" . $data['keterangan'] . "~" . $data['sumber'] . "~" . $data['tglInput'] . "~" . $data['batas']. "~" . $data['status'] ?>"
+                      onclick="editableLowongan(this)" class="btn btn-success btn-sm"><i class="fas fa-eye"></i></a>
+                      <a href="?pages=lokerAksi&kode=<?php echo $data['idLowongan']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')"
+                      class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></a>
+                      <?php 
+                      }
+                      ?>
                     <?php
                     }else{
                     ?>
@@ -260,10 +274,10 @@ $maxID = MaxIdProgram();
                   <td><?php echo $data['nmLoker']; ?></td>
                   <td><?php echo $data['jekel']; ?></td>
                   <td><?php echo $data['keterangan']; ?></td>
-                  <td><?php echo $data['sumber']; ?></td>
+                  <td><?php echo $data['sumber']; ?> <?php echo $data['status']; ?></td>
                   <td><?php echo date('d F Y', strtotime($data['batas'])); ?></td>
                   <td>
-                    <a href="javascript:void(0)" data-toggle="modal" data-target="#editLokers"
+                    <a href="javascript:void(0)" data-toggle="modal" data-target="#editLoker"
                       data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] . "~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel'] . "~" . $data['file'] . "~" . $data['keterangan'] . "~" . $data['sumber'] . "~" . $data['tglInput'] . "~" . $data['batas']. "~" . $data['status'] ?>"
                       onclick="editableLowongan(this)" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
                     <a href="?pages=lokerAksi&kode=<?php echo $data['idLowongan']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')"
@@ -271,9 +285,8 @@ $maxID = MaxIdProgram();
                     <?php
                     if($data['status'] == '1'){
                     ?>
-                    <!-- <a href="https://wa.me/6287729356414&text=Sdr/i%20<?php echo $data['nama']; ?>,
-								%20Anda%20belum%20melakukan%20pembayaran%20Tagihan%20Internet%20untuk%20Bulan%20<?php echo $bulan; ?>%20Tahun%20<?php echo $tahun; ?>%20*Admin RT RW Net*" target ="_blank" class='btn btn-success btn-sm'><i class="fa fa-whatsapp"></i></a> -->
-                    <a href="https://wa.me/6287729356414&text=Permisi%2C%20yang%20terhormat%20ketua%20bkk%2C%20kami%20dari%20perusahaan%20<?php echo $data_nama ?>%20telah%20mengajukan%20lowongan%20<?php echo $data['nmLoker']?>%2C%20untuk%20itu%20mohon%20konfirmasi%20terkait%20lowongan%20tersebut.%20Terima%20Kasih" target ="_blank" class='btn btn-success btn-sm'><i class="fa fa-whatsapp"></i></a>
+                    <a href="https://api.whatsapp.com/send?phone=6287729356414&text=Permisi%2C%20yang%20terhormat%20ketua%20bkk%2C%20kami%20dari%20perusahaan%20<?php echo $data_nama ?>%20telah%20mengajukan%20lowongan%20<?php echo $data['nmLoker']?>%2C%20untuk%20itu%20mohon%20konfirmasi%20terkait%20lowongan%20tersebut.%20Terima%20Kasih"
+                    target ="_blank" class='btn btn-success btn-sm'><i class="fab fa-whatsapp"></i></a>
                     <?php
                     }
                     ?>
@@ -489,64 +502,7 @@ $maxID = MaxIdProgram();
               <div class="col-6">
                 <label for=""><b>Nama Perusahaan </b></label>
                 <input type="text" name="editNmPer" id="editNmPer" class="form-control">
-              </div>
-              <div class="col-6">
-                <label for=""><b>Lowongan Kerja </b></label>
-                <input type="text" name="editNmLoker" id="editNmLoker" class="form-control">
-              </div>
-              <div class="col-6">
-                <label for=""><b>Jenis Kelamin</b></label>
-                <input type="text" name="editJekel" id="editJekel" class="form-control">
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-6">
-                <label for=""><b>Sumber </b></label>
-                <input type="text" name="editSumber" id="editSumber" class="form-control" readonly>
-              </div>
-              <div class="col-6">
-                <label for=""><b>Tanggal </b></label>
-                <input type="date" name="editTgl" id="editTanggal" class="form-control">
-              </div>
-              <div class="col-6">
-                <label for=""><b>Batas </b></label>
-                <input type="text" name="editBatas" id="editBatas" class="form-control">
-              </div>
-              <div class="col-6">
-                <label for=""><b>Status </b></label>
-                <input type="text" name="editStatus" id="editStatus" class="form-control">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for=""><b>Keterangan </b></label>
-              <input type="text" name="editKet" id="editKeterangan" class="form-control">
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-              <input class="btn btn-success" type="submit" name="btnUBAH" value="Ubah"  />
-            </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal" id="editLokers" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
-    <div class="modal-dialog pt-5" role="document">
-      <div class="modal-content">
-        <form action="?pages=lokerAksi" method="post" enctype="multipart/form-data">
-          <div class="modal-body">
-            <h2 class="text-center"><b>Detail Lowongan</b></h2>
-            <hr>
-            <div class="row">
-              <div class="col-6">
-                <label for=""><b>Kode Lowongan </b></label>
-                <input type="text" name="editID" id="editID" class="form-control" readonly>
-              </div>
-              <div class="col-6">
-                <label for=""><b>Nama Perusahaan </b></label>
-                <input type="text" name="editNmPer" id="editNmPer" class="form-control">
-              </div>
+              </div> 
               <div class="col-6">
                 <label for=""><b>Lowongan Kerja </b></label>
                 <input type="text" name="editNmLoker" id="editNmLoker" class="form-control">

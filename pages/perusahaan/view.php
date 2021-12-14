@@ -42,7 +42,7 @@ include_once("koneksi.php");
                           <td><?php echo $data['noTelp']; ?></td>
                           <td><?php echo $data['tglKerjasama']; ?></td>
                           <td>
-                            <a href="javascript:void(0)" data-toggle="modal" data-target="#editSiswa" onclick="editablePerusahaan(this)" data-id="<?php echo $data['idPerusahaan'] . "~" . $data['nmPerusahaan'] . "~" . $data['email'] . "~" . $data['stsPerusahaan'] . "~" . $data['noTelp'] . "~" . $data['tglKerjasama']  ?>"  class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
+                            <a href="javascript:void(0)" data-toggle="modal" data-target="#editPerusahaan" onclick="editablePerusahaan(this)" data-id="<?php echo $data['idPerusahaan'] . "~" . $data['nmPerusahaan'] . "~" . $data['email'] . "~" . $data['stsPerusahaan'] . "~" . $data['noTelp'] . "~" . $data['tglKerjasama']  ?>"  class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
                             <a href="?pages=perusahaanAksi&kode=<?php echo $data['idPerusahaan']; ?>"
                               onclick="return confirm('Apakah anda yakin hapus data ini ?')"
                               class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></a>
@@ -129,14 +129,15 @@ include_once("koneksi.php");
     </div>
   </div>
 </div>
+          </div>
 
 
-<div class="modal fade" id="editSiswa" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal" id="editPerusahaan" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
     <form action="?pages=perusahaanAksi" method="post" enctype="multipart/form-data">
         <div class="modal-body">
-          <h2 class="text-center"><b>Edit Jurusan</b></h2>
+          <p class="text-center"><b>Edit Perusahaan</b></p>
           <hr>
           <div class="form-group">
         <label>Nama Perusahaan </label>
@@ -179,6 +180,7 @@ include_once("koneksi.php");
       </form>
     </div>
   </div>
+</div>
 </div>
 
 </html>

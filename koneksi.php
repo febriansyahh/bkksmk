@@ -416,7 +416,7 @@ function getAlumniStudi()
 {
   global $con;
   // $sql ="SELECT b.nisn, a.nama_instansi, b.nama, b.jurusan, b.telp, b.tahun_lulus FROM tb_tracer a, tb_peserta b WHERE a.nisn=b.nisn AND a.status='Studi'";
-  $sql ="SELECT b.nisn, a.nmInstansi, b.nama, b.jurusan, b.noTelp, a.thnLulus FROM alumni a, siswa b WHERE a.nisn=b.nisn AND a.status='1'";
+  $sql ="SELECT a.idAlumni, b.nisn, a.nmInstansi, b.nama, b.jurusan, b.noTelp, a.thnLulus FROM alumni a, siswa b WHERE a.nisn=b.nisn AND a.status='1'";
   $query = mysqli_query($con, $sql);
   return $query;
 }
@@ -425,7 +425,7 @@ function getAlumniKerja()
 {
   global $con;
   // $sql ="SELECT b.nisn, a.nama_instansi, b.nama, b.jurusan, b.telp, b.tahun_lulus FROM tb_tracer a, tb_peserta b WHERE a.nisn=b.nisn AND a.status='Bekerja'";
-  $sql ="SELECT b.nisn, a.nmInstansi, b.nama, c.nmJurusan, b.noTelp, a.thnLulus FROM alumni a, siswa b, jurusan c WHERE a.nisn=b.nisn AND b.jurusan=c.idJurusan AND a.status='Bekerja'";
+  $sql ="SELECT a.idAlumni, b.nisn, a.nmInstansi, b.nama, c.nmJurusan, b.noTelp, a.thnLulus FROM alumni a, siswa b, jurusan c WHERE a.nisn=b.nisn AND b.jurusan=c.idJurusan AND a.status='Bekerja'";
   $query = mysqli_query($con, $sql);
   return $query;
 }
@@ -515,17 +515,16 @@ function updateSiswa()
 
   $sql_ubah = "UPDATE siswa SET
         nisn ='" . $_POST['nisn'] . "',
-        nama ='" . $_POST['nama'] . "',
-        email ='" . $_POST['email'] . "',
+        nama ='" . $_POST['Nama'] . "',
         jekel ='" . $_POST['jekel'] . "',
         tempatLhr ='" . $_POST['tempat'] . "',
-        tglLhr ='" . $_POST['tglLhr'] . "',
-        nmOrtu ='" . $_POST['nmOrtu'] . "',
+        tglLhr ='" . $_POST['tglLahir'] . "',
+        nmOrtu ='" . $_POST['ortu'] . "',
         alamat ='" . $_POST['alamat'] . "',
-        noTelp ='" . $_POST['noTelp'] . "',
+        noTelp ='" . $_POST['notelp'] . "',
         jurusan ='" . $_POST['jurusan'] . "',
         tahunMasuk ='" . $_POST['tahun'] . "'
-        WHERE idSiswa ='" . $_POST['idSiswa'] . "'";
+        WHERE idSiswa ='" . $_POST['id'] . "'";
   $query_ubah = mysqli_query($con, $sql_ubah);
 
   if ($query_ubah) {
@@ -1321,10 +1320,13 @@ function updateUser()
 {
   global $con;
 
-  $sql_ubah = "UPDATE usrgrup SET
-        nmGroup='" . $_POST['nmGroup'] . "',
-        ket='" . $_POST['ket'] . "'
-        WHERE idGroup='" . $_POST['idGroup'] . "'";
+  $sql_ubah = "UPDATE user SET
+        nama='" . $_POST['editNm'] . "',
+        username='" . $_POST['editUsername'] . "',
+        password='" . $_POST['editPass'] . "',
+        idLevel='" . $_POST['level'] . "',
+        status='" . $_POST['status'] . "'
+        WHERE idUser='" . $_POST['editId'] . "'";
   $query_ubah = mysqli_query($con, $sql_ubah);
 
   if ($query_ubah) {
@@ -1339,7 +1341,7 @@ function deleteUser($id)
 {
   global $con;
 
-  $sql_hapus = "DELETE FROM usrgrup WHERE idGroup='$id' ";
+  $sql_hapus = "DELETE FROM user WHERE idUser='$id' ";
   $query_hapus = mysqli_query($con, $sql_hapus);
 
   if ($query_hapus) {
@@ -1348,6 +1350,37 @@ function deleteUser($id)
   } else {
     echo "<script>alert('Hapus Gagal')</script>";
     echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=user''>";
+  }
+}
+function deleteKerja($id)
+{
+  global $con;
+
+  $sql_hapus = "DELETE FROM alumni WHERE idAlumni='$id' ";
+  $query_hapus = mysqli_query($con, $sql_hapus);
+
+  if ($query_hapus) {
+    echo "<script>alert('Hapus Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=kerja''>";
+  } else {
+    echo "<script>alert('Hapus Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=kerja''>";
+  }
+}
+
+function deleteStudi($id)
+{
+  global $con;
+
+  $sql_hapus = "DELETE FROM alumni WHERE idAlumni='$id' ";
+  $query_hapus = mysqli_query($con, $sql_hapus);
+
+  if ($query_hapus) {
+    echo "<script>alert('Hapus Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=studi''>";
+  } else {
+    echo "<script>alert('Hapus Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=studi''>";
   }
 }
 
