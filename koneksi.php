@@ -1185,7 +1185,7 @@ function deletePerusahaan($id)
   $sql_hapus = "DELETE FROM perusahaan WHERE idPerusahaan='$id' ";
   $query_hapus = mysqli_query($con, $sql_hapus);
 
-  $sql_hapusUser = "DELETE FROM user WHERE idDaftar='$id' ";
+  $sql_hapusUser = "DELETE FROM user WHERE idDaftar='$id' AND idLevel ='4' ";
   $query_hapusUser = mysqli_query($con, $sql_hapusUser);
 
   if ($query_hapus && $query_hapusUser) {
