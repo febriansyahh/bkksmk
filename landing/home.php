@@ -31,8 +31,7 @@ include_once("koneksi.php");
       $dt = getLokerIndex();
       foreach ($dt as $key => $data) {
         ?>
-        <!-- <div class="container px-5 my-5">
-            <div class="row gx-5"> -->
+
                 <div class="col-lg-4 mb-5 mb-lg-0">
                     <div class="bg-gradient text-white rounded-3 mb-3"><i
                             class="bi bi-collection"></i></div>
@@ -40,13 +39,9 @@ include_once("koneksi.php");
                     <p style="font-family: Poppins"><?php echo $data['nmLoker'] ." Untuk ". $data['jekel'] ." ". $data['keterangan']?></p>
                  
                     <a href="javascript:void(0)" data-toggle="modal" data-target="#detailLoker"
-                      data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] . "~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel']. "~". $data['file'] . "~" . $data['keterangan']. "~" . $data['sumber']. "~" . $data['tanggal']. "~" . date('d-m-Y', strtotime($data['batas'])). "~" . $data['tglInput'] ?>"
+                      data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] ."~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel']. "~" . $data['file']. "~" . $data['keterangan']. "~" . $data['sumber']. "~" .  date('d-m-Y', strtotime($data['tglInput'])). "~" . date('d-m-Y', strtotime($data['batas'])) . "~" . $data['kualifikasi'] . "~" . $data['persyaratan']?>"
                       onclick="editDetLoker(this)"class="text-decoration-none">Lihat Selengkapnya
                         <i class="bi bi-arrow-right"></i></a>
-                    <!-- <a href="javascript:void(0)" data-toggle="modal" data-target="#detailLoker"
-                      data-id="<?php echo $data['id_loker'] . "~" . $data['nm_perusahaan'] . "~" . $data['nm_loker'] . "~" . $data['jekel']. "~" . $data['keterangan']. "~" . $data['sumber']. "~" . $data['tanggal']. "~" . date('d-m-Y', strtotime($data['batas'])). "~" . $data['status'] ?>"
-                      onclick="editDetLoker(this)"class="text-decoration-none">Lihat Selengkapnya
-                        <i class="bi bi-arrow-right"></i></a> -->
                 </div>
                 <?php
       }
@@ -348,34 +343,43 @@ include_once("koneksi.php");
   </div>
 
   <div class="modal fade" id="detailLoker" tabindex="-1" aria-labelledby="portfolioModal1" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
+  <div class="modal-dialog modal-lg">
+      <div class="modal-content" style="font-family: Poppins">
         <div class="modal-body text-center pb-5">
           <div class="container">
             <div class="row justify-content-center">
               <div class="col-lg-12">
                 <!-- Portfolio Modal - Title-->
-                <h4 class="portfolio-modal-title text-secondary pt-2 text-uppercase mb-0">Detail Program</h4>
+                <p class="portfolio-modal-title text-secondary pt-2 text-uppercase mb-0"><b>Detail Program</b></p>
                 <!-- Icon Divider-->
+                <br>
                 <div class="divider-custom">
                   <div class="divider-custom-line"></div>
                   <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                   <div class="divider-custom-line"></div>
                 </div>
-                <div class="row pb-1">
-                  <label for=""><b>Nama Perusahaan</b></label>
-                  <textarea style="resize: none; text-align:center; font-weight:bold" id="editNmPer" cols="30" rows="2"
-                    class="form-control" readonly></textarea>
+                <div class="row pb-2">
+                  <div class="col-6">
+                    <label for=""><b>Nama Perusahaan</b></label>
+                    <input type="text" class="form-control" id="editNmPer" readonly />
+                  </div>
+                  <div class="col-6">
+                    <label for=""><b>Lowongan Kerja</b></label>
+                    <input type="text" class="form-control" id="editNmLoker" readonly />
+                  </div>
                 </div>
-                <div class="row pb-1">
-                  <label for=""><b>Lowongan Kerja</b></label>
-                  <textarea style="resize: none; text-align:center; font-weight:bold" id="editNmLoker" cols="30" rows="2"
-                    class="form-control" readonly></textarea>
-                </div>
-                <div class="row pb-1">
-                  <label for=""><b>Keterangan</b></label>
-                  <textarea style="resize: none;" cols="30" rows="2" class="form-control" id="editKeterangan" readonly></textarea>
+                <div class="row pb-2">
+                <div class="col-6">
+                    <label>Kualifikasi</label>
+                    <textarea name="editKual" id="editKualLoker" style="white-space: pre-line" class="form-control" cols="50"
+                      rows="3" readonly></textarea><br>
+                  </div>
 
+                  <div class="col-6">
+                    <label>Persyaratan</label>
+                    <textarea name="editPersy" id="editPersyLoker" style="white-space: pre-line" class="form-control"
+                      cols="50" rows="3" readonly></textarea>
+                  </div>
                 </div>
                 <div class="row pb-2">
                   <div class="col-6">
@@ -387,12 +391,22 @@ include_once("koneksi.php");
                     <input type="text" class="form-control" id="editBatas" readonly />
                   </div>
                 </div>
-                <div class="col-6">
+                <div class="form-group">
+                  <label for=""><b>Keterangan</b></label>
+                  <textarea style="resize: none;" cols="30" rows="2" class="form-control" id="editKeterangan"
+                    readonly></textarea>
+                </div>
+                <div class="row pb-2">
+                  <div class="col-7">
                     <label for=""><b>Sumber Lowongan</b></label>
                     <input type="text" class="form-control" id="editSumber" readonly />
-                    <br>
+                  </div>
+                  <div class="col-5">
+                    <label for=""><b>Tgl. Kirim</b></label>
+                    <input type="text" style="border:0px" class="form-control" id="editTanggal" />
                   </div>
                 </div>
+              </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
                 </div>

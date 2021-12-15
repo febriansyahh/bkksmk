@@ -65,7 +65,6 @@ $(function Datatables() {
 function editableDataSiswa(param) {
   let data = $(param).data("id");
   let exp = data.split("~");
-  console.log('AAAAA');
   console.log(exp[12]);
   console.log(data);
   // $("#editidSiswa").val(exp[0]);
@@ -86,7 +85,6 @@ function editableDataSiswa(param) {
 function editableDataSiswas(param) {
   let data = $(param).data("id");
   let exp = data.split("~");
-  console.log('AAAAA');
   console.log(exp[0]);
   console.log(data);
   // $("#editidSiswa").val(exp[0]);
@@ -134,30 +132,13 @@ function editableLowongan(param) {
   $("#editTanggal").val(exp[8]);
   $("#editBatas").val(exp[9]);
   $("#editStatus").val(exp[10]);
+  $("#editKual").val(exp[11]);
+  $("#editPersy").val(exp[12]);
 }
 
-// function editDetLoker(param) {
-//   console.log('AAAAA');
-//   let data = $(param).data("id");
-//   console.log(data);
-//   let exp = data.split("~");
-//   $("#editID").val(exp[0]);
-//   $("#editNmPer").val(exp[1]);
-//   $("#editNmLoker").val(exp[2]);
-//   $("#editJekel").val(exp[3]);
-//   $("#editKeterangan").val(exp[4]);
-//   $("#editSumber").val(exp[5]);
-//   $("#editTanggal").val(exp[6]);
-//   $("#editBatas").val(exp[7]);
-//   $("#editStatus").val(exp[8]);
-// }
-
 function editDetLoker(param) {
-  console.log('AAAAA');
   let data = $(param).data("id");
-  console.log(data);
   let exp = data.split("~");
-  console.log(exp[5]);
   $("#editID").val(exp[0]);
   $("#editNoLok").val(exp[1]);
   $("#editNmPer").val(exp[2]);
@@ -168,13 +149,13 @@ function editDetLoker(param) {
   $("#editSumber").val(exp[7]);
   $("#editTanggal").val(exp[8]);
   $("#editBatas").val(exp[9]);
-  // $("#editTglInput").val(exp[10]);
+  $("#editKualLoker").val(exp[10]);
+  $("#editPersyLoker").val(exp[11]);
 }
 
 function editableJadwal(param) {
   let data = $(param).data("id");
   let exp = data.split("~");
-  console.log('AAAAA');
   console.log(data);
   $("#editidjadwal").val(exp[0]);
   $("#editidLok").val(exp[1]);
@@ -187,7 +168,6 @@ function editableJadwal(param) {
 function editableHasil(param) {
   let data = $(param).data("id");
   let exp = data.split("~");
-  console.log('AAAAA');
   console.log(data);
   $("#editidHasil").val(exp[0]);
   $("#editidLok").val(exp[1]);
@@ -199,7 +179,6 @@ function editableHasil(param) {
 function editableJurusan(param) {
   let data = $(param).data("id");
   let exp = data.split("~");
-  console.log('AAAAA');
   console.log(data);
   $("#editId").val(exp[0]);
   $("#editNm").val(exp[1]);
@@ -209,7 +188,6 @@ function editableJurusan(param) {
 function editablePerusahaan(param) {
   let data = $(param).data("id");
   let exp = data.split("~");
-  console.log('AAAAA');
   console.log(data);
   $("#editId").val(exp[0]);
   $("#editNm").val(exp[1]);
@@ -222,7 +200,6 @@ function editablePerusahaan(param) {
 function editableGroup(param) {
   let data = $(param).data("id");
   let exp = data.split("~");
-  console.log('AAAAA');
   console.log(data);
   $("#editId").val(exp[0]);
   $("#editNm").val(exp[1]);
@@ -232,7 +209,6 @@ function editableGroup(param) {
 function editableUser(param) {
   let data = $(param).data("id");
   let exp = data.split("~");
-  console.log('AAAAA');
   console.log(data);
   $("#editId").val(exp[0]);
   $("#editNm").val(exp[1]);
@@ -245,7 +221,6 @@ function editableUser(param) {
 function daftarLoker(param) {
   let data = $(param).data("id");
   let exp = data.split("~");
-  console.log('AAAAA');
   console.log(data);
   console.log(exp[0]);
   console.log('BBB');

@@ -2,20 +2,21 @@
   <section id="featured-services" class="featured-services">
     <div class="container px-5 my-5" data-aos="fade-up">
       <div class="row gx-6">
-      <h3 style="font-family: Poppins">Info<strong> <span style="color:blue">Lowongan Kerja</span></strong></h3>
+        <h3 style="font-family: Poppins">Info<strong> <span style="color:blue">Lowongan Kerja</span></strong></h3>
         <?php
       include_once('koneksi.php');
       $dt = getLokerAll();
       foreach ($dt as $key => $data) {
         ?>
-        <div class="col-lg-4 mb-6 mb-lg-4" data-toggle="modal" data-target="#detailLoker"
-                data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] ."~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel']. "~" . $data['file']. "~" . $data['keterangan']. "~" . $data['sumber']. "~" .  date('d-m-Y', strtotime($data['tglInput'])). "~" . date('d-m-Y', strtotime($data['batas']))?>"
-                onclick="editDetLoker(this)">
-          <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-lg-4 mb-6 mb-lg-4 " data-toggle="modal" data-target="#detailLoker"
+          data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] ."~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel']. "~" . $data['file']. "~" . $data['keterangan']. "~" . $data['sumber']. "~" .  date('d-m-Y', strtotime($data['tglInput'])). "~" . date('d-m-Y', strtotime($data['batas'])) . "~" . $data['kualifikasi'] . "~" . $data['persyaratan']?>"
+          onclick="editDetLoker(this)">
+          <div class="icon-box" data-aos="fade-up" data-aos-delay="100" style="height: 250px;">
             <h4 class="title"><?php echo $data['nmLoker']?></h4>
-            <p class="description" style="font-family: Poppins; text-align: justify;" >
+            <p class="description" style="font-family: Poppins; text-align: justify;">
               <?php echo $data['perusahaan'] ." membuka lowongan ". $data['nmLoker']
-              ." dengan kriteria ". $data['keterangan'] ." untuk ". $data['jekel'] .". Batas pendaftaran tanggal ".  date('d-m-Y', strtotime($data['batas'])) ?> <span style="color:blue"> <a href=<?php echo "file_data/loker/".$data['file']?>>Unduh</a></span></p>
+              ." dengan kriteria ". $data['keterangan'] ." untuk ". $data['jekel'] .". Batas pendaftaran tanggal ".  date('d-m-Y', strtotime($data['batas'])) ?>
+              <span style="color:blue"> <a href=<?php echo "file_data/loker/".$data['file']?>>Unduh</a></span></p>
           </div>
         </div>
         <br>
@@ -51,6 +52,19 @@
                   <div class="col-6">
                     <label for=""><b>Lowongan Kerja</b></label>
                     <input type="text" class="form-control" id="editNmLoker" readonly />
+                  </div>
+                </div>
+                <div class="row pb-2">
+                  <div class="col-6">
+                    <label>Kualifikasi</label>
+                    <textarea name="editKual" id="editKual" style="white-space: pre-line" class="form-control" cols="50"
+                      rows="3"></textarea><br>
+                  </div>
+
+                  <div class="col-6">
+                    <label>Persyaratan</label>
+                    <textarea name="editPersy" id="editPersy" style="white-space: pre-line" class="form-control"
+                      cols="50" rows="3"></textarea>
                   </div>
                 </div>
                 <div class="row pb-2">

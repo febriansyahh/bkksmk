@@ -5,7 +5,7 @@ $maxID = MaxIdProgram();
 <div class="form-group">
   <br>
   <div class="container-fluid">
-  <?php
+    <?php
         switch ($data_status) {
           case '1':
             ?>
@@ -53,29 +53,31 @@ $maxID = MaxIdProgram();
                     <?php
                     if($data['status'] == '2'){
                       ?>
-                      <?php
+                    <?php
                       if($data['usrInput'] == $data_idUser){
                       ?>
-                      <a href="javascript:void(0)" data-toggle="modal" data-target="#editLoker"
-                      data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] . "~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel'] . "~" . $data['file'] . "~" . $data['keterangan'] . "~" . $data['sumber'] . "~" . $data['tglInput'] . "~" . $data['batas']. "~" . $data['status'] ?>"
+                    <a href="javascript:void(0)" data-toggle="modal" data-target="#editLoker"
+                      data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] . "~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel'] . "~" . $data['file'] . "~" . $data['keterangan'] . "~" . $data['sumber'] . "~" . $data['tglInput'] . "~" . $data['batas'] . "~" . $data['status'] . "~" . $data['kualifikasi'] . "~" . $data['persyaratan']?>"
                       onclick="editableLowongan(this)" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
-                      <a href="?pages=lokerAksi&kode=<?php echo $data['idLowongan']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')"
-                      class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></a>
-                      <?php
+                    <a href="?pages=lokerAksi&kode=<?php echo $data['idLowongan']; ?>"
+                      onclick="return confirm('Apakah anda yakin hapus data ini ?')" class='btn btn-danger btn-sm'><i
+                        class="fa fa-trash"></i></a>
+                    <?php
                       }else{
                       ?>
-                      <a href="javascript:void(0)" data-toggle="modal" data-target="#editLoker"
-                      data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] . "~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel'] . "~" . $data['file'] . "~" . $data['keterangan'] . "~" . $data['sumber'] . "~" . $data['tglInput'] . "~" . $data['batas']. "~" . $data['status'] ?>"
+                    <a href="javascript:void(0)" data-toggle="modal" data-target="#editLoker"
+                      data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] . "~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel'] . "~" . $data['file'] . "~" . $data['keterangan'] . "~" . $data['sumber'] . "~" . $data['tglInput'] . "~" . $data['batas'] . "~" . $data['status'] . "~" . $data['kualifikasi'] . "~" . $data['persyaratan']?>"
                       onclick="editableLowongan(this)" class="btn btn-success btn-sm"><i class="fas fa-eye"></i></a>
-                      <a href="?pages=lokerAksi&kode=<?php echo $data['idLowongan']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')"
-                      class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></a>
-                      <?php 
+                    <a href="?pages=lokerAksi&kode=<?php echo $data['idLowongan']; ?>"
+                      onclick="return confirm('Apakah anda yakin hapus data ini ?')" class='btn btn-danger btn-sm'><i
+                        class="fa fa-trash"></i></a>
+                    <?php 
                       }
                       ?>
                     <?php
                     }else{
                     ?>
-                     <a href="#" class="btn btn-warning btn-sm">Menunggu Konfirmasi</a>
+                    <a href="#" class="btn btn-warning btn-sm">Menunggu Konfirmasi</a>
                     <?php
                     }
                     ?>
@@ -99,7 +101,7 @@ $maxID = MaxIdProgram();
         break;
       case '2':
         ?>
-      <div class="row">
+    <div class="row">
       <div class="col-12">
         <div class="card">
           <div class="card-header">
@@ -138,8 +140,9 @@ $maxID = MaxIdProgram();
                   <td><?php echo date('d F Y', strtotime($data['batas'])); ?></td>
                   <td>
                     <a href="javascript:void(0)" data-toggle="modal" data-target="#editLoker"
-                      data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] . "~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel'] . "~" . $data['file'] . "~" . $data['keterangan'] . "~" . $data['sumber'] . "~" . $data['tglInput'] . "~" . $data['batas']. "~" . $data['status'] ?>"
-                      onclick="editableLowongan(this)" class="btn btn-success btn-sm"><i class="fas fa-info-circle"></i></a>
+                      data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] . "~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel'] . "~" . $data['file'] . "~" . $data['keterangan'] . "~" . $data['sumber'] . "~" . $data['tglInput'] . "~" . $data['batas'] . "~" . $data['status'] . "~" . $data['kualifikasi'] . "~" . $data['persyaratan']?>"
+                      onclick="editableLowongan(this)" class="btn btn-success btn-sm"><i
+                        class="fas fa-info-circle"></i></a>
                     <a href="javascript:void(0)" data-toggle="modal" data-target="#daftarLoker"
                       data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] . "~" . $data['perusahaan'] . "~" . $data['nmLoker'] ?>"
                       onclick="daftarLoker(this)" class="btn btn-primary btn-sm"><i class="fas fa-file-upload"></i></a>
@@ -163,7 +166,7 @@ $maxID = MaxIdProgram();
         break;
       case '3':
         ?>
-        <div class="row">
+    <div class="row">
       <div class="col-12">
         <div class="card">
           <div class="card-header">
@@ -204,15 +207,17 @@ $maxID = MaxIdProgram();
                   <td><?php echo date('d F Y', strtotime($data['batas'])); ?></td>
                   <td>
                     <a href="javascript:void(0)" data-toggle="modal" data-target="#editLoker"
-                      data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] . "~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel'] . "~" . $data['file'] . "~" . $data['keterangan'] . "~" . $data['sumber'] . "~" . $data['tglInput'] . "~" . $data['batas']. "~" . $data['status'] ?>"
+                      data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] . "~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel'] . "~" . $data['file'] . "~" . $data['keterangan'] . "~" . $data['sumber'] . "~" . $data['tglInput'] . "~" . $data['batas'] . "~" . $data['status'] . "~" . $data['kualifikasi'] . "~" . $data['persyaratan']?>"
                       onclick="editableLowongan(this)" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
-                      <a href="?pages=lokerAksi&kode=<?php echo $data['idLowongan']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')"
-                      class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></a>
-                      <?php
+                    <a href="?pages=lokerAksi&kode=<?php echo $data['idLowongan']; ?>"
+                      onclick="return confirm('Apakah anda yakin hapus data ini ?')" class='btn btn-danger btn-sm'><i
+                        class="fa fa-trash"></i></a>
+                    <?php
                     if($data['status'] == '1'){
                       ?>
-                      <a href="?pages=lokerAksi&kodes=<?php echo $data['idLowongan']; ?>" onclick="return confirm('Yakin untuk konfirmasi data ini ?')"
-                      class='btn btn-warning btn-sm'><i class="fa fa-check"></i></a>
+                    <a href="?pages=lokerAksi&kodes=<?php echo $data['idLowongan']; ?>"
+                      onclick="return confirm('Yakin untuk konfirmasi data ini ?')" class='btn btn-warning btn-sm'><i
+                        class="fa fa-check"></i></a>
                     <?php
                     }
                     ?>
@@ -236,7 +241,7 @@ $maxID = MaxIdProgram();
         break;
       case '4':
       ?>
-      <div class="row">
+    <div class="row">
       <div class="col-12">
         <div class="card">
           <div class="card-header">
@@ -278,15 +283,16 @@ $maxID = MaxIdProgram();
                   <td><?php echo date('d F Y', strtotime($data['batas'])); ?></td>
                   <td>
                     <a href="javascript:void(0)" data-toggle="modal" data-target="#editLoker"
-                      data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] . "~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel'] . "~" . $data['file'] . "~" . $data['keterangan'] . "~" . $data['sumber'] . "~" . $data['tglInput'] . "~" . $data['batas']. "~" . $data['status'] ?>"
+                      data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] . "~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel'] . "~" . $data['file'] . "~" . $data['keterangan'] . "~" . $data['sumber'] . "~" . $data['tglInput'] . "~" . $data['batas'] . "~" . $data['status'] . "~" . $data['kualifikasi'] . "~" . $data['persyaratan']?>"
                       onclick="editableLowongan(this)" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
-                    <a href="?pages=lokerAksi&kode=<?php echo $data['idLowongan']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')"
-                      class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></a>
+                    <a href="?pages=lokerAksi&kode=<?php echo $data['idLowongan']; ?>"
+                      onclick="return confirm('Apakah anda yakin hapus data ini ?')" class='btn btn-danger btn-sm'><i
+                        class="fa fa-trash"></i></a>
                     <?php
                     if($data['status'] == '1'){
                     ?>
                     <a href="https://api.whatsapp.com/send?phone=6287729356414&text=Permisi%2C%20yang%20terhormat%20ketua%20bkk%2C%20kami%20dari%20perusahaan%20<?php echo $data_nama ?>%20telah%20mengajukan%20lowongan%20<?php echo $data['nmLoker']?>%2C%20untuk%20itu%20mohon%20konfirmasi%20terkait%20lowongan%20tersebut.%20Terima%20Kasih"
-                    target ="_blank" class='btn btn-success btn-sm'><i class="fab fa-whatsapp"></i></a>
+                      target="_blank" class='btn btn-success btn-sm'><i class="fab fa-whatsapp"></i></a>
                     <?php
                     }
                     ?>
@@ -306,7 +312,7 @@ $maxID = MaxIdProgram();
       </div>
       <!-- /.col -->
     </div>
-      <?php
+    <?php
           break;
       }
         ?>
@@ -315,7 +321,7 @@ $maxID = MaxIdProgram();
 
   </body>
   <div id="mySiswa" class="modal fade">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -324,57 +330,71 @@ $maxID = MaxIdProgram();
         <div class="modal-body">
           <!-- <form action="?pages=lokerAksi" method="post" enctype="multipart/form-data"> -->
           <form action="?pages=lokerAksi" method="post" enctype="multipart/form-data">
-          <?php
+            <?php
             switch ($data_status) {
               case '1':
             ?>
-            <div class="row" >
-            <div class="col-6">
-              <label>No Loker </label>
-              <input class="form-control" type="hidden" name="usrInput" value="<?php echo $data_idUser; ?>" readonly> <br>
-              <input class="form-control" type="text" name="noLoker" value="<?php echo $maxID; ?>" readonly> <br>
-            </div>
+            <div class="row">
+              <div class="col-6">
+                <label>No Loker </label>
+                <input class="form-control" type="hidden" name="usrInput" value="<?php echo $data_idUser; ?>" readonly>
+                <br>
+                <input class="form-control" type="text" name="noLoker" value="<?php echo $maxID; ?>" readonly> <br>
+              </div>
 
-            <div class="col-6">
-              <label>Perusahaan</label>
-              <input class="form-control " type="text" name="perusahaan" require>
-            </div>
+              <div class="col-6">
+                <label>Perusahaan</label>
+                <input class="form-control " type="text" name="perusahaan" require>
+              </div>
 
-            <div class="col-6">
-              <label>Lowongan</label>
-              <input class="form-control " type="text" name="nmloker" require>
-            </div>
+              <div class="col-6">
+                <label>Lowongan</label>
+                <input class="form-control " type="text" name="nmloker" require>
+              </div>
 
-            <div class="col-6">
-              <label>Jekel Tertuju</label>
-              <select name="jekel" class="form-control" id="">
-                <option value="">- Pilih -</option>
-                <option value="Pria">Pria</option>
-                <option value="Wanita">Wanita</option>
-                <option value="Keduanya">Pria / Wanita</option>
-              </select><br>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-6">
-              <label>File Lowongan</label>
-              <input class="form-control " type="file" name="fileLoker" require> <br>
-            </div>
+              <div class="col-6">
+                <label>Jekel Tertuju</label>
+                <select name="jekel" class="form-control" id="">
+                  <option value="">- Pilih -</option>
+                  <option value="Pria">Pria</option>
+                  <option value="Wanita">Wanita</option>
+                  <option value="Keduanya">Pria / Wanita</option>
+                </select><br>
+              </div>
 
-            <div class="col-6">
-              <label>Batas Pendaftaran</label>
-              <input class="form-control " type="date" name="batas" require>
-            </div>
+              <div class="col-6">
+                <label>Kualifikasi</label>
+                <textarea name="kualifikasi" id="" style="white-space: pre-line" class="form-control" cols="50"
+                  rows="3"></textarea><br>
+              </div>
 
-            <div class="col-6">
-              <label>Keterangan</label>
-              <textarea style="resize: none" name="ket" id="" class="form-control" rows="3" require></textarea>
+              <div class="col-6">
+                <label>Persyaratan</label>
+                <textarea name="persyaratan" id="" style="white-space: pre-line" class="form-control" cols="50"
+                  rows="3"></textarea>
+                <!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
+              </div>
             </div>
+            <div class="row">
+              <div class="col-6">
+                <label>File Lowongan</label>
+                <input class="form-control " type="file" name="fileLoker" require> <br>
+              </div>
 
-            <div class="col-6">
-              <label>Sumber : <?php echo $data_nama ?></label>
-              <input class="form-control " type="hidden" name="sumber" value="<?php echo $data_nama ?>">
-            </div>
+              <div class="col-6">
+                <label>Batas Pendaftaran</label>
+                <input class="form-control " type="date" name="batas" require>
+              </div>
+
+              <div class="col-6">
+                <label>Keterangan</label>
+                <textarea style="resize: none" name="ket" id="" class="form-control" rows="2" require></textarea>
+              </div>
+
+              <div class="col-6">
+                <label>Sumber : <?php echo $data_nama ?></label>
+                <input class="form-control " type="hidden" name="sumber" value="<?php echo $data_nama ?>">
+              </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
@@ -384,59 +404,72 @@ $maxID = MaxIdProgram();
                 break;
               case '4':
                 ?>
-                <div class="row" >
-            <div class="col-6">
-              <label>No Loker </label>
-              <input class="form-control" type="hidden" name="usrInput" value="<?php echo $data_idUser; ?>" readonly> <br>
-              <input class="form-control" type="text" name="noLoker" value="<?php echo $maxID; ?>" readonly> <br>
-            </div>
+            <div class="row">
+              <div class="col-6">
+                <label>No Loker </label>
+                <input class="form-control" type="hidden" name="usrInput" value="<?php echo $data_idUser; ?>" readonly>
+                <br>
+                <input class="form-control" type="text" name="noLoker" value="<?php echo $maxID; ?>" readonly> <br>
+              </div>
 
-            <div class="col-6">
-              <label>Perusahaan</label>
-              <input class="form-control " type="text" name="perusahaan" value="<?php echo $data_nama ?>" readonly>
-            </div>
+              <div class="col-6">
+                <label>Perusahaan</label>
+                <input class="form-control " type="text" name="perusahaan" value="<?php echo $data_nama ?>" readonly>
+              </div>
 
-            <div class="col-6">
-              <label>Lowongan</label>
-              <input class="form-control " type="text" name="nmloker" required>
-            </div>
+              <div class="col-6">
+                <label>Lowongan</label>
+                <input class="form-control " type="text" name="nmloker" required>
+              </div>
 
-            <div class="col-6">
-              <label>Jekel Tertuju</label>
-              <select name="jekel" class="form-control" id="">
-                <option value="">- Pilih -</option>
-                <option value="Pria">Pria</option>
-                <option value="Wanita">Wanita</option>
-                <option value="Keduanya">Pria / Wanita</option>
-              </select><br>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-6">
-              <label>File Lowongan</label>
-              <input class="form-control " type="file" name="fileLoker" require> <br>
-            </div>
+              <div class="col-6">
+                <label>Jekel Tertuju</label>
+                <select name="jekel" class="form-control" id="">
+                  <option value="">- Pilih -</option>
+                  <option value="Pria">Pria</option>
+                  <option value="Wanita">Wanita</option>
+                  <option value="Keduanya">Pria / Wanita</option>
+                </select><br>
+              </div>
+              <div class="col-6">
+                <label>Kualifikasi</label>
+                <textarea name="kualifikasi" id="" style="white-space: pre-line" class="form-control" cols="50"
+                  rows="3"></textarea><br>
+              </div>
 
-            <div class="col-6">
-              <label>Batas Pendaftaran</label>
-              <input class="form-control " type="date" name="batas" require>
+              <div class="col-6">
+                <label>Persyaratan</label>
+                <textarea name="persyaratan" id="" style="white-space: pre-line" class="form-control" cols="50"
+                  rows="3"></textarea>
+                <!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
+              </div>
             </div>
+            <div class="row">
+              <div class="col-6">
+                <label>File Lowongan</label>
+                <input class="form-control " type="file" name="fileLoker" require> <br>
+              </div>
 
-            <div class="col-6">
-              <label>Keterangan</label>
-              <textarea style="resize: none" name="ket" id="" class="form-control" rows="3" require></textarea>
-            </div>
+              <div class="col-6">
+                <label>Batas Pendaftaran</label>
+                <input class="form-control " type="date" name="batas" require>
+              </div>
 
-            <div class="col-6">
-              <label>Sumber : <?php echo $data_nama ?></label>
-              <input class="form-control " type="hidden" name="sumber" value="<?php echo $data_nama ?>">
-            </div>
+              <div class="col-6">
+                <label>Keterangan</label>
+                <textarea style="resize: none" name="ket" id="" class="form-control" rows="3" require></textarea>
+              </div>
+
+              <div class="col-6">
+                <label>Sumber : <?php echo $data_nama ?></label>
+                <input class="form-control " type="hidden" name="sumber" value="<?php echo $data_nama ?>">
+              </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
               <input class="btn btn-success" type="submit" name="btnSimpan" value="Save" />
             </div>
-           <?php
+            <?php
               break;
               
               }
@@ -466,11 +499,11 @@ $maxID = MaxIdProgram();
 
               <label>Lowongan</label>
               <input class="form-control " type="text" name="nmloker" id="valnmLoker" required readonly>
-            
+
               <label>Atas Nama</label>
               <input class="form-control" type="hidden" name="idDaftar" value="<?php echo $data_id ?>" readonly>
               <input class="form-control" type="text" name="atasNama" value="<?php echo $data_nama ?>" readonly>
-            
+
               <label>File Pendaftaran</label>
               <input class="form-control " type="file" name="berkasDaftar" required> <br>
 
@@ -488,7 +521,7 @@ $maxID = MaxIdProgram();
 
   <div class="modal" id="editLoker" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
-    <div class="modal-dialog pt-5" role="document">
+    <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <form action="?pages=lokerAksi" method="post" enctype="multipart/form-data">
           <div class="modal-body">
@@ -502,7 +535,7 @@ $maxID = MaxIdProgram();
               <div class="col-6">
                 <label for=""><b>Nama Perusahaan </b></label>
                 <input type="text" name="editNmPer" id="editNmPer" class="form-control">
-              </div> 
+              </div>
               <div class="col-6">
                 <label for=""><b>Lowongan Kerja </b></label>
                 <input type="text" name="editNmLoker" id="editNmLoker" class="form-control">
@@ -511,6 +544,19 @@ $maxID = MaxIdProgram();
                 <label for=""><b>Jenis Kelamin</b></label>
                 <input type="text" name="editJekel" id="editJekel" class="form-control">
               </div>
+              
+              <div class="col-6">
+                <label>Kualifikasi</label>
+                <textarea name="editKual" id="editKual" style="white-space: pre-line" class="form-control" cols="50"
+                  rows="3"></textarea><br>
+              </div>
+
+              <div class="col-6">
+                <label>Persyaratan</label>
+                <textarea name="editPersy" id="editPersy" style="white-space: pre-line" class="form-control" cols="50"
+                  rows="3"></textarea>
+              </div>
+
             </div>
             <div class="row">
               <div class="col-6">
@@ -536,13 +582,13 @@ $maxID = MaxIdProgram();
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-              <input class="btn btn-success" type="submit" name="btnUBAH" value="Ubah"  />
+              <input class="btn btn-success" type="submit" name="btnUBAH" value="Ubah" />
             </div>
         </form>
       </div>
     </div>
   </div>
 
-<script src="js/main.js"></script>
+  <script src="js/main.js"></script>
 
-</html>
+  </html>

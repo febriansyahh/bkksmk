@@ -642,12 +642,14 @@ function insertLowongan($upload)
   $idLevel = $_SESSION["ses_idLevel"];
   switch ($idLevel) {
     case '1':
-      $sql_insert = "INSERT INTO lowongan (`noLoker`, `perusahaan`, `nmLoker`, `jekel`, `file`, `keterangan`, `sumber`, `batas`, `status`, `tglInput`, `usrInput`) VALUES (
+      $sql_insert = "INSERT INTO lowongan (`noLoker`, `perusahaan`, `nmLoker`, `jekel`, `file`, `kualifikasi`, `persyaratan`, `keterangan`, `sumber`, `batas`, `status`, `tglInput`, `usrInput`) VALUES (
         '" . $_POST['noLoker'] . "',
         '" . $_POST['perusahaan'] . "',
         '" . $_POST['nmloker'] . "',
         '" . $_POST['jekel'] . "',
         '" . $upload . "',
+        '" . $_POST['kualifikasi'] . "',
+        '" . $_POST['persyaratan'] . "',
         '" . $_POST['ket'] . "',
         '" . $_POST['sumber'] . "',
         '" . $_POST['batas'] . "',
@@ -657,12 +659,14 @@ function insertLowongan($upload)
 
       break;
     case '4':
-      $sql_insert = "INSERT INTO lowongan (`noLoker`, `perusahaan`, `nmLoker`, `jekel`, `file`, `keterangan`, `sumber`, `batas`, `status`, `tglInput`, `usrInput`) VALUES (
+      $sql_insert = "INSERT INTO lowongan (`noLoker`, `perusahaan`, `nmLoker`, `jekel`, `file`, `kualifikasi`, `persyaratan`, `keterangan`, `sumber`, `batas`, `status`, `tglInput`, `usrInput`) VALUES (
         '" . $_POST['noLoker'] . "',
         '" . $_POST['perusahaan'] . "',
         '" . $_POST['nmloker'] . "',
         '" . $_POST['jekel'] . "',
         '" . $upload . "',
+        '" . $_POST['kualifikasi'] . "',
+        '" . $_POST['persyaratan'] . "',
         '" . $_POST['ket'] . "',
         '" . $_POST['sumber'] . "',
         '" . $_POST['batas'] . "',
@@ -693,6 +697,8 @@ function updateLowongan()
         nmLoker = '" . $_POST['editNmLoker'] . "',
         jekel = '" . $_POST['editJekel'] . "',
         file = '" . $_POST['editNmPer'] . "',
+        kualifikasi = '" . $_POST['editKual'] . "',
+        persyaratan = '" . $_POST['editPersy'] . "',
         keterangan = '" . $_POST['editKet'] . "',
         batas ='" . $_POST['editBatas'] . "'
         WHERE idLowongan='" . $_POST['editID'] . "'";
