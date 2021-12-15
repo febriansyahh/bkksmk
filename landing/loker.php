@@ -9,13 +9,13 @@
       foreach ($dt as $key => $data) {
         ?>
         <div class="col-lg-4 mb-6 mb-lg-4" data-toggle="modal" data-target="#detailLoker"
-                data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] ."~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel']. "~" . $data['file']. "~" . $data['keterangan']. "~" . $data['sumber']. "~" . $data['tglInput']. "~" . date('d-m-Y', strtotime($data['batas']))?>"
+                data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] ."~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel']. "~" . $data['file']. "~" . $data['keterangan']. "~" . $data['sumber']. "~" .  date('d-m-Y', strtotime($data['tglInput'])). "~" . date('d-m-Y', strtotime($data['batas']))?>"
                 onclick="editDetLoker(this)">
           <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
             <h4 class="title"><?php echo $data['nmLoker']?></h4>
             <p class="description" style="font-family: Poppins; text-align: justify;" >
               <?php echo $data['perusahaan'] ." membuka lowongan ". $data['nmLoker']
-              ." dengan kriteria ". $data['keterangan'] ." untuk ". $data['jekel'] .". Batas pendaftaran tanggal ".  date('d-m-Y', strtotime($data['batas'])) ?></p>
+              ." dengan kriteria ". $data['keterangan'] ." untuk ". $data['jekel'] .". Batas pendaftaran tanggal ".  date('d-m-Y', strtotime($data['batas'])) ?> <span style="color:blue"> <a href=<?php echo "file_data/loker/".$data['file']?>>Unduh</a></span></p>
           </div>
         </div>
         <br>
@@ -28,7 +28,7 @@
   <div class="modal fade" id="detailLoker" tabindex="-1" aria-labelledby="portfolioModal1" aria-hidden="true">
     <div class="modal-dialog" style="font-family: Poppins">
       <div class="modal-content">
-        <div class="modal-body text-center pb-5">
+        <div class="modal-body pb-5">
           <div class="container">
             <div class="row justify-content-center">
               <div class="col-lg-12">
@@ -69,15 +69,13 @@
                     readonly></textarea>
                 </div>
                 <div class="row pb-2">
-                  <div class="col-8">
+                  <div class="col-7">
                     <label for=""><b>Sumber Lowongan</b></label>
                     <input type="text" class="form-control" id="editSumber" readonly />
                   </div>
-                  <div class="col-4">
-                    <label for=""><b>File</b></label>
-                    <!-- <?php echo $_FILES['editFile']?> -->
-                    <!-- <a href="../file_data/loker/".id="editFile" target="_blank">Download</a> -->
-                    <input type="text" class="form-control" value="editFile" readonly />
+                  <div class="col-5">
+                    <label for=""><b>Tgl. Kirim</b></label>
+                    <input type="text" style="border:0px" class="form-control" id="editTanggal" />
                   </div>
                 </div>
               </div>
