@@ -1297,7 +1297,7 @@ function insertUser()
           '" . $_POST['username'] . "',
           '" . $_POST['password'] . "',
           '" . $_POST['idGroup'] . "',
-          '" . $_POST['idDaftar'] . "',
+          '0',
           '1',
           '" . $tgl . "')";
     

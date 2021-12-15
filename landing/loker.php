@@ -9,7 +9,7 @@
       foreach ($dt as $key => $data) {
         ?>
         <div class="col-lg-4 mb-6 mb-lg-4" data-toggle="modal" data-target="#detailLoker"
-                data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] ."~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel']. "~" . $data['keterangan']. "~" . $data['sumber']. "~" . $data['tglInput']. "~" . date('d-m-Y', strtotime($data['batas'])). "~" . $data['status'] ?>"
+                data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] ."~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel']. "~" . $data['file']. "~" . $data['keterangan']. "~" . $data['sumber']. "~" . $data['tglInput']. "~" . date('d-m-Y', strtotime($data['batas']))?>"
                 onclick="editDetLoker(this)">
           <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
             <h4 class="title"><?php echo $data['nmLoker']?></h4>
@@ -26,7 +26,7 @@
     </div>
   </section>
   <div class="modal fade" id="detailLoker" tabindex="-1" aria-labelledby="portfolioModal1" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog" style="font-family: Poppins">
       <div class="modal-content">
         <div class="modal-body text-center pb-5">
           <div class="container">
@@ -43,20 +43,15 @@
                   <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                   <div class="divider-custom-line"></div>
                 </div>
-                <div class="row pb-1">
-                  <label for=""><b>Nama Perusahaan</b></label>
-                  <textarea style="resize: none; text-align:center; font-weight:bold" id="editNmPer" cols="30" rows="2"
-                    class="form-control" readonly></textarea>
-                </div>
-                <div class="row pb-1">
-                  <label for=""><b>Lowongan Kerja</b></label>
-                  <textarea style="resize: none; text-align:center; font-weight:bold" id="editNmLoker" cols="30"
-                    rows="2" class="form-control" readonly></textarea>
-                </div>
-                <div class="row pb-1">
-                  <label for=""><b>Keterangan</b></label>
-                  <textarea style="resize: none;" cols="30" rows="2" class="form-control" id="editKeterangan"
-                    readonly></textarea>
+                <div class="row pb-2">
+                  <div class="col-6">
+                    <label for=""><b>Nama Perusahaan</b></label>
+                    <input type="text" class="form-control" id="editNmPer" readonly />
+                  </div>
+                  <div class="col-6">
+                    <label for=""><b>Lowongan Kerja</b></label>
+                    <input type="text" class="form-control" id="editNmLoker" readonly />
+                  </div>
                 </div>
                 <div class="row pb-2">
                   <div class="col-6">
@@ -68,13 +63,23 @@
                     <input type="text" class="form-control" id="editBatas" readonly />
                   </div>
                 </div>
-                <div class="row pb-1">
-                <label for=""><b>Sumber Lowongan</b></label>
-                  <input type="text" class="form-control" id="editSumber" readonly />
-                  <br>
+                <div class="form-group">
+                  <label for=""><b>Keterangan</b></label>
+                  <textarea style="resize: none;" cols="30" rows="2" class="form-control" id="editKeterangan"
+                    readonly></textarea>
                 </div>
-                <div class="col-6">
+                <div class="row pb-2">
+                  <div class="col-8">
+                    <label for=""><b>Sumber Lowongan</b></label>
+                    <input type="text" class="form-control" id="editSumber" readonly />
                   </div>
+                  <div class="col-4">
+                    <label for=""><b>File</b></label>
+                    <!-- <?php echo $_FILES['editFile']?> -->
+                    <!-- <a href="../file_data/loker/".id="editFile" target="_blank">Download</a> -->
+                    <input type="text" class="form-control" value="editFile" readonly />
+                  </div>
+                </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>

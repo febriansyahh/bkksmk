@@ -69,7 +69,7 @@ include_once("koneksi.php");
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Tambah Data User</h4>
+        <p class="modal-title">Tambah Data User</p>
       </div>
       <div class="modal-body">
         <form action="?pages=userAksi" method="post" enctype="multipart/form-data">
@@ -87,6 +87,10 @@ include_once("koneksi.php");
           <div class="form-group">
             <label>Password </label>
             <input class="form-control" type="password" name="password" placeholder="Masukkan password">
+          </div>
+
+          <div class="form-group">
+            <label>Ulangi Password </label>
             <input class="form-control" type="password" name="rePassword" placeholder="Masukkan ulang password">
           </div>
 
@@ -96,20 +100,9 @@ include_once("koneksi.php");
               <option value="">- Pilih -</option>
               <option value="1">Admin</option>
               <option value="3">Ketua BKK</option>
-              <option value="4">Perusahaan</option>
+              <!-- <option value="4">Perusahaan</option> -->
             </select>
           </div>
-
-          <div class="form-group">
-            <label>Pengguna *hanya untuk perusahaan</label>
-            <select name="idDaftar" class="form-control">
-              <option value="0">- Pilih -</option>
-              <option value="1">Admin</option>
-              <option value="3">Ketua BKK</option>
-              <option value="4">Perusahaan</option>
-            </select>
-          </div>
-
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
             <input class="btn btn-success" type="submit" name="btnSimpan" value="Simpan" />

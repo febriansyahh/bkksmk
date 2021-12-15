@@ -89,7 +89,7 @@ include_once("koneksi.php");
               <option value="BUMN">BUMN</option>
               <option value="Swasta">Swasta</option>
               <option value="CV">CV</option>
-              <option value="Lainya">Lainnya</option>
+              <option value="Lainnya">Lainnya</option>
             </select>
           </div>
 
@@ -153,7 +153,7 @@ include_once("koneksi.php");
               <option value="BUMN">BUMN</option>
               <option value="Swasta">Swasta</option>
               <option value="CV">CV</option>
-              <option value="Lainya">Lainnya</option>
+              <option value="Lainnya">Lainnya</option>
             </select>
           </div>
 

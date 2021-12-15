@@ -157,6 +157,7 @@ function editDetLoker(param) {
   let data = $(param).data("id");
   console.log(data);
   let exp = data.split("~");
+  console.log(exp[5]);
   $("#editID").val(exp[0]);
   $("#editNoLok").val(exp[1]);
   $("#editNmPer").val(exp[2]);
@@ -167,7 +168,7 @@ function editDetLoker(param) {
   $("#editSumber").val(exp[7]);
   $("#editTanggal").val(exp[8]);
   $("#editBatas").val(exp[9]);
-  $("#editTglInput").val(exp[10]);
+  // $("#editTglInput").val(exp[10]);
 }
 
 function editableJadwal(param) {
