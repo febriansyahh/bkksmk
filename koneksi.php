@@ -59,31 +59,29 @@ function registrasiData()
     $idDaftar = $row[0];
     $nisn = $row[1];
     $nama = $row[2];
+    // echo $idDaftar;
+    // echo $nisn;
+    // echo $nama;
+    // die();
   $pass = $_POST['password'];
   $repass = $_POST['rePassword'];
   
   $tgl = date('Y-m-d H:i:s');
   if($nisn == NULL){
     echo "<script>alert('NISN tidak Terdaftar, Registrasi Gagal !!')</script>";
-    echo "<meta http-equiv='refresh' content='0; url=index.php>";
+    echo "<meta http-equiv='refresh' content='0; url=index.php?page=beranda>";
     // echo 'A';
     
   }else
       {
         if($pass != $repass){
           echo "<script>alert('Password tidak sama, Simpan Gagal !!')</script>";
-          echo "<meta http-equiv='refresh' content='0; url=index.php>";
-          
-          
+          echo "<meta http-equiv='refresh' content='0; url=index.php?page=beranda>";
         }else
             {
               $sql_insert = "INSERT INTO anggota (nisn, noWa, tglDaftar) VALUES (
-                '$nama',
-                '" . $_POST['username'] . "',
-                '" . $_POST['password'] . "',
-                '2',
-                '" . $idDaftar . "',
-                '1',
+                '" . $nisn . "',
+                '" . $_POST['no_wa'] . "',
                 '" . $tgl . "')";
                 $query_insert = mysqli_query($con, $sql_insert) or die(mysqli_connect_error());
 
@@ -99,11 +97,11 @@ function registrasiData()
                 $query_insertUser = mysqli_query($con, $sql_insertUser) or die(mysqli_connect_error());
                 
                 if ($query_insert && $query_insertUser) {
-                  echo "<script>alert('Simpan Berhasil')</script>";
+                  echo "<script>alert('Registrasi Anggota Berhasil')</script>";
                   echo "<meta http-equiv='refresh' content='0; url=login.php'>";
                 } else {
-                  echo "<script>alert('Simpan Gagal')</script>";
-                  echo "<meta http-equiv='refresh' content='0; url=index.php'>";
+                  echo "<script>alert('Registrasi Anggota Gagal')</script>";
+                  echo "<meta http-equiv='refresh' content='0; url=index.php?page=beranda'>";
                 }
             }
       }

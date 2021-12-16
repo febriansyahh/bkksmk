@@ -8,14 +8,14 @@
       $dt = getLokerAll();
       foreach ($dt as $key => $data) {
         ?>
-        <div class="col-lg-4 mb-6 mb-lg-4 " data-toggle="modal" data-target="#detailLoker"
+        <div class="col-lg-6 mb-6 mb-lg-6 " data-toggle="modal" data-target="#detailLoker"
           data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] ."~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel']. "~" . $data['file']. "~" . $data['keterangan']. "~" . $data['sumber']. "~" .  date('d-m-Y', strtotime($data['tglInput'])). "~" . date('d-m-Y', strtotime($data['batas'])) . "~" . $data['kualifikasi'] . "~" . $data['persyaratan']?>"
           onclick="editDetLoker(this)">
-          <div class="icon-box" data-aos="fade-up" data-aos-delay="100" style="height: 450px;">
+          <div class="icon-box" data-aos="fade-up" data-aos-delay="100" style="height: 200px;">
             <h4 class="title"><?php echo $data['nmLoker']?></h4>
             <p class="description" style="font-family: Poppins; text-align: justify;">
               <?php echo $data['perusahaan'] ." membuka lowongan ". $data['nmLoker']
-              ." dengan kualifikasi : " ."<br>".nl2br($data['kualifikasi']) ." untuk ". $data['jekel'] .". Batas pendaftaran tanggal ".  date('d-m-Y', strtotime($data['batas'])) ?>
+              ." untuk ". $data['jekel'] .". Batas pendaftaran tanggal ".  date('d-m-Y', strtotime($data['batas'])) ?>
               <span style="color:blue"> <a href=<?php echo "file_data/loker/".$data['file']?>>Unduh</a></span></p>
           </div>
         </div>

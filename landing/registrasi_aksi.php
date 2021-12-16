@@ -7,8 +7,6 @@ if (isset($_POST['btnSimpan'])) {
   // echo '<br>';
   // echo "+" . $_POST['no_wa'];
   // echo '<br>';
-  // echo $_POST['nama'];
-  // echo '<br>';
   // echo $_POST['username'];
   // echo '<br>';
   // echo $_POST['password'];

@@ -127,8 +127,7 @@ include_once("koneksi.php");
           <h6 class="modal-title">Register Anggota</h6>
         </div>
         <div class="modal-body">
-          <form action="?page=registrasi" method="post" enctype="multipart/form-data">
-
+        <form action="?page=registrasi" method="post" enctype="multipart/form-data">
             <div class="form-group">
               <label>NISN</label>
               <input class="form-control" type="text" name="nisn" placeholder="Masukkan NISN anda">
@@ -137,11 +136,6 @@ include_once("koneksi.php");
             <div class="form-group">
               <label>No WhatsApp</label>
               <input class="form-control " type="text" name="no_wa" placeholder="Masukkan Nomor WhatsApp anda">
-            </div>
-
-            <div class="form-group">
-              <label>Berkas Pendaftaran</label>
-              <input class="form-control " type="file" name="berkas">
             </div>
 
             <div class="form-group">
@@ -307,11 +301,6 @@ include_once("koneksi.php");
             <div class="form-group">
               <label>Nama</label>
               <input class="form-control " type="text" name="nama" id="namaAlumni" readonly>
-            </div>
-
-            <div class="form-group">
-              <label>Berkas Pendaftaran</label>
-              <input class="form-control " type="file" name="berkas">
             </div>
 
             <div class="form-group">
