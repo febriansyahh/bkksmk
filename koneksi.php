@@ -1027,16 +1027,26 @@ function updateDaftar($upload)
 function deleteDaftar($id)
 {
   global $con;
-
+  $idLevel = $_SESSION["ses_idLevel"];
   $sql_hapus = "DELETE FROM pendaftaran WHERE idDaftar='$id' ";
   $query_hapus = mysqli_query($con, $sql_hapus);
 
-  if ($query_hapus) {
-    echo "<script>alert('Hapus Berhasil')</script>";
-    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=daftar''>";
-  } else {
-    echo "<script>alert('Hapus Gagal')</script>";
-    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=daftar''>";
+  if($idLevel == 2){
+        if ($query_hapus) {
+          echo "<script>alert('Hapus Berhasil')</script>";
+          echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=history''>";
+        } else {
+          echo "<script>alert('Hapus Gagal')</script>";
+          echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=history''>";
+        }
+      }else{
+        if ($query_hapus) {
+          echo "<script>alert('Hapus Berhasil')</script>";
+          echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=daftar''>";
+        } else {
+          echo "<script>alert('Hapus Gagal')</script>";
+          echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=daftar''>";
+        }
   }
 }
 
