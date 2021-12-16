@@ -364,13 +364,15 @@ $maxID = MaxIdProgram();
 
               <div class="col-6">
                 <label>Kualifikasi</label>
-                <textarea name="kualifikasi" id="" style="white-space: pre-line" class="form-control" cols="50"
+                <textarea name="kualifikasi" id="" style="white-space: pre-line; resize: none;" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' 
+                class="form-control" cols="50"
                   rows="3"></textarea><br>
               </div>
 
               <div class="col-6">
                 <label>Persyaratan</label>
-                <textarea name="persyaratan" id="" style="white-space: pre-line" class="form-control" cols="50"
+                <textarea name="persyaratan" id="" style="white-space: pre-line; resize: none;" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' 
+                class="form-control" cols="50"
                   rows="3"></textarea>
                 <!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
               </div>
@@ -433,13 +435,15 @@ $maxID = MaxIdProgram();
               </div>
               <div class="col-6">
                 <label>Kualifikasi</label>
-                <textarea name="kualifikasi" id="" style="white-space: pre-line" class="form-control" cols="50"
+                <textarea name="kualifikasi" id="" style="white-space: pre-line; resize: none;" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' 
+                class="form-control" cols="50"
                   rows="3"></textarea><br>
               </div>
 
               <div class="col-6">
                 <label>Persyaratan</label>
-                <textarea name="persyaratan" id="" style="white-space: pre-line" class="form-control" cols="50"
+                <textarea name="persyaratan" id="" style="white-space: pre-line; resize: none;" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' 
+                class="form-control" cols="50"
                   rows="3"></textarea>
                 <!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
               </div>
