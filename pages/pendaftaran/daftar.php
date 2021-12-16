@@ -125,9 +125,9 @@ include_once("koneksi.php");
                   <td><?php echo $no; ?></td>
                   <td><?php echo $data['nisn']; ?></td>
                   <td><?php echo $data['nama']; ?></td>
-                  <td><?php echo $data['jurusan']; ?></td>
-                  <td><?php echo $data['nm_perusahaan']; ?></td>
-                  <td><?php echo $data['nm_loker']; ?></td>
+                  <td><?php echo $data['nmJurusan']; ?></td>
+                  <td><?php echo $data['perusahaan']; ?></td>
+                  <td><?php echo $data['nmLoker']; ?></td>
                   <!-- <td><?php echo $data['tglDaftar']; ?></td> -->
                   <td>
                     <!-- <a href="javascript:void(0)" data-toggle="modal" data-target="#editLoker"
@@ -188,9 +188,9 @@ include_once("koneksi.php");
                   <td><?php echo $no; ?></td>
                   <td><?php echo $data['nisn']; ?></td>
                   <td><?php echo $data['nama']; ?></td>
-                  <td><?php echo $data['jurusan']; ?></td>
-                  <td><?php echo $data['nm_perusahaan']; ?></td>
-                  <td><?php echo $data['nm_loker']; ?></td>
+                  <td><?php echo $data['nmJurusan']; ?></td>
+                  <td><?php echo $data['perusahaan']; ?></td>
+                  <td><?php echo $data['nmLoker']; ?></td>
                   <!-- <td><?php echo $data['tglDaftar']; ?></td> -->
                   <td>
                     <!-- <a href="javascript:void(0)" data-toggle="modal" data-target="#editLoker"
@@ -251,9 +251,9 @@ include_once("koneksi.php");
                   <td><?php echo $no; ?></td>
                   <td><?php echo $data['nisn']; ?></td>
                   <td><?php echo $data['nama']; ?></td>
-                  <td><?php echo $data['jurusan']; ?></td>
-                  <td><?php echo $data['nm_perusahaan']; ?></td>
-                  <td><?php echo $data['nm_loker']; ?></td>
+                  <td><?php echo $data['nmJurusan']; ?></td>
+                  <td><?php echo $data['perusahaan']; ?></td>
+                  <td><?php echo $data['nmLoker']; ?></td>
                   <!-- <td><?php echo $data['tglDaftar']; ?></td> -->
                   <td>
                     <!-- <a href="javascript:void(0)" data-toggle="modal" data-target="#editLoker"
