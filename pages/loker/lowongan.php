@@ -503,7 +503,7 @@ $maxID = MaxIdProgram();
               <input class="form-control" type="text" name="noLoker" id="valnoLok" readonly> <br>
 
               <label>Perusahaan</label>
-              <input class="form-control " type="text" name="perusahaan" id="valperusahaan" required>
+              <input class="form-control " type="text" name="perusahaan" id="valperusahaan" readonly>
 
               <label>Lowongan</label>
               <input class="form-control " type="text" name="nmloker" id="valnmLoker" required readonly>
