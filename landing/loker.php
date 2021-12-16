@@ -57,14 +57,14 @@
                 <div class="row pb-2">
                   <div class="col-6">
                     <label>Kualifikasi</label>
-                    <textarea name="editKual" id="editKual" style="white-space: pre-line" class="form-control" cols="50"
-                      rows="3"></textarea><br>
+                    <textarea name="editKual" id="editKualLoker" style="white-space: pre-line" class="form-control" cols="50"
+                      rows="3" readonly></textarea><br>
                   </div>
 
                   <div class="col-6">
                     <label>Persyaratan</label>
-                    <textarea name="editPersy" id="editPersy" style="white-space: pre-line" class="form-control"
-                      cols="50" rows="3"></textarea>
+                    <textarea name="editPersy" id="editPersyLoker" style="white-space: pre-line" class="form-control"
+                      cols="50" rows="3" readonly></textarea>
                   </div>
                 </div>
                 <div class="row pb-2">

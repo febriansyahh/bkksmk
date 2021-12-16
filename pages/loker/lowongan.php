@@ -454,12 +454,14 @@ $maxID = MaxIdProgram();
                 <label>Batas Pendaftaran</label>
                 <input class="form-control " type="date" name="batas" require>
               </div>
-
-              <div class="col-6">
+            </div>
+              <div class="form-group">
                 <label>Keterangan</label>
-                <textarea style="resize: none" name="ket" id="" class="form-control" rows="3" require></textarea>
+                <textarea name="ket" style="white-space: pre-line; resize: none;" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+                class="form-control"rows="2"></textarea>
               </div>
 
+              <div class="row">
               <div class="col-6">
                 <label>Sumber : <?php echo $data_nama ?></label>
                 <input class="form-control " type="hidden" name="sumber" value="<?php echo $data_nama ?>">
@@ -523,6 +525,70 @@ $maxID = MaxIdProgram();
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
+        <?php
+        if($data_status == 2){
+        ?>
+        <form action="#" method="post" enctype="multipart/form-data">
+          <div class="modal-body">
+            <h2 class="text-center"><b>Detail Lowongan</b></h2>
+            <hr>
+            <div class="row">
+              <div class="col-6">
+                <label for=""><b>Kode Lowongan </b></label>
+                <input type="text" name="editID" id="editID" class="form-control" readonly>
+              </div>
+              <div class="col-6">
+                <label for=""><b>Nama Perusahaan </b></label>
+                <input type="text" name="editNmPer" id="editNmPer" class="form-control" readonly>
+              </div>
+              <div class="col-6">
+                <label for=""><b>Lowongan Kerja </b></label>
+                <input type="text" name="editNmLoker" id="editNmLoker" class="form-control" readonly>
+              </div>
+              <div class="col-6">
+                <label for=""><b>Jenis Kelamin</b></label>
+                <input type="text" name="editJekel" id="editJekel" class="form-control" readonly>
+              </div>
+              
+              <div class="col-6">
+                <label>Kualifikasi</label>
+                <textarea name="editKual" id="editKual" style="white-space: pre-line" class="form-control" cols="50"
+                  rows="3" readonly></textarea><br>
+              </div>
+
+              <div class="col-6">
+                <label>Persyaratan</label>
+                <textarea name="editPersy" id="editPersy" style="white-space: pre-line" class="form-control" cols="50"
+                  rows="3" readonly></textarea>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <label for=""><b>Sumber </b></label>
+                <input type="text" name="editSumber" id="editSumber" class="form-control" readonly>
+              </div>
+              <div class="col-6">
+                <label for=""><b>Tanggal </b></label>
+                <input type="date" name="editTgl" id="editTanggal" class="form-control" readonly>
+              </div>
+              <div class="col-6">
+                <label for=""><b>Batas </b></label>
+                <input type="text" name="editBatas" id="editBatas" class="form-control" readonly>
+              </div>
+              <div class="col-6">
+                <label for=""><b>Status </b></label>
+                <input type="text" name="editStatus" id="editStatus" class="form-control" readonly>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for=""><b>Keterangan </b></label>
+              <input type="text" name="editKet" id="editKeterangan" class="form-control" readonly>
+            </div>
+        </form>
+        <?php
+        } else{
+        ?>
         <form action="?pages=lokerAksi" method="post" enctype="multipart/form-data">
           <div class="modal-body">
             <h2 class="text-center"><b>Detail Lowongan</b></h2>
@@ -585,6 +651,8 @@ $maxID = MaxIdProgram();
               <input class="btn btn-success" type="submit" name="btnUBAH" value="Ubah" />
             </div>
         </form>
+        <?php
+        } ?>
       </div>
     </div>
   </div>
