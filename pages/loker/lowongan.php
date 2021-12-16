@@ -387,12 +387,14 @@ $maxID = MaxIdProgram();
                 <label>Batas Pendaftaran</label>
                 <input class="form-control " type="date" name="batas" require>
               </div>
-
-              <div class="col-6">
+              </div>
+              <div class="form-group">
                 <label>Keterangan</label>
-                <textarea style="resize: none" name="ket" id="" class="form-control" rows="2" require></textarea>
+                <textarea name="ket" style="white-space: pre-line; resize: none;" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+                class="form-control"rows="2"></textarea>
               </div>
 
+              <div class="row">
               <div class="col-6">
                 <label>Sumber : <?php echo $data_nama ?></label>
                 <input class="form-control " type="hidden" name="sumber" value="<?php echo $data_nama ?>">
