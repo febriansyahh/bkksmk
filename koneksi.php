@@ -268,7 +268,8 @@ function getJadwal()
 function getDateTestAnggota($id)
 {
   global $con;
-  $sql = "SELECT a.perusahaan, a.nmLoker, c.* FROM lowongan a, pendaftaran b, jadwal c WHERE b.idLoker=a.idLowongan AND c.idLoker=a.idLowongan AND c.tglSeleksi <= CURRENT_DATE() AND b.idAnggota='$id'";
+  // $sql = "SELECT a.perusahaan, a.nmLoker, c.* FROM lowongan a, pendaftaran b, jadwal c WHERE b.idLoker=a.idLowongan AND c.idLoker=a.idLowongan AND c.tglSeleksi <= CURRENT_DATE() AND b.idAnggota='$id'";
+  $sql = "SELECT a.perusahaan, a.nmLoker, c.* FROM lowongan a, pendaftaran b, jadwal c WHERE b.idLoker=a.idLowongan AND c.idLoker=a.idLowongan AND b.idAnggota='$id'";
   $query = mysqli_query($con, $sql);
 
   return $query;
