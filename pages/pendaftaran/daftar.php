@@ -44,7 +44,7 @@ include_once("koneksi.php");
                   <td><?php echo $data['nama']; ?></td>
                   <td><?php echo $data['nmJurusan']; ?></td>
                   <td><?php echo $data['perusahaan']; ?></td>
-                  <td><?php echo $data['nmLoker']; ?></td>
+                  <td><?php echo $data['nmLoker'] ; ?></td>
                   <td>
                   <a href=<?php echo "file_data/pendaftaran/".$data['berkas']?> class='btn btn-success btn-sm' data-toggle="tooltip" data-placement="top" title="Gagal Seleksi Administrasi !" >Preview</a>
                   <!-- <a data-toggle="modal" data-target="#preview" class='btn btn-success btn-sm' data-toggle="tooltip" data-placement="top" title="Gagal Seleksi Administrasi !" >Preview</a> -->
@@ -68,7 +68,7 @@ include_once("koneksi.php");
                       <?php
                     }
                     ?>
-                    <a href="?page=daftarAksi&kode=<?php echo $data['idDaftar']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')"
+                      <a href="?pages=daftarAksi&kode=<?php echo $data['idDaftar']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')"
                       class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></a>
                   </td>
                 </tr>

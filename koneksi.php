@@ -269,7 +269,7 @@ function getDateTestAnggota($id)
 {
   global $con;
   // $sql = "SELECT a.perusahaan, a.nmLoker, c.* FROM lowongan a, pendaftaran b, jadwal c WHERE b.idLoker=a.idLowongan AND c.idLoker=a.idLowongan AND c.tglSeleksi <= CURRENT_DATE() AND b.idAnggota='$id'";
-  $sql = "SELECT a.perusahaan, a.nmLoker, c.* FROM lowongan a, pendaftaran b, jadwal c WHERE b.idLoker=a.idLowongan AND c.idLoker=a.idLowongan AND b.idAnggota='$id'";
+  $sql = "SELECT a.perusahaan, a.nmLoker, c.* FROM lowongan a, pendaftaran b, jadwal c WHERE b.idLoker=a.idLowongan AND c.idLoker=a.idLowongan AND c.tglSeleksi >= CURRENT_DATE() AND b.idAnggota='$id'";
   $query = mysqli_query($con, $sql);
 
   return $query;
@@ -945,6 +945,7 @@ function uploadBerkas($namePost, $nmLoker)
 {
   $name = $_SESSION["ses_nama"];
   $namaPengirim = str_replace(' ', '_', $name);
+  $namaLowongan = str_replace(' ', '_', $nmLoker);
   // print_r($_FILES[$namePost]);
   // echo '<br>';
   // echo $namaPengirim;
@@ -957,7 +958,7 @@ function uploadBerkas($namePost, $nmLoker)
   
   $x = explode('.', $nama);
   $ekstensi = strtolower(end($x));
-  $namas = 'Daftar_' . $nmLoker . "_" . $namaPengirim . "_" . $date ."." . $ekstensi;
+  $namas = 'Daftar_' . $namaLowongan . "_" . $namaPengirim . "_" . $date ."." . $ekstensi;
   $ukuran  = $_FILES[$namePost]['size'];
   $file_tmp = $_FILES[$namePost]['tmp_name'];
   
