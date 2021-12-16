@@ -16,7 +16,14 @@
             <p class="description" style="font-family: Poppins; text-align: justify;">
               <?php echo $data['perusahaan'] ." membuka lowongan ". $data['nmLoker']
               ." untuk ". $data['jekel'] .". Batas pendaftaran tanggal ".  date('d-m-Y', strtotime($data['batas'])) ?>
-              <span style="color:blue"> <a href=<?php echo "file_data/loker/".$data['file']?>>Unduh</a></span></p>
+              <span style="color:blue"> 
+              <?php 
+              if($data['file'] != NULL){
+              ?>
+              <a href=<?php echo "file_data/loker/".$data['file']?>>Unduh</a></span></p>
+              <?php
+              }
+              ?>
           </div>
         </div>
         <br>
