@@ -461,7 +461,7 @@ function getHasil()
 function getHasilAnggota($id)
 {
   global $con;
-  $sql ="SELECT a.perusahaan, a.nmLoker, c.file, c.keterangan, c.tglInput FROM lowongan a, pendaftaran b, hasil c WHERE b.idLoker=a.idLowongan AND c.idLoker=a.idLowongan AND c.status='2' AND b.idAnggota='$id' ORDER BY c.idHasil DESC ";
+  $sql ="SELECT a.perusahaan, a.nmLoker, c.file, c.keterangan, c.tglInput, c.idHasil FROM lowongan a, pendaftaran b, hasil c WHERE b.idLoker=a.idLowongan AND c.idLoker=a.idLowongan AND c.status='2' AND b.idAnggota='$id' ORDER BY c.idHasil DESC ";
   $query = mysqli_query($con, $sql);
   return $query;
 }
@@ -822,7 +822,7 @@ function deleteJadwal($id)
 function uploadHasil($namePost)
 {
   $name = $_SESSION["ses_nama"];
-  $namaPengirim = str_replace(' ', '', $name);
+  $namaPengirim = str_replace(' ', '_', $name);
   $date = date('Y-m-d');
   $ekstensi_diperbolehkan  = array('jpg', 'png', 'jpeg', 'pdf');
   $nama = $_FILES[$namePost]['name'];
