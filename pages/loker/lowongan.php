@@ -170,8 +170,8 @@ $maxID = MaxIdProgram();
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <a data-toggle="modal" data-target="#mySiswa" class="btn btn-primary d-inline" style="float : right;"><i
-                class="fas fa-plus-square"></i> Tambah Lowongan</a>
+            <!-- <a data-toggle="modal" data-target="#mySiswa" class="btn btn-primary d-inline" style="float : right;"><i
+                class="fas fa-plus-square"></i> Tambah Lowongan</a> -->
             <h3 class="card-title">Data Lowongan</h3>
           </div>
           <!-- /.card-header -->
