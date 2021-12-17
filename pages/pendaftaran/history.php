@@ -122,9 +122,9 @@ include_once("koneksi.php");
                         ?>
                          <a href="#" class="btn btn-danger btn-sm">Tidak Lulus</a>
                     <?php
-          break;
-      }
-        ?>
+                        break;
+                    }
+                      ?>
                     <!-- <a href="javascript:void(0)" data-toggle="modal" data-target="#editLoker"
                       data-id="<?php echo $data['id_alumni'] . "~" . $data['nisn'] . "~" . $data['nm_loker'] . "~" . $data['jekel']. "~" . $data['keterangan']. "~" . $data['sumber']. "~" . $data['tanggal']. "~" . $data['batas']. "~" . $data['status'] ?>"
                       onclick="editableLowongan(this)" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a> -->

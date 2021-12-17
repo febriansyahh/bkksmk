@@ -1,6 +1,5 @@
 <?php	
 include_once("koneksi.php");
-$maxID = MaxIdProgram();
     ?>
 <div class="form-group">
   <br>
@@ -9,10 +8,30 @@ $maxID = MaxIdProgram();
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Data Alumni Lanjut Studi</h3>
+            <h3 class="card-title">Laporan Alumni</h3>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
+          <form method='POST' action='./pages/laporan/alumni.php'>
+              <div class="input-group mb-3">
+                <label for=""> Pilih Tahun : </label> &nbsp;
+                <select name="status" class="form-select" id="inputGroupSelect02" style="width:20%;">
+                <option value="NULL">- Pilih -</option>
+                <option value="Bekerja">Bekerja</option>
+                <option value="Studi">Studi</option>
+              </select>
+                <select name="tahun" class="form-select" id="inputGroupSelect02" style="width:20%;">
+                <option value="NULL">- Pilih -</option>
+                <?php
+                $dt = getYearAlumni();
+                foreach ($dt as $value) {
+                  echo '<option value="'.$value['tahun'].'">'.$value['tahun'].'</option>';
+                }
+              ?>
+              </select>
+                <input type="submit" name="submit" formtarget="_blank" class="btn btn-primary"value="Cari" />
+              </div>
+            </form>
             <table id="example2" class="table table-bordered table-hover">
               <thead>
                 <center>
@@ -24,13 +43,12 @@ $maxID = MaxIdProgram();
                     <th>Nama Perguruan</th>
                     <th>Tahun Lulus</th>
                     <th>Telp</th>
-                    <th>Piihan</th>
                   </tr>
                 </center>
               </thead>
               <tbody>
                 <?php
-            $a = getAlumniStudi();
+            $a = getAlumni();
             $no = 1;
             foreach ($a as $key => $data) {
                 ?>
@@ -42,13 +60,6 @@ $maxID = MaxIdProgram();
                   <td><?php echo $data['nmInstansi']; ?></td>
                   <td><?php echo $data['thnLulus']; ?></td>
                   <td><?php echo $data['noTelp']; ?></td>
-                  <td>
-                    <!-- <a href="javascript:void(0)" data-toggle="modal" data-target="#editLoker"
-                      data-id="<?php echo $data['id_alumni'] . "~" . $data['nisn'] . "~" . $data['nm_loker'] . "~" . $data['jekel']. "~" . $data['keterangan']. "~" . $data['sumber']. "~" . $data['tanggal']. "~" . $data['batas']. "~" . $data['status'] ?>"
-                      onclick="editableLowongan(this)" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a> -->
-                      <a href="?pages=alumni_aksi&kode=<?php echo $data['idAlumni']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')"
-                      class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></a>
-                  </td>
                 </tr>
                 <?php
             $no++;
@@ -68,6 +79,5 @@ $maxID = MaxIdProgram();
   </div>
 
   </body>
-  <script src="js/main.js"></script>
 
-</html>
+  </html>

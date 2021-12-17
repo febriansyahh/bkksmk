@@ -207,6 +207,70 @@ function getYear()
 
   return $query;
 }
+
+function getYearPerusahaan()
+{
+  global $con;
+  $sql = "SELECT DISTINCT YEAR(tglKerjasama) as tahun FROM perusahaan ORDER BY tglKerjasama ASC ";
+  $query = mysqli_query($con, $sql);
+
+  return $query;
+}
+
+function getYearLowongan()
+{
+  global $con;
+  $sql = "SELECT DISTINCT YEAR(tglInput) as tahun FROM lowongan ORDER BY tglInput ASC ";
+  $query = mysqli_query($con, $sql);
+
+  return $query;
+}
+
+function getYearAlumni()
+{
+  global $con;
+  $sql = "SELECT DISTINCT thnLulus as tahun FROM alumni ORDER BY thnLulus ASC ";
+  $query = mysqli_query($con, $sql);
+
+  return $query;
+}
+
+function getRiwayat()
+{
+  global $con;
+  $sql = "SELECT a.idDaftar, b.nisn, b.nama, d.nmJurusan, c.perusahaan, c.nmLoker, a.status FROM pendaftaran a, siswa b, lowongan c, jurusan d WHERE a.idAnggota=b.idSiswa AND a.idLoker=c.idLowongan AND b.jurusan=d.idJurusan ORDER BY c.idLowongan ASC";
+  $query = mysqli_query($con, $sql);
+
+  return $query;
+}
+
+function getRiwayatView()
+{
+  global $con;
+  $sql = "SELECT a.idDaftar, b.nisn, b.nama, d.nmJurusan, c.perusahaan, c.nmLoker, a.status FROM pendaftaran a, siswa b, lowongan c, jurusan d WHERE a.idAnggota=b.idSiswa AND a.idLoker=c.idLowongan AND b.jurusan=d.idJurusan AND c.status ='3' ORDER BY c.idLowongan ASC";
+  $query = mysqli_query($con, $sql);
+
+  return $query;
+}
+
+function getSelectRiwayat()
+{
+  global $con;
+  $sql = "SELECT DISTINCT idLowongan, perusahaan, nmLoker FROM lowongan WHERE status='3'";
+  $query = mysqli_query($con, $sql);
+
+  return $query;
+}
+
+function getAlumni()
+{
+  global $con;
+  $sql = "SELECT a.idAlumni, b.nisn, a.nmInstansi, b.nama, c.nmJurusan, b.noTelp, a.thnLulus FROM alumni a, siswa b, jurusan c WHERE a.nisn=b.nisn AND b.jurusan=c.idJurusan ORDER BY a.thnLulus ASC ";
+  $query = mysqli_query($con, $sql);
+
+  return $query;
+}
+
 function getLokerIndex()
 {
   global $con;
@@ -415,7 +479,7 @@ function getAlumniStudi()
 {
   global $con;
   // $sql ="SELECT b.nisn, a.nama_instansi, b.nama, b.jurusan, b.telp, b.tahun_lulus FROM tb_tracer a, tb_peserta b WHERE a.nisn=b.nisn AND a.status='Studi'";
-  $sql ="SELECT a.idAlumni, b.nisn, a.nmInstansi, b.nama, b.jurusan, b.noTelp, a.thnLulus FROM alumni a, siswa b WHERE a.nisn=b.nisn AND a.status='1'";
+  $sql ="SELECT a.idAlumni, b.nisn, a.nmInstansi, b.nama, b.jurusan, b.noTelp, a.thnLulus FROM alumni a, siswa b WHERE a.nisn=b.nisn AND a.status='Studi'";
   $query = mysqli_query($con, $sql);
   return $query;
 }

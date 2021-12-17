@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once("koneksi.php");
+include_once("fpdf/fpdf.php");
 if (isset($_SESSION['ses_username']) == "") {
   echo "<meta http-equiv='refresh' content='0;url=login.php'>";
 } else {
@@ -264,6 +265,53 @@ if (isset($_SESSION['ses_username']) == "") {
                   <a href="?pages=user" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>User Pengguna</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-header">Laporan</li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-file"></i>
+                <p>
+                  Laporan
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="?pages=reportperusahaan" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Perusahaan</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Rekruitmen
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="?pages=reportlowongan" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon"></i>
+                      <p>Lowongan</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="?pages=reportpendaftaran" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon"></i>
+                      <p>Riwayat Pendaftaran</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                  <a href="?pages=reportalumni" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Alumni</p>
                   </a>
                 </li>
               </ul>
@@ -579,6 +627,10 @@ if (isset($_SESSION['ses_username']) == "") {
                             case 'hasilAksi':
                               include "pages/informasi/hasilAksi.php";
                               break;
+                            
+                            case 'cobaCetak':
+                              include "pages/laporan/cetak.php";
+                              break;
 
                             case 'jurusan':
                               include "pages/jurusan/jurusan.php";
@@ -610,6 +662,19 @@ if (isset($_SESSION['ses_username']) == "") {
                               break;
                             case 'userAksi':
                               include "pages/user/userAksi.php";
+                              break;
+
+                            case 'reportperusahaan' :
+                              include "pages/v_report/perusahaan.php";
+                              break;
+                            case 'reportlowongan' :
+                              include "pages/v_report/lowongan.php";
+                              break;
+                            case 'reportalumni' :
+                              include "pages/v_report/alumni.php";
+                              break;
+                            case 'reportpendaftaran' :
+                              include "pages/v_report/riwayat.php";
                               break;
 
                             default:
