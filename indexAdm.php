@@ -528,7 +528,7 @@ if (isset($_SESSION['ses_username']) == "") {
                   <?php
                    $q_hit= cekLoker($data_idUser);
                     while($row = mysqli_fetch_array($q_hit)) {
-                    if($row[0] != 0){
+                    if($row[0] != 0 || $row[0] != 3){
                     ?>
                   <span class="right badge badge-warning">New</span>
                   <?php
@@ -601,7 +601,7 @@ if (isset($_SESSION['ses_username']) == "") {
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="?pages=hasil" class="nav-link">
+                  <a href="?pages=reportpendaftaran" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Riwayat Pendaftar</p>
                   </a>

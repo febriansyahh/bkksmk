@@ -15,7 +15,7 @@ include_once("koneksi.php");
           if($data_status == '4'){
           ?>
           <div class="card-body">
-            <form method='POST' action='./pages/laporan/riwayatPerusahaan.php'>
+            <form method='POST' action='./pages/laporan/riwayatperusahaan.php'>
               <div class="input-group mb-3">
                 <label for=""> Pilih Tahun : </label> &nbsp;
                 <select name="loker" class="form-select" id="inputGroupSelect02" style="width:25%;">

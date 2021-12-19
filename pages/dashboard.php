@@ -20,17 +20,6 @@
         switch ($data_status) {
           case '1':
             ?>
-      <form method='POST' action='./pages/laporan/cetak.php'>
-      <div class="input-group mb-3">
-        <select name="tahun" class="form-select" id="inputGroupSelect02" style="width:50%;">
-          <option value="NULL" selected>Pilih</option>
-          <option value="2021">2021</option>
-          <option value="2020">2020</option>
-          <option value="2019">2019</option>
-        </select>
-        <input type="submit" name="submit" formtarget="_blank" value="Cari" />
-      </div>
-      </form>
       <div class="row">
         <div class="col-lg-3 col-6">
           <!-- small box -->
