@@ -262,12 +262,19 @@ function getSelectRiwayat()
   return $query;
 }
 
+function getRiwayatPerusahaan($id)
+{
+  global $con;
+  $sql = "SELECT DISTINCT a.idLowongan, a.perusahaan, a.nmLoker FROM lowongan a, user b WHERE a.usrInput=b.idUser AND a.status='3' AND b.idLevel = '4' AND a.usrInput='$id'";
+  $query = mysqli_query($con, $sql);
+  return $query;
+}
+
 function getAlumni()
 {
   global $con;
   $sql = "SELECT a.idAlumni, b.nisn, a.nmInstansi, b.nama, c.nmJurusan, b.noTelp, a.thnLulus FROM alumni a, siswa b, jurusan c WHERE a.nisn=b.nisn AND b.jurusan=c.idJurusan ORDER BY a.thnLulus ASC ";
   $query = mysqli_query($con, $sql);
-
   return $query;
 }
 
@@ -277,7 +284,6 @@ function getLokerIndex()
   // $sql = "SELECT * FROM tb_loker WHERE status='Tampil' ORDER BY id_loker DESC LIMIT 3";
   $sql = "SELECT * FROM lowongan WHERE status='2' ORDER BY idLowongan DESC LIMIT 3";
   $query = mysqli_query($con, $sql);
-
   return $query;
 }
 

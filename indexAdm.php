@@ -318,10 +318,6 @@ if (isset($_SESSION['ses_username']) == "") {
             </li>
             <li class="nav-header">Logout</li>
             <li class="nav-item">
-              <!-- <a href="pages/UI/modals.html" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Logout</p>
-              </a> -->
               <a class="nav-link" data-toggle="modal" data-target="#logout"><i class="fas fa-sign-out"></i> <span>Logout</span></a></li>
             </li>
             <?php
@@ -559,7 +555,7 @@ if (isset($_SESSION['ses_username']) == "") {
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="?pages=history" class="nav-link">
+                <a href="?pages=reportpendaftaran" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Riwayat Pendaftar</p>
                   </a>
@@ -589,13 +585,34 @@ if (isset($_SESSION['ses_username']) == "") {
                 </li>
               </ul>
             </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-file"></i>
+                <p>
+                  Laporan
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                <a href="?pages=reportlowongan" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Lowongan</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="?pages=hasil" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Riwayat Pendaftar</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
             <li class="nav-header">Logout</li>
             <li class="nav-item">
-              <!-- <a class="nav-link" data-toggle="modal" data-target="#logout"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
-                <p>Logout</p>
-              </a> -->
               <a class="nav-link" data-toggle="modal" data-target="#logout"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
             </li>
+            
             <?php
                     break;
               
