@@ -17,7 +17,7 @@ include_once("koneksi.php");
           <div class="card-body">
             <form method='POST' action='./pages/laporan/riwayatperusahaan.php'>
               <div class="input-group mb-3">
-                <label for=""> Pilih Tahun : </label> &nbsp;
+                <label for=""> Pilih Lowongan : </label> &nbsp;
                 <select name="loker" class="form-select" id="inputGroupSelect02" style="width:25%;">
                   <option value="NULL">- Pilih -</option>
                   <?php
@@ -104,7 +104,7 @@ include_once("koneksi.php");
             <div class="card-body">
             <form method='POST' action='./pages/laporan/riwayat.php'>
               <div class="input-group mb-3">
-                <label for=""> Pilih Tahun : </label> &nbsp;
+                <label for=""> Pilih Lowongan : </label> &nbsp;
                 <select name="loker" class="form-select" id="inputGroupSelect02" style="width:25%;">
                   <option value="NULL">- Pilih -</option>
                   <?php

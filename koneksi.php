@@ -226,6 +226,15 @@ function getYearLowongan()
   return $query;
 }
 
+function getYearLowonganPerusahaan($id)
+{
+  global $con;
+  $sql = "SELECT DISTINCT YEAR(a.tglInput) as tahun FROM lowongan a, user b WHERE a.usrInput=b.idUser AND b.idLevel ='4' AND a.usrInput = '$id' ORDER BY a.tglInput ASC ";
+  $query = mysqli_query($con, $sql);
+
+  return $query;
+}
+
 function getYearAlumni()
 {
   global $con;
@@ -383,6 +392,15 @@ function SelectLowongan()
   return $query;
 }
 
+function reportLowongan()
+{
+  global $con;
+  // $sql = "SELECT * FROM `tb_loker` ";
+  $sql = "SELECT * FROM `lowongan` WHERE `status` = '3' ORDER BY idLowongan DESC";
+  $query = mysqli_query($con, $sql);
+  return $query;
+}
+
 function SelectLowonganAnggota()
 {
   global $con;
@@ -397,6 +415,15 @@ function getLowongan($id)
   global $con;
   // $sql = "SELECT * FROM `tb_loker` ";
   $sql = "SELECT * FROM `lowongan` WHERE usrInput = '$id' AND `status` ='2' ORDER BY idLowongan DESC";
+  $query = mysqli_query($con, $sql);
+  return $query;
+}
+
+function reportLowonganperusahaan($id)
+{
+  global $con;
+  // $sql = "SELECT * FROM `tb_loker` ";
+  $sql = "SELECT * FROM `lowongan` WHERE usrInput = '$id' AND `status`= '3' ORDER BY idLowongan DESC";
   $query = mysqli_query($con, $sql);
   return $query;
 }
