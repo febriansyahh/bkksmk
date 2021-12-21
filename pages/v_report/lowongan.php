@@ -28,7 +28,7 @@ include_once("koneksi.php");
               ?>
               </select>
                 <input type="hidden" name="idPerusahaan" class="form-class" value="<?php echo $data_idUser ?>">
-                <input type="submit" name="submit" formtarget="_blank" class="btn btn-primary" value="Cetaks" />
+                <input type="submit" name="submit" formtarget="_blank" class="btn btn-primary" value="Cetak" />
               </div>
             </form>
             <table id="example2" class="table table-bordered table-hover">

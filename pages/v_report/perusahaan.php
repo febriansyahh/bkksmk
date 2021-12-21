@@ -24,7 +24,7 @@ include_once("koneksi.php");
                 }
               ?>
               </select>
-                <input type="submit" name="submit" formtarget="_blank" class="btn btn-primary"value="Cari" />
+                <input type="submit" name="submit" formtarget="_blank" class="btn btn-primary"value="Cetak" />
               </div>
             </form>
             <table id="example2" class="table table-bordered table-hover">
