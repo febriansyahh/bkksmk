@@ -10,8 +10,8 @@
       foreach ($dt as $key => $data) {
         ?>
         <div class="col-lg-4 mb-6 mb-lg-4" >
-        <!-- data-toggle="modal" data-target="#detailHasil" onclick="editableHasil(this)"
-                data-id="<?php echo $data['noLoker'] . "~" . $data['idLowongan'] . "~" . $data['file'] . "~" . $data['keterangan'] . "~" . $data['perusahaan'] . "~" . $data['nmLoker'] ?>" -->
+        <data-toggle="modal" data-target="#detailHasil" onclick="editableHasil(this)"
+                data-id="<?php echo $data['noLoker'] . "~" . $data['idLowongan'] . "~" . $data['file'] . "~" . $data['keterangan'] . "~" . $data['perusahaan'] . "~" . $data['nmLoker'] ?>">
           <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
             <h4 class="title"><?php echo $data['perusahaan'] .' - '. $data['nmLoker']?></h4>
             <p class="description" style="text-align: justify;"> Pengumuman Lowongan

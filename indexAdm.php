@@ -91,7 +91,32 @@ if (isset($_SESSION['ses_username']) == "") {
             <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
           </div> -->
           <div class="info">
-            <a href="#" class="d-block"><?php echo $data_nama ?></a>
+            <a href="#" ><?php echo $data_nama ?> -  
+            <?php
+                    switch ($data_status) {
+                      case '1':
+                        ?>
+                        <a href="#">Admin</a>
+                        <?php
+                        break;
+                      case '2':
+                        ?>
+                        <a href="#">Anggota</a>
+                        <?php
+                        break;
+                      case '3':
+                        ?>
+                        <a href="#">Ketua BKK</a>
+                        <?php
+                        break;
+                      case '4':
+                        ?>
+                        <a href="#">Perusahaan</a>
+                    <?php
+                        break;
+                    }
+                      ?>
+                      </a>
           </div>
         </div>
 

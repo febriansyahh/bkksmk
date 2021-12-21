@@ -40,42 +40,31 @@
 <body>
 
   <!-- ======= Top Bar ======= -->
-  <section id="topbar" class="d-flex align-items-center">
+  <!-- <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
-        <i class="d-flex align-items-center"><a href="mailto:contact@example.com">Bursa Kerja Khusus</a></i>
+        <i class="d-flex align-items-center" style="font-family: Poppins"><a href="mailto:contact@example.com">Bertaqwa, Berprestasi, Mandiri dan Profesional</a></i>
       </div>
       <div class="social-links d-none d-md-flex align-items-center">
-        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
-
-      <h1 class="logo" style="font-family: Poppins"><a href="index.php">SMK Muhammadiyah Kudus</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt=""></a>-->
+      <h1 class="logo"><a href="index.php"><img src="assets/img/headerbgs.png" alt="" style="width: 100%;"><span></span></a></h1>
 
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="?page=beranda">Beranda</a></li>
           <li><a class="nav-link scrollto" href="?page=profil">Profil</a></li>
-          <!-- <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-link scrollto" href="#team">Team</a></li> -->
           <li class="dropdown"><a href="#"><span>Informasi</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="?page=loker">Lowongan Kerja</a></li>
               <li><a href="?page=test">Jadwal Seleksi</a></li>
-              <li><a href="?page=hasil">Hasil Seleksi</a></li>
+              <li><a href="?page=hasiltable">Hasil Seleksi</a></li>
               <li><a href="?page=perusahaan">Perusahaan Terdaftar</a></li>
-              <!-- <li><a href="?page=alumniReg">Pendaftaran Alumni</a></li> -->
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="login.php">Login</a></li>
@@ -112,6 +101,9 @@
                             case 'hasil':
                                 include "landing/hasil.php";
                                 break;
+                            case 'hasiltable':
+                                include "landing/hasiltable.php";
+                                break;
                             case 'alumniReg':
                                 include "landing/alumniReg.php";
                                 break;
@@ -134,20 +126,63 @@
 
   <!-- ======= Footer ======= -->
   
-  <!-- <footer id="footer">
-      <div class="container py-4">
-      <div class="copyright">
-        &copy; Copyright <strong><span>BizLand</span></strong>. All Rights Reserved
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+    
+          <div class="col-lg-4 col-md-6 footer-contact">
+            <h4>Tautan</h4>
+            <p style="font-family: Poppins">
+              <a href="https://website.smkmuhikudus.sch.id/" target="_blank">Situs SMK Muhammadiyah</a><br>
+              <a href="https://muhammadiyah.or.id/en/" target="_blank">Muhammadiyah</a><br>
+              <a href="https://kuduskab.go.id/" target="_blank">Kab. Kudus</a><br>
+              
+            </p>
+          </div>
+    
+          <div class="col-lg-4 col-md-6 footer-links">
+            <h4>Tautan Lainnya</h4>
+            <p style="font-family: Poppins">
+              <a href="https://www.kemdikbud.go.id/" target="_blank">Kemendikbud</a><br>
+              <a href="https://kemenag.go.id/" target="_blank">Kemenag</a><br>
+              <a href="https://jurnal.umk.ac.id/" target="_blank">E-jurnal</a><br>
+            </p>
+          </div>
+    
+          <div class="col-lg-4 col-md-6 footer-links">
+            <h4>Contact Us </h4>
+            <p style="font-family: Poppins">Jl. Kudus - Jepara No.KM.3, Bendaran, Prambatan Lor, Kec. Kaliwungu, Kudus <br>
+                Jawa Tengah - Indonesia <br>
+                Telp. +(0291) 441992<br>
+                email. <a href="mailto:smkmuhikudus@gmail.com">smkmuhikudus@gmail.com</a> <br>
+            </p>
+            <div class="social-links mt-3">
+              <a href="https://www.facebook.com/smkmuhikudus" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="https://twitter.com/smkmuhikudus" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="https://www.instagram.com/smkmuhikudus/" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="https://www.youtube.com/SMKMUHIKUDUS" target="_blank" class="google-plus"><i class="bx bxl-youtube"></i></a>
+            </div>
+          </div>
+    
+        </div>
       </div>
-      <div class="credits">
-        All the links in the footer should remain intact. -->
+    </div>
+    <!-- <footer id="footer"> -->
+    <div class="container py-4" >
+      <div class="copyright" style="text-align:center;">
+        &copy; Copyright 2021 <strong><span><a href="index.php" style="color:white">SMK Muhammadiyah Kudus</a></span></strong>
+      </div>
+      <!-- <div class="credits"> -->
+        <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bizland-bootstrap-business-template/ -->
-        <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        <!-- Support <span>Eprints</span> -->
       </div>
     </div>
-  </footer>End Footer -->
+    </footer><!-- End Footer -->
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

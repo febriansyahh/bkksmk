@@ -5,19 +5,31 @@
         <div class="col-lg-6">
           <div class="text-center my-5">
           <img src="images/muh.png" width="100" height="100">
-            <h3 class="display fw-bolder black-white mb-2" style="font-family: Poppins">SMK Muhammadiyah Kudus
-            </h3>
-            <p class="lead text-black-50 mb-4" style="font-family: Poppins"><b>Berprestasi, Berkarakter, Unggul Dalam IT yang Dilandasi Iman dan
-                Taqwa</b></p>
-            <!-- <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-                            <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">Get Started</a>
-                            <a class="btn btn-outline-light btn-lg px-4" href="#!">Learn More</a>
-                        </div> -->
+            <h5 class="display fw-bolder black-white mb-2" style="font-family: Poppins">SMK Muhammadiyah Kudus
+            </h5>
+            <p class="lead text-black-50 mb-4" style="font-family: Poppins; font-size: 1rem;"><b>Berprestasi, Berkarakter, Unggul Dalam IT yang Dilandasi Iman dan Taqwa</b></p>
           </div>
         </div>
       </div>
     </div>
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-12">
+            <div class="info-box mb-4">
+              <i class="bx bx-map"></i>
+              <h3>Alamat Sekolah</h3>
+              <p>Jl. Kudus - Jepara No.KM.3, Bendaran, Prambatan Lor, Kec. Kaliwungu,<br>
+              Kabupaten Kudus, Jawa Tengah
+                    59361</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
   </header>
+  
 <section id="featured-services" class="featured-services">
       <div class="container" data-aos="fade-up">
         <h3><span>Tingkat Kejuruan</span></h3>
@@ -33,30 +45,8 @@
               <div class="icon"><i class="fa fa-cogs"></i></div>
               <h4 class="title"><a href=""><?php echo $data['nmJurusan'] ?></a></h4>
               <p class="description" style="text-align: justify;"><?php echo $data['keterangan'] ?></p>
-              <!-- <p class="description" style="text-align: justify;">Teknik Audio Video mengkhususkan pembahasan atau pembelajaran tentang hal-hal
-            teknik elektronika yang berkait dengan suara (audio) dan gambar (video) yang diproses secara elektronik.</p> -->
             </div>
           </div>
-
-          <!-- <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-              <div class="icon"><i class="bx bx-car"></i></div>
-              <h4 class="title"><a href="">Teknik Kendaraan Ringan</a></h4>
-              <p class="description" style="text-align: justify;">Teknik Kendaraan Ringan merupakan ilmu yang mempelajari tentang alat-alat
-            transportasi darat yang menggunakan mesin, terutama mobil yang mulai berkembang sebagai cabang ilmu seiring
-            dengan diciptakannya mesin mobil.</p>
-            </div>
-          </div> -->
-
-          <!-- <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
-              <div class="icon"><i class="bx bx-laptop"></i></div>
-              <h4 class="title"><a href="">Teknik Komputer dan Jaringan</a></h4>
-              <p class="description" style="text-align: justify;">Teknik Komputer dan Jaringan merupakan ilmu berbasis Teknologi Informasi dan
-            Komunikasi terkait kemampuan algoritma, dan pemrograman komputer, perakitan komputer, perakitan jaringan
-            komputer, dan pengoperasian perangkat lunak, dan internet.</p>
-            </div>
-          </div> -->
           <?php
           }
         ?>

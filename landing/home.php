@@ -1,53 +1,58 @@
 <?php
 include_once("koneksi.php");
 ?>
+
 <body>
   <section id="hero" class="d-flex align-items-center">
-    <div class="container" data-aos="zoom-out" data-aos-delay="100">
+    <div class="container" data-aos="zoom-out" data-aos-delay="100" style="text-align: center;">
       <h1 style="font-family: Poppins">Selamat datang di <span>Bursa Kerja Khusus</span></h1>
-      <h2 style="font-family: Poppins"><span>SMK Muhammadiyah Kudus</span> <br>
+      <h4 style="font-family: Poppins"><span>SMK Muhammadiyah Kudus</span> <br>
         Berprestasi, Berkarakter, Unggul Dalam IT yang Dilandasi Iman dan
         Taqwa
-      </h2>
-      <div class="d-flex">
-        <a data-toggle="modal" data-target="#register" class="btn-get-started scrollto">Daftar Anggota</a>
+      </h4>
+      <br>
+      <div class="d-flex" style="width:450px; margin:0 auto;">
+        <a data-toggle="modal" data-target="#register" class="btn-get-started scrollto" style="float : center;">Daftar
+          Anggota</a>
         &nbsp;
-        <a data-toggle="modal" data-target="#alumni" class="btn-get-started scrollto">Daftar Alumni</a>
+        <a data-toggle="modal" data-target="#alumni" class="btn-get-started scrollto" style="float : center;">Daftar
+          Alumni</a>
       </div>
     </div>
   </section><!-- End Hero -->
 
   <main id="main">
-<section class=" border-bottom" id="features">
-    <div class="container px-5 my-5"><h5><a class="text-decoration-none" href="?page=loker">
-                        Klik untuk selengkapnya
-                        <i class="bi bi-arrow-right"></i>
-                    </a></h5>
-    </div>
-    <div class="container px-5 my-5">
-            <div class="row gx-5">
-    <?php
+    <section class=" border-bottom" id="features">
+      <div class="container px-5 my-5">
+        <h5><a class="text-decoration-none" href="?page=loker">
+            Klik untuk selengkapnya
+            <i class="bi bi-arrow-right"></i>
+          </a></h5>
+      </div>
+      <div class="container px-5 my-5">
+        <div class="row gx-5">
+          <?php
       include_once('koneksi.php');
       $dt = getLokerIndex();
       foreach ($dt as $key => $data) {
         ?>
 
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <div class="bg-gradient text-white rounded-3 mb-3"><i
-                            class="bi bi-collection"></i></div>
-                    <h2 class="h4 fw-bolder"><?php echo $data['perusahaan']?></h2>
-                    <p style="font-family: Poppins"><?php echo $data['nmLoker'] ." Untuk ". $data['jekel'] ." ". $data['keterangan']?></p>
-                 
-                    <a href="javascript:void(0)" data-toggle="modal" data-target="#detailLoker"
-                      data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] ."~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel']. "~" . $data['file']. "~" . $data['keterangan']. "~" . $data['sumber']. "~" .  date('d-m-Y', strtotime($data['tglInput'])). "~" . date('d-m-Y', strtotime($data['batas'])) . "~" . $data['kualifikasi'] . "~" . $data['persyaratan']?>"
-                      onclick="editDetLoker(this)"class="text-decoration-none">Lihat Selengkapnya
-                        <i class="bi bi-arrow-right"></i></a>
-                </div>
-                <?php
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            <div class="bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
+            <h2 class="h4 fw-bolder"><?php echo $data['perusahaan']?></h2>
+            <p style="font-family: Poppins">
+              <?php echo $data['nmLoker'] ." Untuk ". $data['jekel'] ." ". $data['keterangan']?></p>
+            <a href="javascript:void(0)" data-toggle="modal" data-target="#detailLoker"
+              data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] ."~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel']. "~" . $data['file']. "~" . $data['keterangan']. "~" . $data['sumber']. "~" .  date('d-m-Y', strtotime($data['tglInput'])). "~" . date('d-m-Y', strtotime($data['batas'])) . "~" . $data['kualifikasi'] . "~" . $data['persyaratan']?>"
+              onclick="editDetLoker(this)" class="text-decoration-none">Tap untuk lebih detail
+              <!-- <i class="bi bi-arrow-right"></i> -->
+            </a>
+          </div>
+          <?php
       }
       ?>
-            </div>
         </div>
+      </div>
     </section>
     <!-- ======= Counts Section ======= -->
     <section id="counts" class="counts">
@@ -127,7 +132,7 @@ include_once("koneksi.php");
           <h6 class="modal-title">Register Anggota</h6>
         </div>
         <div class="modal-body">
-        <form action="?page=registrasi" method="post" enctype="multipart/form-data">
+          <form action="?page=registrasi" method="post" enctype="multipart/form-data">
             <div class="form-group">
               <label>NISN</label>
               <input class="form-control" type="text" name="nisn" placeholder="Masukkan NISN anda">
@@ -150,10 +155,10 @@ include_once("koneksi.php");
                 </div>
               </div>
               <div class="col-6">
-              <div class="form-group">
-              <label>Confirm Password</label>
-              <input class="form-control " type="password" name="rePassword" placeholder="Masukkan Password">
-            </div>
+                <div class="form-group">
+                  <label>Confirm Password</label>
+                  <input class="form-control " type="password" name="rePassword" placeholder="Masukkan Password">
+                </div>
               </div>
             </div>
             <div class="modal-footer">
@@ -175,7 +180,7 @@ include_once("koneksi.php");
         </div>
         <div class="modal-body">
           <form action="?page=registrasi" method="post" enctype="multipart/form-data">
-          <div class="row">
+            <div class="row">
               <div class="col-6">
                 <div class="form-group">
                   <label>NISN</label>
@@ -183,22 +188,23 @@ include_once("koneksi.php");
                 </div>
               </div>
 
-            <div class="col-6">
-              <div class="form-group">
-                <label>Posisi</label>
-                <!-- <input class="form-control" type="text" name="no_wa" placeholder="Masukkan Nomor WhatsApp anda"> -->
-                <select name="status" id="" class="form-control">
-                  <option value="">Pilih</option>
-                  <option value="Bekerja">Bekerja</option>
-                  <option value="Studi">Studi</option>
-                </select>
+              <div class="col-6">
+                <div class="form-group">
+                  <label>Posisi</label>
+                  <!-- <input class="form-control" type="text" name="no_wa" placeholder="Masukkan Nomor WhatsApp anda"> -->
+                  <select name="status" id="" class="form-control">
+                    <option value="">Pilih</option>
+                    <option value="Bekerja">Bekerja</option>
+                    <option value="Studi">Studi</option>
+                  </select>
+                </div>
               </div>
             </div>
-          </div>
 
             <div class="form-group">
               <label>Nama Instansi</label>
-              <input class="form-control" type="text" name="nmInstansi" placeholder="Nama Instansi sekarang bekerja / studi">
+              <input class="form-control" type="text" name="nmInstansi"
+                placeholder="Nama Instansi sekarang bekerja / studi">
             </div>
             <div class="row">
               <div class="col-6">
@@ -214,7 +220,7 @@ include_once("koneksi.php");
                 </div>
               </div>
               <div class="col-6">
-                  <div class="form-group">
+                <div class="form-group">
                   <label>Mulai Sejak</label>
                   <select name="mulai" id="" class="form-control">
                     <option value="">Pilih</option>
@@ -222,7 +228,7 @@ include_once("koneksi.php");
                     <option value="Sesudah">Sesudah</option>
                     <option value="Tidak">Tidak</option>
                   </select>
-                  </div>
+                </div>
               </div>
             </div>
             <div class="row">
@@ -233,7 +239,7 @@ include_once("koneksi.php");
                 </div>
               </div>
               <div class="col-6">
-                  <div class="form-group">
+                <div class="form-group">
                   <label>Jenis Perusahaan</label>
                   <select name="jnsPerusahaan" id="" class="form-control">
                     <option value="">Pilih</option>
@@ -243,7 +249,7 @@ include_once("koneksi.php");
                     <option value="Nonprofil">Nonprofil</option>
                     <option value="Wiraswasta">Wiraswasta</option>
                   </select>
-                  </div>
+                </div>
               </div>
             </div>
             <div class="row">
@@ -254,18 +260,18 @@ include_once("koneksi.php");
                 </div>
               </div>
               <div class="col-6">
-                  <div class="form-group">
+                <div class="form-group">
                   <label>Tahun Lulus</label>
                   <select name="tahun" id="" class="form-control" placeholder="Masukkan Besaran Gaji Bagi yang bekerja">
-                <option value="">-Pilih-</option>
-                  <?php
+                    <option value="">-Pilih-</option>
+                    <?php
                     $dt = getYear();
                     foreach ($dt as $value) {
                       echo '<option value="'.$value['tahun'].'">'.$value['tahun'].'</option>';
                     }
                   ?>
-              </select>
-                  </div>
+                  </select>
+                </div>
               </div>
             </div>
             <div class="modal-footer">
@@ -287,17 +293,19 @@ include_once("koneksi.php");
         </div>
         <div class="modal-body">
           <form action="?page=registrasi" method="post" enctype="multipart/form-data">
-          <div class="row">
-            <div class="col-8">
+            <div class="row">
+              <div class="col-8">
                 <label>NISN</label>
-                <input class="form-control" type="text" name="udid" id="udid" placeholder="Masukkan NISN anda" onkeypress="getNisn()">
+                <input class="form-control" type="text" name="udid" id="udid" placeholder="Masukkan NISN anda"
+                  onkeypress="getNisn()">
+              </div>
+              <div class="col-4">
+                <label style="color: white">NISN</label>
+                <input type="button" class="form-control" value="Get Name"
+                  onclick="getUserName(document.getElementById('udid'));">
+              </div>
             </div>
-            <div class="col-4">
-            <label style="color: white">NISN</label>
-            <input type="button" class="form-control" value="Get Name" onclick="getUserName(document.getElementById('udid'));">
-            </div>
-          </div>
-         
+
             <div class="form-group">
               <label>Nama</label>
               <input class="form-control " type="text" name="nama" id="namaAlumni" readonly>
@@ -315,10 +323,10 @@ include_once("koneksi.php");
                 </div>
               </div>
               <div class="col-6">
-              <div class="form-group">
-              <label>Confirm Password</label>
-              <input class="form-control " type="password" name="rePassword" placeholder="Masukkan Password">
-            </div>
+                <div class="form-group">
+                  <label>Confirm Password</label>
+                  <input class="form-control " type="password" name="rePassword" placeholder="Masukkan Password">
+                </div>
               </div>
             </div>
             <div class="modal-footer">
@@ -332,7 +340,7 @@ include_once("koneksi.php");
   </div>
 
   <div class="modal fade" id="detailLoker" tabindex="-1" aria-labelledby="portfolioModal1" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content" style="font-family: Poppins">
         <div class="modal-body text-center pb-5">
           <div class="container">
@@ -358,10 +366,10 @@ include_once("koneksi.php");
                   </div>
                 </div>
                 <div class="row pb-2">
-                <div class="col-6">
+                  <div class="col-6">
                     <label>Kualifikasi</label>
-                    <textarea name="editKual" id="editKualLoker" style="white-space: pre-line" class="form-control" cols="50"
-                      rows="3" readonly></textarea><br>
+                    <textarea name="editKual" id="editKualLoker" style="white-space: pre-line" class="form-control"
+                      cols="50" rows="3" readonly></textarea><br>
                   </div>
 
                   <div class="col-6">
@@ -396,15 +404,15 @@ include_once("koneksi.php");
                   </div>
                 </div>
               </div>
-                <div class="modal-footer">
+              <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
-                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
   </div>
 
   <!-- Vendor JS Files -->

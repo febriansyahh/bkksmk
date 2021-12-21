@@ -367,7 +367,7 @@ function getHasilAll()
 {
   global $con;
   // $sql = "SELECT a.*, b.nm_perusahaan, b.nm_loker FROM `tb_kelulusan` a, `tb_loker` b WHERE a.id_loker=b.id_loker AND a.keterangan='Tampil'";
-  $sql = "SELECT a.*, b.nmLoker, b.perusahaan FROM hasil a, lowongan b WHERE a.idLoker=b.idLowongan AND a.status='2'";
+  $sql = "SELECT a.*, b.nmLoker, b.perusahaan, b.noLoker FROM hasil a, lowongan b WHERE a.idLoker=b.idLowongan AND a.status='2'";
   $query = mysqli_query($con, $sql);
   return $query;
 }

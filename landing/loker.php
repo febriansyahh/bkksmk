@@ -12,12 +12,14 @@
           data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] ."~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel']. "~" . $data['file']. "~" . $data['keterangan']. "~" . $data['sumber']. "~" .  date('d-m-Y', strtotime($data['tglInput'])). "~" . date('d-m-Y', strtotime($data['batas'])) . "~" . $data['kualifikasi'] . "~" . $data['persyaratan']?>"
           onclick="editDetLoker(this)">
           <div class="icon-box" data-aos="fade-up" data-aos-delay="100" style="height: 200px;">
-            <h4 class="title"><?php echo $data['nmLoker']?></h4>
+            <h4 class="title"><?php echo $data['perusahaan'] ." - ". $data['nmLoker']?></h4>
             <p class="description" style="font-family: Poppins; text-align: justify;">
               <?php echo $data['perusahaan'] ." membuka lowongan ". $data['nmLoker']
               ." untuk ". $data['jekel'] .". Batas pendaftaran tanggal ".  date('d-m-Y', strtotime($data['batas'])) ?>
               <span style="color:blue"> 
+              . Tap untuk lebih detail. 
               <?php 
+              echo '<br>';
               if($data['file'] != NULL){
               ?>
               <a href=<?php echo "file_data/loker/".$data['file']?>>Unduh</a></span></p>
