@@ -8,12 +8,13 @@ if (isset($_POST['submit'])) {
   }
 $pdf = new FPDF("L","cm","A4");
 
-$pdf->SetMargins(2,1,1);
+$pdf->SetMargins(2,2,2,2);
 $pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->SetFont('Times','B',11);
 $pdf->ln(1);
 $pdf->SetFont('Arial','B',13);
+$pdf->Image('logos.png', 14, 1, 2, 'C');
 $pdf->Cell(25.5,0.7,"Riwayat Pendaftaran Lowongan SMK MUHAMMADIYAH",0,10,'C');
 $pdf->ln(1);
 $pdf->SetFont('Arial','B',10);
