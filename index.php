@@ -147,7 +147,6 @@
             <p style="font-family: Poppins">
               <a href="https://www.kemdikbud.go.id/" target="_blank">Kemendikbud</a><br>
               <a href="https://kemenag.go.id/" target="_blank">Kemenag</a><br>
-              <a href="https://jurnal.umk.ac.id/" target="_blank">E-jurnal</a><br>
             </p>
           </div>
     
