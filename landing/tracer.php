@@ -71,7 +71,8 @@
 		var myChart = new Chart(ctx, {
 			type: 'bar',
 			data: {
-				labels: ["TAV", "TKR", "TKJ", "Jumlah Siswa"],
+				labels: ["TAV", "TKR", "TKJ"
+          ],
 				datasets: [{
 					label: 'Jumlah Siswa',
 					data: [

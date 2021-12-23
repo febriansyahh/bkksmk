@@ -94,13 +94,7 @@
               $tahunKetiga = $row[0];
               echo $tahunKetiga;
 					?>, 
-          <?php 
-					 $sql = "SELECT DISTINCT(thnLulus) AS year FROM alumni ORDER BY thnLulus DESC LIMIT 1 ";
-           $query = mysqli_query($con, $sql);
-           $row = mysqli_fetch_row($query);
-              $idDaftar = $row[0];
-              echo $idDaftar;
-					?>],
+          ],
 				datasets: [{
 					label: 'Jumlah Alumni',
 					data: [
@@ -116,22 +110,18 @@
 					$jumlah_fisip = mysqli_query($con,"SELECT * FROM alumni where thnLulus='$tahunKetiga'");
 					echo mysqli_num_rows($jumlah_fisip);
 					?>, 
-					<?php 
-					$jumlah_pertanian = mysqli_query($con,"SELECT * FROM siswa where jekel='Wanita'");
-					echo mysqli_num_rows($jumlah_pertanian);
-					?>
 					],
 					backgroundColor: [
 					'rgba(255, 99, 132, 0.2)',
 					'rgba(54, 162, 235, 0.2)',
-					'rgba(255, 206, 86, 0.2)',
-					'rgba(75, 192, 192, 0.2)'
+					'rgba(255, 206, 86, 0.2)'
+					// 'rgba(75, 192, 192, 0.2)'
 					],
 					borderColor: [
 					'rgba(255,99,132,1)',
 					'rgba(54, 162, 235, 1)',
-					'rgba(255, 206, 86, 1)',
-					'rgba(75, 192, 192, 1)'
+					'rgba(255, 206, 86, 1)'
+					// 'rgba(75, 192, 192, 1)'
 					],
 					borderWidth: 1
 				}]
