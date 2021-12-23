@@ -28,6 +28,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="http://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+	<script type="text/javascript" src="chartjs/Chart.js"></script>
 
   <!-- =======================================================
   * Template Name: BizLand - v3.5.0
@@ -65,6 +67,12 @@
               <li><a href="?page=test">Jadwal Seleksi</a></li>
               <li><a href="?page=hasiltable">Hasil Seleksi</a></li>
               <li><a href="?page=perusahaan">Perusahaan Terdaftar</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#"><span>Tracer</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="?page=alumni">Alumni</a></li>
+              <li><a href="?page=tracer">Statisik Alumni</a></li>
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="login.php">Login</a></li>
@@ -109,6 +117,12 @@
                                 break;
                             case 'perusahaan':
                                 include "landing/perTerdaftar.php";
+                                break;
+                            case 'alumni':
+                                include "landing/alumni.php";
+                                break;
+                            case 'tracer':
+                                include "landing/tracer.php";
                                 break;
                             case 'login':
                                 include "login.php";
@@ -187,6 +201,7 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
+  <script src="http://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
@@ -195,16 +210,15 @@
   <script src="assets/vendor/purecounter/purecounter.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script> -->
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script src="js/main.js"></script>
-
+  
 </body>
 
 </html>

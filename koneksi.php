@@ -282,7 +282,7 @@ function getRiwayatPerusahaan($id)
 function getAlumni()
 {
   global $con;
-  $sql = "SELECT a.idAlumni, b.nisn, a.nmInstansi, b.nama, c.nmJurusan, b.noTelp, a.thnLulus FROM alumni a, siswa b, jurusan c WHERE a.nisn=b.nisn AND b.jurusan=c.idJurusan ORDER BY a.thnLulus ASC ";
+  $sql = "SELECT a.idAlumni, b.nisn, a.nmInstansi, a.status,b.nama, c.nmJurusan, b.noTelp, a.thnLulus FROM alumni a, siswa b, jurusan c WHERE a.nisn=b.nisn AND b.jurusan=c.idJurusan ORDER BY a.thnLulus ASC ";
   $query = mysqli_query($con, $sql);
   return $query;
 }
