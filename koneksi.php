@@ -521,7 +521,7 @@ function getAlumniKerja()
 {
   global $con;
   // $sql ="SELECT b.nisn, a.nama_instansi, b.nama, b.jurusan, b.telp, b.tahun_lulus FROM tb_tracer a, tb_peserta b WHERE a.nisn=b.nisn AND a.status='Bekerja'";
-  $sql ="SELECT a.idAlumni, b.nisn, a.nmInstansi, b.nama, c.nmJurusan, b.noTelp, a.thnLulus FROM alumni a, siswa b, jurusan c WHERE a.nisn=b.nisn AND b.jurusan=c.idJurusan AND a.status='Bekerja'";
+  $sql ="SELECT a.idAlumni, b.nisn, a.nmInstansi, a.status, b.nama, c.nmJurusan, b.noTelp, a.thnLulus FROM alumni a, siswa b, jurusan c WHERE a.nisn=b.nisn AND b.jurusan=c.idJurusan AND a.status='Bekerja'";
   $query = mysqli_query($con, $sql);
   return $query;
 }
