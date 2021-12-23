@@ -71,34 +71,37 @@
 		var myChart = new Chart(ctx, {
 			type: 'bar',
 			data: {
-				labels: [
-          "2018", "2019", "2020"],
+				labels: ["TAV", "TKR", "TKJ", "Jumlah Siswa"],
 				datasets: [{
-					label: '',
+					label: 'Jumlah Siswa',
 					data: [
 					<?php 
-					$jumlah_teknik = mysqli_query($con,"SELECT * FROM alumni where `status` = 'Bekerja' AND thnLulus = '2018'");
+					$jumlah_teknik = mysqli_query($con,"SELECT a.idDaftar FROM pendaftaran a, siswa b, jurusan c WHERE a.idAnggota=b.idSiswa AND b.jurusan=c.idJurusan AND a.status='4' AND c.idJurusan='1'");
 					echo mysqli_num_rows($jumlah_teknik);
 					?>, 
 					<?php 
-					$jumlah_ekonomi = mysqli_query($con,"SELECT * FROM alumni where `status` = 'Bekerja' AND thnLulus = '2019' ");
+					$jumlah_ekonomi = mysqli_query($con,"SELECT a.idDaftar FROM pendaftaran a, siswa b, jurusan c WHERE a.idAnggota=b.idSiswa AND b.jurusan=c.idJurusan AND a.status='4' AND c.idJurusan='2'");
 					echo mysqli_num_rows($jumlah_ekonomi);
 					?>, 
 					<?php 
-					$jumlah_fisip = mysqli_query($con,"SELECT * FROM alumni where `status` = 'Bekerja' AND thnLulus = '2020' ");
+					$jumlah_fisip = mysqli_query($con,"SELECT a.idDaftar FROM pendaftaran a, siswa b, jurusan c WHERE a.idAnggota=b.idSiswa AND b.jurusan=c.idJurusan AND a.status='4' AND c.idJurusan='3'");
 					echo mysqli_num_rows($jumlah_fisip);
+					?>, 
+					<?php 
+					$jumlah_pertanian = mysqli_query($con,"SELECT * FROM siswa where jekel='Wanita'");
+					echo mysqli_num_rows($jumlah_pertanian);
 					?>
 					],
 					backgroundColor: [
 					'rgba(255, 99, 132, 0.2)',
 					'rgba(54, 162, 235, 0.2)',
-					// 'rgba(255, 206, 86, 0.2)',
+					'rgba(255, 206, 86, 0.2)',
 					'rgba(75, 192, 192, 0.2)'
 					],
 					borderColor: [
 					'rgba(255,99,132,1)',
 					'rgba(54, 162, 235, 1)',
-					// 'rgba(255, 206, 86, 1)',
+					'rgba(255, 206, 86, 1)',
 					'rgba(75, 192, 192, 1)'
 					],
 					borderWidth: 1

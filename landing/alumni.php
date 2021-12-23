@@ -102,22 +102,22 @@
               echo $idDaftar;
 					?>],
 				datasets: [{
-					label: '',
+					label: 'Jumlah Alumni',
 					data: [
 					<?php 
-					$jumlah_teknik = mysqli_query($con,"SELECT * FROM alumni where thnLulus = '$tahunPertama'");
+					$jumlah_teknik = mysqli_query($con,"SELECT * FROM alumni where thnLulus='$tahunPertama'");
 					echo mysqli_num_rows($jumlah_teknik);
 					?>, 
 					<?php 
-					$jumlah_ekonomi = mysqli_query($con,"SELECT * FROM alumni where thnLulus = '$tahunKedua'");
+					$jumlah_ekonomi = mysqli_query($con,"SELECT * FROM alumni where thnLulus='$tahunKedua'");
 					echo mysqli_num_rows($jumlah_ekonomi);
 					?>, 
 					<?php 
-					$jumlah_fisip = mysqli_query($con,"SELECT * FROM alumni where thnLulus = '$tahunKetiga'");
+					$jumlah_fisip = mysqli_query($con,"SELECT * FROM alumni where thnLulus='$tahunKetiga'");
 					echo mysqli_num_rows($jumlah_fisip);
 					?>, 
 					<?php 
-					$jumlah_pertanian = mysqli_query($con,"SELECT * FROM siswa where jekel = 'Wanita'");
+					$jumlah_pertanian = mysqli_query($con,"SELECT * FROM siswa where jekel='Wanita'");
 					echo mysqli_num_rows($jumlah_pertanian);
 					?>
 					],
