@@ -824,23 +824,59 @@ function deleteLowongan($id)
   }
 }
 
-// function validasiLowongan($id)
-// {
-//   global $con;
+function validasiLowongan($id)
+{
+  global $con;
 
-//   $sql_validasi = "UPDATE lowongan SET
-//         status = '2'
-//         WHERE idLowongan='$id'";
-//   $query_validasi = mysqli_query($con, $sql_validasi);
+  $sql_no = "SELECT noWa FROM anggota";
+  $query_no = mysqli_query($con, $sql_no);
 
-//   if ($query_validasi) {
-//     echo "<script>alert('Validasi Berhasil')</script>";
-//     echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=lowongan''>";
-//   } else {
-//     echo "<script>alert('Validasi Gagal')</script>";
-//     echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=lowongan''>";
-//   }
-// }
+  $cekNisn = "SELECT `perusahaan`, `nmLoker` FROM `lowongan` WHERE `idLowongan` = $id";
+  $query = mysqli_query($con, $cekNisn);
+  $row = mysqli_fetch_row($query);
+
+  $textt = "Kepada Anggota BKK, Terdapat lowongan baru $row[1] dari perusahaan $row[0]";
+  $rplc = str_replace(' ', '%20', $textt);
+
+  foreach ($query_no as $value) {
+    $curl = curl_init();
+
+    $noWa = $value['noWa'];
+
+    curl_setopt_array($curl, array(
+      CURLOPT_URL => "https://panel.rapiwha.com/send_message.php?apikey=BVHKMPMKEXZZ0O0GHO2T&number=$noWa&text=$rplc",
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_ENCODING => "",
+      CURLOPT_MAXREDIRS => 10,
+      CURLOPT_TIMEOUT => 30,
+      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+      CURLOPT_CUSTOMREQUEST => "GET",
+    ));
+
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+
+    curl_close($curl);
+
+    if ($err) {
+      echo "cURL Error #:" . $err;
+    } else {
+        $sql_validasi = "UPDATE lowongan SET
+        status = '2'
+        WHERE idLowongan='$id'";
+        
+        $query_validasi = mysqli_query($con, $sql_validasi);
+
+        if ($query_validasi) {
+          echo "<script>alert('Validasi Berhasil')</script>";
+          echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=lowongan''>";
+        } else {
+          echo "<script>alert('Validasi Gagal')</script>";
+          echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=lowongan''>";
+        }
+    }
+  }
+}
 
 function insertJadwal()
 {
@@ -1514,57 +1550,57 @@ function confirmUser()
   }
 }
 
-function broadcast()
-{
-  function validasiLowongan($id)
-  {
-    global $con;
+// function broadcast()
+// {
+//   function validasiLowongan($id)
+//   {
+//     global $con;
 
-    $sql_validasi = "UPDATE lowongan SET status = '2' WHERE idLowongan='$id'";
-      $query_validasi = mysqli_query($con, $sql_validasi);
+//     $sql_validasi = "UPDATE lowongan SET status = '2' WHERE idLowongan='$id'";
+//       $query_validasi = mysqli_query($con, $sql_validasi);
 
-      if ($query_validasi) {
-        echo "<script>alert('Validasi Berhasil')</script>";
-        echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=lowongan''>";
-      } else {
-        echo "<script>alert('Validasi Gagal')</script>";
-        echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=lowongan''>";
-      }
-  }
+//       if ($query_validasi) {
+//         echo "<script>alert('Validasi Berhasil')</script>";
+//         echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=lowongan''>";
+//       } else {
+//         echo "<script>alert('Validasi Gagal')</script>";
+//         echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=lowongan''>";
+//       }
+//   }
 
-  global $con;
-  $sql_no = "SELECT noWa FROM anggota";
-  $query_no = mysqli_query($con, $sql_no);
-  define('BOT_TOKENS', 'BVHKMPMKEXZZ0O0GHO2T');
-  // 1860399808:AAGIDR6LzARUQn5luzkwu3yonZg5ZOiBXoc
-  $id_teles = [];
-  foreach($query_no as $item){
-    array_push($id_teles, $item['noWa']);
-  }
-  function wa(){
-  $curl = curl_init();
-  $c = [];
-  curl_setopt_array($curl, array(
-    CURLOPT_URL => "https://panel.rapiwha.com/send_message.php?apikey=BVHKMPMKEXZZ0O0GHO2T&number=".$value."&text=MyText",
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_ENCODING => "",
-    CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 30,
-    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-    CURLOPT_CUSTOMREQUEST => "GET",
-  ));
-      $response = curl_exec($curl);
-      $err = curl_error($curl);
+//   global $con;
+//   $sql_no = "SELECT noWa FROM anggota";
+//   $query_no = mysqli_query($con, $sql_no);
+//   define('BOT_TOKENS', 'BVHKMPMKEXZZ0O0GHO2T');
+//   // 1860399808:AAGIDR6LzARUQn5luzkwu3yonZg5ZOiBXoc
+//   $id_teles = [];
+//   foreach($query_no as $item){
+//     array_push($id_teles, $item['noWa']);
+//   }
+//   function wa(){
+//   $curl = curl_init();
+//   $c = [];
+//   curl_setopt_array($curl, array(
+//     CURLOPT_URL => "https://panel.rapiwha.com/send_message.php?apikey=BVHKMPMKEXZZ0O0GHO2T&number=".$value."&text=MyText",
+//     CURLOPT_RETURNTRANSFER => true,
+//     CURLOPT_ENCODING => "",
+//     CURLOPT_MAXREDIRS => 10,
+//     CURLOPT_TIMEOUT => 30,
+//     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+//     CURLOPT_CUSTOMREQUEST => "GET",
+//   ));
+//       $response = curl_exec($curl);
+//       $err = curl_error($curl);
       
-      curl_close($curl);
+//       curl_close($curl);
       
-      if ($err) {
-        echo "cURL Error #:" . $err;
-      } else {
-        echo $response;
-      }
-  }
-}
+//       if ($err) {
+//         echo "cURL Error #:" . $err;
+//       } else {
+//         echo $response;
+//       }
+//   }
+// }
 // function broadcast()
 // {
 //   function confirmProg($id)
