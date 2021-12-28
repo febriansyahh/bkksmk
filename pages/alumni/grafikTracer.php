@@ -1,37 +1,79 @@
-<?php
-        include_once("koneksi.php");
+<?php	
+include_once("koneksi.php");
+    ?>
+<div class="form-group">
+  <br>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Grafik Data Alumni BKK Bekerja 3 Tahun Terakhir</h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <table id="example2" class="table table-bordered table-hover">
+              <thead>
+                <center>
+                  <tr>
+                    <th>No</th>
+                    <th>NISN</th>
+                    <th>Nama </th>
+                    <th>Jurusan</th>
+                    <th>Instansi</th>
+                    <th>Tahun Lulus</th>
+                    <th>Telp</th>
+                  </tr>
+                </center>
+              </thead>
+              <tbody>
+                <?php
+            $a = getAlumni();
+            $no = 1;
+            foreach ($a as $key => $data) {
+                ?>
+                <tr>
+                  <td><?php echo $no; ?></td>
+                  <td><?php echo $data['nisn']; ?></td>
+                  <td><?php echo $data['nama']; ?></td>
+                  <td><?php echo $data['nmJurusan']; ?></td>
+                  <td><?php echo $data['nmInstansi']; ?></td>
+                  <td><?php echo $data['thnLulus']; ?></td>
+                  <td><?php echo $data['noTelp']; ?></td>
+                </tr>
+                <?php
+            $no++;
+            }
         ?>
-<body>
-  <section style="font-family: Poppins">
-    <div class="container">
-      <div class="span4">
-        <h5>Info<strong> Penerimaan Alumni Bekerja</strong></h5>
+
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </div>
+
+  <center>
+    <h5 style="font-family: Poppins">Grafik Perkembangan Alumni Bekerja</h5>
+    <br>
+    <div class="row" style="width:auto; padding-left: 2%;">
+      <div style="width: 500px;height: 500px">
+        <canvas id="myChart"></canvas>
+      </div>
+    
+      <div style="width: 500px;height: 500px">
+        <canvas id="myChart2"></canvas>
       </div>
     </div>
-    <br>
-    <center>
-    <h5>Grafik Perkembangan <br>Alumni Bekerja</h5>
-  <div style="width: 700px;height: 500px">
-		<canvas id="myChart"></canvas>
-	</div>
-  <h5>Grafik Perkembangan <br>Alumni Bekerja Diluar BKK</h5>
-  <div style="width: 700px;height: 300px">
-		<canvas id="myChart2"></canvas>
-	</div>
   </center>
-   </section>
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/purecounter/purecounter.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  </body>
+  <script src="js/main.js"></script>
   <script>
 		var ctx = document.getElementById("myChart").getContext('2d');
 		var myChart = new Chart(ctx, {
@@ -178,8 +220,5 @@
 			}
 		});
 	</script>
-  <!-- SELECT * FROM pendaftaran a, siswa b, alumni c WHERE a.idAnggota=b.idSiswa AND c.nisn=b.nisn AND a.status='4' AND c.thnLulus='' -->
-  <!-- SELECT b.nisn, c.nama FROM pendaftaran a, anggota b, siswa c WHERE a.idAnggota=b.idAnggota AND b.nisn=c.nisn -->
-</body>
 
 </html>

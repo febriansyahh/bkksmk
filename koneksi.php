@@ -282,7 +282,7 @@ function getRiwayatPerusahaan($id)
 function getAlumni()
 {
   global $con;
-  $sql = "SELECT a.idAlumni, b.nisn, a.nmInstansi, a.status,b.nama, c.nmJurusan, b.noTelp, a.thnLulus FROM alumni a, siswa b, jurusan c WHERE a.nisn=b.nisn AND b.jurusan=c.idJurusan ORDER BY a.thnLulus ASC ";
+  $sql = "SELECT a.idAlumni, b.nisn, a.nmInstansi, a.status, b.nama, c.nmJurusan, b.noTelp, a.thnLulus FROM alumni a, siswa b, jurusan c WHERE a.nisn=b.nisn AND b.jurusan=c.idJurusan ORDER BY a.thnLulus ASC ";
   $query = mysqli_query($con, $sql);
   return $query;
 }
@@ -441,19 +441,19 @@ function MaxIdProgram()
 {
   global $con;
 
-  $carikode = mysqli_query($con, "SELECT MAX(idLowongan) FROM lowongan");
+  $carikode = mysqli_query($con, "SELECT MAX(noLoker) FROM lowongan");
   $datakode = mysqli_fetch_array($carikode);
-  // echo 'AAA';
+  $tahun = date ('Y');
   if ($datakode) {
     // $nilaikode = substr($datakode[0], 3);
-    $tahun = date ('Y');
-    $nilaikode = substr($datakode[0],3);
+    $nilaikode = substr($datakode[0],8);
     $kode = (int) $nilaikode;
     $kode = $kode + 1;
-    // $data_username."/".$tahun."/LK/".str_pad($kode,4, "0", STR_PAD_LEFT)
-    $hasilkode = "LK" ."-". $tahun . "-" . str_pad($kode, 4, "0", STR_PAD_LEFT);
+
+    // $hasilkode = "PLDN" . str_pad($kode, 2, "0", STR_PAD_LEFT);
+    $hasilkode = "LK-". $tahun . "-" . str_pad($kode, 3, "0", STR_PAD_LEFT);
   } else {
-    $hasilkode = "LK";
+    $hasilkode = "LK-". $tahun . "-001";
   }
 
   return $hasilkode;
@@ -1549,104 +1549,3 @@ function confirmUser()
     }
   }
 }
-
-// function broadcast()
-// {
-//   function validasiLowongan($id)
-//   {
-//     global $con;
-
-//     $sql_validasi = "UPDATE lowongan SET status = '2' WHERE idLowongan='$id'";
-//       $query_validasi = mysqli_query($con, $sql_validasi);
-
-//       if ($query_validasi) {
-//         echo "<script>alert('Validasi Berhasil')</script>";
-//         echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=lowongan''>";
-//       } else {
-//         echo "<script>alert('Validasi Gagal')</script>";
-//         echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=lowongan''>";
-//       }
-//   }
-
-//   global $con;
-//   $sql_no = "SELECT noWa FROM anggota";
-//   $query_no = mysqli_query($con, $sql_no);
-//   define('BOT_TOKENS', 'BVHKMPMKEXZZ0O0GHO2T');
-//   // 1860399808:AAGIDR6LzARUQn5luzkwu3yonZg5ZOiBXoc
-//   $id_teles = [];
-//   foreach($query_no as $item){
-//     array_push($id_teles, $item['noWa']);
-//   }
-//   function wa(){
-//   $curl = curl_init();
-//   $c = [];
-//   curl_setopt_array($curl, array(
-//     CURLOPT_URL => "https://panel.rapiwha.com/send_message.php?apikey=BVHKMPMKEXZZ0O0GHO2T&number=".$value."&text=MyText",
-//     CURLOPT_RETURNTRANSFER => true,
-//     CURLOPT_ENCODING => "",
-//     CURLOPT_MAXREDIRS => 10,
-//     CURLOPT_TIMEOUT => 30,
-//     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-//     CURLOPT_CUSTOMREQUEST => "GET",
-//   ));
-//       $response = curl_exec($curl);
-//       $err = curl_error($curl);
-      
-//       curl_close($curl);
-      
-//       if ($err) {
-//         echo "cURL Error #:" . $err;
-//       } else {
-//         echo $response;
-//       }
-//   }
-// }
-// function broadcast()
-// {
-//   function confirmProg($id)
-//   {
-//     global $con;
-
-//     $sql_arsip = "UPDATE program SET status = 'P' where id = '$id'";
-//     $query_arsip = mysqli_query($con, $sql_arsip);
-
-//         if ($query_arsip) {
-//             echo "<script>alert('Konfirmasi Berhasil')</script>";
-//             echo "<meta http-equiv='refresh' content='0; url=?page=progAcc'>";
-//         }else{
-//             echo "<script>alert('konfirmasi Gagal')</script>";
-//             echo "<meta http-equiv='refresh' content='0; url=?page=progAcc'>";
-//         }
-//   }
-
-//   global $con;
-//   $sql_no = "SELECT noWa FROM anggota";
-//   $query_no = mysqli_query($con, $sql_no);
-//   define('BOT_TOKENS', '1860399808:AAGIDR6LzARUQn5luzkwu3yonZg5ZOiBXoc');
-//   // 1860399808:AAGIDR6LzARUQn5luzkwu3yonZg5ZOiBXoc
-//   $id_teles = [];
-//   foreach($query_no as $item){
-//     array_push($id_teles, $item['noWa']);
-//   }
-
-//    function kirimTelegrams($pesan, $ar) {
-//       $pesan = json_encode($pesan);
-//       $c = [];
-//       foreach ($ar as $value) {
-//         $API = "https://api.telegram.org/bot".BOT_TOKENS."/sendmessage?chat_id=".$value."&text=$pesan";
-//         array_push($c, $API);
-//       }
-
-//       foreach ($c as $value) {
-//         $ch = curl_init();
-//         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-//         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-//         // var_dump($value);
-//         curl_setopt($ch, CURLOPT_URL, $value);
-//         curl_exec($ch);
-//         curl_close($ch);
-//       }
-//   }
-   
-//   kirimTelegrams("Halo Para Donatur yang terhormat. Peduliku mempunyai program donasi terbaru yang telah dipublish. Semoga ada waktu untuk mengecek donasi, Terimakasih", $id_teles);
-// }

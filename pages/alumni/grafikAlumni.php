@@ -1,33 +1,71 @@
-<?php
-        include_once("koneksi.php");
-?>
-<body>
-  <section style="font-family: Poppins">
-    <div class="container">
-      <div class="span4">
-        <h5>Info<strong> Hasil Penerimaan Lowongan</strong></h5>
+<?php	
+include_once("koneksi.php");
+    ?>
+<div class="form-group">
+  <br>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Grafik Data Alumni Bekerja 3 Tahun Terakhir</h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <table id="example2" class="table table-bordered table-hover">
+              <thead>
+                <center>
+                  <tr>
+                    <th>No</th>
+                    <th>NISN</th>
+                    <th>Nama </th>
+                    <th>Jurusan</th>
+                    <th>Instansi</th>
+                    <th>Tahun Lulus</th>
+                    <th>Telp</th>
+                  </tr>
+                </center>
+              </thead>
+              <tbody>
+                <?php
+            $a = getAlumni();
+            $no = 1;
+            foreach ($a as $key => $data) {
+                ?>
+                <tr>
+                  <td><?php echo $no; ?></td>
+                  <td><?php echo $data['nisn']; ?></td>
+                  <td><?php echo $data['nama']; ?></td>
+                  <td><?php echo $data['nmJurusan']; ?></td>
+                  <td><?php echo $data['nmInstansi']; ?></td>
+                  <td><?php echo $data['thnLulus']; ?></td>
+                  <td><?php echo $data['noTelp']; ?></td>
+                </tr>
+                <?php
+            $no++;
+            }
+        ?>
+
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
       </div>
+      <!-- /.col -->
     </div>
-    <br><br><br>
-    <center>
-    <h3>Grafik Perkembangan Alumni</h3>
-  <div style="width: 700px;height: 700px">
+    <!-- /.row -->
+  </div>
+
+  <center>
+    <h3 style="font-family: Poppins">Grafik Perkembangan Alumni</h3>
+  <div style="width: 700px;height: 300px">
 		<canvas id="myChart"></canvas>
 	</div>
   </center>
-   </section>
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/purecounter/purecounter.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  </body>
+  <script src="js/main.js"></script>
   <script>
 		var ctx = document.getElementById("myChart").getContext('2d');
 		var myChart = new Chart(ctx, {
@@ -99,19 +137,5 @@
 			}
 		});
 	</script>
-   <!-- labels: [
-          <?php 
-					$tahunPertama = mysqli_query($con,"SELECT DISTINCT(thnLulus) AS year FROM alumni ORDER BY thnLulus DESC LIMIT LIMIT 1,999999");
-					echo mysqli_num_rows($tahunPertama);
-					?>, 
-          <?php 
-					$tahunKedua = mysqli_query($con,"SELECT DISTINCT(thnLulus) AS year FROM alumni ORDER BY thnLulus DESC LIMIT LIMIT 2,999999");
-					echo mysqli_num_rows($tahunKedua);
-					?>,
-          <?php 
-					$tahunKetiga = mysqli_query($con,"SELECT DISTINCT(thnLulus) AS year FROM alumni GROUP BY thnLulus ORDER BY thnLulus DESC LIMIT 2,999999");
-					echo mysqli_num_rows($tahunKetiga);
-					?>], -->
-</body>
 
 </html>

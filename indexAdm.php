@@ -53,6 +53,8 @@ if (isset($_SESSION['ses_username']) == "") {
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+	<script type="text/javascript" src="chartjs/Chart.js"></script>
+
 
 </head>
 
@@ -375,7 +377,7 @@ if (isset($_SESSION['ses_username']) == "") {
                 </li>
             <li class="nav-item">
               <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-tree"></i>
+                <i class="nav-icon fas fa-info"></i>
                 <p>
                   Informasi
                   <i class="fas fa-angle-left right"></i>
@@ -392,6 +394,29 @@ if (isset($_SESSION['ses_username']) == "") {
                   <a href="?pages=hasil" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Hasil Kelulusan</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                  Informasi Alumni
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="?pages=grafikAlumni" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Statistik Lulusan</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="?pages=grafikTracer" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Statistik Alumni Bekerja</p>
                   </a>
                 </li>
               </ul>
@@ -751,6 +776,13 @@ if (isset($_SESSION['ses_username']) == "") {
                               break;
                             case 'userAksi':
                               include "pages/user/userAksi.php";
+                              break;
+
+                            case 'grafikAlumni':
+                              include "pages/alumni/grafikAlumni.php";
+                              break;
+                            case 'grafikTracer':
+                              include "pages/alumni/grafikTracer.php";
                               break;
 
                             case 'reportperusahaan' :
