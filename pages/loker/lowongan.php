@@ -359,6 +359,7 @@ $maxID = MaxIdProgram();
                   <option value="Pria">Pria</option>
                   <option value="Wanita">Wanita</option>
                   <option value="Keduanya">Pria / Wanita</option>
+                  <!-- <option value="Pria/Wanita">Pria / Wanita</option> -->
                 </select><br>
               </div>
 
@@ -433,6 +434,7 @@ $maxID = MaxIdProgram();
                   <option value="Pria">Pria</option>
                   <option value="Wanita">Wanita</option>
                   <option value="Keduanya">Pria / Wanita</option>
+                  <!-- <option value="Pria/Wanita">Pria / Wanita</option> -->
                 </select><br>
               </div>
               <div class="col-6">
