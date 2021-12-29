@@ -23,10 +23,10 @@ if (isset($_POST['btnLogin'])) LoginUser();
         <div class="container">
             <div class="card login-card">
                 <div class="row no-gutters">
-                    <div class="col-md-5">
+                    <div class="col-md-6">
                         <img src="assets/img/login.jpg" alt="login" class="login-card-img">
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-md-6">
                         <div class="card-body">
                             <div class="brand-wrapper">
                                 <img src="assets/img/loginbkk.png" alt="logo" class="logo">
