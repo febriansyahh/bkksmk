@@ -1079,12 +1079,7 @@ function uploadBerkas($namePost, $nmLoker)
   $name = $_SESSION["ses_nama"];
   $namaPengirim = str_replace(' ', '_', $name);
   $namaLowongan = str_replace(' ', '_', $nmLoker);
-  // print_r($_FILES[$namePost]);
-  // echo '<br>';
-  // echo $namaPengirim;
-  // echo '<br>';
-  // echo $nmLoker;
-  // die();
+  
   $date = date('Y-m-d');
   $ekstensi_diperbolehkan  = array('jpg', 'png', 'jpeg', 'pdf');
   $nama = $_FILES[$namePost]['name'];
@@ -1116,22 +1111,29 @@ function insertDaftar($uploadFiles)
 {
   global $con;
   $tgl = date('Y-m-d H:i:s');
-  $sql_insert = "INSERT INTO pendaftaran (`idLoker`, `idAnggota`, `berkas`, `status`, `tglDaftar`) VALUES (
-    '" . $_POST['idLoker'] . "',
-    '" . $_POST['idDaftar'] . "',
-    '" . $uploadFiles . "',
-    '1',
-    '" . $tgl . "')";
-  $query_insert = mysqli_query($con, $sql_insert) or die(mysqli_connect_error());
-
-  
-  if ($query_insert) {
-    echo "<script>alert('Pendaftaran Berhasil')</script>";
-    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=history'>";
-  } else {
-    echo "<script>alert('Pendaftaran Gagal')</script>";
-    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=lowongan'>";
-  }
+  $sql_cek = "SELECT idDaftar FROM pendaftaran WHERE idLoker ='" . $_POST['idLoker'] . "' AND idAnggota = '" . $_POST['idDaftar'] . "'";
+  $query = mysqli_query($con, $sql_cek);
+  $row = mysqli_fetch_row($query);
+  $idDaftar = $row[0];
+  if($idDaftar == NULL){
+            $sql_insert = "INSERT INTO pendaftaran (`idLoker`, `idAnggota`, `berkas`, `status`, `tglDaftar`) VALUES (
+              '" . $_POST['idLoker'] . "',
+              '" . $_POST['idDaftar'] . "',
+              '" . $uploadFiles . "',
+              '1',
+              '" . $tgl . "')";
+            $query_insert = mysqli_query($con, $sql_insert) or die(mysqli_connect_error());
+            if ($query_insert) {
+              echo "<script>alert('Pendaftaran Berhasil')</script>";
+              echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=history'>";
+            } else {
+              echo "<script>alert('Pendaftaran Gagal')</script>";
+              echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=lowongan'>";
+            }
+    }else{
+      echo "<script>alert('Maaf Anda telah melakukan pendaftaran sebelumnya, Tunggu Informasi lebih lanjut !!')</script>";
+      echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=lowongan>";
+    }
 }
 
 function updateDaftar($upload)
@@ -1142,7 +1144,6 @@ function updateDaftar($upload)
   $row = mysqli_fetch_row($query);
     $idDaftar = $row[0];
     $berkas = $row[1];
-    die();
     unlink('file_data/pendaftaran/' . $berkas);
   $sql_ubah = "UPDATE pendaftaran SET
         idLoker ='" . $_POST['idLoker'] . "',
