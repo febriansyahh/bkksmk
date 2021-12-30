@@ -123,6 +123,7 @@
       <!-- /.row -->
       <!-- Main row -->
       <center>
+      <div class="card" style="border-radius: 15px; box-shadow: 0 5px 5px 0 rgba(128, 123, 123, 0.43)">
         <div class="text-center my-5">
           <img src="dist/img/muh.png" width="100" height="100"><br><br>
           <h3 class="display fw-bolder black-white mb-2" style="font-family: Poppins">SMK Muhammadiyah Kudus
@@ -131,11 +132,8 @@
           <p class="lead text-black-50 mb-4" style="font-family: Poppins"><b>Berprestasi, Berkarakter, Unggul Dalam IT
               yang Dilandasi Iman dan
               Taqwa</b></p>
-          <!-- <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-                            <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">Get Started</a>
-                            <a class="btn btn-outline-light btn-lg px-4" href="#!">Learn More</a>
-                        </div> -->
         </div>
+      </div>
       </center>
     </div><!-- /.container-fluid -->
   </section>

@@ -35,7 +35,7 @@ if (isset($_POST['btnLogin'])) LoginUser();
                             <form action="" method="post">
                                 <div class="form-group">
                                     <label for="email" class="sr-only">Username</label>
-                                    <input type="text" class="form-control" name="txtusm" placeholder="Username">
+                                    <input type="text" class="form-control" name="txtusm" placeholder="Username Login">
                                 </div>
                                 <div class="form-group mb-4">
                                     <label for="password" class="sr-only">Password</label>
@@ -47,9 +47,12 @@ if (isset($_POST['btnLogin'])) LoginUser();
                             <a href="index.php" class="forgot-password-link">Back to home page</a>
                             <p class="login-card-footer-text">Don't have an account? <a data-toggle="modal" data-target="#register" class="btn-get-started scrollto">Register here</a>
                             </p>
-                            <nav class="login-card-footer-nav">
+                            <!-- <nav class="login-card-footer-nav">
                                 <a href="#!">Terms of use.</a>
                                 <a href="#!">Privacy policy</a>
+                            </nav> -->
+                            <nav class="login-card-footer-nav">
+                                <a href="#!">Copyright IT Support SMK Muhammadiyah.</a>
                             </nav>
                         </div>
                     </div>
@@ -65,7 +68,7 @@ if (isset($_POST['btnLogin'])) LoginUser();
           <h6 class="modal-title">Register Anggota</h6>
         </div>
         <div class="modal-body">
-          <form action="?page=registrasi" method="post" enctype="multipart/form-data">
+          <form action="landing/registrasi_aksi.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
               <label>NISN</label>
               <input class="form-control" type="text" name="nisn" placeholder="Masukkan NISN anda">
