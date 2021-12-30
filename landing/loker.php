@@ -37,7 +37,7 @@
     </div>
   </section>
   <div class="modal fade" id="detailLoker" tabindex="-1" aria-labelledby="portfolioModal1" aria-hidden="true">
-    <div class="modal-dialog" style="font-family: Poppins">
+    <div class="modal-dialog modal-lg" style="font-family: Poppins">
       <div class="modal-content">
         <div class="modal-body pb-5">
           <div class="container">
