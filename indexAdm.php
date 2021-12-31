@@ -823,7 +823,7 @@ if (isset($_SESSION['ses_username']) == "") {
           <div class="modal-body">Pilih Log Out Jika ingin keluar.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.php">Logout</a>
+            <a class="btn btn-primary" href="signin.php">Logout</a>
           </div>
         </div>
       </div>
