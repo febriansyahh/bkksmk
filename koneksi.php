@@ -466,7 +466,6 @@ function MaxIdProgram()
 function ArsipOto()
 {
   global $con;
-  // $sql = "UPDATE tb_loker SET status='Arsip' WHERE batas=curdate() ";
   $sql = "UPDATE lowongan SET status='3' WHERE batas=curdate() ";
   $query = mysqli_query($con, $sql);
 
@@ -476,8 +475,6 @@ function ArsipOto()
 function getAllPerusahaan()
 {
   global $con;
-
-  // $sql = "SELECT * FROM `user` WHERE level='Perusahaan / CV' and status='Aktif' ";
   $sql = "SELECT a.* FROM perusahaan a, user b WHERE b.idDaftar=a.idPerusahaan AND idLevel='4' AND b.status='1'";
   // $sql = "SELECT a.* FROM data_perusahaan a, user b WHERE b.idDaftar=a.idPerusahaan AND idLevel='4' AND b.status='1'";
   $query = mysqli_query($con, $sql);
