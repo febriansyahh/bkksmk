@@ -79,6 +79,7 @@ function registrasiData()
           echo "<meta http-equiv='refresh' content='0; url=index.php?page=beranda>";
         }else
             {
+              // $sql_insert = "INSERT INTO data_anggota (nisn, noWa, tglDaftar) VALUES (
               $sql_insert = "INSERT INTO anggota (nisn, noWa, tglDaftar) VALUES (
                 '" . $nisn . "',
                 '" . $_POST['no_wa'] . "',
@@ -112,6 +113,7 @@ function registrasiPer()
   global $con;
   $cekIdDaftar = "SELECT `AUTO_INCREMENT` as idDaftar FROM INFORMATION_SCHEMA.TABLES
   WHERE TABLE_SCHEMA = 'bkkmuh' AND TABLE_NAME = 'perusahaan' ";
+  // WHERE TABLE_SCHEMA = 'bkkmuh' AND TABLE_NAME = 'data_perusahaan' ";
   $query = mysqli_query($con, $cekIdDaftar);
   $row = mysqli_fetch_row($query);
     $idDaftar = $row[0];
@@ -131,6 +133,7 @@ function registrasiPer()
     
   }else
       {
+        // $sql_insertPer = "INSERT INTO data_perusahaan (nmPerusahaan, email, stsPerusahaan, noTelp, tglDaftar) VALUES (
         $sql_insertPer = "INSERT INTO perusahaan (nmPerusahaan, email, stsPerusahaan, noTelp, tglDaftar) VALUES (
           '" . $_POST['namaper'] . "',
           '" . $_POST['email'] . "',
@@ -149,10 +152,6 @@ function registrasiPer()
     
           $query_insertPer = mysqli_query($con, $sql_insertPer) or die(mysqli_connect_error());
           $query_insert = mysqli_query($con, $sql_insert) or die(mysqli_connect_error());
-          // echo'<pre>';
-          // print_r($query_insert);
-          // echo'<pre>';
-          // die();
           if ($query_insertPer) {
             echo "<script>alert('Simpan Berhasil')</script>";
             echo "<meta http-equiv='refresh' content='0; url=../login.php'>";
@@ -211,6 +210,7 @@ function getYear()
 function getYearPerusahaan()
 {
   global $con;
+  // $sql = "SELECT DISTINCT YEAR(tglKerjasama) as tahun FROM data_perusahaan ORDER BY tglKerjasama ASC ";
   $sql = "SELECT DISTINCT YEAR(tglKerjasama) as tahun FROM perusahaan ORDER BY tglKerjasama ASC ";
   $query = mysqli_query($con, $sql);
 
@@ -248,6 +248,7 @@ function getRiwayat()
 {
   global $con;
   $sql = "SELECT a.idDaftar, b.nisn, b.nama, d.nmJurusan, c.perusahaan, c.nmLoker, a.status FROM pendaftaran a, siswa b, lowongan c, jurusan d WHERE a.idAnggota=b.idSiswa AND a.idLoker=c.idLowongan AND b.jurusan=d.idJurusan ORDER BY c.idLowongan ASC";
+  // $sql = "SELECT a.idDaftar, b.nisn, b.nama, d.nmJurusan, c.perusahaan, c.nmLoker, a.status FROM pendaftaran_loker a, siswa b, lowongan c, jurusan d WHERE a.idAnggota=b.idSiswa AND a.idLoker=c.idLowongan AND b.jurusan=d.idJurusan ORDER BY c.idLowongan ASC";
   $query = mysqli_query($con, $sql);
 
   return $query;
@@ -257,6 +258,7 @@ function getRiwayatView()
 {
   global $con;
   $sql = "SELECT a.idDaftar, b.nisn, b.nama, d.nmJurusan, c.perusahaan, c.nmLoker, a.status FROM pendaftaran a, siswa b, lowongan c, jurusan d WHERE a.idAnggota=b.idSiswa AND a.idLoker=c.idLowongan AND b.jurusan=d.idJurusan AND c.status ='3' ORDER BY c.idLowongan ASC";
+  // $sql = "SELECT a.idDaftar, b.nisn, b.nama, d.nmJurusan, c.perusahaan, c.nmLoker, a.status FROM pendaftaran_loker a, siswa b, lowongan c, jurusan d WHERE a.idAnggota=b.idSiswa AND a.idLoker=c.idLowongan AND b.jurusan=d.idJurusan AND c.status ='3' ORDER BY c.idLowongan ASC";
   $query = mysqli_query($con, $sql);
 
   return $query;
@@ -320,6 +322,7 @@ function getHistoryAnggota($id)
 {
   global $con;
   $sql = "SELECT a.idDaftar, a.berkas, a.status, a.tglDaftar, b.nisn, b.nama, c.perusahaan, c.nmLoker FROM `pendaftaran` `a` JOIN `siswa` `b` JOIN `lowongan` `c` ON a.idAnggota=b.idSiswa AND a.idLoker=c.idLowongan WHERE a.idAnggota='$id'";
+  // $sql = "SELECT a.idDaftar, a.berkas, a.status, a.tglDaftar, b.nisn, b.nama, c.perusahaan, c.nmLoker FROM `pendaftaran_loker` `a` JOIN `siswa` `b` JOIN `lowongan` `c` ON a.idAnggota=b.idSiswa AND a.idLoker=c.idLowongan WHERE a.idAnggota='$id'";
   $query = mysqli_query($con, $sql);
 
   return $query;
@@ -349,6 +352,7 @@ function getDateTestAnggota($id)
   global $con;
   // $sql = "SELECT a.perusahaan, a.nmLoker, c.* FROM lowongan a, pendaftaran b, jadwal c WHERE b.idLoker=a.idLowongan AND c.idLoker=a.idLowongan AND c.tglSeleksi <= CURRENT_DATE() AND b.idAnggota='$id'";
   $sql = "SELECT a.perusahaan, a.nmLoker, c.* FROM lowongan a, pendaftaran b, jadwal c WHERE b.idLoker=a.idLowongan AND c.idLoker=a.idLowongan AND c.tglSeleksi >= CURRENT_DATE() AND b.idAnggota='$id'";
+  // $sql = "SELECT a.perusahaan, a.nmLoker, c.* FROM lowongan a, pendaftaran_loker b, jadwal c WHERE b.idLoker=a.idLowongan AND c.idLoker=a.idLowongan AND c.tglSeleksi >= CURRENT_DATE() AND b.idAnggota='$id'";
   $query = mysqli_query($con, $sql);
 
   return $query;
@@ -475,6 +479,7 @@ function getAllPerusahaan()
 
   // $sql = "SELECT * FROM `user` WHERE level='Perusahaan / CV' and status='Aktif' ";
   $sql = "SELECT a.* FROM perusahaan a, user b WHERE b.idDaftar=a.idPerusahaan AND idLevel='4' AND b.status='1'";
+  // $sql = "SELECT a.* FROM data_perusahaan a, user b WHERE b.idDaftar=a.idPerusahaan AND idLevel='4' AND b.status='1'";
   $query = mysqli_query($con, $sql);
 
   return $query;
@@ -530,6 +535,7 @@ function getPendaftar()
 {
   global $con;
   $sql = "SELECT a.*, b.perusahaan, b.nmLoker, c.nisn, c.nama, d.nmJurusan FROM pendaftaran a, lowongan b, siswa c, jurusan d WHERE a.idLoker=b.idLowongan AND a.idAnggota=c.idSiswa AND c.jurusan=d.idJurusan";
+  // $sql = "SELECT a.*, b.perusahaan, b.nmLoker, c.nisn, c.nama, d.nmJurusan FROM pendaftaran_loker a, lowongan b, siswa c, jurusan d WHERE a.idLoker=b.idLowongan AND a.idAnggota=c.idSiswa AND c.jurusan=d.idJurusan";
   $query = mysqli_query($con, $sql);
   return $query;
 }
@@ -538,6 +544,7 @@ function getPendaftarPer($id)
 {
   global $con;
   $sql = "SELECT a.*, b.perusahaan, b.nmLoker, c.nisn, c.nama, d.nmJurusan FROM pendaftaran a, lowongan b, siswa c, jurusan d WHERE a.idLoker=b.idLowongan AND a.idAnggota=c.idSiswa AND c.jurusan=d.idJurusan AND b.usrInput = '$id' ";
+  // $sql = "SELECT a.*, b.perusahaan, b.nmLoker, c.nisn, c.nama, d.nmJurusan FROM pendaftaran_loker a, lowongan b, siswa c, jurusan d WHERE a.idLoker=b.idLowongan AND a.idAnggota=c.idSiswa AND c.jurusan=d.idJurusan AND b.usrInput = '$id' ";
   $query = mysqli_query($con, $sql);
   return $query;
 }
@@ -548,6 +555,7 @@ function getPendaftarHistory()
   // $sql ="SELECT a.nisn, b.nama, b.jurusan, c.nm_perusahaan, c.nm_loker, a.status FROM tb_pendaftaran a, tb_peserta b, tb_loker c WHERE a.nisn=b.nisn AND a.id_loker=c.id_loker AND a.status !='Proses'";
   // $sql ="SELECT b.nisn, d.nama, d.jurusan, a.berkas, a.tglDaftar, c.perusahaan, c.nmLoker, a.status FROM pendaftaran a, anggota b, lowongan c, siswa d WHERE a.idAnggota=b.idAnggota AND a.idLoker=c.idLowongan AND b.nisn=d.nisn AND a.status !='Proses'";
   $sql = "SELECT a.*, b.perusahaan, b.nmLoker, c.nisn, c.nama, d.nmJurusan FROM pendaftaran a, lowongan b, siswa c, jurusan d WHERE a.idLoker=b.idLowongan AND a.idAnggota=c.idSiswa AND c.jurusan=d.idJurusan AND b.status='Arsip'";
+  // $sql = "SELECT a.*, b.perusahaan, b.nmLoker, c.nisn, c.nama, d.nmJurusan FROM pendaftaran_loker a, lowongan b, siswa c, jurusan d WHERE a.idLoker=b.idLowongan AND a.idAnggota=c.idSiswa AND c.jurusan=d.idJurusan AND b.status='Arsip'";
   $query = mysqli_query($con, $sql);
   return $query;
 }
@@ -565,6 +573,7 @@ function getHasilAnggota($id)
 {
   global $con;
   $sql ="SELECT a.perusahaan, a.nmLoker, c.file, c.keterangan, c.tglInput, c.idHasil FROM lowongan a, pendaftaran b, hasil c WHERE b.idLoker=a.idLowongan AND c.idLoker=a.idLowongan AND c.status='2' AND b.idAnggota='$id' ORDER BY c.idHasil DESC ";
+  // $sql ="SELECT a.perusahaan, a.nmLoker, c.file, c.keterangan, c.tglInput, c.idHasil FROM lowongan a, pendaftaran_loker b, hasil c WHERE b.idLoker=a.idLowongan AND c.idLoker=a.idLowongan AND c.status='2' AND b.idAnggota='$id' ORDER BY c.idHasil DESC ";
   $query = mysqli_query($con, $sql);
   return $query;
 }
@@ -850,9 +859,11 @@ function validasiLowongan($id)
 // {
 //   global $con;
 
+//   $sql_no = "SELECT noWa FROM data_anggota";
 //   $sql_no = "SELECT noWa FROM anggota";
 //   $query_no = mysqli_query($con, $sql_no);
 
+//   $cekNisn = "SELECT `data_perusahaan`, `nmLoker` FROM `lowongan` WHERE `idLowongan` = $id";
 //   $cekNisn = "SELECT `perusahaan`, `nmLoker` FROM `lowongan` WHERE `idLowongan` = $id";
 //   $query = mysqli_query($con, $cekNisn);
 //   $row = mysqli_fetch_row($query);
@@ -1133,11 +1144,13 @@ function insertDaftar($uploadFiles)
 {
   global $con;
   $tgl = date('Y-m-d H:i:s');
+  // $sql_cek = "SELECT idDaftar FROM pendaftaran_loker WHERE idLoker ='" . $_POST['idLoker'] . "' AND idAnggota = '" . $_POST['idDaftar'] . "'";
   $sql_cek = "SELECT idDaftar FROM pendaftaran WHERE idLoker ='" . $_POST['idLoker'] . "' AND idAnggota = '" . $_POST['idDaftar'] . "'";
   $query = mysqli_query($con, $sql_cek);
   $row = mysqli_fetch_row($query);
   $idDaftar = $row[0];
   if($idDaftar == NULL){
+            // $sql_insert = "INSERT INTO pendaftaran_loker (`idLoker`, `idAnggota`, `berkas`, `status`, `tglDaftar`) VALUES (
             $sql_insert = "INSERT INTO pendaftaran (`idLoker`, `idAnggota`, `berkas`, `status`, `tglDaftar`) VALUES (
               '" . $_POST['idLoker'] . "',
               '" . $_POST['idDaftar'] . "',
@@ -1162,6 +1175,7 @@ function updateDaftar($upload)
 {
   global $con;
   $cekNisn = "SELECT idDaftar, berkas FROM pendaftaran WHERE idDaftar = '" . $_POST['idDaftar'] . "' ";
+  // $cekNisn = "SELECT idDaftar, berkas FROM pendaftaran_loker WHERE idDaftar = '" . $_POST['idDaftar'] . "' ";
   $query = mysqli_query($con, $cekNisn);
   $row = mysqli_fetch_row($query);
     $idDaftar = $row[0];
@@ -1187,6 +1201,7 @@ function deleteDaftar($id)
   global $con;
   $idLevel = $_SESSION["ses_idLevel"];
   $sql_hapus = "DELETE FROM pendaftaran WHERE idDaftar='$id' ";
+  // $sql_hapus = "DELETE FROM pendaftaran_loker WHERE idDaftar='$id' ";
   $query_hapus = mysqli_query($con, $sql_hapus);
 
   if($idLevel == 2){
@@ -1212,6 +1227,7 @@ function validasiAdministrasi($id)
 {
   global $con;
 
+  // $sql_validasi = "UPDATE pendaftaran_loker SET
   $sql_validasi = "UPDATE pendaftaran SET
         status = '3'
         WHERE idDaftar='$id'";
@@ -1230,6 +1246,7 @@ function validasiLulus($id)
 {
   global $con;
 
+  // $sql_validasi = "UPDATE pendaftaran_loker SET
   $sql_validasi = "UPDATE pendaftaran SET
         status = '4'
         WHERE idDaftar='$id'";
@@ -1248,6 +1265,7 @@ function gagalLulus($id)
 {
   global $con;
 
+  // $sql_validasi = "UPDATE pendaftaran_loker SET
   $sql_validasi = "UPDATE pendaftaran SET
         status = '5'
         WHERE idDaftar='$id'";
@@ -1266,6 +1284,7 @@ function gagalAdm($id)
 {
   global $con;
 
+  // $sql_validasi = "UPDATE pendaftaran_loker SET
   $sql_validasi = "UPDATE pendaftaran SET
         status = '2'
         WHERE idDaftar='$id'";
@@ -1283,6 +1302,7 @@ function gagalAdm($id)
 function perusahaan()
 {
   global $con;
+  // $sql ="SELECT * FROM `data_perusahaan`";
   $sql ="SELECT * FROM `perusahaan`";
   $query = mysqli_query($con, $sql);
   return $query;
@@ -1294,10 +1314,12 @@ function insertPerusahaan()
   $date = date('Y-m-d');
   $cekIdDaftar = "SELECT `AUTO_INCREMENT` as idDaftar FROM INFORMATION_SCHEMA.TABLES
   WHERE TABLE_SCHEMA = 'bkkmuh' AND TABLE_NAME = 'perusahaan' ";
+  // WHERE TABLE_SCHEMA = 'bkkmuh' AND TABLE_NAME = 'data_perusahaan' ";
   $query = mysqli_query($con, $cekIdDaftar);
   $row = mysqli_fetch_row($query);
   $idDaftar = $row[0];
 
+  // $sql_insert = "INSERT INTO data_perusahaan (`nmPerusahaan`, `email`, `stsPerusahaan`, `noTelp`, `tglKerjasama`, `tglDaftar`) VALUES (
   $sql_insert = "INSERT INTO perusahaan (`nmPerusahaan`, `email`, `stsPerusahaan`, `noTelp`, `tglKerjasama`, `tglDaftar`) VALUES (
 					'" . $_POST['nmPerusahaan'] . "',
           '" . $_POST['email'] . "',
@@ -1332,6 +1354,7 @@ function updatePerusahaan()
 {
   global $con;
 
+  // $sql_ubah = "UPDATE data_perusahaan SET
   $sql_ubah = "UPDATE perusahaan SET
         nmPerusahaan ='" . $_POST['nmPerusahaan'] . "',
         email ='" . $_POST['email'] . "',
@@ -1353,6 +1376,7 @@ function deletePerusahaan($id)
 {
   global $con;
 
+  // $sql_hapus = "DELETE FROM data_perusahaan WHERE idPerusahaan='$id' ";
   $sql_hapus = "DELETE FROM perusahaan WHERE idPerusahaan='$id' ";
   $query_hapus = mysqli_query($con, $sql_hapus);
 
