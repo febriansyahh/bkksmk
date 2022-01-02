@@ -177,11 +177,16 @@ include_once("koneksi.php");
                       
                       <!-- <td><?php echo $data['tglDaftar']; ?></td> -->
                       <td>
-                        <!-- <a href="javascript:void(0)" data-toggle="modal" data-target="#editLoker"
-                          data-id="<?php echo $data['id_alumni'] . "~" . $data['nisn'] . "~" . $data['nm_loker'] . "~" . $data['jekel']. "~" . $data['keterangan']. "~" . $data['sumber']. "~" . $data['tanggal']. "~" . $data['batas']. "~" . $data['status'] ?>"
-                          onclick="editableLowongan(this)" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a> -->
-                        <a href="#" onclick="return confirm('Apakah anda yakin hapus data ini ?')"
+                      <a href="?pages=hasilAksi&kode=<?php echo $data['idHasil'] ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')"
                           class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></a>
+                          <?php
+                    if($data['status'] == '1'){
+                      ?>
+                      <a href="?pages=hasilAksi&kodes=<?php echo $data['idHasil']; ?>" onclick="return confirm('Yakin untuk konfirmasi data ini ?')"
+                      class='btn btn-warning btn-sm'><i class="fa fa-check"></i></a>
+                    <?php
+                    }
+                    ?>
                       </td>
                     </tr>
                     <?php

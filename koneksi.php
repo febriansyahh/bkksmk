@@ -25,7 +25,7 @@ function LoginUser()
     $_SESSION["ses_idDaftar"] = $data_login['idDaftar'];
     $_SESSION["ses_idUser"] = $data_login['idUser'];
 
-    echo "<script>alert('Login Berhasil')</script>";
+    // echo "<script>alert('Login Berhasil')</script>";
     // echo "<meta http-equiv='refresh' content='0; url=indexAdm.php'>";
     switch ($data_login['idLevel']) {
       case '1':
@@ -529,9 +529,15 @@ function getAlumniKerja()
 function getPendaftar()
 {
   global $con;
-  // $sql ="SELECT a.nisn, b.nama, b.jurusan, c.nm_perusahaan, c.nm_loker FROM tb_pendaftaran a, tb_peserta b, tb_loker c WHERE a.nisn=b.nisn AND a.id_loker=c.id_loker AND a.status='Proses'";
-  // $sql ="SELECT b.nisn, d.nama, d.jurusan, a.berkas, a.tglDaftar, c.perusahaan, c.nmLoker FROM pendaftaran a, anggota b, lowongan c, siswa d WHERE a.idAnggota=b.idAnggota AND a.idLoker=c.idLowongan AND b.nisn=d.nisn AND a.status='Proses'";
   $sql = "SELECT a.*, b.perusahaan, b.nmLoker, c.nisn, c.nama, d.nmJurusan FROM pendaftaran a, lowongan b, siswa c, jurusan d WHERE a.idLoker=b.idLowongan AND a.idAnggota=c.idSiswa AND c.jurusan=d.idJurusan";
+  $query = mysqli_query($con, $sql);
+  return $query;
+}
+
+function getPendaftarPer($id)
+{
+  global $con;
+  $sql = "SELECT a.*, b.perusahaan, b.nmLoker, c.nisn, c.nama, d.nmJurusan FROM pendaftaran a, lowongan b, siswa c, jurusan d WHERE a.idLoker=b.idLowongan AND a.idAnggota=c.idSiswa AND c.jurusan=d.idJurusan AND b.usrInput = '$id' ";
   $query = mysqli_query($con, $sql);
   return $query;
 }

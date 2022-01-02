@@ -26,7 +26,7 @@ include_once("koneksi.php");
                     <th>Jurusan</th>
                     <th>Perusahaan</th>
                     <th>Lowongan</th>
-                    <th>Unduh Berkas</th>
+                    <!-- <th>Unduh Berkas</th> -->
                     <th>Piihan</th>
                   </tr>
                 </center>
@@ -45,11 +45,9 @@ include_once("koneksi.php");
                   <td><?php echo $data['nmJurusan']; ?></td>
                   <td><?php echo $data['perusahaan']; ?></td>
                   <td><?php echo $data['nmLoker'] ; ?></td>
-                  <td>
+                  <!-- <td>
                   <a href=<?php echo "file_data/pendaftaran/".$data['berkas']?> class='btn btn-success btn-sm' data-toggle="tooltip" data-placement="top" title="Gagal Seleksi Administrasi !" >Preview</a>
-                  <!-- <a data-toggle="modal" data-target="#preview" class='btn btn-success btn-sm' data-toggle="tooltip" data-placement="top" title="Gagal Seleksi Administrasi !" >Preview</a> -->
-                  </td>
-                  <!-- <td><?php echo $data['tglDaftar']; ?></td> -->
+                  </td> -->
                   <td>
                       <?php
                     if($data['status'] == '1' || $data['status'] == '2'){
@@ -58,6 +56,7 @@ include_once("koneksi.php");
                       class='btn btn-success btn-sm' data-toggle="tooltip" data-placement="top" title="Gagal Seleksi Administrasi !"><i class="fa fa-times-circle"></i></a>
                       <a href="?pages=valAksi&kodes=<?php echo $data['idDaftar']; ?>" onclick="return confirm('Yakin untuk konfirmasi data ini ?')"
                       class='btn btn-success btn-sm' data-toggle="tooltip" data-placement="top" title="Lulus Seleksi Administrasi !"><i class="fa fa-check"></i></a>
+                      <a href=<?php echo"./file_data/pendaftaran/".$data['berkas']?> target="_blank"><i class="fa fa-download"></i></a>
                     <?php
                     }elseif($data['status'] == '3'){
                       ?>
@@ -243,7 +242,7 @@ include_once("koneksi.php");
               </thead>
               <tbody>
                 <?php
-            $a = getPendaftar();
+            $a = getPendaftarPer($data_idUser);
             $no = 1;
             foreach ($a as $key => $data) {
                 ?>
@@ -256,11 +255,20 @@ include_once("koneksi.php");
                   <td><?php echo $data['nmLoker']; ?></td>
                   <!-- <td><?php echo $data['tglDaftar']; ?></td> -->
                   <td>
-                    <!-- <a href="javascript:void(0)" data-toggle="modal" data-target="#editLoker"
-                      data-id="<?php echo $data['id_alumni'] . "~" . $data['nisn'] . "~" . $data['nm_loker'] . "~" . $data['jekel']. "~" . $data['keterangan']. "~" . $data['sumber']. "~" . $data['tanggal']. "~" . $data['batas']. "~" . $data['status'] ?>"
-                      onclick="editableLowongan(this)" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a> -->
+                    <?php
+                    if($data['status'] != '1'){
+                    ?>
+                      <a href=<?php echo"./file_data/pendaftaran/".$data['berkas']?> target="_blank"><i class="fa fa-download"></i></a>
                       <a href="?pages=daftarAksi&kode=<?php echo $data['idDaftar']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')"
                       class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></a>
+                    <?php
+                    }else{
+                    ?>
+                    <a href="?pages=daftarAksi&kode=<?php echo $data['idDaftar']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')"
+                      class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></a>
+                    <?php
+                    }
+                    ?>
                   </td>
                 </tr>
                 <?php

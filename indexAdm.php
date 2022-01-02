@@ -189,7 +189,7 @@ if (isset($_SESSION['ses_username']) == "") {
                 <i class="nav-icon fas fa-briefcase"></i>
                 <p>
                   Kelola Lowongan
-                  <?php
+                  <!-- <?php
                    $q_hit= cekLoker($data_idUser);
                     while($row = mysqli_fetch_array($q_hit)) {
                     if($row[0] != 0){
@@ -198,7 +198,7 @@ if (isset($_SESSION['ses_username']) == "") {
                   <?php
                     }
                     }
-                    ?>
+                    ?> -->
                 </p>
               </a>
             </li>
@@ -327,12 +327,12 @@ if (isset($_SESSION['ses_username']) == "") {
                       <p>Lowongan</p>
                     </a>
                   </li>
-                  <li class="nav-item">
+                  <!-- <li class="nav-item">
                     <a href="?pages=reportpendaftaran" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
                       <p>Riwayat Pendaftaran</p>
                     </a>
-                  </li>
+                  </li> -->
                 </ul>
               </li>
               <li class="nav-item">
@@ -444,7 +444,7 @@ if (isset($_SESSION['ses_username']) == "") {
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                   Kelola Lowongan
-                  <?php
+                  <!-- <?php
                    $q_hit= cekLoker($data_idUser);
                     while($row = mysqli_fetch_array($q_hit)) {
                     if($row[0] != 0){
@@ -453,7 +453,7 @@ if (isset($_SESSION['ses_username']) == "") {
                   <?php
                     }
                     }
-                    ?>
+                    ?> -->
                 </p>
               </a>
             </li>
@@ -535,12 +535,12 @@ if (isset($_SESSION['ses_username']) == "") {
                       <p>Lowongan</p>
                     </a>
                   </li>
-                  <li class="nav-item">
+                  <!-- <li class="nav-item">
                     <a href="?pages=reportpendaftaran" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
                       <p>Riwayat Pendaftaran</p>
                     </a>
-                  </li>
+                  </li> -->
                 </ul>
               </li>
               <li class="nav-item">
@@ -575,7 +575,7 @@ if (isset($_SESSION['ses_username']) == "") {
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                   Kelola Lowongan
-                  <?php
+                  <!-- <?php
                    $q_hit= cekLoker($data_idUser);
                     while($row = mysqli_fetch_array($q_hit)) {
                     if($row[0] != 0 || $row[0] != 3){
@@ -584,7 +584,7 @@ if (isset($_SESSION['ses_username']) == "") {
                   <?php
                     }
                     }
-                    ?>
+                    ?> -->
                 </p>
               </a>
             </li>
@@ -650,12 +650,12 @@ if (isset($_SESSION['ses_username']) == "") {
                     <p>Lowongan</p>
                   </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a href="?pages=reportpendaftaran" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Riwayat Pendaftar</p>
                   </a>
-                </li>
+                </li> -->
               </ul>
             </li>
             <li class="nav-header">Logout</li>
