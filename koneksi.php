@@ -926,20 +926,6 @@ function insertJadwal()
 
   $query_insert = mysqli_query($con, $sql_insert) or die(mysqli_connect_error());
 
-  // if($query_insert) {
-  //   echo '<script> 
-  //   swal({
-  //     title: "Berhasil !!!",
-  //     text: "Menambahkan User Group",
-  //     icon: "success"
-  //   })
-  //   .then((done) => {
-  //     window.location = "indexAdm.php?pages=jadwal;
-  //   }); 
-  //   </script>';
-  // } else {
-  //   echo '<script type="text/javascript"> alert("gagal") </script>';
-  // }
   if ($query_insert) {
     echo "<script>alert('Simpan Berhasil')</script>";
     echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=jadwal'>";
@@ -1203,6 +1189,7 @@ function updateDaftar($upload)
 function deleteDaftar($id)
 {
   global $con;
+  // $cek_daftar = "SELECT berkas FROM pendaftaran_loker WHERE idDaftar='$id'";
   $cek_daftar = "SELECT berkas FROM pendaftaran WHERE idDaftar='$id'";
   $query = mysqli_query($con, $cek_daftar);
   $row = mysqli_fetch_row($query);
