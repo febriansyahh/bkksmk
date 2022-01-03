@@ -823,7 +823,11 @@ function updateLowongan()
 function deleteLowongan($id)
 {
   global $con;
-
+  $cek_hasil = "SELECT `file` FROM lowongan WHERE idLowongan ='$id'";
+  $query = mysqli_query($con, $cek_hasil);
+  $row = mysqli_fetch_row($query);
+  $files = $row[0];
+  unlink('file_data/loker/' . $files);
   $sql_hapus = "DELETE FROM lowongan WHERE idLowongan='$id' ";
   $query_hapus = mysqli_query($con, $sql_hapus);
 
@@ -1072,7 +1076,11 @@ function updateHasil()
 function deleteHasil($id)
 {
   global $con;
-
+  $cek_hasil = "SELECT `file` FROM hasil WHERE idHasil ='$id'";
+  $query = mysqli_query($con, $cek_hasil);
+  $row = mysqli_fetch_row($query);
+  $files = $row[0];
+  unlink('file_data/hasil/' . $files);
   $sql_hapus = "DELETE FROM hasil WHERE idHasil='$id' ";
   $query_hapus = mysqli_query($con, $sql_hapus);
 
@@ -1195,6 +1203,14 @@ function updateDaftar($upload)
 function deleteDaftar($id)
 {
   global $con;
+  $cek_daftar = "SELECT berkas FROM pendaftaran WHERE idDaftar='$id'";
+  $query = mysqli_query($con, $cek_daftar);
+  $row = mysqli_fetch_row($query);
+  $berkas = $row[0];
+  
+  unlink('file_data/pendaftaran/' . $berkas);
+  
+  
   $idLevel = $_SESSION["ses_idLevel"];
   $sql_hapus = "DELETE FROM pendaftaran WHERE idDaftar='$id' ";
   // $sql_hapus = "DELETE FROM pendaftaran_loker WHERE idDaftar='$id' ";
