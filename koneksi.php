@@ -724,9 +724,6 @@ function Upload_Files($namePost, $codePost)
 
   if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
     if ($ukuran < 41943040) {
-      // print_r(__DIR__ . '\file_data/loker/' . $namas);
-      // die();
-      // $location = "http://localhost/bkksmk/file_data/loker/";
       $destination_path = getcwd().DIRECTORY_SEPARATOR . 'file_data\loker' . '/';
 
       $target_path = $destination_path . $namas;
