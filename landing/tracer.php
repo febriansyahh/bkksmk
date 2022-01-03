@@ -11,9 +11,10 @@
     <br>
     <center>
     <h5>Grafik Perkembangan <br>Alumni Bekerja</h5>
-  <div style="width: 700px;height: 500px">
+  <div style="width: 700px;height: 450px">
 		<canvas id="myChart"></canvas>
 	</div>
+	<br>
   <h5>Grafik Perkembangan <br>Alumni Bekerja Diluar BKK</h5>
   <div style="width: 700px;height: 300px">
 		<canvas id="myChart2"></canvas>

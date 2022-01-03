@@ -53,7 +53,7 @@ if (isset($_SESSION['ses_username']) == "") {
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
-	<script type="text/javascript" src="chartjs/Chart.js"></script>
+  <script type="text/javascript" src="chartjs/Chart.js"></script>
 
 
 </head>
@@ -93,32 +93,32 @@ if (isset($_SESSION['ses_username']) == "") {
             <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
           </div> -->
           <div class="info">
-            <a href="#" ><?php echo $data_nama ?> -  
-            <?php
+            <a href="#"><?php echo $data_nama ?> -
+              <?php
                     switch ($data_status) {
                       case '1':
                         ?>
-                        <a href="#">Admin</a>
-                        <?php
+              <a href="#">Admin</a>
+              <?php
                         break;
                       case '2':
                         ?>
-                        <a href="#">Anggota</a>
-                        <?php
+              <a href="#">Anggota</a>
+              <?php
                         break;
                       case '3':
                         ?>
-                        <a href="#">Ketua BKK</a>
-                        <?php
+              <a href="#">Ketua BKK</a>
+              <?php
                         break;
                       case '4':
                         ?>
-                        <a href="#">Perusahaan</a>
-                    <?php
+              <a href="#">Perusahaan</a>
+              <?php
                         break;
                     }
                       ?>
-                      </a>
+            </a>
           </div>
         </div>
 
@@ -159,22 +159,22 @@ if (isset($_SESSION['ses_username']) == "") {
                 </p>
               </a>
               <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="?pages=siswa" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-                <p>
-                  Kelola Siswa
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="?pages=jurusan" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-                <p>
-                  Kelola Jurusan
-                </p>
-              </a>
-            </li>
+                <li class="nav-item">
+                  <a href="?pages=siswa" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>
+                      Kelola Siswa
+                    </p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="?pages=jurusan" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>
+                      Kelola Jurusan
+                    </p>
+                  </a>
+                </li>
               </ul>
             <li class="nav-item">
               <a href="?pages=perusahaan" class="nav-link">
@@ -225,7 +225,7 @@ if (isset($_SESSION['ses_username']) == "") {
                 </li>
               </ul>
             </li>
-            
+
             <li class="nav-header">Data</li>
             <li class="nav-item">
               <a href="#" class="nav-link">
@@ -313,29 +313,29 @@ if (isset($_SESSION['ses_username']) == "") {
                   </a>
                 </li>
                 <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Rekruitmen
-                    <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="?pages=reportlowongan" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Lowongan</p>
-                    </a>
-                  </li>
-                  <!-- <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>
+                      Rekruitmen
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="?pages=reportlowongan" class="nav-link">
+                        <i class="far fa-dot-circle nav-icon"></i>
+                        <p>Lowongan</p>
+                      </a>
+                    </li>
+                    <!-- <li class="nav-item">
                     <a href="?pages=reportpendaftaran" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
                       <p>Riwayat Pendaftaran</p>
                     </a>
                   </li> -->
-                </ul>
-              </li>
-              <li class="nav-item">
+                  </ul>
+                </li>
+                <li class="nav-item">
                   <a href="?pages=reportalumni" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Alumni</p>
@@ -345,13 +345,14 @@ if (isset($_SESSION['ses_username']) == "") {
             </li>
             <li class="nav-header">Logout</li>
             <li class="nav-item">
-              <a class="nav-link" data-toggle="modal" data-target="#logout"><i class="fas fa-sign-out"></i> <span>Logout</span></a></li>
+              <a class="nav-link" data-toggle="modal" data-target="#logout"><i class="fas fa-sign-out"></i>
+                <span>Logout</span></a></li>
             </li>
             <?php
                 break;
               case '2':
                 ?>
-                <li class="nav-item">
+            <li class="nav-item">
               <a href="?pages=beranda" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>
@@ -368,13 +369,13 @@ if (isset($_SESSION['ses_username']) == "") {
                 </p>
               </a>
             </li>
-            
-                <li class="nav-item">
-                  <a href="?pages=history" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Riwayat Pendaftaran</p>
-                  </a>
-                </li>
+
+            <li class="nav-item">
+              <a href="?pages=history" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Riwayat Pendaftaran</p>
+              </a>
+            </li>
             <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-info"></i>
@@ -421,16 +422,34 @@ if (isset($_SESSION['ses_username']) == "") {
                 </li>
               </ul>
             </li>
+            <!-- <?php
+                   $q_hit= cekAlumni($data_idUser);
+                    while($row = mysqli_fetch_array($q_hit)) {
+                    if($row[0] != NULL){
+                    ?>
+            <li class="nav-item">
+              <a href="?pages=beranda" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>
+                  Data Alumni
+                </p>
+              </a>
+            </li>
+            <?php
+                    }
+                  }
+                    ?> -->
             <li class="nav-header">Logout</li>
             <li class="nav-item">
-              <a class="nav-link" data-toggle="modal" data-target="#logout"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
-              </a>
+              <a class="nav-link" data-toggle="modal" data-target="#logout"><i class="fa fa-sign-out"></i>
+                <span>Logout</span></a></li>
+            </a>
             </li>
             <?php
                 break;
                 case '3':
                   ?>
-                  <li class="nav-item">
+            <li class="nav-item">
               <a href="?pages=beranda" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>
@@ -521,29 +540,29 @@ if (isset($_SESSION['ses_username']) == "") {
                   </a>
                 </li>
                 <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Rekruitmen
-                    <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="?pages=reportlowongan" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Lowongan</p>
-                    </a>
-                  </li>
-                  <!-- <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>
+                      Rekruitmen
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="?pages=reportlowongan" class="nav-link">
+                        <i class="far fa-dot-circle nav-icon"></i>
+                        <p>Lowongan</p>
+                      </a>
+                    </li>
+                    <!-- <li class="nav-item">
                     <a href="?pages=reportpendaftaran" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
                       <p>Riwayat Pendaftaran</p>
                     </a>
                   </li> -->
-                </ul>
-              </li>
-              <li class="nav-item">
+                  </ul>
+                </li>
+                <li class="nav-item">
                   <a href="?pages=reportalumni" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Alumni</p>
@@ -553,15 +572,16 @@ if (isset($_SESSION['ses_username']) == "") {
             </li>
             <li class="nav-header">Logout</li>
             <li class="nav-item">
-              <a class="nav-link" data-toggle="modal" data-target="#logout"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
-              </a>
+              <a class="nav-link" data-toggle="modal" data-target="#logout"><i class="fa fa-sign-out"></i>
+                <span>Logout</span></a></li>
+            </a>
             </li>
             <?php
                   break;
 
                   case '4':
                     ?>
-          <li class="nav-item">
+            <li class="nav-item">
               <a href="?pages=beranda" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>
@@ -605,7 +625,7 @@ if (isset($_SESSION['ses_username']) == "") {
                   </a>
                 </li>
                 <li class="nav-item">
-                <a href="?pages=reportpendaftaran" class="nav-link">
+                  <a href="?pages=reportpendaftaran" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Riwayat Pendaftar</p>
                   </a>
@@ -645,7 +665,7 @@ if (isset($_SESSION['ses_username']) == "") {
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                <a href="?pages=reportlowongan" class="nav-link">
+                  <a href="?pages=reportlowongan" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Lowongan</p>
                   </a>
@@ -660,9 +680,10 @@ if (isset($_SESSION['ses_username']) == "") {
             </li>
             <li class="nav-header">Logout</li>
             <li class="nav-item">
-              <a class="nav-link" data-toggle="modal" data-target="#logout"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
+              <a class="nav-link" data-toggle="modal" data-target="#logout"><i class="fa fa-sign-out"></i>
+                <span>Logout</span></a></li>
             </li>
-            
+
             <?php
                     break;
               
@@ -811,24 +832,25 @@ if (isset($_SESSION['ses_username']) == "") {
     <!-- /.content-wrapper -->
     <!-- /.control-sidebar -->
   </div>
-  <div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Yakin Keluar?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">Pilih Log Out Jika ingin keluar.</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="signin.php">Logout</a>
-          </div>
+  <div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Yakin Keluar?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Pilih Log Out Jika ingin keluar.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="signin.php">Logout</a>
         </div>
       </div>
     </div>
-    </div>
+  </div>
+  </div>
   <!-- ./wrapper -->
 
   <!-- jQuery -->

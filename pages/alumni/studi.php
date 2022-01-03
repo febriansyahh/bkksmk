@@ -1,6 +1,5 @@
 <?php	
 include_once("koneksi.php");
-$maxID = MaxIdProgram();
     ?>
 <div class="form-group">
   <br>

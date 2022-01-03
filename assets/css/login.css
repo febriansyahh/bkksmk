@@ -29,6 +29,11 @@ body {
     justify-content: center;
 }
 
+.login-card .h1, h2, h3, h4, h5, h6{
+    font-family: "Poppins", sans-serif;
+    color: #fff;
+}
+
 .login-card .card-body {
     padding: 85px 60px 60px;
 }

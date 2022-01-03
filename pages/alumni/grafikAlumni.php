@@ -17,12 +17,10 @@ include_once("koneksi.php");
                 <center>
                   <tr>
                     <th>No</th>
-                    <th>NISN</th>
                     <th>Nama </th>
                     <th>Jurusan</th>
                     <th>Instansi</th>
                     <th>Tahun Lulus</th>
-                    <th>Telp</th>
                   </tr>
                 </center>
               </thead>
@@ -34,12 +32,10 @@ include_once("koneksi.php");
                 ?>
                 <tr>
                   <td><?php echo $no; ?></td>
-                  <td><?php echo $data['nisn']; ?></td>
                   <td><?php echo $data['nama']; ?></td>
                   <td><?php echo $data['nmJurusan']; ?></td>
                   <td><?php echo $data['nmInstansi']; ?></td>
                   <td><?php echo $data['thnLulus']; ?></td>
-                  <td><?php echo $data['noTelp']; ?></td>
                 </tr>
                 <?php
             $no++;

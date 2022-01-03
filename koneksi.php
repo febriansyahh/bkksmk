@@ -26,24 +26,24 @@ function LoginUser()
     $_SESSION["ses_idUser"] = $data_login['idUser'];
 
     // echo "<script>alert('Login Berhasil')</script>";
-    // echo "<meta http-equiv='refresh' content='0; url=indexAdm.php'>";
-    switch ($data_login['idLevel']) {
-      case '1':
-        echo "<meta http-equiv='refresh' content='0; url=indexAdm.php'>";
-        break;
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php'>";
+    // switch ($data_login['idLevel']) {
+    //   case '1':
+    //     echo "<meta http-equiv='refresh' content='0; url=indexAdm.php'>";
+    //     break;
 
-      case '2':
-        echo "<meta http-equiv='refresh' content='0; url=indexAdm.php'>";
-        break;
+    //   case '2':
+    //     echo "<meta http-equiv='refresh' content='0; url=indexAdm.php'>";
+    //     break;
 
-      case '3':
-        echo "<meta http-equiv='refresh' content='0; url=indexAdm.php'>";
-        break;
+    //   case '3':
+    //     echo "<meta http-equiv='refresh' content='0; url=indexAdm.php'>";
+    //     break;
 
-      case '4':
-        echo "<meta http-equiv='refresh' content='0; url=indexAdm.php'>";
-        break;
-    }
+    //   case '4':
+    //     echo "<meta http-equiv='refresh' content='0; url=indexAdm.php'>";
+    //     break;
+    // }
   } else {
     echo "<script>alert('Login Gagal!!')</script>";
   }
@@ -99,7 +99,7 @@ function registrasiData()
                 
                 if ($query_insert && $query_insertUser) {
                   echo "<script>alert('Registrasi Anggota Berhasil')</script>";
-                  echo "<meta http-equiv='refresh' content='0; url=login.php'>";
+                  echo "<meta http-equiv='refresh' content='0; url=signin.php'>";
                 } else {
                   echo "<script>alert('Registrasi Anggota Gagal')</script>";
                   echo "<meta http-equiv='refresh' content='0; url=index.php?page=beranda'>";
@@ -128,7 +128,7 @@ function registrasiPer()
   $tgl = date('Y-m-d H:i:s');
   if($pass != $repass){
     echo "<script>alert('Password tidak sama, Simpan Gagal !!')</script>";
-    echo "<meta http-equiv='refresh' content='0; url=../login.php>";
+    echo "<meta http-equiv='refresh' content='0; url=../signin.php>";
     
     
   }else
@@ -154,10 +154,10 @@ function registrasiPer()
           $query_insert = mysqli_query($con, $sql_insert) or die(mysqli_connect_error());
           if ($query_insertPer) {
             echo "<script>alert('Simpan Berhasil')</script>";
-            echo "<meta http-equiv='refresh' content='0; url=../login.php'>";
+            echo "<meta http-equiv='refresh' content='0; url=../signin.php'>";
           } else {
             echo "<script>alert('Simpan Gagal')</script>";
-            echo "<meta http-equiv='refresh' content='0; url=../login.php'>";
+            echo "<meta http-equiv='refresh' content='0; url=../signin.php'>";
           }
       }
 }
@@ -289,10 +289,25 @@ function getAlumni()
   return $query;
 }
 
+function cekAlumni($id)
+{
+  global $con;
+  $sql = "SELECT c.nisn FROM `user` a, siswa b, alumni c WHERE a.idDaftar=b.idSiswa AND c.nisn=b.nisn AND a.idUser='16' AND a.idLevel='2' AND a.idUser='$id'";
+  $query = mysqli_query($con, $sql);
+  return $query;
+}
+
+function getDataAlumni($id)
+{
+  global $con;
+  $sql = "SELECT c.*, b.nama, b.alamat FROM `user` a, siswa b, alumni c WHERE a.idDaftar=b.idSiswa AND c.nisn=b.nisn AND a.idUser='16' AND a.idLevel='2' AND a.idUser='$id'";
+  $query = mysqli_query($con, $sql);
+  return $query;
+}
+
 function getLokerIndex()
 {
   global $con;
-  // $sql = "SELECT * FROM tb_loker WHERE status='Tampil' ORDER BY id_loker DESC LIMIT 3";
   $sql = "SELECT * FROM lowongan WHERE status='2' ORDER BY idLowongan DESC LIMIT 3";
   $query = mysqli_query($con, $sql);
   return $query;
@@ -1076,13 +1091,70 @@ function deleteHasil($id)
   }
 }
 
+// function validasiHasil($id)
+// {
+//   global $con;
+
+
+//   $sql_no = "SELECT c.noWa FROM pendaftaran_loker a, siswa b, data_anggota c WHERE a.idAnggota=b.idSiswa AND c.nisn=b.nisn AND a.status='4' AND a.idLoker='$id'";
+//   $sql_no = "SELECT c.noWa FROM pendaftaran a, siswa b, anggota c WHERE a.idAnggota=b.idSiswa AND c.nisn=b.nisn AND a.status='4' AND a.idLoker='$id'";
+//   $query_no = mysqli_query($con, $sql_no);
+
+//   $cekLoker = "SELECT `perusahaan`, `nmLoker` FROM `lowongan` WHERE `idLowongan` = $id";
+//   $query = mysqli_query($con, $cekLoker);
+//   $row = mysqli_fetch_row($query);
+
+//   $textt = "Kepada Anggota BKK, Selamat anda telah lulus dalam seleksi lowongan $row[1] dari perusahaan $row[0], silahkan cek di website untuk informasi lebih lanjut";
+//   $rplc = str_replace(' ', '%20', $textt);
+
+//   foreach ($query_no as $value) {
+//     $curl = curl_init();
+
+//     $noWa = $value['noWa'];
+
+//     curl_setopt_array($curl, array(
+//       CURLOPT_URL => "https://panel.rapiwha.com/send_message.php?apikey=BVHKMPMKEXZZ0O0GHO2T&number=$noWa&text=$rplc",
+//       CURLOPT_RETURNTRANSFER => true,
+//       CURLOPT_ENCODING => "",
+//       CURLOPT_MAXREDIRS => 10,
+//       CURLOPT_TIMEOUT => 30,
+//       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+//       CURLOPT_CUSTOMREQUEST => "GET",
+//     ));
+
+//     $response = curl_exec($curl);
+//     $err = curl_error($curl);
+
+//     curl_close($curl);
+
+//     if ($err) {
+//       echo "cURL Error #:" . $err;
+//     } else {
+//         $sql_validasi = "UPDATE hasil SET
+        // status = '2'
+//         WHERE idHasil='$id'";
+        
+//         $query_validasi = mysqli_query($con, $sql_validasi);
+
+//         if ($query_validasi) {
+//           echo "<script>alert('Validasi Berhasil')</script>";
+//           echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=hasil''>";
+//         } else {
+//           echo "<script>alert('Validasi Gagal')</script>";
+//           echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=hasil''>";
+//         }
+//     }
+//   }
+// }
+
+
 function validasiHasil($id)
 {
   global $con;
 
   $sql_validasi = "UPDATE hasil SET
         status = '2'
-        WHERE idhasil='$id'";
+        WHERE idHasil='$id'";
   $query_validasi = mysqli_query($con, $sql_validasi);
 
   if ($query_validasi) {

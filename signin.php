@@ -23,15 +23,21 @@ if (isset($_POST['btnLogin'])) LoginUser();
         <div class="container">
             <div class="card login-card">
                 <div class="row no-gutters">
-                    <div class="col-md-6">
-                        <img src="assets/img/login.jpg" alt="login" class="login-card-img">
+                    <div class="col-md-6"  style="background-color :#2F4AAA">
+                    <center>
+                        <h3 style="padding-top: 30%;">Halo, Teman !</h3>
+                        <br><br>
+                        <h6>Daftarkan diri anda dan mulai gunakan <br>layanan sekolah segera</h6>
+                        <br><br>
+                        <a data-toggle="modal" data-target="#register" style="background-color: #2F4AAA; border-color :aliceblue; width:40%; border-radius:15px" class="btn btn-block login-btn mb-4">Signup</a>
+                    </center>
                     </div>
                     <div class="col-md-6">
                         <div class="card-body">
                             <div class="brand-wrapper">
-                                <img src="assets/img/loginbkk.png" alt="logo" class="logo">
+                                <img src="assets/img/loginbkk.png" alt="logo" class="logo" style="width:80%; height:80%">
                             </div>
-                            <p class="login-card-description">Sign into your account</p>
+                            <p class="login-card-description">Silahkan Login</p>
                             <form action="" method="post">
                                 <div class="form-group">
                                     <label for="email" class="sr-only">Username</label>
@@ -44,8 +50,8 @@ if (isset($_POST['btnLogin'])) LoginUser();
                                 </div>
                                 <input name="btnLogin" id="login" style="background-color: #2F4AAA;" class="btn btn-block login-btn mb-4" type="submit" value="Login">
                             </form>
-                            <a href="index.php" class="forgot-password-link">Back to home page</a>
-                            <p class="login-card-footer-text">Don't have an account? <a data-toggle="modal" data-target="#register" class="btn-get-started scrollto">Register here</a>
+                            <a href="index.php" class="forgot-password-link">Kembali ke laman utama</a>
+                            <p class="login-card-footer-text">Belum punya akun ? <a data-toggle="modal" data-target="#register" class="btn-get-started scrollto">Daftar disini</a>
                             </p>
                             <!-- <nav class="login-card-footer-nav">
                                 <a href="#!">Terms of use.</a>
@@ -65,7 +71,7 @@ if (isset($_POST['btnLogin'])) LoginUser();
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h6 class="modal-title">Register Anggota</h6>
+          <h6 class="modal-title" style="color:black">Register Anggota</h6>
         </div>
         <div class="modal-body">
           <form action="landing/registrasi_aksi.php" method="post" enctype="multipart/form-data">

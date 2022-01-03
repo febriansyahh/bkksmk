@@ -11,7 +11,7 @@
     <br><br><br>
     <center>
     <h3>Grafik Perkembangan Alumni</h3>
-  <div style="width: 700px;height: 700px">
+  <div style="width: 700px;height: 350px">
 		<canvas id="myChart"></canvas>
 	</div>
   </center>
