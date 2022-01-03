@@ -860,7 +860,6 @@ function validasiLowongan($id)
 //   $sql_no = "SELECT noWa FROM anggota";
 //   $query_no = mysqli_query($con, $sql_no);
 
-//   $cekNisn = "SELECT `data_perusahaan`, `nmLoker` FROM `lowongan` WHERE `idLowongan` = $id";
 //   $cekNisn = "SELECT `perusahaan`, `nmLoker` FROM `lowongan` WHERE `idLowongan` = $id";
 //   $query = mysqli_query($con, $cekNisn);
 //   $row = mysqli_fetch_row($query);
