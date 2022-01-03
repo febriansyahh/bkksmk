@@ -292,7 +292,7 @@ function getAlumni()
 function cekAlumni($id)
 {
   global $con;
-  $sql = "SELECT c.nisn FROM `user` a, siswa b, alumni c WHERE a.idDaftar=b.idSiswa AND c.nisn=b.nisn AND a.idUser='16' AND a.idLevel='2' AND a.idUser='$id'";
+  $sql = "SELECT c.nisn FROM `user` a, siswa b, alumni c WHERE a.idDaftar=b.idSiswa AND c.nisn=b.nisn AND a.idLevel='2' AND a.idUser='$id'";
   $query = mysqli_query($con, $sql);
   return $query;
 }
@@ -300,7 +300,7 @@ function cekAlumni($id)
 function getDataAlumni($id)
 {
   global $con;
-  $sql = "SELECT c.*, b.nama, b.alamat FROM `user` a, siswa b, alumni c WHERE a.idDaftar=b.idSiswa AND c.nisn=b.nisn AND a.idUser='16' AND a.idLevel='2' AND a.idUser='$id'";
+  $sql = "SELECT c.*, b.nama, b.alamat FROM `user` a, siswa b, alumni c WHERE a.idDaftar=b.idSiswa AND c.nisn=b.nisn AND a.idLevel='2' AND a.idUser='$id'";
   $query = mysqli_query($con, $sql);
   return $query;
 }
@@ -1600,6 +1600,9 @@ function updateUser()
     echo "<script>alert('Ubah Gagal')</script>";
     echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=user'>";
   }
+}
+function updateAlumni($id){
+
 }
 function deleteUser($id)
 {
