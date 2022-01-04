@@ -81,8 +81,8 @@ include_once("koneksi.php");
         <form action="?pages=siswa_aksi" method="post" enctype="multipart/form-data">
         <div class="row">
         <div class="col md-6">
-            <label for=""><b>NISN Siswa </b></label>
-            <input type="text" name="Nisn" class="form-control">
+            <label for=""><b>NISN Siswas </b></label>
+            <input type="text" name="nisn" class="form-control">
           </div>
           <div class="col md-6">
             <label for=""><b>Nama Siswa </b></label>
@@ -284,7 +284,16 @@ include_once("koneksi.php");
           </div>
           <div class="col md-6">
             <label for=""><b>Tahun Masuk </b></label>
-            <input type="text" name="tahun" id="editTahunSiswa" class="form-control">
+            <!-- <input type="text" name="tahun" id="editTahunSiswa" class="form-control"> -->
+            <select name="tahun" id="editTahunSiswa" class="form-control">
+            <option value="">-Pilih-</option>
+                <?php
+                $dt = getTahunSiswa();
+                foreach ($dt as $value) {
+                  echo '<option value="'.$value['tahunMasuk'].'">'.$value['tahunMasuk'].'</option>';
+                }
+              ?>
+          </select>
           </div>
         </div>
         <div class="form-group">
@@ -292,7 +301,7 @@ include_once("koneksi.php");
             <input type="text" name="alamat" id="editalamatSiswa" class="form-control">
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary" name="btnUBAH">Ubahs</button>
+          <button type="submit" class="btn btn-primary" name="btnUBAH">Ubah</button>
         </div>
       </div>
     </form>

@@ -608,6 +608,9 @@ function jurusan()
 function insertSiswa()
 {
   global $con;
+  // echo $_POST['nisn'];
+  // echo $_POST['nama'];
+  // die();
   $sql_insert = "INSERT INTO siswa (`nisn`, `nama`, `email`, `jekel`, `tempatLhr`, `tglLhr`, `nmOrtu`, `alamat`, `noTelp`, `jurusan`, `tahunMasuk`) VALUES (
 					'" . $_POST['nisn'] . "',
 					'" . $_POST['nama'] . "',
@@ -630,6 +633,14 @@ function insertSiswa()
     echo "<script>alert('Simpan Gagal')</script>";
     echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=siswa'>";
   }
+}
+
+function getTahunSiswa()
+{
+  global $con;
+  $sql = "SELECT DISTINCT tahunMasuk FROM siswa ORDER BY tahunMasuk DESC";
+  $query = mysqli_query($con, $sql);
+  return $query;
 }
 
 function updateSiswa()
