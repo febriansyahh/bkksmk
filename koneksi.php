@@ -710,6 +710,7 @@ function updateJurusan()
     echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=jurusan'>";
   }
 }
+
 function deleteJurusan($id)
 {
   global $con;
@@ -832,6 +833,7 @@ function updateLowongan()
     echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=lowongan'>";
   }
 }
+
 function deleteLowongan($id)
 {
   global $con;
@@ -967,6 +969,7 @@ function updateJadwal()
     echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=jadwal'>";
   }
 }
+
 function deleteJadwal($id)
 {
   global $con;
@@ -1071,6 +1074,7 @@ function updateHasil()
     echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=hasil'>";
   }
 }
+
 function deleteHasil($id)
 {
   global $con;
@@ -1255,6 +1259,7 @@ function updateDaftar($upload)
     echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=daftar'>";
   }
 }
+
 function deleteDaftar($id)
 {
   global $con;
