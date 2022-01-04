@@ -317,7 +317,7 @@ include_once("koneksi.php");
           <button type="submit" class="btn btn-primary" name="btnUBAH">Ubah</button>
         </div>
       </div>
-      <br>
+      <br><br>
     </form>
     </div>
   </div>
