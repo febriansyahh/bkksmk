@@ -79,7 +79,8 @@ function editableDataSiswa(param) {
   $("#editOrtuSiswa").val(exp[8]);
   $("#editalamatSiswa").val(exp[9]);
   $("#editnoTelpSiswa").val(exp[10]);
-  $("#editidJurusanSiswa").val(exp[12]);
+  $("#editidJurusanSiswa").val(exp[12]); 
+  $("#editemailSiswa").val(exp[13]); 
 }
 
 function editableDataSiswas(param) {
@@ -99,7 +100,8 @@ function editableDataSiswas(param) {
   $("#editOrtu").val(exp[8]);
   $("#editalamat").val(exp[9]);
   $("#editnoTelp").val(exp[10]);
-  // $("#editnmJurusan").val(exp[11]);
+  $("#editnmJurusan").val(exp[11]);
+  $("#editalamatemail").val(exp[12]);
 }
 
 

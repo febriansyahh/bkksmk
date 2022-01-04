@@ -265,11 +265,13 @@ include_once("koneksi.php");
                   <select name="tahun" id="" class="form-control" placeholder="Masukkan Besaran Gaji Bagi yang bekerja">
                     <option value="">-Pilih-</option>
                     <?php
-                    $dt = getYear();
-                    foreach ($dt as $value) {
-                      echo '<option value="'.$value['tahun'].'">'.$value['tahun'].'</option>';
-                    }
-                  ?>
+                      $thn_skr = date('Y');
+                      for ($x = $thn_skr; $x >= 2015; $x--) {
+                      ?>
+                          <option value="<?php echo $x ?>"><?php echo $x ?></option>
+                      <?php
+                      }
+                      ?>
                   </select>
                 </div>
               </div>

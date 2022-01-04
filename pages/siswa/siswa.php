@@ -23,7 +23,7 @@ include_once("koneksi.php");
                             <th>Nama</th>
                             <th>Jenis Kelamin</th>
                             <th>Jurusan</th>
-                            <th>Tahun Lulus</th>
+                            <th>Tahun Masuk</th>
                             <th>Piihan</th>
                           </tr>
                         </center>
@@ -42,8 +42,8 @@ include_once("koneksi.php");
                           <td><?php echo $data['nmJurusan']; ?> </td>
                           <td><?php echo $data['tahunMasuk']; ?></td>
                           <td>
-                            <a href="javascript:void(0)" data-toggle="modal" data-target="#detailSiswa" onclick="editableDataSiswas(this)" data-id="<?php echo $data['idSiswa'] . "~" . $data['nisn'] . "~" . $data['nama'] . "~" . $data['jekel'] . "~" . $data['tempatLhr'] . "~" . $data['tglLhr'] . "~" . $data['nmJurusan'] . "~" . $data['tahunMasuk'] . "~" . $data['nmOrtu'] . "~" . $data['alamat'] . "~" . $data['noTelp'] . "~" . $data['nmJurusan'] ?>" class="btn btn-success btn-sm"><i class="fas fa-eye"></i></a>
-                            <a href="javascript:void(0)" data-toggle="modal" data-target="#editSiswa" onclick="editableDataSiswa(this)" data-id="<?php echo $data['idSiswa'] . "~" . $data['nisn'] . "~" . $data['nama'] . "~" . $data['jekel'] . "~" . $data['tempatLhr'] . "~" . $data['tglLhr'] . "~" . $data['nmJurusan'] . "~" . $data['tahunMasuk'] . "~" . $data['nmOrtu'] . "~" . $data['alamat'] . "~" . $data['noTelp'] . "~" . $data['nmJurusan'] . "~" . $data['jurusan'] ?>" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
+                            <a href="javascript:void(0)" data-toggle="modal" data-target="#detailSiswa" onclick="editableDataSiswas(this)" data-id="<?php echo $data['idSiswa'] . "~" . $data['nisn'] . "~" . $data['nama'] . "~" . $data['jekel'] . "~" . $data['tempatLhr'] . "~" . $data['tglLhr'] . "~" . $data['nmJurusan'] . "~" . $data['tahunMasuk'] . "~" . $data['nmOrtu'] . "~" . $data['alamat'] . "~" . $data['noTelp'] . "~" . $data['nmJurusan'] . "~" . $data['email'] ?>" class="btn btn-success btn-sm"><i class="fas fa-eye"></i></a>
+                            <a href="javascript:void(0)" data-toggle="modal" data-target="#editSiswa" onclick="editableDataSiswa(this)" data-id="<?php echo $data['idSiswa'] . "~" . $data['nisn'] . "~" . $data['nama'] . "~" . $data['jekel'] . "~" . $data['tempatLhr'] . "~" . $data['tglLhr'] . "~" . $data['nmJurusan'] . "~" . $data['tahunMasuk'] . "~" . $data['nmOrtu'] . "~" . $data['alamat'] . "~" . $data['noTelp'] . "~" . $data['nmJurusan'] . "~" . $data['jurusan'] . "~" . $data['email'] ?>" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
                             <!-- <a href="?pages=siswa_aksi&kode=<?php echo $data['idSiswa']; ?>"
                               onclick="return confirm('Apakah anda yakin hapus data ini ?')"
                               class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></a> -->
@@ -75,13 +75,13 @@ include_once("koneksi.php");
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <p class="modal-title" style="font-family: Poppins">Detail Data Siswa</p>
+        <p class="modal-title" style="font-family: Poppins">Tambah Data Siswa</p>
       </div>
       <div class="modal-body">
         <form action="?pages=siswa_aksi" method="post" enctype="multipart/form-data">
         <div class="row">
         <div class="col md-6">
-            <label for=""><b>NISN Siswas </b></label>
+            <label for=""><b>NISN Siswa </b></label>
             <input type="text" name="nisn" class="form-control">
           </div>
           <div class="col md-6">
@@ -99,7 +99,7 @@ include_once("koneksi.php");
           </select>
           </div>
           <div class="col md-6">
-            <label for=""><b>email </b></label>
+            <label for=""><b>Email </b></label>
             <input type="text" name="email" class="form-control">
           </div>
         </div>
@@ -115,7 +115,7 @@ include_once("koneksi.php");
         </div>
         <div class="row">
         <div class="col md-6">
-            <label for=""><b>Nama Orang Tua </b></label>
+            <label for=""><b>Nama Wali Murid </b></label>
             <input type="text" name="nmOrtu" class="form-control">
           </div>
           <div class="col md-6">
@@ -188,7 +188,7 @@ include_once("koneksi.php");
         </div>
         <div class="row">
         <div class="col md-6">
-            <label for=""><b>Nama Orang Tua </b></label>
+            <label for=""><b>Nama Wali Murid </b></label>
             <input type="text" name="Ket" id="editOrtu" class="form-control" readonly>
           </div>
           <div class="col md-6">
@@ -210,10 +210,17 @@ include_once("koneksi.php");
             <input type="text" name="Ket" id="editTahun" class="form-control" readonly>
           </div>
         </div>
-        <div class="form-group">
+        <div class="row">
+        <div class="col md-6">
         <label for=""><b>Alamat </b></label>
             <input type="text" name="Ket" id="editalamat" class="form-control" readonly>
         </div>
+        <div class="col md-6">
+        <label for=""><b>Email </b></label>
+            <input type="text" name="email" id="editalamatemail" class="form-control" readonly>
+        </div>
+        </div>
+        <br>
         </form>
       </div>
     </div>
@@ -265,7 +272,7 @@ include_once("koneksi.php");
         </div>
         <div class="row">
         <div class="col md-6">
-            <label for=""><b>Nama Orang Tua </b></label>
+            <label for=""><b>Nama Wali Murid </b></label>
             <input type="text" name="ortu" id="editOrtuSiswa" class="form-control">
           </div>
           <div class="col md-6">
@@ -296,14 +303,21 @@ include_once("koneksi.php");
           </select>
           </div>
         </div>
-        <div class="form-group">
+        <div class="row">
+        <div class="col md-6">
         <label for=""><b>Alamat </b></label>
             <input type="text" name="alamat" id="editalamatSiswa" class="form-control">
+        </div>
+        <div class="col md-6">
+        <label for=""><b>Email </b></label>
+            <input type="text" name="email" id="editemailSiswa" class="form-control">
+        </div>
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary" name="btnUBAH">Ubah</button>
         </div>
       </div>
+      <br>
     </form>
     </div>
   </div>

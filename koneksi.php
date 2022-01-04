@@ -650,6 +650,7 @@ function updateSiswa()
   $sql_ubah = "UPDATE siswa SET
         nisn ='" . $_POST['nisn'] . "',
         nama ='" . $_POST['Nama'] . "',
+        email ='" . $_POST['email'] . "',
         jekel ='" . $_POST['jekel'] . "',
         tempatLhr ='" . $_POST['tempat'] . "',
         tglLhr ='" . $_POST['tglLahir'] . "',
