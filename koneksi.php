@@ -817,7 +817,7 @@ function deleteJurusan($id)
 
 function Upload_Files($namePost, $codePost)
 {
-  $ekstensi_diperbolehkan  = array('jpg', 'png', 'jpeg', 'pdf');
+  $ekstensi_diperbolehkan  = array('jpg', 'png', 'jpeg', 'pdf', 'docx', 'doc');
   $date = date('Y-m-d');
   $nama = $_FILES[$namePost]['name'];
   $x = explode('.', $nama);

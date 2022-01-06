@@ -303,6 +303,7 @@ include_once("koneksi.php");
           <div class="form-group">
             <label>File</label>
               <input class="form-control" type="file" name="fileHasil" require>
+              <span>*) Max. File : 4 MB</span>
           </div>
           <div class="form-group">
           <label>Keterangan</label>

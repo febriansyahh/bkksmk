@@ -135,29 +135,29 @@ include_once("koneksi.php");
           <form action="?page=registrasi" method="post" enctype="multipart/form-data">
             <div class="form-group">
               <label>NISN</label>
-              <input class="form-control" type="text" name="nisn" placeholder="Masukkan NISN anda">
+              <input class="form-control" type="text" name="nisn" placeholder="Masukkan NISN anda" required>
             </div>
 
             <div class="form-group">
               <label>No WhatsApp</label>
-              <input class="form-control " type="text" name="no_wa" placeholder="Masukkan Nomor WhatsApp anda">
+              <input class="form-control " type="text" name="no_wa" placeholder="Masukkan Nomor WhatsApp anda" required>
             </div>
 
             <div class="form-group">
               <label>Username</label>
-              <input class="form-control " type="text" name="username" placeholder="Masukkan username">
+              <input class="form-control " type="text" name="username" placeholder="Masukkan username" required>
             </div>
             <div class="row">
               <div class="col-6">
                 <div class="form-group">
                   <label>Password</label>
-                  <input class="form-control " type="password" name="password" placeholder="Masukkan Username">
+                  <input class="form-control " type="password" name="password" placeholder="Masukkan Username" required>
                 </div>
               </div>
               <div class="col-6">
                 <div class="form-group">
                   <label>Confirm Password</label>
-                  <input class="form-control " type="password" name="rePassword" placeholder="Masukkan Password">
+                  <input class="form-control " type="password" name="rePassword" placeholder="Masukkan Password" required>
                 </div>
               </div>
             </div>
@@ -184,7 +184,7 @@ include_once("koneksi.php");
               <div class="col-6">
                 <div class="form-group">
                   <label>NISN</label>
-                  <input class="form-control" type="text" name="nisn" placeholder="Masukkan NISN anda">
+                  <input class="form-control" type="text" name="nisn" placeholder="Masukkan NISN anda" required>
                 </div>
               </div>
 
@@ -192,7 +192,7 @@ include_once("koneksi.php");
                 <div class="form-group">
                   <label>Posisi</label>
                   <!-- <input class="form-control" type="text" name="no_wa" placeholder="Masukkan Nomor WhatsApp anda"> -->
-                  <select name="status" id="" class="form-control">
+                  <select name="status" id="" class="form-control" required>
                     <option value="">Pilih</option>
                     <option value="Bekerja">Bekerja</option>
                     <option value="Studi">Studi</option>
@@ -202,15 +202,15 @@ include_once("koneksi.php");
             </div>
 
             <div class="form-group">
-              <label>Nama Instansi</label>
+              <label>Nama Industri / Instansi</label>
               <input class="form-control" type="text" name="nmInstansi"
-                placeholder="Nama Instansi sekarang bekerja / studi">
+                placeholder="Nama Instansi sekarang bekerja / studi" required>
             </div>
             <div class="row">
               <div class="col-6">
                 <div class="form-group">
                   <label>Pekerjaan</label>
-                  <select name="pekerjaan" id="" class="form-control">
+                  <select name="pekerjaan" id="" class="form-control" required>
                     <option value="">Pilih</option>
                     <option value="Utama">Utama</option>
                     <option value="Sambilan">Sambilan</option>
@@ -222,11 +222,11 @@ include_once("koneksi.php");
               <div class="col-6">
                 <div class="form-group">
                   <label>Mulai Sejak</label>
-                  <select name="mulai" id="" class="form-control">
+                  <select name="mulai" id="" class="form-control" required>
                     <option value="">Pilih</option>
-                    <option value="Sebelum">Sebelum</option>
-                    <option value="Sesudah">Sesudah</option>
-                    <option value="Tidak">Tidak</option>
+                    <option value="Sebelum">Sebelum Lulus</option>
+                    <option value="Sesudah">Sesudah Lulus</option>
+                    <option value="Tidak">Tidak / Lanjut Studi</option>
                   </select>
                 </div>
               </div>
@@ -234,14 +234,14 @@ include_once("koneksi.php");
             <div class="row">
               <div class="col-6">
                 <div class="form-group">
-                  <label>Pertanggal</label>
-                  <input class="form-control" type="date" name="waktu">
+                  <label>Tanggal Mulai</label>
+                  <input class="form-control" type="date" name="waktu" required>
                 </div>
               </div>
               <div class="col-6">
                 <div class="form-group">
                   <label>Jenis Perusahaan</label>
-                  <select name="jnsPerusahaan" id="" class="form-control">
+                  <select name="jnsPerusahaan" id="" class="form-control" required>
                     <option value="">Pilih</option>
                     <option value="Kuliah">Studi</option>
                     <option value="BUMN">BUMN</option>
@@ -262,7 +262,7 @@ include_once("koneksi.php");
               <div class="col-6">
                 <div class="form-group">
                   <label>Tahun Lulus</label>
-                  <select name="tahun" id="" class="form-control" placeholder="Masukkan Besaran Gaji Bagi yang bekerja">
+                  <select name="tahun" id="" class="form-control" placeholder="Masukkan Besaran Gaji Bagi yang bekerja" required>
                     <option value="">-Pilih-</option>
                     <?php
                       $thn_skr = date('Y');

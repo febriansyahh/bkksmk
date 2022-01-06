@@ -381,12 +381,14 @@ $maxID = MaxIdProgram();
             <div class="row">
               <div class="col-6">
                 <label>File Lowongan</label>
-                <input class="form-control " type="file" name="fileLoker" require> <br>
+                <input class="form-control " type="file" name="fileLoker" required>
+                <span>*) Max. File : 4 MB</span>
+                <br>
               </div>
 
               <div class="col-6">
                 <label>Batas Pendaftaran</label>
-                <input class="form-control " type="date" name="batas" require>
+                <input class="form-control " type="date" name="batas" required>
               </div>
               </div>
               <div class="form-group">
@@ -455,7 +457,8 @@ $maxID = MaxIdProgram();
             <div class="row">
               <div class="col-6">
                 <label>File Lowongan</label>
-                <input class="form-control " type="file" name="fileLoker" require> <br>
+                <input class="form-control " type="file" name="fileLoker" require>
+                <span>*) Max. File : 4 MB</span> <br>
               </div>
 
               <div class="col-6">
@@ -515,7 +518,8 @@ $maxID = MaxIdProgram();
               <input class="form-control" type="text" name="atasNama" value="<?php echo $data_nama ?>" readonly>
 
               <label>File Pendaftaran</label>
-              <input class="form-control " type="file" name="berkasDaftar" required> <br>
+              <input class="form-control " type="file" name="berkasDaftar" required>
+              <span>*) Max. File : 4 MB</span> <br>
 
             </div>
 
