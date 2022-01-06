@@ -1,6 +1,5 @@
 <?php
 include_once('koneksi.php');
-
 if (isset($_POST['btnSimpan'])) {
   // echo'<pre>';
   // echo $_POST['nisn'];

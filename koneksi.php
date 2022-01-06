@@ -107,6 +107,64 @@ function registrasiData()
             }
       }
     }
+function registrasiDatas()
+{
+  global $con;
+  
+  $cekNisn = "SELECT idSiswa, nisn, nama FROM siswa WHERE nisn = '" . $_POST['nisn'] . "' ";
+  $query = mysqli_query($con, $cekNisn);
+  $row = mysqli_fetch_row($query);
+    $idDaftar = $row[0];
+    $nisn = $row[1];
+    $nama = $row[2];
+    // echo $idDaftar;
+    // echo $nisn;
+    // echo $nama;
+    // die();
+  $pass = $_POST['password'];
+  $repass = $_POST['rePassword'];
+  
+  $tgl = date('Y-m-d H:i:s');
+  if($nisn == NULL){
+    echo "<script>alert('NISN tidak Terdaftar, Registrasi Gagal !!')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=index.php?page=beranda>";
+    // echo 'A';
+    
+  }else
+      {
+        if($pass != $repass){
+          echo "<script>alert('Password tidak sama, Simpan Gagal !!')</script>";
+          echo "<meta http-equiv='refresh' content='0; url=index.php?page=beranda>";
+        }else
+            {
+              // $sql_insert = "INSERT INTO data_anggota (nisn, noWa, tglDaftar) VALUES (
+              $sql_insert = "INSERT INTO anggota (nisn, noWa, tglDaftar) VALUES (
+                '" . $nisn . "',
+                '" . $_POST['no_wa'] . "',
+                '" . $tgl . "')";
+                $query_insert = mysqli_query($con, $sql_insert) or die(mysqli_connect_error());
+
+              $sql_insertUser = "INSERT INTO user (nama, username, password, idLevel, idDaftar, status, tglDaftar) VALUES (
+                '$nama',
+                '" . $_POST['username'] . "',
+                '" . $_POST['password'] . "',
+                '2',
+                '" . $idDaftar . "',
+                '1',
+                '" . $tgl . "')";
+          
+                $query_insertUser = mysqli_query($con, $sql_insertUser) or die(mysqli_connect_error());
+                
+                if ($query_insert && $query_insertUser) {
+                  echo "<script>alert('Registrasi Anggota Berhasil')</script>";
+                  echo "<meta http-equiv='refresh' content='0; url=../signin.php'>";
+                } else {
+                  echo "<script>alert('Registrasi Anggota Gagal')</script>";
+                  echo "<meta http-equiv='refresh' content='0; url=index.php?page=beranda'>";
+                }
+            }
+      }
+    }
 
 function registrasiPer()
 {
@@ -1618,8 +1676,29 @@ function updateUser()
     echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=user'>";
   }
 }
-function updateAlumni($id){
+function updateAlumni(){
+  global $con;
 
+  $sql_ubah = "UPDATE alumni SET
+        nisn = '" . $_POST['nisn'] . "',
+        status = '" . $_POST['status'] . "',
+        nmInstansi = '" . $_POST['nmInstansi'] . "',
+        mulai = '" . $_POST['mulai'] . "',
+        pekerjaan = '" . $_POST['pekerjaan'] . "',
+        waktu = '" . $_POST['waktu'] . "',
+        jnsPerusahaan = '" . $_POST['jnsPerusahaan'] . "',
+        gaji = '" . $_POST['gaji'] . "',
+        thnLulus = '" . $_POST['tahun'] . "'
+        WHERE idAlumni = '" . $_POST['editId'] . "'";
+  $query_ubah = mysqli_query($con, $sql_ubah);
+
+  if ($query_ubah) {
+    echo "<script>alert('Ubah Berhasil')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=user'>";
+  } else {
+    echo "<script>alert('Ubah Gagal')</script>";
+    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=user'>";
+  }
 }
 function deleteUser($id)
 {
@@ -1636,6 +1715,7 @@ function deleteUser($id)
     echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=user''>";
   }
 }
+
 function deleteKerja($id)
 {
   global $con;

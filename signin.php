@@ -74,7 +74,7 @@ if (isset($_POST['btnLogin'])) LoginUser();
           <h6 class="modal-title" style="color:black">Register Anggota</h6>
         </div>
         <div class="modal-body">
-          <form action="landing/registrasi_aksi.php" method="post" enctype="multipart/form-data">
+          <form action="landing/reg_anggota.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
               <label>NISN</label>
               <input class="form-control" type="text" name="nisn" placeholder="Masukkan NISN anda">

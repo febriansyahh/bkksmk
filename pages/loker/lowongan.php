@@ -279,7 +279,7 @@ $maxID = MaxIdProgram();
                   <td><?php echo $data['nmLoker']; ?></td>
                   <td><?php echo $data['jekel']; ?></td>
                   <td><?php echo $data['keterangan']; ?></td>
-                  <td><?php echo $data['sumber']; ?> <?php echo $data['status']; ?></td>
+                  <td><?php echo $data['sumber']; ?></td>
                   <td><?php echo date('d F Y', strtotime($data['batas'])); ?></td>
                   <td>
                     <a href="javascript:void(0)" data-toggle="modal" data-target="#editLoker"
