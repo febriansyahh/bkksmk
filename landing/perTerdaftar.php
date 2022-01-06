@@ -10,7 +10,9 @@
         ?>
         <div class="col-lg-4 mb-6 mb-lg-4" >
           <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-            <h4 class="title"><?php echo $data['nmPerusahaan'] ?></h4>
+          <h4 class="title">
+            <img src=<?php echo "file_data/logo/".$data['logo'] ?> alt="" style="width:40px; height:40px"> -
+            <?php echo $data['nmPerusahaan'] ?></h4>
             <p class="description" style="text-align: justify;"> Perusahaan 
               <?php echo $data['nmPerusahaan'] ." dengan alamat email ". $data['email']
               ." dan telah menjalin kerjasama sejak " . date("d-M-Y", strtotime($data['tglKerjasama']))?></p>

@@ -80,6 +80,10 @@ include_once("koneksi.php");
         <label>Nama Perusahaan </label>
         <input class="form-control" type="text" name="nmPerusahaan">
       </div>
+        <div class="form-group">
+        <label>Logo Perusahaan </label>
+        <input class="form-control" type="file" name="fileLogo">
+      </div>
         <div class="row" >
           
           <div class="col-6">

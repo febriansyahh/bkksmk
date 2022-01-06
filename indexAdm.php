@@ -846,9 +846,6 @@ if (isset($_SESSION['ses_username']) == "") {
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
           <a class="btn btn-primary" href="signin.php">Logout</a>
-          <?php
-          session_destroy();
-          ?>
         </div>
       </div>
     </div>

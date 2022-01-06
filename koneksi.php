@@ -107,7 +107,7 @@ function registrasiData()
             }
       }
     }
-    
+
 function registrasiDatas()
 {
   global $con;
@@ -372,6 +372,14 @@ function getLokerIndex()
   return $query;
 }
 
+function getCekLoker()
+{
+  global $con;
+  $cekLoker = "SELECT b.idLevel FROM `lowongan` `a`, `user` `b` WHERE a.usrInput=b.idUser";
+  $result = mysqli_query($con, $cekLoker);
+  return $result;
+  // return $query;
+}
 function getLokerAll()
 {
   global $con;
@@ -380,6 +388,15 @@ function getLokerAll()
   $query = mysqli_query($con, $sql);
 
   return $query;
+}
+
+function getLokerAllLogo()
+{
+  global $con;
+  $sql = "SELECT a.*, b.nmPerusahaan, b.logo FROM `lowongan` `a`, `perusahaan` `b`, `user` `c`  WHERE a.usrInput=c.idUser AND c.idDaftar=b.idPerusahaan AND a.status='2' AND c.idLevel='4' ORDER BY a.idLowongan DESC";
+  $query = mysqli_query($con, $sql);
+  return $query;
+
 }
 
 function getJurusan()
@@ -1452,7 +1469,34 @@ function perusahaan()
   return $query;
 }
 
-function insertPerusahaan()
+function upload_logo($namePost, $codePost)
+{
+  
+  $ekstensi_diperbolehkan  = array('jpg', 'png', 'jpeg');
+  $nmPerusahaan = str_replace(' ', '_', $_POST[$codePost]);
+  $nama = $_FILES[$namePost]['name'];
+  $x = explode('.', $nama);
+  $ekstensi = strtolower(end($x));
+  $namas = 'Logo_' . $nmPerusahaan. "." . $ekstensi;
+  $ukuran = $_FILES[$namePost]['size'];
+  $file_tmp = $_FILES[$namePost]['tmp_name'];
+
+  if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
+    if ($ukuran < 41943040) {
+      $destination_path = getcwd().DIRECTORY_SEPARATOR . 'file_data\logo' . '/';
+
+      $target_path = $destination_path . $namas;
+
+      @move_uploaded_file($file_tmp, $target_path);
+      return $namas;
+    } else {
+      return;
+    }
+  } else {
+    return;
+  }
+}
+function insertPerusahaan($upload)
 {
   global $con;
   $date = date('Y-m-d');
@@ -1464,12 +1508,13 @@ function insertPerusahaan()
   $idDaftar = $row[0];
 
   // $sql_insert = "INSERT INTO data_perusahaan (`nmPerusahaan`, `email`, `stsPerusahaan`, `noTelp`, `tglKerjasama`, `tglDaftar`) VALUES (
-  $sql_insert = "INSERT INTO perusahaan (`nmPerusahaan`, `email`, `stsPerusahaan`, `noTelp`, `tglKerjasama`, `tglDaftar`) VALUES (
+  $sql_insert = "INSERT INTO perusahaan (`nmPerusahaan`, `email`, `stsPerusahaan`, `noTelp`, `tglKerjasama`, `logo`, `tglDaftar`) VALUES (
 					'" . $_POST['nmPerusahaan'] . "',
           '" . $_POST['email'] . "',
 					'" . $_POST['statusPer'] . "',
 					'" . $_POST['telepon'] . "',
 					'" . $_POST['tglKerjasama'] . "',
+					'$upload',
           '$date')";
 
   $query_insert = mysqli_query($con, $sql_insert) or die(mysqli_connect_error());
