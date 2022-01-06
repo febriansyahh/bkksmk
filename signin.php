@@ -25,23 +25,24 @@ if (isset($_POST['btnLogin'])) LoginUser();
                 <div class="row no-gutters">
                     <div class="col-md-6"  style="background-color :#2F4AAA">
                     <center>
-                        <h3 style="padding-top: 30%;">Halo, Teman !</h3>
-                        <br><br>
-                        <h6>Daftarkan diri anda dan mulai gunakan <br>layanan sekolah segera</h6>
-                        <br><br>
-                        <a data-toggle="modal" data-target="#register" style="background-color: #2F4AAA; border-color :aliceblue; width:40%; border-radius:15px" class="btn btn-block login-btn mb-4">Signup</a>
+                        <br>
+                        <h3 style="padding-top: 20%; font-family: Cooper Black">Halo, Teman !</h3>
+                        <br>
+                        <h6 style="font-family:Century">Daftarkan diri anda dan mulai gunakan <br>layanan sekolah segera</h6>
+                        <br>
+                        <a data-toggle="modal" data-target="#register" style="background-color: #2F4AAA; border-color :aliceblue; width:40%; border-radius:15px" class="btn btn-block login-btn mb-4"><b>Daftar</b></a>
                     </center>
                     </div>
                     <div class="col-md-6">
+                      <center>
                         <div class="card-body">
                             <div class="brand-wrapper">
                                 <img src="assets/img/loginbkk.png" alt="logo" class="logo" style="width:80%; height:80%">
                             </div>
-                            <p class="login-card-description">Silahkan Login</p>
                             <form action="" method="post">
                                 <div class="form-group">
                                     <label for="email" class="sr-only">Username</label>
-                                    <input type="text" class="form-control" name="txtusm" placeholder="Username Login">
+                                    <input type="text" class="form-control" name="txtusm" placeholder="Username">
                                 </div>
                                 <div class="form-group mb-4">
                                     <label for="password" class="sr-only">Password</label>
@@ -51,16 +52,8 @@ if (isset($_POST['btnLogin'])) LoginUser();
                                 <input name="btnLogin" id="login" style="background-color: #2F4AAA;" class="btn btn-block login-btn mb-4" type="submit" value="Login">
                             </form>
                             <a href="index.php" class="forgot-password-link">Kembali ke laman utama</a>
-                            <p class="login-card-footer-text">Belum punya akun ? <a data-toggle="modal" data-target="#register" class="btn-get-started scrollto">Daftar disini</a>
-                            </p>
-                            <!-- <nav class="login-card-footer-nav">
-                                <a href="#!">Terms of use.</a>
-                                <a href="#!">Privacy policy</a>
-                            </nav> -->
-                            <nav class="login-card-footer-nav">
-                                <a href="#!">Copyright IT Support SMK Muhammadiyah.</a>
-                            </nav>
-                        </div>
+                          </div>
+                        </center>
                     </div>
                 </div>
             </div>

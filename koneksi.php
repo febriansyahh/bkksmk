@@ -849,6 +849,7 @@ function insertLowongan($upload)
   // die();
   $tgl = date('Y-m-d H:i:s');
   $idLevel = $_SESSION["ses_idLevel"];
+  $idDaftar = $_SESSION["ses_idDaftar"];
   switch ($idLevel) {
     case '1':
       $sql_insert = "INSERT INTO lowongan (`noLoker`, `perusahaan`, `nmLoker`, `jekel`, `file`, `kualifikasi`, `persyaratan`, `keterangan`, `sumber`, `batas`, `status`, `tglInput`, `usrInput`) VALUES (
@@ -868,6 +869,10 @@ function insertLowongan($upload)
 
       break;
     case '4':
+      // $sql_logo = " SELECT logo FROM perusahaan WHERE idPerusahaan = '$idDaftar' ";
+      // $query_logo = mysqli_query($con, $sql_logo);
+      // $row = mysqli_fetch_row($query_logo);
+      // $logo = $row[0];
       $sql_insert = "INSERT INTO lowongan (`noLoker`, `perusahaan`, `nmLoker`, `jekel`, `file`, `kualifikasi`, `persyaratan`, `keterangan`, `sumber`, `batas`, `status`, `tglInput`, `usrInput`) VALUES (
         '" . $_POST['noLoker'] . "',
         '" . $_POST['perusahaan'] . "',
@@ -1471,7 +1476,6 @@ function perusahaan()
 
 function upload_logo($namePost, $codePost)
 {
-  
   $ekstensi_diperbolehkan  = array('jpg', 'png', 'jpeg');
   $nmPerusahaan = str_replace(' ', '_', $_POST[$codePost]);
   $nama = $_FILES[$namePost]['name'];
