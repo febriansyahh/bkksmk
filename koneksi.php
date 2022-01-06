@@ -107,6 +107,7 @@ function registrasiData()
             }
       }
     }
+    
 function registrasiDatas()
 {
   global $con;
