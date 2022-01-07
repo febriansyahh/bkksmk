@@ -3,7 +3,7 @@ session_start();
 include_once("koneksi.php");
 include_once("fpdf/fpdf.php");
 if (isset($_SESSION['ses_username']) == "") {
-  echo "<meta http-equiv='refresh' content='0;url=login.php'>";
+  echo "<meta http-equiv='refresh' content='0;url=signin.php'>";
 } else {
   $data_username = $_SESSION["ses_username"];
   $data_nama = $_SESSION["ses_nama"];
@@ -11,6 +11,7 @@ if (isset($_SESSION['ses_username']) == "") {
   $data_idUser = $_SESSION["ses_idUser"];
   $data_status = $_SESSION["ses_idLevel"];
 }
+// session_destroy();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -331,7 +332,7 @@ if (isset($_SESSION['ses_username']) == "") {
               <ul class="nav nav-treeview">
               <li class="nav-item">
                       <a href="?pages=reportlowongan" class="nav-link">
-                        <i class="far fa-dot-circle nav-icon"></i>
+                        <i class="far fa-circle nav-icon"></i>
                         <p>Lowongan</p>
                       </a>
                     </li>
