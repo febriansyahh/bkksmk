@@ -266,6 +266,7 @@ function getYear()
   return $query;
 }
 
+
 function getYearPerusahaan()
 {
   global $con;
