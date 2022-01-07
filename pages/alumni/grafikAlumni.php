@@ -50,17 +50,17 @@ error_reporting();
               </thead>
               <tbody>
                 <?php
-            // $a = getAlumni();
+            $a = getAlumni();
             $no = 1;
-            $jur = $_POST['jurusan'];
-            $tahun = $_POST['tahun'];
-            if($jur && $tahun != ''){
-            $sql_tampil = mysqli_query($con,"SELECT a.idAlumni, b.nisn, a.nmInstansi, a.status, b.nama, c.nmJurusan, b.noTelp, a.thnLulus FROM alumni a, siswa b, jurusan c WHERE a.nisn=b.nisn AND b.jurusan=c.idJurusan AND a.thnLulus = '$tahun' AND c.idJurusan= '$jur' ORDER BY a.thnLulus ASC");
-            }else{
-              $sql_tampil = mysqli_query($con,"SELECT a.idAlumni, b.nisn, a.nmInstansi, a.status, b.nama, c.nmJurusan, b.noTelp, a.thnLulus FROM alumni a, siswa b, jurusan c WHERE a.nisn=b.nisn AND b.jurusan=c.idJurusan ORDER BY a.thnLulus ASC");
-            }
-            while($data = mysqli_fetch_array($sql_tampil)){
-            // foreach ($a as $key => $data) {
+            // $jur = $_POST['jurusan'];
+            // $tahun = $_POST['tahun'];
+            // if($jur && $tahun != ''){
+            // $sql_tampil = mysqli_query($con,"SELECT a.idAlumni, b.nisn, a.nmInstansi, a.status, b.nama, c.nmJurusan, b.noTelp, a.thnLulus FROM alumni a, siswa b, jurusan c WHERE a.nisn=b.nisn AND b.jurusan=c.idJurusan AND a.thnLulus = '$tahun' AND c.idJurusan= '$jur' ORDER BY a.thnLulus ASC");
+            // }else{
+            //   $sql_tampil = mysqli_query($con,"SELECT a.idAlumni, b.nisn, a.nmInstansi, a.status, b.nama, c.nmJurusan, b.noTelp, a.thnLulus FROM alumni a, siswa b, jurusan c WHERE a.nisn=b.nisn AND b.jurusan=c.idJurusan ORDER BY a.thnLulus ASC");
+            // }
+            // while($data = mysqli_fetch_array($sql_tampil)){
+            foreach ($a as $key => $data) {
                 ?>
                 <tr>
                   <td><?php echo $no; ?></td>

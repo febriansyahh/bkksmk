@@ -7,7 +7,7 @@ error_reporting();
   <div class="container-fluid">
     <div class="row">
       <div class="col-12">
-			<form action="" method="post" enctype="multipart/form-data">
+			<form action="" method="post" enctype="multipart/form-data" name="filter">
             <div class="input-group mb-3">
               <select name="jurusan" id="filter" style="width:20%;">
                 <option value="" selected="selected">Pilih Jurusan</option>
@@ -50,18 +50,18 @@ error_reporting();
               </thead>
               <tbody>
                 <?php
-            // $a = getAlumni();
-            // $no = 1;
-            // foreach ($a as $key => $data) {
-							$no = 1;
-							$jur = $_POST['jurusan'];
-							$tahun = $_POST['tahun'];
-							if($jur || $tahun != ''){
-							$sql_tampil = mysqli_query($con,"SELECT a.idAlumni, b.nisn, a.nmInstansi, a.status, b.nama, c.nmJurusan, b.noTelp, a.thnLulus FROM alumni a, siswa b, jurusan c WHERE a.nisn=b.nisn AND b.jurusan=c.idJurusan AND a.status='Bekerja' AND a.thnLulus = '$tahun' AND c.idJurusan= '$jur' ORDER BY a.thnLulus ASC");
-							}else{
-								$sql_tampil = mysqli_query($con,"SELECT a.idAlumni, b.nisn, a.nmInstansi, a.status, b.nama, c.nmJurusan, b.noTelp, a.thnLulus FROM alumni a, siswa b, jurusan c WHERE a.nisn=b.nisn AND b.jurusan=c.idJurusan AND a.status='Bekerja' ORDER BY a.thnLulus ASC");
-							}
-							while($data = mysqli_fetch_array($sql_tampil)){
+            $a = getAlumni();
+            $no = 1;
+            foreach ($a as $key => $data) {
+							// $no = 1;
+							// $jur = $_POST['jurusan'];
+							// $tahun = $_POST['tahun'];
+							// if($jur || $tahun != ''){
+							// $sql_tampil = mysqli_query($con,"SELECT a.idAlumni, b.nisn, a.nmInstansi, a.status, b.nama, c.nmJurusan, b.noTelp, a.thnLulus FROM alumni a, siswa b, jurusan c WHERE a.nisn=b.nisn AND b.jurusan=c.idJurusan AND a.status='Bekerja' AND a.thnLulus = '$tahun' AND c.idJurusan= '$jur' ORDER BY a.thnLulus ASC");
+							// }else{
+							// 	$sql_tampil = mysqli_query($con,"SELECT a.idAlumni, b.nisn, a.nmInstansi, a.status, b.nama, c.nmJurusan, b.noTelp, a.thnLulus FROM alumni a, siswa b, jurusan c WHERE a.nisn=b.nisn AND b.jurusan=c.idJurusan AND a.status='Bekerja' ORDER BY a.thnLulus ASC");
+							// }
+							// while($data = mysqli_fetch_array($sql_tampil)){
                 ?>
                 <tr>
                   <td><?php echo $no; ?></td>
