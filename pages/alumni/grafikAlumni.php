@@ -1,5 +1,6 @@
 <?php	
 include_once("koneksi.php");
+error_reporting();
     ?>
 <div class="form-group">
   <br>
@@ -9,7 +10,7 @@ include_once("koneksi.php");
           <form action="" method="post" enctype="multipart/form-data">
             <div class="input-group mb-3">
               <select name="jurusan" id="filter" style="width:20%;">
-                <option value="">Pilih Jurusan</option>
+                <option value="" selected="selected">Pilih Jurusan</option>
                 <?php
                 $dt = getJurusan();
                 foreach ($dt as $value) {
@@ -18,7 +19,7 @@ include_once("koneksi.php");
               ?>
               </select>&nbsp;
               <select name="tahun" id="filter" style="width:20%;">
-                <option value="">Pilih Tahun</option>
+                <option value="" selected="selected">Pilih Tahun</option>
                 <?php
                 $dt = getYearAlumni();
                 foreach ($dt as $value) {

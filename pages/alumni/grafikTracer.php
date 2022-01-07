@@ -1,5 +1,6 @@
 <?php	
 include_once("koneksi.php");
+error_reporting();
     ?>
 <div class="form-group">
   <br>
@@ -9,7 +10,7 @@ include_once("koneksi.php");
 			<form action="" method="post" enctype="multipart/form-data">
             <div class="input-group mb-3">
               <select name="jurusan" id="filter" style="width:20%;">
-                <option value="">Pilih Jurusan</option>
+                <option value="" selected="selected">Pilih Jurusan</option>
                 <?php
                 $dt = getJurusan();
                 foreach ($dt as $value) {
@@ -18,7 +19,7 @@ include_once("koneksi.php");
               ?>
               </select>&nbsp;
               <select name="tahun" id="filter" style="width:20%;">
-                <option value="">Pilih Tahun</option>
+                <option value="" selected="selected">Pilih Tahun</option>
                 <?php
                 $dt = getYearAlumni();
                 foreach ($dt as $value) {
@@ -55,7 +56,7 @@ include_once("koneksi.php");
 							$no = 1;
 							$jur = $_POST['jurusan'];
 							$tahun = $_POST['tahun'];
-							if($jur && $tahun != ''){
+							if($jur || $tahun != ''){
 							$sql_tampil = mysqli_query($con,"SELECT a.idAlumni, b.nisn, a.nmInstansi, a.status, b.nama, c.nmJurusan, b.noTelp, a.thnLulus FROM alumni a, siswa b, jurusan c WHERE a.nisn=b.nisn AND b.jurusan=c.idJurusan AND a.status='Bekerja' AND a.thnLulus = '$tahun' AND c.idJurusan= '$jur' ORDER BY a.thnLulus ASC");
 							}else{
 								$sql_tampil = mysqli_query($con,"SELECT a.idAlumni, b.nisn, a.nmInstansi, a.status, b.nama, c.nmJurusan, b.noTelp, a.thnLulus FROM alumni a, siswa b, jurusan c WHERE a.nisn=b.nisn AND b.jurusan=c.idJurusan AND a.status='Bekerja' ORDER BY a.thnLulus ASC");
@@ -102,62 +103,52 @@ include_once("koneksi.php");
 
   </body>
   <script src="js/main.js"></script>
-  <script>
+	<script>
 		var ctx = document.getElementById("myChart").getContext('2d');
 		var myChart = new Chart(ctx, {
 			type: 'bar',
 			data: {
 				labels: [
-          <?php 
-					 $sql = "SELECT DISTINCT(thnLulus) AS year FROM alumni ORDER BY thnLulus DESC LIMIT 2,999999 ";
-           $query = mysqli_query($con, $sql);
-           $row = mysqli_fetch_row($query);
-          $tahunPertamas = $row[0];
-              echo $tahunPertamas;
+          <?php
+          $jur = $_POST['jurusan'];
+          $tahun = $_POST['tahun'];
+          if($jur && $tahun != ''){ 
+            echo $tahun;
+          }else{
+            $sql = "SELECT DISTINCT(thnLulus) AS year FROM alumni GROUP BY thnLulus ORDER BY thnLulus DESC LIMIT 1 ";
+            $query = mysqli_query($con, $sql);
+            $row = mysqli_fetch_row($query);
+            $tahunPertama = $row[0];
+                echo $tahunPertama;
+          }
 					?>
           , 
-          <?php 
-					 $sql = "SELECT DISTINCT(thnLulus) AS year FROM alumni ORDER BY thnLulus DESC LIMIT 1,999999 ";
-           $query = mysqli_query($con, $sql);
-           $row = mysqli_fetch_row($query);
-              $tahunKeduas = $row[0];
-              echo $tahunKeduas;
-					?>,
-          <?php 
-					 $sql = "SELECT DISTINCT(thnLulus) AS year FROM alumni GROUP BY thnLulus ORDER BY thnLulus DESC LIMIT 1 ";
-           $query = mysqli_query($con, $sql);
-           $row = mysqli_fetch_row($query);
-              $tahunKetigas = $row[0];
-              echo $tahunKetigas;
-					?>, 
           ],
 				datasets: [{
 					label: 'Jumlah Siswa Diterima dari lowongan BKK',
 					data: [
-					<?php 
-					$jumlah_teknik = mysqli_query($con,"SELECT a.idDaftar FROM pendaftaran a, siswa b, alumni c WHERE a.idAnggota=b.idSiswa AND c.nisn=b.nisn AND a.status='4' AND c.thnLulus='$tahunPertamas' ");
+					<?php
+          $jur = $_POST['jurusan'];
+          $tahun = $_POST['tahun'];
+          if($jur && $tahun != ''){ 
+					$jumlah_teknik = mysqli_query($con,"SELECT a.idDaftar, d.nmJurusan FROM pendaftaran a, siswa b, alumni c, jurusan d WHERE a.idAnggota=b.idSiswa AND c.nisn=b.nisn AND b.jurusan=d.idJurusan AND a.status='4' AND c.thnLulus = '$tahun' AND d.idJurusan= '$jur' ORDER BY c.thnLulus ASC");
+          }else{
+					$jumlah_teknik = mysqli_query($con,"SELECT a.idDaftar FROM pendaftaran a, siswa b, alumni c WHERE a.idAnggota=b.idSiswa AND c.nisn=b.nisn AND a.status='4' AND c.thnLulus='$tahunPertama'");
+          }
 					echo mysqli_num_rows($jumlah_teknik);
 					?>, 
-					<?php 
-					$jumlah_ekonomi = mysqli_query($con,"SELECT a.idDaftar FROM pendaftaran a, siswa b, alumni c WHERE a.idAnggota=b.idSiswa AND c.nisn=b.nisn AND a.status='4' AND c.thnLulus='$tahunKeduas' ");
-					echo mysqli_num_rows($jumlah_ekonomi);
-					?>, 
-					<?php 
-					$jumlah_fisip = mysqli_query($con,"SELECT a.idDaftar FROM pendaftaran a, siswa b, alumni c WHERE a.idAnggota=b.idSiswa AND c.nisn=b.nisn AND a.status='4' AND c.thnLulus='$tahunKetigas' ");
-					echo mysqli_num_rows($jumlah_fisip);
-					?>
 					],
 					backgroundColor: [
 					'rgba(255, 99, 132, 0.2)',
 					'rgba(54, 162, 235, 0.2)',
-					'rgba(255, 206, 86, 0.2)',
-					'rgba(75, 192, 192, 0.2)'
+					'rgba(255, 206, 86, 0.2)'
+					// 'rgba(75, 192, 192, 0.2)'
 					],
 					borderColor: [
 					'rgba(255,99,132,1)',
 					'rgba(54, 162, 235, 1)',
-					'rgba(255, 206, 86, 1)',
-					'rgba(75, 192, 192, 1)'
+					'rgba(255, 206, 86, 1)'
+					// 'rgba(75, 192, 192, 1)'
 					],
 					borderWidth: 1
 				}]
@@ -173,66 +164,49 @@ include_once("koneksi.php");
 			}
 		});
 	</script>
-  <script>
+	<script>
 		var ctx = document.getElementById("myChart2").getContext('2d');
 		var myChart = new Chart(ctx, {
 			type: 'bar',
 			data: {
 				labels: [
-          <?php 
-					 $sql = "SELECT DISTINCT(thnLulus) AS year FROM alumni ORDER BY thnLulus DESC LIMIT 2,999999 ";
-           $query = mysqli_query($con, $sql);
-           $row = mysqli_fetch_row($query);
-          $tahunPertama = $row[0];
-              echo $tahunPertama;
+          <?php
+          $jur = $_POST['jurusan'];
+          $tahun = $_POST['tahun'];
+          if($jur && $tahun != ''){ 
+            echo $tahun;
+          }else{
+            $sql = "SELECT DISTINCT(thnLulus) AS year FROM alumni GROUP BY thnLulus ORDER BY thnLulus DESC LIMIT 1 ";
+            $query = mysqli_query($con, $sql);
+            $row = mysqli_fetch_row($query);
+            $tahunPertamas = $row[0];
+                echo $tahunPertamas;
+          }
 					?>
-          , 
-          <?php 
-					 $sql = "SELECT DISTINCT(thnLulus) AS year FROM alumni ORDER BY thnLulus DESC LIMIT 1,999999 ";
-           $query = mysqli_query($con, $sql);
-           $row = mysqli_fetch_row($query);
-              $tahunKedua = $row[0];
-              echo $tahunKedua;
-					?>,
-          <?php 
-					 $sql = "SELECT DISTINCT(thnLulus) AS year FROM alumni GROUP BY thnLulus ORDER BY thnLulus DESC LIMIT 1 ";
-           $query = mysqli_query($con, $sql);
-           $row = mysqli_fetch_row($query);
-              $tahunKetiga = $row[0];
-              echo $tahunKetiga;
-					?>, 
           ],
 				datasets: [{
 					label: 'Jumlah Siswa Diterima dari lowongan Luar BKK',
 					data: [
-					<?php 
-					$jumlah_teknik = mysqli_query($con,"SELECT * FROM `alumni` WHERE status='Bekerja' AND nisn NOT IN (SELECT b.nisn FROM pendaftaran a, siswa b WHERE a.idAnggota=b.idSiswa AND a.status='4') AND thnLulus='$tahunPertama'");
+					<?php
+          $jurs = $_POST['jurusan'];
+          $tahuns = $_POST['tahun'];
+          if($jurs && $tahuns != ''){ 
+						$jumlah_teknik = mysqli_query($con,"SELECT aa.*, bb.jurusan, cc.nmJurusan FROM alumni aa, siswa bb, jurusan cc WHERE aa.nisn=bb.nisn AND bb.jurusan=cc.idJurusan AND aa.status='Bekerja' AND aa.nisn NOT IN (SELECT b.nisn FROM pendaftaran a, siswa b WHERE a.idAnggota=b.idSiswa AND a.status='4') AND aa.thnLulus = '$tahuns' AND cc.idJurusan= '$jurs' ORDER BY aa.thnLulus ASC");
+						}else{
+						$jumlah_teknik = mysqli_query($con,"SELECT * FROM `alumni` WHERE status='Bekerja' AND nisn NOT IN (SELECT b.nisn FROM pendaftaran a, siswa b WHERE a.idAnggota=b.idSiswa AND a.status='4') AND thnLulus='$tahunPertamas'");
+						}
 					echo mysqli_num_rows($jumlah_teknik);
 					?>, 
-					<?php 
-					$jumlah_ekonomi = mysqli_query($con,"SELECT * FROM `alumni` WHERE status='Bekerja' AND nisn NOT IN (SELECT b.nisn FROM pendaftaran a, siswa b WHERE a.idAnggota=b.idSiswa AND a.status='4') AND thnLulus='$tahunKedua'");
-					echo mysqli_num_rows($jumlah_ekonomi);
-					?>, 
-					<?php 
-					$jumlah_fisip = mysqli_query($con,"SELECT * FROM `alumni` WHERE status='Bekerja' AND nisn NOT IN (SELECT b.nisn FROM pendaftaran a, siswa b WHERE a.idAnggota=b.idSiswa AND a.status='4') AND thnLulus='$tahunKetiga'");
-					echo mysqli_num_rows($jumlah_fisip);
-					?>, 
-					<?php 
-					$jumlah_pertanian = mysqli_query($con,"SELECT * FROM siswa where jekel='Wanita'");
-					echo mysqli_num_rows($jumlah_pertanian);
-					?>
 					],
 					backgroundColor: [
 					'rgba(255, 99, 132, 0.2)',
 					'rgba(54, 162, 235, 0.2)',
-					'rgba(255, 206, 86, 0.2)',
-					'rgba(75, 192, 192, 0.2)'
+					'rgba(255, 206, 86, 0.2)'
 					],
 					borderColor: [
 					'rgba(255,99,132,1)',
 					'rgba(54, 162, 235, 1)',
-					'rgba(255, 206, 86, 1)',
-					'rgba(75, 192, 192, 1)'
+					'rgba(255, 206, 86, 1)'
 					],
 					borderWidth: 1
 				}]

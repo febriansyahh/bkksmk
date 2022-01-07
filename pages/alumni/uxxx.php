@@ -1,5 +1,6 @@
 <?php	
 include_once("koneksi.php");
+error_reporting();
     ?>
 <div class="form-group">
   <br>
