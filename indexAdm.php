@@ -535,29 +535,6 @@ if (isset($_SESSION['ses_username']) == "") {
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>
-                      Rekruitmen
-                      <i class="right fas fa-angle-left"></i>
-                    </p>
-                  </a>
-                  <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                      <a href="?pages=reportlowongan" class="nav-link">
-                        <i class="far fa-dot-circle nav-icon"></i>
-                        <p>Lowongan</p>
-                      </a>
-                    </li>
-                    <!-- <li class="nav-item">
-                    <a href="?pages=reportpendaftaran" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Riwayat Pendaftaran</p>
-                    </a>
-                  </li> -->
-                  </ul>
-                </li>
-                <li class="nav-item">
                   <a href="?pages=reportalumni" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Alumni</p>
@@ -565,6 +542,23 @@ if (isset($_SESSION['ses_username']) == "") {
                 </li>
               </ul>
             </li>
+            <li class="nav-item">
+                  <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-file"></i>
+                    <p>
+                      Laporan Rekruitmen
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="?pages=reportlowongan" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Lowongan</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
             <li class="nav-header">Logout</li>
             <li class="nav-item">
               <a class="nav-link" data-toggle="modal" data-target="#logout"><i class="fa fa-sign-out"></i>
