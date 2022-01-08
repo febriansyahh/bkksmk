@@ -33,7 +33,7 @@ error_reporting (E_ALL ^ E_NOTICE);
           </form>
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Grafik Data Alumni Bekerja 3 Tahun Terakhir</h3>
+            <h3 class="card-title"> Data Alumni</h3>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
