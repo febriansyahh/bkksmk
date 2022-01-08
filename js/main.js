@@ -197,6 +197,7 @@ function editablePerusahaan(param) {
   $("#editSts").val(exp[3]);
   $("#editTelp").val(exp[4]);
   $("#editTgl").val(exp[5]);
+  $("#editLogo").val(exp[5]);
 }
 
 function editableGroup(param) {

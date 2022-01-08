@@ -1487,7 +1487,6 @@ function upload_logo($namePost, $codePost)
   $namas = 'Logo_' . $nmPerusahaan. "." . $ekstensi;
   $ukuran = $_FILES[$namePost]['size'];
   $file_tmp = $_FILES[$namePost]['tmp_name'];
-
   if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
     if ($ukuran < 41943040) {
       $destination_path = getcwd().DIRECTORY_SEPARATOR . 'file_data\logo' . '/';
@@ -1546,17 +1545,23 @@ function insertPerusahaan($upload)
   }
 }
 
-function updatePerusahaan()
+function updatePerusahaan($upload)
 {
   global $con;
-
+  $cekNisn = "SELECT logo FROM perusahaan WHERE idPerusahaan = '" . $_POST['idPerusahaan'] . "' ";
+  // $cekNisn = "SELECT idDaftar, berkas FROM pendaftaran_loker WHERE idDaftar = '" . $_POST['idDaftar'] . "' ";
+  $query = mysqli_query($con, $cekNisn);
+  $row = mysqli_fetch_row($query);
+    $berkas = $row[0];
+    // unlink('file_data/logo/' . $berkas);
   // $sql_ubah = "UPDATE data_perusahaan SET
   $sql_ubah = "UPDATE perusahaan SET
-        nmPerusahaan ='" . $_POST['nmPerusahaan'] . "',
-        email ='" . $_POST['email'] . "',
-        stsPerusahaan ='" . $_POST['status'] . "',
-        noTelp ='" . $_POST['telepon'] . "',
-        tglKerjasama ='" . $_POST['tglKerjasama'] . "'
+        nmPerusahaan = '" . $_POST['nmPerusahaan'] . "',
+        email = '" . $_POST['email'] . "',
+        stsPerusahaan = '" . $_POST['status'] . "',
+        noTelp = '" . $_POST['telepon'] . "',
+        tglKerjasama = '" . $_POST['tglKerjasama'] . "',
+        logo = '" . $upload . "'
         WHERE idPerusahaan ='" . $_POST['idPerusahaan'] . "'";
   $query_ubah = mysqli_query($con, $sql_ubah);
 

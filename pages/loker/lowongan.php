@@ -67,13 +67,17 @@ $maxID = MaxIdProgram();
                       ?>
                     <a href="javascript:void(0)" data-toggle="modal" data-target="#editLoker"
                       data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] . "~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel'] . "~" . $data['file'] . "~" . $data['keterangan'] . "~" . $data['sumber'] . "~" . $data['tglInput'] . "~" . date('d-m-Y', strtotime($data['batas'])) . "~" . $data['status'] . "~" . $data['kualifikasi'] . "~" . $data['persyaratan']?>"
-                      onclick="editableLowongan(this)" class="btn btn-success btn-sm"><i class="fas fa-eye"></i></a>
+                      onclick="editableLowongan(this)" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
                     <a href="?pages=lokerAksi&kode=<?php echo $data['idLowongan']; ?>"
                       onclick="return confirm('Apakah anda yakin hapus data ini ?')" class='btn btn-danger btn-sm'><i
                         class="fa fa-trash"></i></a>
                     <?php 
                       }
                       ?>
+                    <?php
+                    }elseif($data['status'] == '3'){
+                    ?>
+                    <a href="#" class="btn btn-success btn-sm">Pendaftaran Selesai</a>
                     <?php
                     }else{
                     ?>
@@ -206,9 +210,9 @@ $maxID = MaxIdProgram();
                   <td><?php echo $data['sumber']; ?></td>
                   <td><?php echo date('d F Y', strtotime($data['batas'])); ?></td>
                   <td>
-                    <a href="javascript:void(0)" data-toggle="modal" data-target="#editLoker"
+                    <!-- <a href="javascript:void(0)" data-toggle="modal" data-target="#editLoker"
                       data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] . "~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel'] . "~" . $data['file'] . "~" . $data['keterangan'] . "~" . $data['sumber'] . "~" . $data['tglInput'] . "~" . $data['batas'] . "~" . $data['status'] . "~" . $data['kualifikasi'] . "~" . $data['persyaratan']?>"
-                      onclick="editableLowongan(this)" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
+                      onclick="editableLowongan(this)" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a> -->
                     <a href="?pages=lokerAksi&kode=<?php echo $data['idLowongan']; ?>"
                       onclick="return confirm('Apakah anda yakin hapus data ini ?')" class='btn btn-danger btn-sm'><i
                         class="fa fa-trash"></i></a>

@@ -8,14 +8,14 @@ include_once("koneksi.php");
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Laporan Riwayat Pendaftaran</h3>
+            <h3 class="card-title">Riwayat Pendaftaran</h3>
           </div>
           <!-- /.card-header -->
           <?php
           if($data_status == '4'){
           ?>
           <div class="card-body">
-            <form method='POST' action='./pages/laporan/riwayatperusahaan.php'>
+            <!-- <form method='POST' action='./pages/laporan/riwayatperusahaan.php'>
               <div class="input-group mb-3">
                 <label for=""> Pilih Lowongan : </label> &nbsp;
                 <select name="loker" class="form-select" id="inputGroupSelect02" style="width:25%;">
@@ -27,10 +27,11 @@ include_once("koneksi.php");
                   }
                   ?>
                 </select>
+                &nbsp;
                 <input type="hidden" name="idPerusahaan" class="form-class" value="<?php echo $data_idUser ?>">
                 <input type="submit" name="submit" formtarget="_blank" class="btn btn-primary" value="Cetak" />
               </div>
-            </form>
+            </form> -->
             <table id="example2" class="table table-bordered table-hover">
               <thead>
                 <center>
@@ -114,6 +115,7 @@ include_once("koneksi.php");
                   }
                   ?>
                 </select>
+                &nbsp;
                 <input type="submit" name="submit" formtarget="_blank" class="btn btn-primary" value="Cetak" />
               </div>
             </form>

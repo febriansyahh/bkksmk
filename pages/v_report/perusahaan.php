@@ -24,6 +24,7 @@ include_once("koneksi.php");
                 }
               ?>
               </select>
+              &nbsp;
                 <input type="submit" name="submit" formtarget="_blank" class="btn btn-primary"value="Cetak" />
               </div>
             </form>

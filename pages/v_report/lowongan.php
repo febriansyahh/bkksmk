@@ -27,6 +27,7 @@ include_once("koneksi.php");
                 }
               ?>
               </select>
+              &nbsp;
                 <input type="hidden" name="idPerusahaan" class="form-class" value="<?php echo $data_idUser ?>">
                 <input type="submit" name="submit" formtarget="_blank" class="btn btn-primary" value="Cetak" />
               </div>
@@ -88,6 +89,7 @@ include_once("koneksi.php");
                 }
               ?>
               </select>
+              &nbsp;
                 <input type="submit" name="submit" formtarget="_blank" class="btn btn-primary"value="Cetak" />
               </div>
             </form>

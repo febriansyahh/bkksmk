@@ -20,6 +20,7 @@ include_once("koneksi.php");
                 <option value="Bekerja">Bekerja</option>
                 <option value="Studi">Studi</option>
               </select>
+              &nbsp;
                 <select name="tahun" class="form-select" id="inputGroupSelect02" style="width:20%;">
                 <option value="NULL">- Pilih -</option>
                 <?php
@@ -29,6 +30,7 @@ include_once("koneksi.php");
                 }
               ?>
               </select>
+              &nbsp;
                 <input type="submit" name="submit" formtarget="_blank" class="btn btn-primary"value="Cetak" />
               </div>
             </form>

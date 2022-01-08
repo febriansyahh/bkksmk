@@ -332,8 +332,8 @@ if (isset($_SESSION['ses_username']) == "") {
               <ul class="nav nav-treeview">
               <li class="nav-item">
                       <a href="?pages=reportlowongan" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Lowongan</p>
+                        <i class="fas fa-file nav-icon"></i>
+                        <p>Rekrutmen</p>
                       </a>
                     </li>
               </ul>
@@ -367,7 +367,7 @@ if (isset($_SESSION['ses_username']) == "") {
 
             <li class="nav-item">
               <a href="?pages=history" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
+                <i class="fas fa-history nav-icon"></i>
                 <p>Riwayat Pendaftaran</p>
               </a>
             </li>
@@ -497,7 +497,7 @@ if (isset($_SESSION['ses_username']) == "") {
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-tree"></i>
+                <i class="nav-icon fas fa-info"></i>
                 <p>
                   Kelola Informasi
                   <i class="fas fa-angle-left right"></i>
@@ -553,7 +553,7 @@ if (isset($_SESSION['ses_username']) == "") {
                   <ul class="nav nav-treeview">
                     <li class="nav-item">
                       <a href="?pages=reportlowongan" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
+                        <i class="far fa-file nav-icon"></i>
                         <p>Lowongan</p>
                       </a>
                     </li>
@@ -623,7 +623,7 @@ if (isset($_SESSION['ses_username']) == "") {
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-tree"></i>
+                <i class="nav-icon fas fa-info"></i>
                 <p>
                   Kelola Informasi
                   <i class="fas fa-angle-left right"></i>
@@ -648,7 +648,7 @@ if (isset($_SESSION['ses_username']) == "") {
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-file"></i>
                 <p>
-                  Laporan
+                  Laporan Rekrutmen
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
@@ -656,7 +656,7 @@ if (isset($_SESSION['ses_username']) == "") {
                 <li class="nav-item">
                   <a href="?pages=reportlowongan" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Lowongan</p>
+                    <p>Rekrutmen</p>
                   </a>
                 </li>
                 <!-- <li class="nav-item">

@@ -42,7 +42,7 @@ include_once("koneksi.php");
                           <td><?php echo $data['noTelp']; ?></td>
                           <td><?php echo $data['tglKerjasama']; ?></td>
                           <td>
-                            <a href="javascript:void(0)" data-toggle="modal" data-target="#editPerusahaan" onclick="editablePerusahaan(this)" data-id="<?php echo $data['idPerusahaan'] . "~" . $data['nmPerusahaan'] . "~" . $data['email'] . "~" . $data['stsPerusahaan'] . "~" . $data['noTelp'] . "~" . $data['tglKerjasama']  ?>"  class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
+                            <a href="javascript:void(0)" data-toggle="modal" data-target="#editPerusahaan" onclick="editablePerusahaan(this)" data-id="<?php echo $data['idPerusahaan'] . "~" . $data['nmPerusahaan'] . "~" . $data['email'] . "~" . $data['stsPerusahaan'] . "~" . $data['noTelp'] . "~" . $data['tglKerjasama'] . "~" . $data['logo']  ?>"  class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
                             <a href="?pages=perusahaanAksi&kode=<?php echo $data['idPerusahaan']; ?>"
                               onclick="return confirm('Apakah anda yakin hapus data ini ?')"
                               class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></a>
@@ -149,7 +149,6 @@ include_once("koneksi.php");
         <input class="form-control" type="text" name="nmPerusahaan" id="editNm">
       </div>
         <div class="row" >
-          
           <div class="col-6">
             <label>Status Perusahaan </label>
             <select name="status" id="editSts" class="form-control">
@@ -160,22 +159,26 @@ include_once("koneksi.php");
               <option value="Lainnya">Lainnya</option>
             </select>
           </div>
-
           <div class="col-6">
             <label>No Telepon </label>
             <input class="form-control" type="text" name="telepon" id="editTelp">
           </div>
-
         </div>
         <div class="row" >
-        <div class="col-6">
+        <div class="col-4">
             <label>Email </label>
             <input class="form-control" type="text" name="email" id="editEmail">
           </div>
 
-          <div class="col-6">
+          <div class="col-4">
             <label>Tanggal Kerjasama </label>
             <input class="form-control" type="date" name="tglKerjasama" id="editTgl">
+          </div>
+          <div class="col-4">
+            <label>Logo Perusahaan</label>
+            <input type="file" name="logo" id="editLogo" class="form-control">
+            <span>*) <em>Isi bila perlu diubah. </em>Max. File : 4 MB</span> 
+            <!-- <input class="form-control" type="date" name="tglKerjasama" id="editTgl"> -->
           </div>
         </div>
         <div class="modal-footer">

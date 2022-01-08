@@ -9,7 +9,7 @@ if (isset($_POST['btnSimpan'])) {
 	// die();
 	insertPerusahaan(upload_logo('fileLogo', 'nmPerusahaan'));
 } elseif (isset($_POST['btnUBAH'])) {
-  updatePerusahaan();
+  updatePerusahaan(upload_logo('logo','nmPerusahaan'));
 } else {
 	if (isset($_GET['kode'])) {
     deletePerusahaan($_GET['kode']);
