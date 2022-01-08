@@ -406,13 +406,13 @@ if (isset($_SESSION['ses_username']) == "") {
                 <li class="nav-item">
                   <a href="?pages=grafikAlumni" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Statistik Lulusan</p>
+                    <p>Data Alumni</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="?pages=grafikTracer" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Statistik Alumni Bekerja</p>
+                    <p>Data Alumni Bekerja</p>
                   </a>
                 </li>
               </ul>
