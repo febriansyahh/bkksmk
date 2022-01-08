@@ -10,7 +10,7 @@ error_reporting (E_ALL ^ E_NOTICE);
       <div class="col-12">
           <form action="" method="post" enctype="multipart/form-data">
             <div class="input-group mb-3">
-              <select name="jurusan" id="filter" style="width:20%;">
+              <select name="jurusan" id="filter" style="width:20%;"required>
                 <option value="" selected="selected">Pilih Jurusan</option>
                 <?php
                 $dt = getJurusan();
@@ -19,7 +19,7 @@ error_reporting (E_ALL ^ E_NOTICE);
                 }
               ?>
               </select>&nbsp;
-              <select name="tahun" id="filter" style="width:20%;">
+              <select name="tahun" id="filter" style="width:20%;" required>
                 <option value="" selected="selected">Pilih Tahun</option>
                 <?php
                 $dt = getYearAlumni();
