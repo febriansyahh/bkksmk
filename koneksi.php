@@ -858,8 +858,6 @@ function Upload_Files($namePost, $codePost)
 function insertLowongan($upload)
 {
   global $con;
-  // print_r($_FILES[$upload]);
-  // die();
   $tgl = date('Y-m-d H:i:s');
   $idLevel = $_SESSION["ses_idLevel"];
   $idDaftar = $_SESSION["ses_idDaftar"];
@@ -877,7 +875,7 @@ function insertLowongan($upload)
         '" . $_POST['sumber'] . "',
         '" . $_POST['batas'] . "',
         '2',
-        'default.png'
+        'default.png',
         '$tgl',
         '" . $_POST['usrInput'] . "')";
 
@@ -1728,10 +1726,6 @@ function insertUser()
           '" . $tgl . "')";
     
           $query_insert = mysqli_query($con, $sql_insert) or die(mysqli_connect_error());
-          // echo'<pre>';
-          // print_r($query_insert);
-          // echo'<pre>';
-          // die();
           if ($query_insert) {
             echo "<script>alert('Simpan Berhasil')</script>";
             echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=user'>";

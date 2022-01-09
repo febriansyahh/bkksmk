@@ -332,7 +332,6 @@ $maxID = MaxIdProgram();
           <h6 class="modal-title">Tambah Lowongan Kerja</h6>
         </div>
         <div class="modal-body">
-          <!-- <form action="?pages=lokerAksi" method="post" enctype="multipart/form-data"> -->
           <form action="?pages=lokerAksi" method="post" enctype="multipart/form-data">
             <?php
             switch ($data_status) {
