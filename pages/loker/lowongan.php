@@ -347,17 +347,17 @@ $maxID = MaxIdProgram();
 
               <div class="col-6">
                 <label>Perusahaan</label>
-                <input class="form-control " type="text" name="perusahaan" require>
+                <input class="form-control " type="text" name="perusahaan" required>
               </div>
 
               <div class="col-6">
                 <label>Lowongan</label>
-                <input class="form-control " type="text" name="nmloker" require>
+                <input class="form-control " type="text" name="nmloker" required>
               </div>
 
               <div class="col-6">
                 <label>Jekel Tertuju</label>
-                <select name="jekel" class="form-control" id="">
+                <select name="jekel" class="form-control" id="" required>
                   <option value="">- Pilih -</option>
                   <option value="Pria">Pria</option>
                   <option value="Wanita">Wanita</option>
@@ -384,7 +384,7 @@ $maxID = MaxIdProgram();
             <div class="row">
               <div class="col-6">
                 <label>File Lowongan</label>
-                <input class="form-control " type="file" name="fileLoker" required>
+                <input class="form-control " type="file" name="fileLoker">
                 <span>*) Max. File : 4 MB</span>
                 <br>
               </div>
@@ -434,7 +434,7 @@ $maxID = MaxIdProgram();
 
               <div class="col-6">
                 <label>Jekel Tertuju</label>
-                <select name="jekel" class="form-control" id="">
+                <select name="jekel" class="form-control" id="" required>
                   <option value="">- Pilih -</option>
                   <option value="Pria">Pria</option>
                   <option value="Wanita">Wanita</option>
@@ -460,13 +460,13 @@ $maxID = MaxIdProgram();
             <div class="row">
               <div class="col-6">
                 <label>File Lowongan</label>
-                <input class="form-control " type="file" name="fileLoker" require>
+                <input class="form-control " type="file" name="fileLoker">
                 <span>*) Max. File : 4 MB</span> <br>
               </div>
 
               <div class="col-6">
                 <label>Batas Pendaftaran</label>
-                <input class="form-control " type="date" name="batas" require>
+                <input class="form-control " type="date" name="batas" required>
               </div>
             </div>
               <div class="form-group">
