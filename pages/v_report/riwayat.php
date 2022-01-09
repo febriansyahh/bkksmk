@@ -48,7 +48,7 @@ include_once("koneksi.php");
               </thead>
               <tbody>
                 <?php
-                $a = getRiwayatViewPerusahaan($data_idUser);
+                $a = getRiwayatKeterima($data_idUser);
                 $no = 1;
                 foreach ($a as $key => $data) {
                 ?>
@@ -135,7 +135,7 @@ include_once("koneksi.php");
               </thead>
               <tbody>
                 <?php
-                $a = getRiwayatView();
+                $a = getRiwayatViewKeterima();
                 $no = 1;
                 foreach ($a as $key => $data) {
                 ?>

@@ -323,11 +323,30 @@ function getRiwayatView()
 
   return $query;
 }
+function getRiwayatViewKeterima()
+{
+  global $con;
+  $sql = "SELECT a.idDaftar, b.nisn, b.nama, d.nmJurusan, c.perusahaan, c.nmLoker, a.status FROM pendaftaran a, siswa b, lowongan c, jurusan d WHERE a.idAnggota=b.idSiswa AND a.idLoker=c.idLowongan AND b.jurusan=d.idJurusan AND c.status ='3' AND a.status='4' ORDER BY c.idLowongan ASC";
+  // $sql = "SELECT a.idDaftar, b.nisn, b.nama, d.nmJurusan, c.perusahaan, c.nmLoker, a.status FROM pendaftaran_loker a, siswa b, lowongan c, jurusan d WHERE a.idAnggota=b.idSiswa AND a.idLoker=c.idLowongan AND b.jurusan=d.idJurusan AND c.status ='3' ORDER BY c.idLowongan ASC";
+  $query = mysqli_query($con, $sql);
+
+  return $query;
+}
 
 function getRiwayatViewPerusahaan($id)
 {
   global $con;
   $sql = "SELECT a.idDaftar, b.nisn, b.nama, d.nmJurusan, c.perusahaan, c.nmLoker, a.status FROM pendaftaran a, siswa b, lowongan c, jurusan d WHERE a.idAnggota=b.idSiswa AND a.idLoker=c.idLowongan AND b.jurusan=d.idJurusan AND c.status ='3' AND c.usrInput='$id' ORDER BY c.idLowongan ASC";
+  // $sql = "SELECT a.idDaftar, b.nisn, b.nama, d.nmJurusan, c.perusahaan, c.nmLoker, a.status FROM pendaftaran_loker a, siswa b, lowongan c, jurusan d WHERE a.idAnggota=b.idSiswa AND a.idLoker=c.idLowongan AND b.jurusan=d.idJurusan AND c.status ='3' ORDER BY c.idLowongan ASC";
+  $query = mysqli_query($con, $sql);
+
+  return $query;
+}
+
+function getRiwayatKeterima($id)
+{
+  global $con;
+  $sql = "SELECT a.idDaftar, b.nisn, b.nama, d.nmJurusan, c.perusahaan, c.nmLoker, a.status FROM pendaftaran a, siswa b, lowongan c, jurusan d WHERE a.idAnggota=b.idSiswa AND a.idLoker=c.idLowongan AND b.jurusan=d.idJurusan AND c.status ='3'  AND a.status='4' AND c.usrInput='$id' ORDER BY c.idLowongan ASC";
   // $sql = "SELECT a.idDaftar, b.nisn, b.nama, d.nmJurusan, c.perusahaan, c.nmLoker, a.status FROM pendaftaran_loker a, siswa b, lowongan c, jurusan d WHERE a.idAnggota=b.idSiswa AND a.idLoker=c.idLowongan AND b.jurusan=d.idJurusan AND c.status ='3' ORDER BY c.idLowongan ASC";
   $query = mysqli_query($con, $sql);
 
