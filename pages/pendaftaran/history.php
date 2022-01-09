@@ -165,7 +165,8 @@ include_once("koneksi.php");
               </thead>
               <tbody>
                 <?php
-            $a = getPendaftarHistory();
+            // $a = getPendaftarHistory();
+            $a = getRiwayatViewPerusahaan($data_idUser);
             $no = 1;
             foreach ($a as $key => $data) {
                 ?>

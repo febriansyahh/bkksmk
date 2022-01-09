@@ -244,7 +244,7 @@ if (isset($_SESSION['ses_username']) == "") {
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="?pages=history" class="nav-link">
+                  <a href="?pages=getriwayat" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Riwayat Pendaftar</p>
                   </a>
@@ -333,9 +333,15 @@ if (isset($_SESSION['ses_username']) == "") {
               <li class="nav-item">
                       <a href="?pages=reportlowongan" class="nav-link">
                         <i class="fas fa-file nav-icon"></i>
-                        <p>Rekrutmen</p>
+                        <p>Lowongan</p>
                       </a>
                     </li>
+              <li class="nav-item">
+              <a href="?pages=reportpendaftaran" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Rekrutmen</p>
+              </a>
+            </li>
               </ul>
             </li>
             <li class="nav-header">Logout</li>
@@ -488,7 +494,7 @@ if (isset($_SESSION['ses_username']) == "") {
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="?pages=history" class="nav-link">
+                  <a href="?pages=getriwayat" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Riwayat Pendaftar</p>
                   </a>
@@ -557,6 +563,12 @@ if (isset($_SESSION['ses_username']) == "") {
                         <p>Lowongan</p>
                       </a>
                     </li>
+                    <li class="nav-item">
+                  <a href="?pages=reportpendaftaran" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Rekrutmen</p>
+                  </a>
+                </li>
                   </ul>
                 </li>
             <li class="nav-header">Logout</li>
@@ -614,7 +626,7 @@ if (isset($_SESSION['ses_username']) == "") {
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="?pages=reportpendaftaran" class="nav-link">
+                  <a href="?pages=getriwayat" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Riwayat Pendaftar</p>
                   </a>
@@ -648,7 +660,7 @@ if (isset($_SESSION['ses_username']) == "") {
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-file"></i>
                 <p>
-                  Laporan Rekrutmen
+                  Laporan
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
@@ -656,15 +668,15 @@ if (isset($_SESSION['ses_username']) == "") {
                 <li class="nav-item">
                   <a href="?pages=reportlowongan" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
+                    <p>Lowongan</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="?pages=reportpendaftaran" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
                     <p>Rekrutmen</p>
                   </a>
                 </li>
-                <!-- <li class="nav-item">
-                  <a href="?pages=reportpendaftaran" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Riwayat Pendaftar</p>
-                  </a>
-                </li> -->
               </ul>
             </li>
             <li class="nav-header">Logout</li>
@@ -728,6 +740,9 @@ if (isset($_SESSION['ses_username']) == "") {
                               
                             case 'daftar':
                               include "pages/pendaftaran/daftar.php";
+                              break;
+                            case 'getriwayat':
+                              include "pages/pendaftaran/riwayat.php";
                               break;
                             case 'daftarAksi':
                               include "pages/pendaftaran/daftar_aksi.php";
