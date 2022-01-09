@@ -865,7 +865,7 @@ function insertLowongan($upload)
   $idDaftar = $_SESSION["ses_idDaftar"];
   switch ($idLevel) {
     case '1':
-      $sql_insert = "INSERT INTO lowongan (`noLoker`, `perusahaan`, `nmLoker`, `jekel`, `file`, `kualifikasi`, `persyaratan`, `keterangan`, `sumber`, `batas`, `status`, `tglInput`, `usrInput`) VALUES (
+      $sql_insert = "INSERT INTO lowongan (`noLoker`, `perusahaan`, `nmLoker`, `jekel`, `file`, `kualifikasi`, `persyaratan`, `keterangan`, `sumber`, `batas`, `status`, `logo`, `tglInput`,  `usrInput`) VALUES (
         '" . $_POST['noLoker'] . "',
         '" . $_POST['perusahaan'] . "',
         '" . $_POST['nmloker'] . "',
@@ -877,16 +877,18 @@ function insertLowongan($upload)
         '" . $_POST['sumber'] . "',
         '" . $_POST['batas'] . "',
         '2',
+        'default.png'
         '$tgl',
         '" . $_POST['usrInput'] . "')";
 
       break;
     case '4':
-      // $sql_logo = " SELECT logo FROM perusahaan WHERE idPerusahaan = '$idDaftar' ";
-      // $query_logo = mysqli_query($con, $sql_logo);
-      // $row = mysqli_fetch_row($query_logo);
-      // $logo = $row[0];
-      $sql_insert = "INSERT INTO lowongan (`noLoker`, `perusahaan`, `nmLoker`, `jekel`, `file`, `kualifikasi`, `persyaratan`, `keterangan`, `sumber`, `batas`, `status`, `tglInput`, `usrInput`) VALUES (
+      $sql_logo = " SELECT logo FROM perusahaan WHERE idPerusahaan = '$idDaftar' ";
+      $query_logo = mysqli_query($con, $sql_logo);
+      $row = mysqli_fetch_row($query_logo);
+      $logo = $row[0];
+      if($logo != NULL){
+      $sql_insert = "INSERT INTO lowongan (`noLoker`, `perusahaan`, `nmLoker`, `jekel`, `file`, `kualifikasi`, `persyaratan`, `keterangan`, `sumber`, `batas`, `status`, `logo`, `tglInput`,  `usrInput`) VALUES (
         '" . $_POST['noLoker'] . "',
         '" . $_POST['perusahaan'] . "',
         '" . $_POST['nmloker'] . "',
@@ -898,9 +900,26 @@ function insertLowongan($upload)
         '" . $_POST['sumber'] . "',
         '" . $_POST['batas'] . "',
         '1',
+        '" . $logo . "',
         '$tgl',
         '" . $_POST['usrInput'] . "')";
-
+      } else{
+        $sql_insert = "INSERT INTO lowongan (`noLoker`, `perusahaan`, `nmLoker`, `jekel`, `file`, `kualifikasi`, `persyaratan`, `keterangan`, `sumber`, `batas`, `status`, `logo`, `tglInput`,  `usrInput`) VALUES (
+          '" . $_POST['noLoker'] . "',
+          '" . $_POST['perusahaan'] . "',
+          '" . $_POST['nmloker'] . "',
+          '" . $_POST['jekel'] . "',
+          '" . $upload . "',
+          '" . $_POST['kualifikasi'] . "',
+          '" . $_POST['persyaratan'] . "',
+          '" . $_POST['ket'] . "',
+          '" . $_POST['sumber'] . "',
+          '" . $_POST['batas'] . "',
+          '1',
+          'default.png',
+          '$tgl',
+          '" . $_POST['usrInput'] . "')";
+      }
       break;
   }
   
