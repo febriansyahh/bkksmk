@@ -37,7 +37,7 @@ include_once("koneksi.php");
                 <center>
                   <tr>
                     <th>No</th>
-                    <th>NISN</th>
+                    <th>ID Daftar</th>
                     <th>Nama</th>
                     <th>Jurusan</th>
                     <th>Perusahaan</th>
@@ -54,7 +54,7 @@ include_once("koneksi.php");
                 ?>
                   <tr>
                     <td><?php echo $no; ?></td>
-                    <td><?php echo $data['nisn']; ?></td>
+                    <td><?php echo $data['idDaftar']; ?></td>
                     <td><?php echo $data['nama']; ?></td>
                     <td><?php echo $data['nmJurusan']; ?></td>
                     <td><?php echo $data['perusahaan']; ?></td>
@@ -124,7 +124,7 @@ include_once("koneksi.php");
                 <center>
                   <tr>
                     <th>No</th>
-                    <th>NISN</th>
+                    <th>ID Daftar</th>
                     <th>Nama </th>
                     <th>Jurusan</th>
                     <th>Perusahaan</th>
@@ -141,7 +141,7 @@ include_once("koneksi.php");
                 ?>
                   <tr>
                     <td><?php echo $no; ?></td>
-                    <td><?php echo $data['nisn']; ?></td>
+                    <td><?php echo $data['idDaftar']; ?></td>
                     <td><?php echo $data['nama']; ?></td>
                     <td><?php echo $data['nmJurusan']; ?></td>
                     <td><?php echo $data['perusahaan']; ?></td>
