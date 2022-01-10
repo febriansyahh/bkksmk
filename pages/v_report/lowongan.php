@@ -65,7 +65,6 @@ include_once("koneksi.php");
             $no++;
             }
         ?>
-
               </tbody>
             </table>
           </div>

@@ -289,7 +289,7 @@ function getYearLowongan()
 function getYearLowonganPerusahaan($id)
 {
   global $con;
-  $sql = "SELECT DISTINCT YEAR(a.tglInput) as tahun FROM lowongan a, user b WHERE a.usrInput=b.idUser AND b.idLevel ='4' AND a.usrInput = '$id' ORDER BY a.tglInput ASC ";
+  $sql = "SELECT DISTINCT YEAR(a.tglInput) as tahun FROM lowongan a, user b WHERE a.usrInput=b.idUser AND b.idLevel ='4' AND a.status='3' AND a.usrInput = '$id' ORDER BY a.tglInput ASC ";
   $query = mysqli_query($con, $sql);
 
   return $query;
