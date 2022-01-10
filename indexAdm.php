@@ -421,12 +421,6 @@ if (isset($_SESSION['ses_username']) == "") {
                     <p>Data Alumni Bekerja</p>
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a href="?pages=coba" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Data Alumni Lagi</p>
-                  </a>
-                </li>
               </ul>
             </li>
             <!-- <?php

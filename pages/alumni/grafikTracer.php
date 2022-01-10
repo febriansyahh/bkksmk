@@ -20,7 +20,7 @@ error_reporting (E_ALL ^ E_NOTICE);
               ?>
               </select>&nbsp; -->
 							<label for="">Tahun : </label>&nbsp;
-              <select name="tahun" id="filter" style="width:20%;" required>
+              <select name="tahun" id="filter" style="width:20%;">
                 <option value="" selected="selected">Pilih Tahun</option>
                 <?php
                 $dt = getYearAlumni();
@@ -90,33 +90,34 @@ error_reporting (E_ALL ^ E_NOTICE);
   </div>
 
   <center>
-    <h5 style="font-family: Poppins">Grafik Perkembangan Alumni Bekerja</h5>
     <br>
     <?php
 			// $jur = isset($_POST['jurusan']);
-			$tahun = isset($_POST['tahun']);
+			$tahun = $_POST['tahun'];
 			if($tahun != ''){ 
-    ?>
+        ?>
+    <h5 style="font-family: Poppins">Grafik Perkembangan Alumni Bekerja Tahun <?php echo $tahun ?></h5>
     <div class="row" style="width:auto; padding-left: 2%;">
-      <div style="width: 500px;height: 300px">
+      <div style="width: 500px;height: 350px">
         <canvas id="myChart"></canvas>
         <!-- <canvas id="myChart3"></canvas> -->
       </div>
     
-      <div style="width: 500px;height: 300px">
+      <div style="width: 500px;height: 350px">
         <canvas id="myChart2"></canvas>
       </div>
     </div>
     <?php
     }else{
     ?>
+    <h5 style="font-family: Poppins">Grafik Perkembangan Alumni Bekerja</h5>
     <div class="row" style="width:auto; padding-left: 2%;">
-      <div style="width: 500px;height: 300px">
+      <div style="width: 500px; height: 350px">
         <canvas id="myChart4"></canvas>
         <!-- <canvas id="myChart3"></canvas> -->
       </div>
     
-      <div style="width: 500px;height: 300px">
+      <div style="width: 500px;height: 350px">
         <canvas id="myChart5"></canvas>
       </div>
     </div>
@@ -124,7 +125,17 @@ error_reporting (E_ALL ^ E_NOTICE);
     }
     ?>
   </center>
-
+  <p style="padding-left: 2%;">Keterangan :</p>
+  <?php
+  $dt = getJurusan();
+  foreach ($dt as $key => $data) {
+  ?>
+  <ol>
+    <?php echo $data['nmJurusan'] ." : ". $data['keterangan']?> 
+  </ol>
+  <?php
+  }
+  ?>
   </body>
   <script src="js/main.js"></script>
 	<?php

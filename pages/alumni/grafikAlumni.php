@@ -11,7 +11,7 @@ error_reporting (E_ALL ^ E_NOTICE);
           <form action="" method="post" enctype="multipart/form-data">
             <div class="input-group mb-3">
               <label for="">Pilih Tahun : &nbsp;</label>
-              <select name="tahun" id="filter" style="width:20%;" required>
+              <select name="tahun" id="tahun" style="width:20%;">
                 <option value="" selected="selected">Pilih Tahun</option>
                 <?php
                 $dt = getYearAlumni();
@@ -21,7 +21,7 @@ error_reporting (E_ALL ^ E_NOTICE);
               ?>
               </select>&nbsp;
               <input type="submit" class="btn btn-primary" name="btnFilter" value="Cari">
-              <input type="submit" class="btn btn-primary" name="btnFilter" value="Reset">
+              &nbsp;
             </div>
           </form>
         <div class="card">
@@ -86,20 +86,31 @@ error_reporting (E_ALL ^ E_NOTICE);
     if($tahun != ''){ 
       ?>
     <h3 style="font-family: Poppins">Grafik Perkembangan Alumni <?php echo $tahun ?></h3>
-    <div style="width: 700px;height: 300px">
+    <div style="width: 700px;height: 500px">
 		<canvas id="myChart"></canvas>
 	</div>
     <?php
     }else{
     ?>
     <h3 style="font-family: Poppins">Grafik Perkembangan Alumni</h3>
-    <div style="width: 700px;height: 300px">
+    <div style="width: 700px;height: 500px">
 		<canvas id="myChart1"></canvas>
 	</div>
     <?php
     }
     ?>
   </center>
+  <p style="padding-left: 2%;">Keterangan :</p>
+  <?php
+  $dt = getJurusan();
+  foreach ($dt as $key => $data) {
+  ?>
+  <ol>
+    <?php echo $data['nmJurusan'] ." : ". $data['keterangan']?> 
+  </ol>
+  <?php
+  }
+  ?>
   </body>
   <script src="js/main.js"></script>
   <?php
@@ -180,5 +191,8 @@ error_reporting (E_ALL ^ E_NOTICE);
             }
         }
     });
+</script>
+<script type="text/javascript">
+
 </script>
 </html>
