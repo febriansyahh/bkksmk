@@ -86,21 +86,21 @@ error_reporting (E_ALL ^ E_NOTICE);
     if($tahun != ''){ 
       ?>
     <h3 style="font-family: Poppins">Grafik Perkembangan Alumni <?php echo $tahun ?></h3>
-    <div style="width: 700px;height: 500px">
+    <div style="width: 700px;height: 300px">
 		<canvas id="myChart"></canvas>
 	</div>
     <?php
     }else{
     ?>
     <h3 style="font-family: Poppins">Grafik Perkembangan Alumni</h3>
-    <div style="width: 700px;height: 500px">
+    <div style="width: 700px;height: 300px">
 		<canvas id="myChart1"></canvas>
 	</div>
     <?php
     }
     ?>
   </center>
-  <p style="padding-left: 2%;">Keterangan :</p>
+  <p style="padding-left: 2%; padding-top:7%">Keterangan :</p>
   <?php
   $dt = getJurusan();
   foreach ($dt as $key => $data) {

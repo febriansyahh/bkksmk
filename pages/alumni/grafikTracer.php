@@ -98,12 +98,12 @@ error_reporting (E_ALL ^ E_NOTICE);
         ?>
     <h5 style="font-family: Poppins">Grafik Perkembangan Alumni Bekerja Tahun <?php echo $tahun ?></h5>
     <div class="row" style="width:auto; padding-left: 2%;">
-      <div style="width: 500px;height: 350px">
+      <div style="width: 500px;height: 200px">
         <canvas id="myChart"></canvas>
         <!-- <canvas id="myChart3"></canvas> -->
       </div>
     
-      <div style="width: 500px;height: 350px">
+      <div style="width: 500px;height: 200px">
         <canvas id="myChart2"></canvas>
       </div>
     </div>
@@ -112,12 +112,12 @@ error_reporting (E_ALL ^ E_NOTICE);
     ?>
     <h5 style="font-family: Poppins">Grafik Perkembangan Alumni Bekerja</h5>
     <div class="row" style="width:auto; padding-left: 2%;">
-      <div style="width: 500px; height: 350px">
+      <div style="width: 500px; height: 200px">
         <canvas id="myChart4"></canvas>
         <!-- <canvas id="myChart3"></canvas> -->
       </div>
     
-      <div style="width: 500px;height: 350px">
+      <div style="width: 500px;height: 200px">
         <canvas id="myChart5"></canvas>
       </div>
     </div>
@@ -125,7 +125,7 @@ error_reporting (E_ALL ^ E_NOTICE);
     }
     ?>
   </center>
-  <p style="padding-left: 2%;">Keterangan :</p>
+  <p style="padding-left: 2%; padding-top:7%">Keterangan :</p>
   <?php
   $dt = getJurusan();
   foreach ($dt as $key => $data) {
