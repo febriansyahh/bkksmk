@@ -126,16 +126,14 @@ error_reporting (E_ALL ^ E_NOTICE);
     ?>
   </center>
   <p style="padding-left: 2%; padding-top:7%">Keterangan :</p>
-  <?php
-  $dt = getJurusan();
-  foreach ($dt as $key => $data) {
-  ?>
-  <ol>
-    <?php echo $data['nmJurusan'] ." : ". $data['keterangan']?> 
-  </ol>
-  <?php
-  }
-  ?>
+  <ul>
+    <li>MM : Multimedia</li>
+    <li>TKJ : Teknik Komputer dan Jaringan</li>
+    <li>TSM : Teknik Sepeda Motor</li>
+    <li>TAV : Teknik Audio Video</li>
+    <li>TKR : Teknik Kendaraan Ringan</li>
+    <li>TP : Teknik Pemesinan</li>
+  </ul>
   </body>
   <script src="js/main.js"></script>
 	<?php
@@ -196,7 +194,7 @@ error_reporting (E_ALL ^ E_NOTICE);
         data: {
             labels: [<?php echo $ikutbkk; ?>],
             datasets: [{
-                label:'Alumni Siswa Bekerja dari BKK',
+              label:'Alumni Siswa Bekerja di luar BKK',
                 backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)',	'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)'],
                 borderColor: ['rgb(255, 99, 132)'],
                 data: [<?php echo $jumlahbkk; ?>]

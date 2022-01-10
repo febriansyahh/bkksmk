@@ -55,3 +55,15 @@ include_once("koneksi.php")
 
 </body>
 </html>
+
+
+<?php
+  $dt = getJurusan();
+  foreach ($dt as $key => $data) {
+  ?>
+  <ol>
+    <?php echo $data['nmJurusan'] ." : ". $data['keterangan']?> 
+  </ol>
+  <?php
+  }
+  ?>
