@@ -280,7 +280,7 @@ function getYearPerusahaan()
 function getYearLowongan()
 {
   global $con;
-  $sql = "SELECT DISTINCT YEAR(tglInput) as tahun FROM lowongan ORDER BY tglInput ASC ";
+  $sql = "SELECT DISTINCT YEAR(tglInput) as tahun FROM lowongan WHERE status='3' ORDER BY tglInput ASC ";
   $query = mysqli_query($con, $sql);
 
   return $query;
