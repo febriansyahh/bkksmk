@@ -22,38 +22,49 @@ include_once("koneksi.php");
   </section><!-- End Hero -->
 
   <main id="main">
-    <section class=" border-bottom" id="features">
-      <div class="container px-5 my-5">
+    <section id="featured-services" class="featured-services">
+    <div class="container px-5 my-5">
         <h5><a class="text-decoration-none" href="?page=loker">
             Klik untuk selengkapnya
             <i class="bi bi-arrow-right"></i>
           </a></h5>
       </div>
-      <div class="container px-5 my-5">
-        <div class="row gx-5">
-          <?php
+    <div class="container px-5 my-5" data-aos="fade-up">
+      <div class="row gx-6">
+        <?php
       include_once('koneksi.php');
       $dt = getLokerIndex();
       foreach ($dt as $key => $data) {
         ?>
-
-          <div class="col-lg-4 mb-5 mb-lg-0">
-            <div class="bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
-            <h2 class="h4 fw-bolder"><?php echo $data['perusahaan']?></h2>
-            <p style="font-family: Poppins">
-              <?php echo $data['nmLoker'] ." Untuk ". $data['jekel'] ." ". $data['keterangan']?></p>
-            <a href="javascript:void(0)" data-toggle="modal" data-target="#detailLoker"
-              data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] ."~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel']. "~" . $data['file']. "~" . $data['keterangan']. "~" . $data['sumber']. "~" .  date('d-m-Y', strtotime($data['tglInput'])). "~" . date('d-m-Y', strtotime($data['batas'])) . "~" . $data['kualifikasi'] . "~" . $data['persyaratan']?>"
-              onclick="editDetLoker(this)" class="text-decoration-none">Tap untuk lebih detail
-              <!-- <i class="bi bi-arrow-right"></i> -->
-            </a>
+        <div class="col-lg-4 mb-4 mb-lg-4 " data-toggle="modal" data-target="#detailLoker"
+          data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] ."~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel']. "~" . $data['file']. "~" . $data['keterangan']. "~" . $data['sumber']. "~" .  date('d-m-Y', strtotime($data['tglInput'])). "~" . date('d-m-Y', strtotime($data['batas'])) . "~" . $data['kualifikasi'] . "~" . $data['persyaratan']?>"
+          onclick="editDetLoker(this)" style="padding-top: 25px;">
+          <div class="icon-box" data-aos="fade-up" data-aos-delay="100" style="height: 270px;">
+            <h4 class="title">
+              <?php echo $data['perusahaan'] ." - ". $data['nmLoker']?></h4>
+            <p class="description" style="font-family: Poppins; text-align: justify;">
+              <?php echo $data['perusahaan'] ." membuka lowongan ". $data['nmLoker']
+              ." untuk ". $data['jekel'] .". Batas pendaftaran tanggal ".  date('d-m-Y', strtotime($data['batas'])) ?>
+              <span style="color:blue"> 
+              . Tap untuk lebih detail. 
+              <?php 
+              echo '<br>';
+              if($data['file'] != NULL){
+              ?>
+              <a href=<?php echo "file_data/loker/".$data['file']?>>Unduh</a></span></p>
+              <?php
+              }
+              ?>
           </div>
-          <?php
-      }
-      ?>
         </div>
+        <br>
+        <br>
+        <?php
+          }
+        ?>
       </div>
-    </section>
+    </div>
+  </section>
     <!-- ======= Counts Section ======= -->
     <section id="counts" class="counts">
       <div class="container" data-aos="fade-up">
@@ -349,7 +360,7 @@ include_once("koneksi.php");
             <div class="row justify-content-center">
               <div class="col-lg-12">
                 <!-- Portfolio Modal - Title-->
-                <p class="portfolio-modal-title text-secondary pt-2 text-uppercase mb-0"><b>Detail Program</b></p>
+                <p class="portfolio-modal-title text-secondary pt-2 text-uppercase mb-0"><b>Detail Lowongan Kerja</b></p>
                 <!-- Icon Divider-->
                 <br>
                 <div class="divider-custom">
