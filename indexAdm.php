@@ -12,6 +12,7 @@ if (isset($_SESSION['ses_username']) == "") {
   $data_status = $_SESSION["ses_idLevel"];
 }
 // session_destroy();
+error_reporting (E_ALL ^ E_NOTICE); 
 ?>
 <!DOCTYPE html>
 <html lang="en">

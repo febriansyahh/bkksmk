@@ -258,7 +258,7 @@ include_once("koneksi.php");
                     <?php
                     if($data['status'] != '1'){
                     ?>
-                      <a href=<?php echo"./file_data/pendaftaran/".$data['berkas']?> target="_blank"><i class="fa fa-download"></i></a>
+                      <!-- <a href=<?php echo"./file_data/pendaftaran/".$data['berkas']?> target="_blank"><i class="fa fa-download"></i></a> -->
                       <a href="?pages=daftarAksi&kode=<?php echo $data['idDaftar']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')"
                       class='btn btn-danger btn-sm'><i class="fa fa-trash"></i></a>
                     <?php

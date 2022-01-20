@@ -37,7 +37,7 @@ if (isset($_POST['btnLogin'])) LoginUser();
                       <center>
                         <div class="card-body">
                             <div class="brand-wrapper">
-                                <img src="assets/img/loginbkk.png" alt="logo" class="logo" style="width:80%; height:80%">
+                                <img src="assets/img/loginbkk.png" alt="logo" class="logo" style="width:80%; height:15%">
                             </div>
                             <form action="" method="post">
                                 <div class="form-group">
