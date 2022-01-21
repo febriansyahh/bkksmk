@@ -736,7 +736,7 @@ section {
 # Counts
 --------------------------------------------------------------*/
 .counts {
-  padding: 70px 0 60px;
+  padding: 40px 0 60px;
   font-family: "Poppins", sans-serif;
 }
 .counts .count-box {
@@ -744,7 +744,7 @@ section {
   width: 100%;
   position: relative;
   text-align: center;
-  background: #f1f6fe;
+  background: #106eea;
 }
 .counts .count-box i {
   position: absolute;
@@ -767,7 +767,7 @@ section {
   font-size: 36px;
   display: block;
   font-weight: 600;
-  color: #062b5b;
+  background: #106eea;
 }
 .counts .count-box p {
   padding: 0;

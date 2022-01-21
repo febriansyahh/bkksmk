@@ -23,13 +23,14 @@ include_once("koneksi.php");
 
   <main id="main">
     <section id="featured-services" class="featured-services">
-    <div class="container px-5 my-5">
+    <div class="container px-5 my-3">
         <h5><a class="text-decoration-none" href="?page=loker">
             Klik untuk selengkapnya
             <i class="bi bi-arrow-right"></i>
-          </a></h5>
+          </a></h5><br>
+          <h6>3 Lowongan terbaru</h6>
       </div>
-    <div class="container px-5 my-5" data-aos="fade-up">
+    <div class="container px-5 my-3" data-aos="fade-up">
       <div class="row gx-6">
         <?php
       include_once('koneksi.php');
@@ -80,8 +81,8 @@ include_once("koneksi.php");
                     while($row = mysqli_fetch_array($q_hit)) {
                         echo  $row[0]."";
                     }
-                    ?>" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Jumlah Siswa Aktif</p>
+                    ?>" data-purecounter-duration="1" class="purecounter" style="color: white"></span>
+              <p style="color: white">Jumlah Siswa Aktif</p>
             </div>
           </div>
 
@@ -95,8 +96,8 @@ include_once("koneksi.php");
                     while($row = mysqli_fetch_array($q_hit)) {
                         echo  $row[0]."";
                     }
-                    ?>" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Lowongan Kerja</p>
+                    ?>" data-purecounter-duration="1" class="purecounter" style="color: white"></span>
+              <p style="color: white">Lowongan Kerja</p>
             </div>
           </div>
 
@@ -109,8 +110,8 @@ include_once("koneksi.php");
                     while($row = mysqli_fetch_array($q_hit)) {
                         echo  $row[0]."";
                     }
-                    ?>" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Alumni Bekerja</p>
+                    ?>" data-purecounter-duration="1" class="purecounter" style="color: white"></span>
+              <p style="color: white">Alumni Bekerja</p>
             </div>
           </div>
 
@@ -125,8 +126,8 @@ include_once("koneksi.php");
                         echo  $row[0]."";
                     }
                     ?>
-              " data-purecounter-duration="1" class="purecounter"></span>
-              <p>Alumni Studi</p>
+              " data-purecounter-duration="1" class="purecounter" style="color: white"></span>
+              <p style="color: white">Alumni Studi</p>
             </div>
           </div>
 

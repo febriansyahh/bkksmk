@@ -685,10 +685,8 @@ error_reporting (E_ALL ^ E_NOTICE);
               <a class="nav-link" data-toggle="modal" data-target="#logout"><i class="fa fa-sign-out"></i>
                 <span>Logout</span></a></li>
             </li>
-
             <?php
                     break;
-              
         }
           ?>
             <!-- Add icons to the links using the .nav-icon class
