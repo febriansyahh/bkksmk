@@ -32,10 +32,10 @@ $pdf->Cell(5, 0.8, 'Tgl. Kerjasama', 1, 1, 'C');
 $pdf->SetFont('Arial','',10);
 $no=1;
 if($tahun == 'NULL'){
-$query=mysqli_query($con,"SELECT * FROM perusahaan ORDER BY idPerusahaan DESC");
+$query=mysqli_query($con,"SELECT * FROM data_perusahaan ORDER BY idPerusahaan DESC");
 }else{
   
-$query=mysqli_query($con,"SELECT * FROM perusahaan WHERE YEAR(tglKerjasama) = '$tahun' ORDER BY idPerusahaan DESC");
+$query=mysqli_query($con,"SELECT * FROM data_perusahaan WHERE YEAR(tglKerjasama) = '$tahun' ORDER BY idPerusahaan DESC");
 }
 while($lihat=mysqli_fetch_array($query)){
 $pdf->Cell(1, 0.8, $no, 1, 0, 'L');

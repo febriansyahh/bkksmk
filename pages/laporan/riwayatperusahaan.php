@@ -33,10 +33,10 @@ $pdf->Cell(2, 0.8, 'Status', 1, 1, 'C');
 $pdf->SetFont('Arial','',10);
 $no=1;
 if($loker == 'NULL'){
-$query=mysqli_query($con,"SELECT a.idDaftar, b.nisn, b.nama, d.nmJurusan, c.perusahaan, c.nmLoker, a.status FROM pendaftaran a, siswa b, lowongan c, jurusan d WHERE a.idAnggota=b.idSiswa AND a.idLoker=c.idLowongan AND b.jurusan=d.idJurusan AND a.status='4' AND c.usrInput ='$id' ORDER BY c.idLowongan ASC");
+$query=mysqli_query($con,"SELECT a.idDaftar, b.nisn, b.nama, d.nmJurusan, c.perusahaan, c.nmLoker, a.status FROM pendaftaran_loker a, siswa b, lowongan c, jurusan d WHERE a.idAnggota=b.idSiswa AND a.idLoker=c.idLowongan AND b.jurusan=d.idJurusan AND a.status='4' AND c.usrInput ='$id' ORDER BY c.idLowongan ASC");
 }else{
   
-$query=mysqli_query($con,"SELECT a.idDaftar, b.nisn, b.nama, d.nmJurusan, c.perusahaan, c.nmLoker, a.status FROM pendaftaran a, siswa b, lowongan c, jurusan d WHERE a.idAnggota=b.idSiswa AND a.idLoker=c.idLowongan AND b.jurusan=d.idJurusan AND a.status='4' AND c.idLowongan = '$loker' AND c.usrInput ='$id' ORDER BY c.idLowongan ASC");
+$query=mysqli_query($con,"SELECT a.idDaftar, b.nisn, b.nama, d.nmJurusan, c.perusahaan, c.nmLoker, a.status FROM pendaftaran_loker a, siswa b, lowongan c, jurusan d WHERE a.idAnggota=b.idSiswa AND a.idLoker=c.idLowongan AND b.jurusan=d.idJurusan AND a.status='4' AND c.idLowongan = '$loker' AND c.usrInput ='$id' ORDER BY c.idLowongan ASC");
 }
 while($lihat=mysqli_fetch_array($query)){
 $pdf->Cell(1, 0.8, $no, 1, 0, 'L');
