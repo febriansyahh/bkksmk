@@ -1,6 +1,8 @@
 <?php	
 include_once("koneksi.php");
 $maxID = MaxIdProgram();
+error_reporting();
+error_reporting (E_ALL ^ E_NOTICE); 
     ?>
 <div class="form-group">
   <br>
@@ -57,8 +59,9 @@ $maxID = MaxIdProgram();
                       if($data['usrInput'] == $data_idUser){
                       ?>
                     <a href="javascript:void(0)" data-toggle="modal" data-target="#editLoker"
-                      data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] . "~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel'] . "~" . $data['file'] . "~" . $data['keterangan'] . "~" . $data['sumber'] . "~" . $data['tglInput'] . "~" . date('d-m-Y', strtotime($data['batas'])) . "~" . $data['status'] . "~" . $data['kualifikasi'] . "~" . $data['persyaratan']?>"
+                      data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] . "~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel'] . "~" . $data['file'] . "~" . $data['keterangan'] . "~" . $data['sumber'] . "~" . $data['tglInput'] . "~" . $data['batas'] . "~" . $data['status'] . "~" . $data['kualifikasi'] . "~" . $data['persyaratan']?>"
                       onclick="editableLowongan(this)" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
+                      <!-- date('d-m-Y', strtotime($data['batas'])) -->
                     <a href="?pages=lokerAksi&kode=<?php echo $data['idLowongan']; ?>"
                       onclick="return confirm('Apakah anda yakin hapus data ini ?')" class='btn btn-danger btn-sm'><i
                         class="fa fa-trash"></i></a>
@@ -66,7 +69,7 @@ $maxID = MaxIdProgram();
                       }else{
                       ?>
                     <a href="javascript:void(0)" data-toggle="modal" data-target="#editLoker"
-                      data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] . "~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel'] . "~" . $data['file'] . "~" . $data['keterangan'] . "~" . $data['sumber'] . "~" . $data['tglInput'] . "~" . date('d-m-Y', strtotime($data['batas'])) . "~" . $data['status'] . "~" . $data['kualifikasi'] . "~" . $data['persyaratan']?>"
+                      data-id="<?php echo $data['idLowongan'] . "~" . $data['noLoker'] . "~" . $data['perusahaan'] . "~" . $data['nmLoker'] . "~" . $data['jekel'] . "~" . $data['file'] . "~" . $data['keterangan'] . "~" . $data['sumber'] . "~" . $data['tglInput'] . "~" . $data['batas'] . "~" . $data['status'] . "~" . $data['kualifikasi'] . "~" . $data['persyaratan']?>"
                       onclick="editableLowongan(this)" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
                     <a href="?pages=lokerAksi&kode=<?php echo $data['idLowongan']; ?>"
                       onclick="return confirm('Apakah anda yakin hapus data ini ?')" class='btn btn-danger btn-sm'><i
@@ -563,6 +566,12 @@ $maxID = MaxIdProgram();
               <div class="col-6">
                 <label for=""><b>Jenis Kelamin</b></label>
                 <input type="text" name="editJekel" id="editJekel" class="form-control" readonly>
+                <!-- <select name="jekel" class="form-control" id="" required>
+                  <option value="">- Pilih -</option>
+                  <option value="Pria">Pria</option>
+                  <option value="Wanita">Wanita</option>
+                  <option value="Keduanya">Pria / Wanita</option>
+                </select><br> -->
               </div>
               
               <div class="col-6">
@@ -589,12 +598,8 @@ $maxID = MaxIdProgram();
               </div> -->
               <div class="col-6">
                 <label for=""><b>Batas </b></label>
-                <input type="text" name="editBatas" id="editBatas" class="form-control" readonly>
+                <input type="date" name="editBatas" id="editBatas" class="form-control" readonly>
               </div>
-              <!-- <div class="col-6">
-                <label for=""><b>Status </b></label>
-                <input type="text" name="editStatus" id="editStatus" class="form-control" readonly>
-              </div> -->
             </div>
             <div class="form-group">
               <label for=""><b>Keterangan </b></label>
@@ -623,7 +628,13 @@ $maxID = MaxIdProgram();
               </div>
               <div class="col-6">
                 <label for=""><b>Jenis Kelamin</b></label>
-                <input type="text" name="editJekel" id="editJekel" class="form-control">
+                <!-- <input type="text" name="editJekel" id="editJekel" class="form-control"> -->
+                <select name="editJekel" class="form-control" id="editJekel" required>
+                  <option value="">- Pilih -</option>
+                  <option value="Pria">Pria</option>
+                  <option value="Wanita">Wanita</option>
+                  <option value="Keduanya">Pria / Wanita</option>
+                </select>
               </div>
               
               <div class="col-6">
@@ -650,7 +661,7 @@ $maxID = MaxIdProgram();
               </div> -->
               <div class="col-6">
                 <label for=""><b>Batas </b></label>
-                <input type="text" name="editBatas" id="editBatas" class="form-control">
+                <input type="date" name="editBatas" id="editBatas" class="form-control">
               </div>
               <!-- <div class="col-6">
                 <label for=""><b>Status </b></label>
@@ -658,7 +669,9 @@ $maxID = MaxIdProgram();
               </div> -->
             </div>
             <div class="form-group">
-              <label for=""><b>Keterangan </b></label>
+              <label for=""><b>Keterangan </b></label><br>
+              <!-- <textarea name="editKet" id="editKet" cols="20" class="form-control">
+              </textarea> -->
               <input type="text" name="editKet" id="editKeterangan" class="form-control">
             </div>
             <div class="modal-footer">
