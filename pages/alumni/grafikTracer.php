@@ -138,7 +138,7 @@ error_reporting (E_ALL ^ E_NOTICE);
   <script src="js/main.js"></script>
 	<?php
         $tahun = $_POST['tahun'];
-        $sql="SELECT d.nmJurusan, COUNT(a.idDaftar) as total FROM pendaftaran a, siswa b, alumni c, jurusan d WHERE a.idAnggota=b.idSiswa AND c.nisn=b.nisn AND b.jurusan=d.idJurusan AND a.status='4' AND c.thnLulus='$tahun' GROUP BY d.nmJurusan";
+        $sql="SELECT d.nmJurusan, COUNT(a.idDaftar) as total FROM pendaftaran_loker a, siswa b, alumni c, jurusan d WHERE a.idAnggota=b.idSiswa AND c.nisn=b.nisn AND b.jurusan=d.idJurusan AND a.status='4' AND c.thnLulus='$tahun' GROUP BY d.nmJurusan";
         $hasil=mysqli_query($con,$sql);
 
     while ($data = mysqli_fetch_array($hasil)) {
@@ -176,7 +176,7 @@ error_reporting (E_ALL ^ E_NOTICE);
 	</script>
 	<?php
         $tahun = $_POST['tahun'];
-        $sql="SELECT cc.nmJurusan, COUNT(aa.idAlumni) as total FROM alumni aa, siswa bb, jurusan cc WHERE aa.nisn=bb.nisn AND bb.jurusan=cc.idJurusan AND aa.status='Bekerja' AND aa.nisn NOT IN (SELECT b.nisn FROM pendaftaran a, siswa b WHERE a.idAnggota=b.idSiswa AND a.status='4') AND aa.thnLulus='$tahun' GROUP BY cc.nmJurusan";
+        $sql="SELECT cc.nmJurusan, COUNT(aa.idAlumni) as total FROM alumni aa, siswa bb, jurusan cc WHERE aa.nisn=bb.nisn AND bb.jurusan=cc.idJurusan AND aa.status='Bekerja' AND aa.nisn NOT IN (SELECT b.nisn FROM pendaftaran_loker a, siswa b WHERE a.idAnggota=b.idSiswa AND a.status='4') AND aa.thnLulus='$tahun' GROUP BY cc.nmJurusan";
         $hasil=mysqli_query($con,$sql);
 
     while ($data = mysqli_fetch_array($hasil)) {
@@ -214,7 +214,7 @@ error_reporting (E_ALL ^ E_NOTICE);
 	</script>
 
 <?php
-        $sql="SELECT d.nmJurusan, COUNT(a.idDaftar) as total FROM pendaftaran a, siswa b, alumni c, jurusan d WHERE a.idAnggota=b.idSiswa AND c.nisn=b.nisn AND b.jurusan=d.idJurusan AND a.status='4' GROUP BY d.nmJurusan";
+        $sql="SELECT d.nmJurusan, COUNT(a.idDaftar) as total FROM pendaftaran_loker a, siswa b, alumni c, jurusan d WHERE a.idAnggota=b.idSiswa AND c.nisn=b.nisn AND b.jurusan=d.idJurusan AND a.status='4' GROUP BY d.nmJurusan";
         $hasil=mysqli_query($con,$sql);
 
     while ($data = mysqli_fetch_array($hasil)) {
@@ -252,7 +252,7 @@ error_reporting (E_ALL ^ E_NOTICE);
 	</script>
 	
   <?php
-        $sql="SELECT cc.nmJurusan, COUNT(aa.idAlumni) as total FROM alumni aa, siswa bb, jurusan cc WHERE aa.nisn=bb.nisn AND bb.jurusan=cc.idJurusan AND aa.status='Bekerja' AND aa.nisn NOT IN (SELECT b.nisn FROM pendaftaran a, siswa b WHERE a.idAnggota=b.idSiswa AND a.status='4') GROUP BY cc.nmJurusan";
+        $sql="SELECT cc.nmJurusan, COUNT(aa.idAlumni) as total FROM alumni aa, siswa bb, jurusan cc WHERE aa.nisn=bb.nisn AND bb.jurusan=cc.idJurusan AND aa.status='Bekerja' AND aa.nisn NOT IN (SELECT b.nisn FROM pendaftaran_loker a, siswa b WHERE a.idAnggota=b.idSiswa AND a.status='4') GROUP BY cc.nmJurusan";
         $hasil=mysqli_query($con,$sql);
 
     while ($data = mysqli_fetch_array($hasil)) {
