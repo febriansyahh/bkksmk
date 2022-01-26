@@ -1609,12 +1609,12 @@ function updatePerusahaan($upload)
 function deletePerusahaan($id)
 {
   global $con;
-  $cek_perusahaan = "SELECT `logo` FROM perusahaan WHERE idPerusahaan ='$id'";
+  $cek_perusahaan = "SELECT `logo` FROM data_perusahaan WHERE idPerusahaan ='$id'";
   $query = mysqli_query($con, $cek_perusahaan);
   $row = mysqli_fetch_row($query);
   $files = $row[0];
   unlink('file_data/logo/' . $files);
-  
+
   $sql_hapus = "DELETE FROM data_perusahaan WHERE idPerusahaan='$id' ";
   $query_hapus = mysqli_query($con, $sql_hapus);
 
