@@ -16,7 +16,7 @@ $pdf->ln(1);
 $pdf->SetFont('Arial','B',13);
 $pdf->Image('logos.png', 14, 1, 2, 'C');
 $pdf->Cell(25.5,0.7,"Laporan Kerjasama Perusahaan",0,10,'C');
-$pdf->Cell(25.5,0.7,"SMK MUHAMMADIYAH",0,10,'C');
+$pdf->Cell(25.5,0.7,"SMK Muhmmadiyah Kudus",0,10,'C');
 $pdf->ln(1);
 $pdf->SetFont('Arial','B',10);
 $pdf->Cell(5,0.7,"Printed On : ".date("D-d/M/Y"),0,0,'C');
