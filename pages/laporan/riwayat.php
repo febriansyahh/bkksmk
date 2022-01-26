@@ -15,7 +15,7 @@ $pdf->SetFont('Times','B',11);
 $pdf->ln(1);
 $pdf->SetFont('Arial','B',13);
 $pdf->Image('logos.png', 14, 1, 2, 'C');
-$pdf->Cell(25.5,0.7,"Riwayat Pendaftaran Lowongan",0,10,'C');
+$pdf->Cell(25.5,0.7,"Laporan Rekrutmen Lowongan",0,10,'C');
 $pdf->Cell(25.5,0.7,"SMK Muhmmadiyah Kudus",0,10,'C');
 $pdf->ln(1);
 $pdf->SetFont('Arial','B',10);
