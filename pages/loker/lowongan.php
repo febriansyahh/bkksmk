@@ -364,8 +364,8 @@ error_reporting (E_ALL ^ E_NOTICE);
                   <option value="">- Pilih -</option>
                   <option value="Pria">Pria</option>
                   <option value="Wanita">Wanita</option>
-                  <option value="Keduanya">Pria / Wanita</option>
-                  <!-- <option value="Pria/Wanita">Pria / Wanita</option> -->
+                  <option value="Pria / Wanita">Pria / Wanita</option>
+                  <!-- <option value="Keduanya">Pria / Wanita</option> -->
                 </select><br>
               </div>
 
@@ -441,8 +441,8 @@ error_reporting (E_ALL ^ E_NOTICE);
                   <option value="">- Pilih -</option>
                   <option value="Pria">Pria</option>
                   <option value="Wanita">Wanita</option>
-                  <option value="Keduanya">Pria / Wanita</option>
-                  <!-- <option value="Pria/Wanita">Pria / Wanita</option> -->
+                  <option value="Pria / Wanita">Pria / Wanita</option>
+                  <!-- <option value="Pria / Wanita">Pria / Wanita</option> -->
                 </select><br>
               </div>
               <div class="col-6">
@@ -633,7 +633,7 @@ error_reporting (E_ALL ^ E_NOTICE);
                   <option value="">- Pilih -</option>
                   <option value="Pria">Pria</option>
                   <option value="Wanita">Wanita</option>
-                  <option value="Keduanya">Pria / Wanita</option>
+                  <option value="Pria / Wanita">Pria / Wanita</option>
                 </select>
               </div>
               
