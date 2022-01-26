@@ -66,12 +66,12 @@ $no++;
 }
 $pdf->ln(1);
 $pdf->SetFont('Arial','B',11);
-$pdf->Cell(40.5,0.7,"Mengetahui",0,10,'C');
+$pdf->Cell(40.5,0.7,"Mengetahui,",0,10,'C');
 
 $pdf->ln(1);
 $pdf->SetFont('Arial','B',9);
-$pdf->Cell(40.5,0.7,"Kepala BKK",0,10,'C');
-$pdf->Cell(40.5,0.7,"SMK MUHAMMADIYAH",0,10,'C');
+$pdf->Cell(40.5,0.7,"Ketua BKK",0,10,'C');
+// $pdf->Cell(40.5,0.7,"SMK MUHAMMADIYAH",0,10,'C');
 //Nama file ketika di print
 $nmLoker = "SELECT nmLoker FROM lowongan WHERE idLowongan = '$loker' ";
 $query = mysqli_query($con, $nmLoker);

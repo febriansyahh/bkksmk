@@ -46,13 +46,15 @@ $pdf->Cell(5, 0.8, $lihat['sumber'], 1, 1,'L');
 
 $no++;
 }
-$pdf->ln(1);
-$pdf->SetFont('Arial','B',11);
-$pdf->Cell(40.5,0.7,"Approve",0,10,'C');
 
-$pdf->ln(1);
-$pdf->SetFont('Arial','B',9);
-$pdf->Cell(40.5,0.7,"Technician Name",0,10,'C');
+// $pdf->ln(1);
+// $pdf->SetFont('Arial','B',11);
+// $pdf->Cell(40.5,0.7,"Mengetahui,",0,10,'C');
+
+// $pdf->ln(1);
+// $pdf->SetFont('Arial','B',9);
+// $pdf->Cell(40.5,0.7,"Technician Name",0,10,'C');
+
 //Nama file ketika di print
 $pdf->Output("Laporan Lowongan Perusahaan.pdf","I");
 ?>
