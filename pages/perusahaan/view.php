@@ -1,5 +1,7 @@
 <?php	
 include_once("koneksi.php");
+error_reporting();
+error_reporting (E_ALL ^ E_NOTICE); 
     ?>
           <div class="form-group">
             <br>
