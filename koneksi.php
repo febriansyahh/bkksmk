@@ -1547,7 +1547,7 @@ function insertPerusahaan($upload)
   $idDaftar = $row[0];
 
   // $sql_insert = "INSERT INTO perusahaan (`nmPerusahaan`, `email`, `stsPerusahaan`, `noTelp`, `tglKerjasama`, `logo`, `tglDaftar`) VALUES (
-  $sql_insert = "INSERT INTO data_perusahaan (`nmPerusahaan`, `email`, `stsPerusahaan`, `noTelp`, `tglKerjasama`, `tglDaftar`) VALUES (
+  $sql_insert = "INSERT INTO data_perusahaan (`nmPerusahaan`, `email`, `stsPerusahaan`, `noTelp`, `tglKerjasama`, `logo`, `tglDaftar`) VALUES (
 					'" . $_POST['nmPerusahaan'] . "',
           '" . $_POST['email'] . "',
 					'" . $_POST['statusPer'] . "',
@@ -1609,8 +1609,12 @@ function updatePerusahaan($upload)
 function deletePerusahaan($id)
 {
   global $con;
-
-  // $sql_hapus = "DELETE FROM perusahaan WHERE idPerusahaan='$id' ";
+  $cek_perusahaan = "SELECT `logo` FROM perusahaan WHERE idPerusahaan ='$id'";
+  $query = mysqli_query($con, $cek_perusahaan);
+  $row = mysqli_fetch_row($query);
+  $files = $row[0];
+  unlink('file_data/logo/' . $files);
+  
   $sql_hapus = "DELETE FROM data_perusahaan WHERE idPerusahaan='$id' ";
   $query_hapus = mysqli_query($con, $sql_hapus);
 
