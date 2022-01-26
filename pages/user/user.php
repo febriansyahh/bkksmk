@@ -76,27 +76,27 @@ include_once("koneksi.php");
 
           <div class="form-group">
             <label>Nama Pengguna </label>
-            <input class="form-control" type="text" name="nmUser" placeholder="Masukkan nama pengguna">
+            <input class="form-control" type="text" name="nmUser" placeholder="Masukkan nama pengguna" required>
           </div>
 
           <div class="form-group">
             <label>Username </label>
-            <input class="form-control" type="text" name="username" placeholder="Masukkan nama pengguna">
+            <input class="form-control" type="text" name="username" placeholder="Masukkan username" required>
           </div>
           
           <div class="form-group">
             <label>Password </label>
-            <input class="form-control" type="password" name="password" placeholder="Masukkan password">
+            <input class="form-control" type="password" name="password" placeholder="Masukkan password" required>
           </div>
 
           <div class="form-group">
             <label>Ulangi Password </label>
-            <input class="form-control" type="password" name="rePassword" placeholder="Masukkan ulang password">
+            <input class="form-control" type="password" name="rePassword" placeholder="Masukkan ulang password" required>
           </div>
 
           <div class="form-group">
             <label>Level Pengguna </label>
-            <select name="idGroup" class="form-control">
+            <select name="idGroup" class="form-control" required>
               <option value="">- Pilih -</option>
               <option value="1">Admin</option>
               <option value="3">Ketua BKK</option>

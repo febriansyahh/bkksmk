@@ -65,19 +65,19 @@ include_once("koneksi.php");
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Tambah Data Jurusan</h4>
+        <h4 class="modal-title">Tambah Jurusan</h4>
       </div>
       <div class="modal-body">
         <form action="?pages=jurusanAksi" method="post" enctype="multipart/form-data">
 
           <div class="form-group">
             <label>Nama Jurusan </label>
-            <input class="form-control" type="text" name="nmJurusan">
+            <input class="form-control" type="text" name="nmJurusan" required>
           </div>
 
           <div class="form-group">
             <label>Keterangan</label>
-            <textarea name="ket" id="" class="form-control" rows="3"></textarea>
+            <textarea name="ket" id="" class="form-control" rows="3" required></textarea>
             <!-- <input class="form-control " type="text" name="ket"> -->
           </div>
 

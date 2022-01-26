@@ -73,24 +73,24 @@ error_reporting (E_ALL ^ E_NOTICE);
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <label>Tambah Data Perusahaan</label>
+        <label>Tambah Perusahaan</label>
       </div>
       <div class="modal-body">
         <form action="?pages=perusahaanAksi" method="post" enctype="multipart/form-data">
 
         <div class="form-group">
         <label>Nama Perusahaan </label>
-        <input class="form-control" type="text" name="nmPerusahaan">
+        <input class="form-control" type="text" name="nmPerusahaan" required>
       </div>
         <div class="form-group">
         <label>Logo Perusahaan </label>
-        <input class="form-control" type="file" name="fileLogo">
+        <input class="form-control" type="file" name="fileLogo" required>
       </div>
         <div class="row" >
           
           <div class="col-6">
             <label>Status Perusahaan </label>
-            <select name="statusPer" id="" class="form-control">
+            <select name="statusPer" id="" class="form-control" required>
               <option value="">Pilih</option>
               <option value="BUMN">BUMN</option>
               <option value="Swasta">Swasta</option>
@@ -101,30 +101,30 @@ error_reporting (E_ALL ^ E_NOTICE);
 
           <div class="col-6">
             <label>No Telepon </label>
-            <input class="form-control" type="text" name="telepon">
+            <input class="form-control" type="text" name="telepon" required>
           </div>
 
         </div>
         <div class="row" >
         <div class="col-6">
             <label>Email </label>
-            <input class="form-control" type="text" name="email">
+            <input class="form-control" type="text" name="email" required>
           </div>
 
           <div class="col-6">
             <label>Tanggal Kerjasama </label>
-            <input class="form-control" type="date" name="tglKerjasama">
+            <input class="form-control" type="date" name="tglKerjasama" required>
           </div>
         </div>
       <div class="row">
         <div class="col-6">
             <label>Username </label>
-            <input class="form-control" type="text" name="username">
+            <input class="form-control" type="text" name="username" required>
           </div>
 
           <div class="col-6">
-            <label>password </label>
-            <input class="form-control" type="text" name="password">
+            <label>Password </label>
+              <input class="form-control" type="text" name="password" required>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>

@@ -70,29 +70,29 @@ if (isset($_POST['btnLogin'])) LoginUser();
           <form action="landing/reg_anggota.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
               <label>NISN</label>
-              <input class="form-control" type="text" name="nisn" placeholder="Masukkan NISN anda">
+              <input class="form-control" type="text" name="nisn" placeholder="Masukkan NISN anda" required>
             </div>
 
             <div class="form-group">
               <label>No WhatsApp</label>
-              <input class="form-control " type="text" name="no_wa" placeholder="Masukkan Nomor WhatsApp anda (+6289xxxx)">
+              <input class="form-control " type="text" name="no_wa" placeholder="Masukkan Nomor WhatsApp anda (+6289xxxx)" required>
             </div>
 
             <div class="form-group">
               <label>Username</label>
-              <input class="form-control " type="text" name="username" placeholder="Masukkan username">
+              <input class="form-control " type="text" name="username" placeholder="Masukkan username" required>
             </div>
             <div class="row">
               <div class="col-6">
                 <div class="form-group">
                   <label>Password</label>
-                  <input class="form-control " type="password" name="password" placeholder="Masukkan Username">
+                  <input class="form-control " type="password" name="password" placeholder="Masukkan Username" required>
                 </div>
               </div>
               <div class="col-6">
                 <div class="form-group">
                   <label>Confirm Password</label>
-                  <input class="form-control " type="password" name="rePassword" placeholder="Masukkan Password">
+                  <input class="form-control " type="password" name="rePassword" placeholder="Masukkan Password" required>
                 </div>
               </div>
             </div>

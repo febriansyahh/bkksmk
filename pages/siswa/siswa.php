@@ -75,24 +75,24 @@ include_once("koneksi.php");
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <p class="modal-title" style="font-family: Poppins">Tambah Data Siswa</p>
+        <p class="modal-title" style="font-family: Poppins">Tambah Siswa</p>
       </div>
       <div class="modal-body">
         <form action="?pages=siswa_aksi" method="post" enctype="multipart/form-data">
         <div class="row">
         <div class="col md-6">
             <label for=""><b>NISN Siswa </b></label>
-            <input type="text" name="nisn" class="form-control">
+            <input type="text" name="nisn" class="form-control" required>
           </div>
           <div class="col md-6">
             <label for=""><b>Nama Siswa </b></label>
-            <input type="text" name="nama" class="form-control">
+            <input type="text" name="nama" class="form-control" required>
           </div>
       </div>
       <div class="row">
         <div class="col md-6">
           <label for=""><b>Jenis Kelamin</b></label>
-          <select name="jekel" id="" class="form-control">
+          <select name="jekel" id="" class="form-control" required>
             <option value="">- Pilih -</option>
             <option value="Pria">Pria</option>
             <option value="Wanita">Wanita</option>
@@ -100,37 +100,37 @@ include_once("koneksi.php");
           </div>
           <div class="col md-6">
             <label for=""><b>Email </b></label>
-            <input type="text" name="email" class="form-control">
+            <input type="text" name="email" class="form-control" required>
           </div>
         </div>
         <div class="row">
         <div class="col md-6">
             <label for=""><b>Tempat Lahir </b></label>
-            <input type="text" name="tempat" class="form-control">
+            <input type="text" name="tempat" class="form-control" required>
           </div>
           <div class="col md-6">
             <label for=""><b>Tanggal Lahir </b></label>
-            <input type="date" name="tgl" class="form-control">
+            <input type="date" name="tgl" class="form-control" required>
           </div>
         </div>
         <div class="row">
         <div class="col md-6">
             <label for=""><b>Nama Wali Murid </b></label>
-            <input type="text" name="nmOrtu" class="form-control">
+            <input type="text" name="nmOrtu" class="form-control" required>
           </div>
           <div class="col md-6">
             <label for=""><b>Alamat</b></label>
-            <input type="text" name="alamat" class="form-control">
+            <input type="text" name="alamat" class="form-control" required>
           </div>
         </div>
         <div class="row">
         <div class="col md-6">
             <label for=""><b>No Telepon </b></label>
-            <input type="text" name="telp" class="form-control">
+            <input type="text" name="telp" class="form-control" required>
           </div>
           <div class="col md-6">
             <label for=""><b>Jurusan</b></label>
-            <select name="jurusan" id="" class="form-control">
+            <select name="jurusan" id="" class="form-control" required>
             <option value="">-Pilih-</option>
                 <?php
                 $dt = getJurusan();
@@ -142,7 +142,7 @@ include_once("koneksi.php");
           </div>
           <div class="col md-6">
             <label for=""><b>Tahun Masuk</b></label>
-            <input type="text" name="tahun" class="form-control">
+            <input type="text" name="tahun" class="form-control" required>
           </div>
         </div>
         <br>

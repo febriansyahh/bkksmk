@@ -373,14 +373,14 @@ error_reporting (E_ALL ^ E_NOTICE);
                 <label>Kualifikasi</label>
                 <textarea name="kualifikasi" id="" style="white-space: pre-line; resize: none;" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' 
                 class="form-control" cols="50"
-                  rows="3"></textarea><br>
+                  rows="3" required></textarea><br>
               </div>
 
               <div class="col-6">
                 <label>Persyaratan</label>
                 <textarea name="persyaratan" id="" style="white-space: pre-line; resize: none;" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' 
                 class="form-control" cols="50"
-                  rows="3"></textarea>
+                  rows="3" required></textarea>
                 <!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
               </div>
             </div>
@@ -400,7 +400,7 @@ error_reporting (E_ALL ^ E_NOTICE);
               <div class="form-group">
                 <label>Keterangan</label>
                 <textarea name="ket" style="white-space: pre-line; resize: none;" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
-                class="form-control"rows="2"></textarea>
+                class="form-control"rows="2" required></textarea>
               </div>
 
               <div class="row">
@@ -566,12 +566,6 @@ error_reporting (E_ALL ^ E_NOTICE);
               <div class="col-6">
                 <label for=""><b>Jenis Kelamin</b></label>
                 <input type="text" name="editJekel" id="editJekel" class="form-control" readonly>
-                <!-- <select name="jekel" class="form-control" id="" required>
-                  <option value="">- Pilih -</option>
-                  <option value="Pria">Pria</option>
-                  <option value="Wanita">Wanita</option>
-                  <option value="Keduanya">Pria / Wanita</option>
-                </select><br> -->
               </div>
               
               <div class="col-6">
@@ -603,7 +597,9 @@ error_reporting (E_ALL ^ E_NOTICE);
             </div>
             <div class="form-group">
               <label for=""><b>Keterangan </b></label>
-              <input type="text" name="editKet" id="editKeterangan" class="form-control" readonly>
+              <!-- <input type="text" name="editKet" id="editKeterangan" class="form-control" readonly> -->
+              <textarea name="editKet" id="editKeterangan" cols="20" class="form-control" readonly>
+              </textarea>
             </div>
         </form>
         <?php
@@ -670,9 +666,9 @@ error_reporting (E_ALL ^ E_NOTICE);
             </div>
             <div class="form-group">
               <label for=""><b>Keterangan </b></label><br>
-              <!-- <textarea name="editKet" id="editKet" cols="20" class="form-control">
-              </textarea> -->
-              <input type="text" name="editKet" id="editKeterangan" class="form-control">
+              <textarea name="editKet" id="editKeterangan" cols="20" class="form-control">
+              </textarea>
+              <!-- <input type="text" name="editKet" id="editKeterangan" class="form-control"> -->
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>

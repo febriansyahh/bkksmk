@@ -71,14 +71,14 @@ function registrasiData()
   $tgl = date('Y-m-d H:i:s');
   if($nisn == NULL){
     echo "<script>alert('NISN tidak Terdaftar, Registrasi Gagal !!')</script>";
-    echo "<meta http-equiv='refresh' content='0; url=index.php?page=beranda>";
+    echo "<meta http-equiv='refresh' content='0; url=index.php>";
     // echo 'A';
     
   }else
       {
         if($pass != $repass){
           echo "<script>alert('Password tidak sama, Simpan Gagal !!')</script>";
-          echo "<meta http-equiv='refresh' content='0; url=index.php?page=beranda>";
+          echo "<meta http-equiv='refresh' content='0; url=index.php>";
         }else
             {
               // $sql_insert = "INSERT INTO anggota (nisn, noWa, tglDaftar) VALUES (
@@ -104,7 +104,7 @@ function registrasiData()
                   echo "<meta http-equiv='refresh' content='0; url=signin.php'>";
                 } else {
                   echo "<script>alert('Registrasi Anggota Gagal')</script>";
-                  echo "<meta http-equiv='refresh' content='0; url=index.php?page=beranda'>";
+                  echo "<meta http-equiv='refresh' content='0; url=index.php'>";
                 }
             }
       }
@@ -130,14 +130,14 @@ function registrasiDatas()
   $tgl = date('Y-m-d H:i:s');
   if($nisn == NULL){
     echo "<script>alert('NISN tidak Terdaftar, Registrasi Gagal !!')</script>";
-    echo "<meta http-equiv='refresh' content='0; url=index.php?page=beranda>";
+    echo "<meta http-equiv='refresh' content='0; url=signin.php>";
     // echo 'A';
     
   }else
       {
         if($pass != $repass){
           echo "<script>alert('Password tidak sama, Simpan Gagal !!')</script>";
-          echo "<meta http-equiv='refresh' content='0; url=index.php?page=beranda>";
+          echo "<meta http-equiv='refresh' content='0; url=signin.php>";
         }else
             {
               // $sql_insert = "INSERT INTO anggota (nisn, noWa, tglDaftar) VALUES (
@@ -160,10 +160,10 @@ function registrasiDatas()
                 
                 if ($query_insert && $query_insertUser) {
                   echo "<script>alert('Registrasi Anggota Berhasil')</script>";
-                  echo "<meta http-equiv='refresh' content='0; url=../signin.php'>";
+                  echo "<meta http-equiv='refresh' content='0; url=signin.php'>";
                 } else {
                   echo "<script>alert('Registrasi Anggota Gagal')</script>";
-                  echo "<meta http-equiv='refresh' content='0; url=index.php?page=beranda'>";
+                  echo "<meta http-equiv='refresh' content='0; url=index.php'>";
                 }
             }
       }
