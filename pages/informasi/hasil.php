@@ -304,12 +304,12 @@ error_reporting (E_ALL ^ E_NOTICE);
 
           <div class="form-group">
             <label>File</label>
-              <input class="form-control" type="file" name="fileHasil" require>
+              <input class="form-control" type="file" name="fileHasil" required>
               <span>*) Max. File : 4 MB</span>
           </div>
           <div class="form-group">
           <label>Keterangan</label>
-              <textarea style="resize: none" name="ket" id="" class="form-control" rows="3" require></textarea>
+              <textarea style="resize: none" name="ket" id="" class="form-control" rows="3" required></textarea>
           </div>
 
           <div class="modal-footer">

@@ -202,7 +202,6 @@ include_once("koneksi.php");
               <div class="col-6">
                 <div class="form-group">
                   <label>Posisi</label>
-                  <!-- <input class="form-control" type="text" name="no_wa" placeholder="Masukkan Nomor WhatsApp anda"> -->
                   <select name="status" id="" class="form-control" required>
                     <option value="">Pilih</option>
                     <option value="Bekerja">Bekerja</option>

@@ -278,7 +278,7 @@ include_once("koneksi.php");
           <div class="form-group">
           <label>Lowongan </label>
               <input class="form-control" type="hidden" name="usrInput" value="<?php echo $data_idUser; ?>" readonly> <br>
-              <select name="noLoker" id="" class="form-control">
+              <select name="noLoker" id="" class="form-control" required>
                 <option value="">-Pilih-</option>
                 <?php
                 $dt = getLowongan($data_idUser);
@@ -291,19 +291,19 @@ include_once("koneksi.php");
 
           <div class="form-group">
             <label>Tempat</label>
-              <input class="form-control " type="text" name="tempat" require>
+              <input class="form-control " type="text" name="tempat" required>
           </div>
           <div class="form-group">
           <label>Tgl Seleksi</label>
-              <input class="form-control " type="date" name="tanggal" require>
+              <input class="form-control " type="date" name="tanggal" required>
           </div>
           <div class="form-group">
           <label>Waktu </label>
-              <input class="form-control " type="text" name="waktu" require>
+              <input class="form-control " type="text" name="waktu" required>
           </div>
           <div class="form-group">
           <label>Keterangan</label>
-              <textarea style="resize: none" name="ket" id="" class="form-control" rows="3" require></textarea>
+              <textarea style="resize: none" name="ket" id="" class="form-control" rows="3" required></textarea>
           </div>
 
           <div class="modal-footer">
