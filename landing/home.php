@@ -5,10 +5,9 @@ include_once("koneksi.php");
 <body>
   <section id="hero" class="d-flex align-items-center">
     <div class="container" data-aos="zoom-out" data-aos-delay="100" style="text-align: center;">
-      <h1 style="font-family: Poppins">Selamat datang di <span>Bursa Kerja Khusus</span></h1>
-      <h4 style="font-family: Poppins"><span>SMK Muhammadiyah Kudus</span> <br>
-        Berprestasi, Berkarakter, Unggul Dalam IT yang Dilandasi Iman dan
-        Taqwa
+      <h1 style="font-family: Poppins">Selamat datang di <span>SI-BUK</span></h1>
+      <h4 style="font-family: Poppins"><span>Sistem Informasi Bursa Kerja Khusus (SI-BUK) adalah</span> <br>
+        sistem yang berguna untuk meningkatkan <br> pelayanan dan memperluas kesempatan kerja
       </h4>
       <br>
       <div class="d-flex" style="width:450px; margin:0 auto;">
