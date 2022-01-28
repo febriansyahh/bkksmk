@@ -5,7 +5,7 @@
   <section style="font-family: Poppins">
     <div class="container">
       <div class="span4">
-        <h5>Info<strong> Hasil Penerimaan Lowongan</strong></h5>
+        <h5>Info<strong> Perkembangan Alumni</strong></h5>
       </div>
     </div>
     <br><br><br>
