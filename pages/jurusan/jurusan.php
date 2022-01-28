@@ -110,6 +110,7 @@ include_once("koneksi.php");
             <textarea name="ket" id="editKet" class="form-control" rows="3"></textarea>
           </div>
         <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
           <button type="submit" name="btnUBAH" class="btn btn-primary">Simpan</button>
         </div>
       </form>

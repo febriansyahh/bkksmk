@@ -15,7 +15,7 @@ include_once("koneksi.php");
               <div class="card-header">
               <a data-toggle="modal" data-target="#jurusan" class="btn btn-primary d-inline" style="float : right;"><i
                   class="fas fa-plus-square"></i> Tambah Jadwal Seleksi</a>
-                <h3 class="card-title">Data Jurusan</h3>
+                <h3 class="card-title">Data Jadwal Seleksi</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">

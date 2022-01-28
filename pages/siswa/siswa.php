@@ -100,7 +100,7 @@ include_once("koneksi.php");
           </div>
           <div class="col md-6">
             <label for=""><b>Email </b></label>
-            <input type="text" name="email" class="form-control" required>
+            <input type="text" name="email" class="form-control">
           </div>
         </div>
         <div class="row">
@@ -126,7 +126,7 @@ include_once("koneksi.php");
         <div class="row">
         <div class="col md-6">
             <label for=""><b>No Telepon </b></label>
-            <input type="text" name="telp" class="form-control" required>
+            <input type="text" name="telp" class="form-control">
           </div>
           <div class="col md-6">
             <label for=""><b>Jurusan</b></label>
