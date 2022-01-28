@@ -162,13 +162,13 @@ include_once("koneksi.php");
               <div class="col-6">
                 <div class="form-group">
                   <label>Password</label>
-                  <input class="form-control " type="password" name="password" placeholder="Masukkan Username" required>
+                  <input class="form-control " type="password" name="password" placeholder="Masukkan Password" required>
                 </div>
               </div>
               <div class="col-6">
                 <div class="form-group">
                   <label>Confirm Password</label>
-                  <input class="form-control " type="password" name="rePassword" placeholder="Masukkan Password" required>
+                  <input class="form-control " type="password" name="rePassword" placeholder="Ulangi Password" required>
                 </div>
               </div>
             </div>
@@ -231,7 +231,7 @@ include_once("koneksi.php");
               </div>
               <div class="col-6">
                 <div class="form-group">
-                  <label>Mulai Sejak</label>
+                  <label>Mulai Bekerja Sejak</label>
                   <select name="mulai" id="" class="form-control" required>
                     <option value="">Pilih</option>
                     <option value="Sebelum">Sebelum Lulus</option>
@@ -244,7 +244,7 @@ include_once("koneksi.php");
             <div class="row">
               <div class="col-6">
                 <div class="form-group">
-                  <label>Tanggal Mulai</label>
+                  <label>Tanggal Mulai Bekerja</label>
                   <input class="form-control" type="date" name="waktu" required>
                 </div>
               </div>
@@ -266,7 +266,7 @@ include_once("koneksi.php");
               <div class="col-6">
                 <div class="form-group">
                   <label>Gaji</label>
-                  <input class="form-control" type="text" name="gaji">
+                  <input class="form-control" type="text" name="gaji" placeholder="Masukkan Nominal Angka Gaji">
                 </div>
               </div>
               <div class="col-6">
