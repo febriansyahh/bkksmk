@@ -136,7 +136,7 @@ include_once("koneksi.php");
     </section><!-- End Counts Section -->
   </main><!-- End #main -->
   <div id="register" class="modal fade">
-    <div class="modal-dialog">
+    <div class="modal-dialog" style="font-family: Poppins">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -183,7 +183,7 @@ include_once("koneksi.php");
   </div>
 
   <div id="alumni" class="modal fade">
-    <div class="modal-dialog">
+    <div class="modal-dialog" style="font-family: Poppins">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
