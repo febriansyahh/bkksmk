@@ -12,22 +12,6 @@
         </div>
       </div>
     </div>
-    <section id="contact" class="contact">
-      <div class="container" data-aos="fade-up">
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
-          <div class="col-lg-12">
-            <div class="info-box mb-4">
-              <i class="bx bx-map"></i>
-              <h3>Alamat Sekolah</h3>
-              <p>Jl. Kudus - Jepara No.KM.3, Bendaran, Prambatan Lor, Kec. Kaliwungu,<br>
-              Kabupaten Kudus, Jawa Tengah
-                    59361</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
   </header>
   
 <section id="featured-services" class="featured-services">
