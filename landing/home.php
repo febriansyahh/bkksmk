@@ -27,7 +27,7 @@ include_once("koneksi.php");
             Klik untuk selengkapnya
             <i class="bi bi-arrow-right"></i>
           </a></h5><br>
-          <h6>3 Lowongan terbaru</h6>
+          <h6 style="color: #247cf0;">3 Lowongan terbaru</h6>
       </div>
     <div class="container px-5 my-3" data-aos="fade-up">
       <div class="row gx-6">
