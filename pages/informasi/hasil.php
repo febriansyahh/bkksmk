@@ -172,7 +172,7 @@ error_reporting (E_ALL ^ E_NOTICE);
                     ?>
                     <tr>
                       <td><?php echo $no; ?></td>
-                      <td><?php echo $data['idHasil']; ?></td>
+                      <td><?php echo $data['idLoker']; ?></td>
                       <td><?php echo $data['perusahaan']; ?></td>
                       <td><?php echo $data['nmLoker']; ?></td>
                       <td><span style="color:blue"> <a href=<?php echo "file_data/hasil/".$data['file']?>>Unduh</a></span></td>
@@ -184,7 +184,7 @@ error_reporting (E_ALL ^ E_NOTICE);
                           <?php
                     if($data['status'] == '1'){
                       ?>
-                      <a href="?pages=hasilAksi&kodes=<?php echo $data['idHasil']; ?>" onclick="return confirm('Yakin untuk konfirmasi data ini ?')"
+                      <a href="?pages=hasilAksi&kodes=<?php echo $data['idLoker']; ?>" onclick="return confirm('Yakin untuk konfirmasi data ini ?')"
                       class='btn btn-warning btn-sm'><i class="fa fa-check"></i></a>
                     <?php
                     }

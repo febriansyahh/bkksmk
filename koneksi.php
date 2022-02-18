@@ -670,7 +670,7 @@ function getHasil()
 {
   global $con;
   // $sql ="SELECT a.kode_hasil, a.berkas, b.nm_perusahaan, b.nm_loker FROM tb_kelulusan a, tb_loker b WHERE a.id_loker=b.id_loker";
-  $sql ="SELECT a.*, b.perusahaan, b.nmLoker FROM hasil a, lowongan b WHERE a.idLoker=b.idLowongan";
+  $sql ="SELECT a.*, b.idLowongan, b.perusahaan, b.nmLoker FROM hasil a, lowongan b WHERE a.idLoker=b.idLowongan";
   $query = mysqli_query($con, $sql);
   return $query;
 }
@@ -982,76 +982,76 @@ function deleteLowongan($id)
   }
 }
 
-function validasiLowongan($id)
-  {
-    global $con;
-
-    $sql_validasi = "UPDATE lowongan SET status = '2' WHERE idLowongan='$id'";
-      $query_validasi = mysqli_query($con, $sql_validasi);
-
-      if ($query_validasi) {
-        echo "<script>alert('Validasi Berhasil')</script>";
-        echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=lowongan''>";
-      } else {
-        echo "<script>alert('Validasi Gagal')</script>";
-        echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=lowongan''>";
-      }
-  }
-
 // function validasiLowongan($id)
-// {
-//   global $con;
+//   {
+//     global $con;
 
-//   $sql_no = "SELECT noWa FROM data_anggota";
-//   $sql_no = "SELECT noWa FROM anggota";
-//   $query_no = mysqli_query($con, $sql_no);
+//     $sql_validasi = "UPDATE lowongan SET status = '2' WHERE idLowongan='$id'";
+//       $query_validasi = mysqli_query($con, $sql_validasi);
 
-//   $cekNisn = "SELECT `perusahaan`, `nmLoker` FROM `lowongan` WHERE `idLowongan` = $id";
-//   $query = mysqli_query($con, $cekNisn);
-//   $row = mysqli_fetch_row($query);
-
-//   $textt = "Kepada Anggota BKK, Terdapat lowongan baru $row[1] dari perusahaan $row[0]";
-//   $rplc = str_replace(' ', '%20', $textt);
-
-//   foreach ($query_no as $value) {
-//     $curl = curl_init();
-
-//     $noWa = $value['noWa'];
-
-//     curl_setopt_array($curl, array(
-//       CURLOPT_URL => "https://panel.rapiwha.com/send_message.php?apikey=BVHKMPMKEXZZ0O0GHO2T&number=$noWa&text=$rplc",
-//       CURLOPT_RETURNTRANSFER => true,
-//       CURLOPT_ENCODING => "",
-//       CURLOPT_MAXREDIRS => 10,
-//       CURLOPT_TIMEOUT => 30,
-//       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-//       CURLOPT_CUSTOMREQUEST => "GET",
-//     ));
-
-//     $response = curl_exec($curl);
-//     $err = curl_error($curl);
-
-//     curl_close($curl);
-
-//     if ($err) {
-//       echo "cURL Error #:" . $err;
-//     } else {
-//         $sql_validasi = "UPDATE lowongan SET
-//         status = '2'
-//         WHERE idLowongan='$id'";
-        
-//         $query_validasi = mysqli_query($con, $sql_validasi);
-
-//         if ($query_validasi) {
-//           echo "<script>alert('Validasi Berhasil')</script>";
-//           echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=lowongan''>";
-//         } else {
-//           echo "<script>alert('Validasi Gagal')</script>";
-//           echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=lowongan''>";
-//         }
-//     }
+//       if ($query_validasi) {
+//         echo "<script>alert('Validasi Berhasil')</script>";
+//         echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=lowongan''>";
+//       } else {
+//         echo "<script>alert('Validasi Gagal')</script>";
+//         echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=lowongan''>";
+//       }
 //   }
-// }
+
+function validasiLowongan($id)
+{
+  global $con;
+
+  $sql_no = "SELECT noWa FROM data_anggota";
+  // $sql_no = "SELECT noWa FROM anggota";
+  $query_no = mysqli_query($con, $sql_no);
+
+  $cekNisn = "SELECT `perusahaan`, `nmLoker` FROM `lowongan` WHERE `idLowongan` = $id";
+  $query = mysqli_query($con, $cekNisn);
+  $row = mysqli_fetch_row($query);
+
+  $textt = "Kepada Anggota BKK, Terdapat lowongan baru $row[1] dari perusahaan $row[0]";
+  $rplc = str_replace(' ', '%20', $textt);
+
+  foreach ($query_no as $value) {
+    $curl = curl_init();
+
+    $noWa = $value['noWa'];
+
+    curl_setopt_array($curl, array(
+      CURLOPT_URL => "https://panel.rapiwha.com/send_message.php?apikey=BVHKMPMKEXZZ0O0GHO2T&number=$noWa&text=$rplc",
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_ENCODING => "",
+      CURLOPT_MAXREDIRS => 10,
+      CURLOPT_TIMEOUT => 30,
+      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+      CURLOPT_CUSTOMREQUEST => "GET",
+    ));
+
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+
+    curl_close($curl);
+
+    if ($err) {
+      echo "cURL Error #:" . $err;
+    } else {
+        $sql_validasi = "UPDATE lowongan SET
+        status = '2'
+        WHERE idLowongan='$id'";
+        
+        $query_validasi = mysqli_query($con, $sql_validasi);
+
+        if ($query_validasi) {
+          echo "<script>alert('Validasi Berhasil')</script>";
+          echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=lowongan''>";
+        } else {
+          echo "<script>alert('Validasi Gagal')</script>";
+          echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=lowongan''>";
+        }
+    }
+  }
+}
 
 function insertJadwal()
 {
@@ -1223,80 +1223,88 @@ function deleteHasil($id)
   }
 }
 
+function validasiHasil($id)
+{
+  global $con;
+  
+  $sql_hasil = "SELECT idHasil FROM `hasil` WHERE idLoker='$id'";
+  $query_hasil = mysqli_query($con, $sql_hasil);
+  $rows = mysqli_fetch_row($query_hasil);
+  $idHasil = $rows[0];
+  
+  // echo $id;
+  // echo '<br>';
+  // echo $idHasil;
+  // die();
+
+  $sql_no = "SELECT c.noWa FROM pendaftaran_loker a, siswa b, data_anggota c WHERE a.idAnggota=b.idSiswa AND c.nisn=b.nisn AND a.status='4' AND a.idLoker='$id'";
+  $query_no = mysqli_query($con, $sql_no);
+
+  $cekLoker = "SELECT `perusahaan`, `nmLoker` FROM `lowongan` WHERE `idLowongan` = $id";
+  $query = mysqli_query($con, $cekLoker);
+  $row = mysqli_fetch_row($query);
+
+  $textt = "Kepada Anggota BKK, Selamat anda telah lulus dalam seleksi lowongan $row[1] dari perusahaan $row[0], silahkan cek di website untuk informasi lebih lanjut";
+  $rplc = str_replace(' ', '%20', $textt);
+
+  foreach ($query_no as $value) {
+    $curl = curl_init();
+
+    $noWa = $value['noWa'];
+
+    curl_setopt_array($curl, array(
+      CURLOPT_URL => "https://panel.rapiwha.com/send_message.php?apikey=BVHKMPMKEXZZ0O0GHO2T&number=$noWa&text=$rplc",
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_ENCODING => "",
+      CURLOPT_MAXREDIRS => 10,
+      CURLOPT_TIMEOUT => 30,
+      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+      CURLOPT_CUSTOMREQUEST => "GET",
+    ));
+
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+
+    curl_close($curl);
+
+    if ($err) {
+      echo "cURL Error #:" . $err;
+    } else {
+        $sql_validasi = "UPDATE hasil SET
+        status = '2'
+        WHERE idHasil='$idHasil'";
+        
+        $query_validasi = mysqli_query($con, $sql_validasi);
+
+        if ($query_validasi) {
+          echo "<script>alert('Validasi Berhasil')</script>";
+          echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=hasil''>";
+        } else {
+          echo "<script>alert('Validasi Gagal')</script>";
+          echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=hasil''>";
+        }
+    }
+  }
+}
+
+
 // function validasiHasil($id)
 // {
 //   global $con;
 
-
-//   $sql_no = "SELECT c.noWa FROM pendaftaran_loker a, siswa b, data_anggota c WHERE a.idAnggota=b.idSiswa AND c.nisn=b.nisn AND a.status='4' AND a.idLoker='$id'";
-//   $sql_no = "SELECT c.noWa FROM pendaftaran a, siswa b, anggota c WHERE a.idAnggota=b.idSiswa AND c.nisn=b.nisn AND a.status='4' AND a.idLoker='$id'";
-//   $query_no = mysqli_query($con, $sql_no);
-
-//   $cekLoker = "SELECT `perusahaan`, `nmLoker` FROM `lowongan` WHERE `idLowongan` = $id";
-//   $query = mysqli_query($con, $cekLoker);
-//   $row = mysqli_fetch_row($query);
-
-//   $textt = "Kepada Anggota BKK, Selamat anda telah lulus dalam seleksi lowongan $row[1] dari perusahaan $row[0], silahkan cek di website untuk informasi lebih lanjut";
-//   $rplc = str_replace(' ', '%20', $textt);
-
-//   foreach ($query_no as $value) {
-//     $curl = curl_init();
-
-//     $noWa = $value['noWa'];
-
-//     curl_setopt_array($curl, array(
-//       CURLOPT_URL => "https://panel.rapiwha.com/send_message.php?apikey=BVHKMPMKEXZZ0O0GHO2T&number=$noWa&text=$rplc",
-//       CURLOPT_RETURNTRANSFER => true,
-//       CURLOPT_ENCODING => "",
-//       CURLOPT_MAXREDIRS => 10,
-//       CURLOPT_TIMEOUT => 30,
-//       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-//       CURLOPT_CUSTOMREQUEST => "GET",
-//     ));
-
-//     $response = curl_exec($curl);
-//     $err = curl_error($curl);
-
-//     curl_close($curl);
-
-//     if ($err) {
-//       echo "cURL Error #:" . $err;
-//     } else {
-//         $sql_validasi = "UPDATE hasil SET
-        // status = '2'
+//   $sql_validasi = "UPDATE hasil SET
+//         status = '2'
 //         WHERE idHasil='$id'";
-        
-//         $query_validasi = mysqli_query($con, $sql_validasi);
+//   $query_validasi = mysqli_query($con, $sql_validasi);
 
-//         if ($query_validasi) {
-//           echo "<script>alert('Validasi Berhasil')</script>";
-//           echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=hasil''>";
-//         } else {
-//           echo "<script>alert('Validasi Gagal')</script>";
-//           echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=hasil''>";
-//         }
-//     }
+//   if ($query_validasi) {
+//     echo "<script>alert('Validasi Berhasil')</script>";
+//     echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=hasil''>";
+//   } else {
+//     echo "<script>alert('Validasi Gagal')</script>";
+//     echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=hasil''>";
 //   }
 // }
-
-
-function validasiHasil($id)
-{
-  global $con;
-
-  $sql_validasi = "UPDATE hasil SET
-        status = '2'
-        WHERE idHasil='$id'";
-  $query_validasi = mysqli_query($con, $sql_validasi);
-
-  if ($query_validasi) {
-    echo "<script>alert('Validasi Berhasil')</script>";
-    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=hasil''>";
-  } else {
-    echo "<script>alert('Validasi Gagal')</script>";
-    echo "<meta http-equiv='refresh' content='0; url=indexAdm.php?pages=hasil''>";
-  }
-}
 
 function uploadBerkas($namePost, $nmLoker)
 {
@@ -1854,3 +1862,7 @@ function confirmUser()
     }
   }
 }
+
+// $sql_nama = "SELECT b.nama FROM pendaftaran_loker a, siswa b, data_anggota c WHERE a.idAnggota=b.idSiswa AND c.nisn=b.nisn AND a.status='4' AND a.idLoker='$id'";
+  // $querys = mysqli_query($con, $sql_nama);
+  // $row_nama = mysqli_fetch_row($querys);

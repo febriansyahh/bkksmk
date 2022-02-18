@@ -151,7 +151,7 @@ include_once("koneksi.php");
 
             <div class="form-group">
               <label>No WhatsApp</label>
-              <input class="form-control " type="text" name="no_wa" placeholder="Masukkan Nomor WhatsApp anda" required>
+              <input class="form-control " type="text" name="no_wa" placeholder="Masukkan Nomor WhatsApp anda (6289xxxx)" required>
             </div>
 
             <div class="form-group">
