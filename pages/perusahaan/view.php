@@ -84,7 +84,7 @@ error_reporting (E_ALL ^ E_NOTICE);
       </div>
         <div class="form-group">
         <label>Logo Perusahaan </label>
-        <input class="form-control" type="file" name="fileLogo" required>
+        <input class="form-control" type="file" name="fileLogo">
       </div>
         <div class="row" >
           
