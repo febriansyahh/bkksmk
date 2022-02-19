@@ -886,7 +886,7 @@ function insertLowongan($upload)
 
       break;
     case '4':
-      $sql_logo = " SELECT logo FROM perusahaan WHERE idPerusahaan = '$idDaftar' ";
+      $sql_logo = "SELECT logo FROM data_perusahaan WHERE idPerusahaan = '$idDaftar' ";
       $query_logo = mysqli_query($con, $sql_logo);
       $row = mysqli_fetch_row($query_logo);
       $logo = $row[0];

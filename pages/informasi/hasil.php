@@ -309,7 +309,7 @@ error_reporting (E_ALL ^ E_NOTICE);
           </div>
           <div class="form-group">
           <label>Keterangan</label>
-              <textarea style="resize: none" name="ket" id="" class="form-control" rows="3" required></textarea>
+              <textarea style="resize: none" name="ket" id="" class="form-control" rows="3"></textarea>
           </div>
 
           <div class="modal-footer">
@@ -358,7 +358,7 @@ error_reporting (E_ALL ^ E_NOTICE);
           </div> -->
           <div class="form-group">
           <label>Keterangan</label>
-              <textarea style="resize: none" name="ket" id="editketerangan" class="form-control" rows="3" require></textarea>
+              <textarea style="resize: none" name="ket" id="editketerangan" class="form-control" rows="3"></textarea>
           </div>
 
         <div class="modal-footer">

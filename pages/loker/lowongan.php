@@ -400,7 +400,7 @@ error_reporting (E_ALL ^ E_NOTICE);
               <div class="form-group">
                 <label>Keterangan</label>
                 <textarea name="ket" style="white-space: pre-line; resize: none;" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
-                class="form-control"rows="2" required></textarea>
+                class="form-control"rows="2" ></textarea>
               </div>
 
               <div class="row">

@@ -303,7 +303,7 @@ include_once("koneksi.php");
           </div>
           <div class="form-group">
           <label>Keterangan</label>
-              <textarea style="resize: none" name="ket" id="" class="form-control" rows="3" required></textarea>
+              <textarea style="resize: none" name="ket" id="" class="form-control" rows="3"></textarea>
           </div>
 
           <div class="modal-footer">
