@@ -452,8 +452,8 @@ function getHistoryAnggota($id)
 function getDateTest()
 {
   global $con;
-  // $date = date('Y-m-d');
-  $sql = "SELECT a.*, b.noLoker, b.perusahaan, b.nmLoker FROM jadwal a, lowongan b WHERE a.idLoker=b.idLowongan AND b.status='2' AND a.tglSeleksi >= 'CURRENT_DATE()'";
+  $date = date('Y-m-d');
+  $sql = "SELECT a.*, b.noLoker, b.perusahaan, b.nmLoker FROM jadwal a, lowongan b WHERE a.idLoker=b.idLowongan AND b.status='2' AND a.tglSeleksi >= '$date'";
   $query = mysqli_query($con, $sql);
 
   return $query;
