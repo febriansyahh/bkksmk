@@ -86,6 +86,8 @@ include_once("koneksi.php");
           }else{
             ?>
             <div class="card-body">
+            <a data-toggle="modal" data-target="#myRiwayat" class="btn btn-primary d-inline"><i
+                class="fas fa-search"></i> Cari Pendaftar</a>
             <table id="example2" class="table table-bordered table-hover">
               <thead>
                 <center>
@@ -102,7 +104,12 @@ include_once("koneksi.php");
               </thead>
               <tbody>
                 <?php
+                $id = $_POST['nama'];
+                if($id != ""){
+                  $a = getRiwayatViewFilter($id);
+                }else{
                 $a = getRiwayatView();
+                }
                 $no = 1;
                 foreach ($a as $key => $data) {
                 ?>
@@ -168,3 +175,36 @@ include_once("koneksi.php");
   </body>
 
   </html>
+
+  <div id="myRiwayat" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h6 class="modal-title">Cari Pendaftar</h6>
+      </div>
+      <div class="modal-body">
+        <form action="" method="post" enctype="multipart/form-data">
+
+          <div class="form-group">
+            <label>Nama Pendaftar </label><br>
+            <select name="nama" class="selek2" style="width: 100%">
+            <option value="" selected="selected">-Pilih-</option>
+              <?php
+              $dt = getNamaAnggota();
+              foreach ($dt as $value) {
+                echo '<option value="'.$value['idAnggota'].'">'.$value['nama'].'</option>';
+              }
+              ?>
+            </select>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+            <input class="btn btn-success" type="submit" name="btnSimpan" value="Cari" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,5 @@
 $(document).ready(function () {
   $('.selek2').select2();
-  // $('#selek2').select2();
   $('.timepicker').wickedpicker(options);
   Datatables();
   setInterval(timestamp, 1000);
@@ -10,6 +9,10 @@ $(document).ready(function () {
 $(document).ready( function () {
   $('#myTable').DataTable();
 } );
+
+// $(document).ready(function() {
+//   $('.js-example-basic-single').select2();
+// });
 
 $(function Datatables() {
   $("#example1").DataTable({

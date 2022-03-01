@@ -19,11 +19,49 @@ include_once("koneksi.php");
               <div class="input-group mb-3">
                 <label for=""> Pilih Tahun : </label> &nbsp;
                 <select name="tahun" class="form-select" id="inputGroupSelect02" style="width:20%;">
-                <option value="NULL">- Pilih -</option>
+                <option value="">- Pilih -</option>
                 <?php
-                $dt = getYearLowonganPerusahaan($data_idUser);
+                $dt = getMonthLowonganPerusahaan($data_idUser);
                 foreach ($dt as $value) {
-                  echo '<option value="'.$value['tahun'].'">'.$value['tahun'].'</option>';
+                  switch ($value['bulan'])
+                  {
+                    case '01' :
+                      echo '<option value="'.$value['bulan'].'">Januari</option>';
+                    break;
+                    case '02' :
+                      echo '<option value="'.$value['bulan'].'">Februari</option>';
+                    break;
+                    case '03' :
+                      echo '<option value="'.$value['bulan'].'">Maret</option>';
+                    break;
+                    case '04' :
+                      echo '<option value="'.$value['bulan'].'">April</option>';
+                    break;
+                    case '05' :
+                      echo '<option value="'.$value['bulan'].'">Mei</option>';
+                    break;
+                    case '06' :
+                      echo '<option value="'.$value['bulan'].'">Juni</option>';
+                    break;
+                    case '07' :
+                      echo '<option value="'.$value['bulan'].'">Juli</option>';
+                    break;
+                    case '08' :
+                      echo '<option value="'.$value['bulan'].'">Agustus</option>';
+                    break;
+                    case '09' :
+                      echo '<option value="'.$value['bulan'].'">September</option>';
+                    break;
+                    case '10' :
+                      echo '<option value="'.$value['bulan'].'">Oktober</option>';
+                    break;
+                    case '11' :
+                      echo '<option value="'.$value['bulan'].'">November</option>';
+                    break;
+                    case '12' :
+                      echo '<option value="'.$value['bulan'].'">Desember</option>';
+                    break;
+                  }
                 }
               ?>
               </select>
@@ -76,15 +114,107 @@ include_once("koneksi.php");
           </div>
           <!-- /.card-header -->
           <div class="card-body">
+          <form action="" method="post" enctype="multipart/form-data">
+              <div class="input-group mb-3">
+                <label for=""> Bulan : </label> &nbsp;
+                <select name="bulan" class="form-select" id="inputGroupSelect02" style="width:20%;">
+                <option value="" selected="selected">- Pilih -</option>
+                <?php
+                $dt = getMonthLowongan();
+                foreach ($dt as $value) {
+                  switch ($value['bulan'])
+                  {
+                    case '01' :
+                      echo '<option value="'.$value['bulan'].'">Januari</option>';
+                    break;
+                    case '02' :
+                      echo '<option value="'.$value['bulan'].'">Februari</option>';
+                    break;
+                    case '03' :
+                      echo '<option value="'.$value['bulan'].'">Maret</option>';
+                    break;
+                    case '04' :
+                      echo '<option value="'.$value['bulan'].'">April</option>';
+                    break;
+                    case '05' :
+                      echo '<option value="'.$value['bulan'].'">Mei</option>';
+                    break;
+                    case '06' :
+                      echo '<option value="'.$value['bulan'].'">Juni</option>';
+                    break;
+                    case '07' :
+                      echo '<option value="'.$value['bulan'].'">Juli</option>';
+                    break;
+                    case '08' :
+                      echo '<option value="'.$value['bulan'].'">Agustus</option>';
+                    break;
+                    case '09' :
+                      echo '<option value="'.$value['bulan'].'">September</option>';
+                    break;
+                    case '10' :
+                      echo '<option value="'.$value['bulan'].'">Oktober</option>';
+                    break;
+                    case '11' :
+                      echo '<option value="'.$value['bulan'].'">November</option>';
+                    break;
+                    case '12' :
+                      echo '<option value="'.$value['bulan'].'">Desember</option>';
+                    break;
+
+                  }
+                }
+              ?>
+              </select>
+              &nbsp;
+              <input type="submit" class="btn btn-primary" name="btnFilter" value="Cari">
+              </div>
           <form method='POST' action='./pages/laporan/lowongan.php'>
               <div class="input-group mb-3">
-                <label for=""> Pilih Tahun : </label> &nbsp;
-                <select name="tahun" class="form-select" id="inputGroupSelect02" style="width:20%;">
-                <option value="NULL">- Pilih -</option>
+                <label for=""> Bulan : </label> &nbsp;
+                <select name="bulan" class="form-select" id="inputGroupSelect02" style="width:20%;">
+                <option value="" selected="selected">- Pilih -</option>
                 <?php
-                $dt = getYearLowongan();
+                $dt = getMonthLowongan();
                 foreach ($dt as $value) {
-                  echo '<option value="'.$value['tahun'].'">'.$value['tahun'].'</option>';
+                  switch ($value['bulan'])
+                  {
+                    case '01' :
+                      echo '<option value="'.$value['bulan'].'">Januari</option>';
+                    break;
+                    case '02' :
+                      echo '<option value="'.$value['bulan'].'">Februari</option>';
+                    break;
+                    case '03' :
+                      echo '<option value="'.$value['bulan'].'">Maret</option>';
+                    break;
+                    case '04' :
+                      echo '<option value="'.$value['bulan'].'">April</option>';
+                    break;
+                    case '05' :
+                      echo '<option value="'.$value['bulan'].'">Mei</option>';
+                    break;
+                    case '06' :
+                      echo '<option value="'.$value['bulan'].'">Juni</option>';
+                    break;
+                    case '07' :
+                      echo '<option value="'.$value['bulan'].'">Juli</option>';
+                    break;
+                    case '08' :
+                      echo '<option value="'.$value['bulan'].'">Agustus</option>';
+                    break;
+                    case '09' :
+                      echo '<option value="'.$value['bulan'].'">September</option>';
+                    break;
+                    case '10' :
+                      echo '<option value="'.$value['bulan'].'">Oktober</option>';
+                    break;
+                    case '11' :
+                      echo '<option value="'.$value['bulan'].'">November</option>';
+                    break;
+                    case '12' :
+                      echo '<option value="'.$value['bulan'].'">Desember</option>';
+                    break;
+                  }
                 }
               ?>
               </select>
@@ -108,7 +238,12 @@ include_once("koneksi.php");
               </thead>
               <tbody>
                 <?php
-            $a = reportLowongan();
+                $bulan = $_POST['bulan'];
+                if($bulan != ''){
+                  $a = reportLowongans($bulan); 
+                }else{
+                  $a = reportLowongan();
+                }
             $no = 1;
             foreach ($a as $key => $data) {
                 ?>
@@ -125,7 +260,6 @@ include_once("koneksi.php");
             $no++;
             }
         ?>
-
               </tbody>
             </table>
           </div>

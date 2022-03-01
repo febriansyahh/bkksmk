@@ -57,6 +57,8 @@ error_reporting (E_ALL ^ E_NOTICE);
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
   <script type="text/javascript" src="chartjs/Chart.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 
 </head>
@@ -105,8 +107,20 @@ error_reporting (E_ALL ^ E_NOTICE);
               <?php
                         break;
                       case '2':
+                        $cekAlumni = "SELECT b.idAnggota FROM user a, data_anggota b, alumni c WHERE a.idDaftar=b.idAnggota AND b.nisn=c.nisn AND a.idDaftar='$data_id'";
+                        $query = mysqli_query($con, $cekAlumni);
+                        $row = mysqli_fetch_row($query);
+
+                        if($row != NULL){
+                          ?>
+              <a href="#">Anggota (Alumni)</a>
+                        <?php
+                        }else{
                         ?>
               <a href="#">Anggota</a>
+                        <?php
+                        }
+                        ?>
               <?php
                         break;
                       case '3':

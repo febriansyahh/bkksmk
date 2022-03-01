@@ -25,29 +25,10 @@ function LoginUser()
     $_SESSION["ses_idDaftar"] = $data_login['idDaftar'];
     $_SESSION["ses_idUser"] = $data_login['idUser'];
 
-    // echo "<script>alert('Login Berhasil')</script>";
     echo "<meta http-equiv='refresh' content='0; url=indexAdm.php'>";
-    // switch ($data_login['idLevel']) {
-    //   case '1':
-    //     echo "<meta http-equiv='refresh' content='0; url=indexAdm.php'>";
-    //     break;
-
-    //   case '2':
-    //     echo "<meta http-equiv='refresh' content='0; url=indexAdm.php'>";
-    //     break;
-
-    //   case '3':
-    //     echo "<meta http-equiv='refresh' content='0; url=indexAdm.php'>";
-    //     break;
-
-    //   case '4':
-    //     echo "<meta http-equiv='refresh' content='0; url=indexAdm.php'>";
-    //     break;
-    // }
   } else {
     echo "<script>alert('Login Gagal!!')</script>";
     echo "<meta http-equiv='refresh' content='0; url=signin.php'>";
-
   }
 }
 
@@ -61,24 +42,36 @@ function registrasiData()
     $idDaftar = $row[0];
     $nisn = $row[1];
     $nama = $row[2];
-    // echo $idDaftar;
-    // echo $nisn;
-    // echo $nama;
-    // die();
+
+  $cekNisnx = "SELECT nisn FROM data_anggota WHERE nisn = '" . $_POST['nisn'] . "' ";
+  $queryx = mysqli_query($con, $cekNisnx);
+  $rowx = mysqli_fetch_row($queryx);
+  $nisnx = $rowx[0];
+  
+  $cekKelas = "SELECT YEAR(NOW()) - YEAR(tahunMasuk) as kelas FROM siswa WHERE nisn = '" . $_POST['nisn'] . "' ";
+  $querys = mysqli_query($con, $cekKelas);
+  $toRows = mysqli_fetch_row($querys);
+  $kelas = $toRows[0];
+
   $pass = $_POST['password'];
   $repass = $_POST['rePassword'];
   
   $tgl = date('Y-m-d H:i:s');
   if($nisn == NULL){
     echo "<script>alert('NISN tidak Terdaftar, Registrasi Gagal !!')</script>";
-    echo "<meta http-equiv='refresh' content='0; url=index.php>";
+    echo "<meta http-equiv='refresh' content='0; url=index.php?page=beranda>";
     // echo 'A';
     
-  }else
-      {
+  }elseif($nisnx != NULL){
+      echo "<script>alert('Maaf NISN Anda Sudah Terdaftar, Registrasi Gagal !!')</script>";
+      echo "<meta http-equiv='refresh' content='0; url=index.php?page=beranda>";
+  }elseif($kelas < '2'){
+      echo "<script>alert('Maaf Tahun Ajaran Anda Belum Terpenuhi Pendaftaran, Registrasi Gagal !!')</script>";
+      echo "<meta http-equiv='refresh' content='0; url=../index.php>";
+    }else{
         if($pass != $repass){
           echo "<script>alert('Password tidak sama, Simpan Gagal !!')</script>";
-          echo "<meta http-equiv='refresh' content='0; url=index.php>";
+          echo "<meta http-equiv='refresh' content='0; url=index.php?page=beranda>";
         }else
             {
               // $sql_insert = "INSERT INTO anggota (nisn, noWa, tglDaftar) VALUES (
@@ -104,10 +97,10 @@ function registrasiData()
                   echo "<meta http-equiv='refresh' content='0; url=signin.php'>";
                 } else {
                   echo "<script>alert('Registrasi Anggota Gagal')</script>";
-                  echo "<meta http-equiv='refresh' content='0; url=index.php'>";
+                  echo "<meta http-equiv='refresh' content='0; url=../index.php'>";
                 }
             }
-      }
+          }//
     }
 
 function registrasiDatas()
@@ -124,20 +117,29 @@ function registrasiDatas()
     // echo $nisn;
     // echo $nama;
     // die();
+
+  $cekNisnx = "SELECT nisn FROM data_anggota WHERE nisn = '" . $_POST['nisn'] . "' ";
+  $queryx = mysqli_query($con, $cekNisnx);
+  $rowx = mysqli_fetch_row($queryx);
+  $nisnx = $rowx[0];
+
   $pass = $_POST['password'];
   $repass = $_POST['rePassword'];
   
   $tgl = date('Y-m-d H:i:s');
   if($nisn == NULL){
     echo "<script>alert('NISN tidak Terdaftar, Registrasi Gagal !!')</script>";
-    echo "<meta http-equiv='refresh' content='0; url=signin.php>";
+    echo "<meta http-equiv='refresh' content='0; url=../index.php>";
     // echo 'A';
     
-  }else
-      {
+  }else{
+    if($nisnx != NULL){
+      echo "<script>alert('Maaf NISN Anda Sudah Terdaftar, Registrasi Gagal !!')</script>";
+      echo "<meta http-equiv='refresh' content='0; url=../index.php>";
+    }else{
         if($pass != $repass){
           echo "<script>alert('Password tidak sama, Simpan Gagal !!')</script>";
-          echo "<meta http-equiv='refresh' content='0; url=signin.php>";
+          echo "<meta http-equiv='refresh' content='0; url=../index.php>";
         }else
             {
               // $sql_insert = "INSERT INTO anggota (nisn, noWa, tglDaftar) VALUES (
@@ -160,16 +162,18 @@ function registrasiDatas()
                 
                 if ($query_insert && $query_insertUser) {
                   echo "<script>alert('Registrasi Anggota Berhasil')</script>";
-                  echo "<meta http-equiv='refresh' content='0; url=signin.php'>";
+                  echo "<meta http-equiv='refresh' content='0; url=../signin.php'>";
                 } else {
                   echo "<script>alert('Registrasi Anggota Gagal')</script>";
-                  echo "<meta http-equiv='refresh' content='0; url=index.php'>";
+                  echo "<meta http-equiv='refresh' content='0; url=../signin.php'>";
                 }
             }
-      }
+          }//
     }
+  }
 
-function registrasiPer()
+
+  function registrasiPer()
 {
   global $con;
   $cekIdDaftar = "SELECT `AUTO_INCREMENT` as idDaftar FROM INFORMATION_SCHEMA.TABLES
@@ -232,11 +236,22 @@ function regAlumni()
     $idDaftar = $row[0];
     $nisn = $row[1];
 
+  $cekAlumni = "SELECT nisn FROM data_alumni WHERE nisn = '" . $_POST['nisn'] . "' ";
+  $query_alumni = mysqli_query($con, $cekAlumni);
+  $row_alumni = mysqli_fetch_row($query_alumni);
+  $nisn_alumni = $row_alumni[0];
+  
+
   $tgl = date('Y-m-d H:i:s');
   if($nisn == NULL){
     echo "<script>alert('NISN tidak Terdaftar, Registrasi Alumni Gagal !!')</script>";
     echo "<meta http-equiv='refresh' content='0; url=index.php>";
-  }else
+  }else{
+        if($nisn_alumni != NULL)
+        {
+          echo "<script>alert('NISN anda telah terdaftar, Registrasi Alumni Gagal !!')</script>";
+          echo "<meta http-equiv='refresh' content='0; url=index.php>";
+        }else{
               $sql_insert = "INSERT INTO alumni (`nisn`, `status`, `nmInstansi`, `mulai`, `pekerjaan`, `waktu`, `jnsPerusahaan`, `gaji`, `thnLulus`, `tglDaftar`) VALUES (
                 '$nisn',
                 '" . $_POST['status'] . "',
@@ -257,6 +272,8 @@ function regAlumni()
                   echo "<script>alert('Registrasi Alumni Gagal')</script>";
                   echo "<meta http-equiv='refresh' content='0; url=index.php'>";
                 }
+              }
+          } 
 }
 
 function getYear()
@@ -288,10 +305,44 @@ function getYearLowongan()
   return $query;
 }
 
+function getMonthLowongan()
+{
+  global $con;
+  $sql = "SELECT DISTINCT MONTH(tglInput) as bulan FROM lowongan ORDER BY tglInput ASC ";
+  $query = mysqli_query($con, $sql);
+
+  return $query;
+}
+
 function getYearLowonganPerusahaan($id)
 {
   global $con;
   $sql = "SELECT DISTINCT YEAR(a.tglInput) as tahun FROM lowongan a, user b WHERE a.usrInput=b.idUser AND b.idLevel ='4' AND a.status='3' AND a.usrInput = '$id' ORDER BY a.tglInput ASC ";
+  $query = mysqli_query($con, $sql);
+
+  return $query;
+}
+
+function getNamaAnggota()
+{
+  global $con;
+  $sql = "SELECT a.idAnggota, b.nama FROM data_anggota a, siswa b WHERE a.nisn=b.nisn ORDER BY b.nama ASC";
+  $query = mysqli_query($con, $sql);
+  return $query;
+}
+
+// function getNamaAnggota()
+// {
+//   global $con;
+//   $sql = "SELECT idSiswa, nama FROM siswa ORDER BY nama ASC";
+//   $query = mysqli_query($con, $sql);
+//   return $query;
+// }
+
+function getMonthLowonganPerusahaan($id)
+{
+  global $con;
+  $sql = "SELECT DISTINCT MONTH(a.tglInput) as bulan FROM lowongan a, user b WHERE a.usrInput=b.idUser AND b.idLevel ='4' AND a.status='3' AND a.usrInput = '$id' ORDER BY a.tglInput ASC ";
   $query = mysqli_query($con, $sql);
 
   return $query;
@@ -319,12 +370,19 @@ function getRiwayat()
 function getRiwayatView()
 {
   global $con;
-  // $sql = "SELECT a.idDaftar, b.nisn, b.nama, d.nmJurusan, c.perusahaan, c.nmLoker, a.status FROM pendaftaran a, siswa b, lowongan c, jurusan d WHERE a.idAnggota=b.idSiswa AND a.idLoker=c.idLowongan AND b.jurusan=d.idJurusan AND c.status ='3' ORDER BY c.idLowongan ASC";
   $sql = "SELECT a.idDaftar, b.nisn, b.nama, d.nmJurusan, c.perusahaan, c.nmLoker, a.status FROM pendaftaran_loker a, siswa b, lowongan c, jurusan d WHERE a.idAnggota=b.idSiswa AND a.idLoker=c.idLowongan AND b.jurusan=d.idJurusan AND c.status ='3' ORDER BY c.idLowongan ASC";
   $query = mysqli_query($con, $sql);
-
   return $query;
 }
+
+function getRiwayatViewFilter($id)
+{
+  global $con;
+  $sql = "SELECT a.idDaftar, b.nisn, b.nama, d.nmJurusan, c.perusahaan, c.nmLoker, a.status FROM pendaftaran_loker a, siswa b, lowongan c, jurusan d WHERE a.idAnggota=b.idSiswa AND a.idLoker=c.idLowongan AND b.jurusan=d.idJurusan AND c.status ='3' AND a.idAnggota = '$id' ORDER BY c.idLowongan ASC";
+  $query = mysqli_query($con, $sql);
+  return $query;
+}
+
 function getRiwayatViewKeterima()
 {
   global $con;
@@ -513,7 +571,15 @@ function SelectLowongan()
 function reportLowongan()
 {
   global $con;
-  $sql = "SELECT * FROM `lowongan` WHERE `status` = '3' ORDER BY idLowongan DESC";
+  $sql = "SELECT * FROM `lowongan` ORDER BY idLowongan DESC";
+  $query = mysqli_query($con, $sql);
+  return $query;
+}
+
+function reportLowongans($id)
+{
+  global $con;
+  $sql = "SELECT * FROM `lowongan` WHERE MONTH(tglInput) = '$id' ORDER BY idLowongan DESC";
   $query = mysqli_query($con, $sql);
   return $query;
 }
@@ -1237,14 +1303,17 @@ function validasiHasil($id)
   // echo $idHasil;
   // die();
 
-  $sql_no = "SELECT c.noWa FROM pendaftaran_loker a, siswa b, data_anggota c WHERE a.idAnggota=b.idSiswa AND c.nisn=b.nisn AND a.status='4' AND a.idLoker='$id'";
+  // $sql_no = "SELECT c.noWa FROM pendaftaran_loker a, siswa b, data_anggota c WHERE a.idAnggota=b.idSiswa AND c.nisn=b.nisn AND a.status='4' AND a.idLoker='$id'";
+  // $query_no = mysqli_query($con, $sql_no);
+
+  $sql_no = "SELECT c.noWa FROM pendaftaran_loker a, siswa b, data_anggota c WHERE a.idAnggota=b.idSiswa AND c.nisn=b.nisn AND a.idLoker='$id'";
   $query_no = mysqli_query($con, $sql_no);
 
   $cekLoker = "SELECT `perusahaan`, `nmLoker` FROM `lowongan` WHERE `idLowongan` = $id";
   $query = mysqli_query($con, $cekLoker);
   $row = mysqli_fetch_row($query);
 
-  $textt = "Kepada Anggota BKK, Selamat anda telah lulus dalam seleksi lowongan $row[1] dari perusahaan $row[0], silahkan cek di website untuk informasi lebih lanjut";
+  $textt = "Kepada Anggota BKK, hasil rekrutmen lowongan $row[1] , berasal dari perusahaan $row[0] telah dipublish, silahkan cek di website untuk informasi lebih lanjut";
   $rplc = str_replace(' ', '%20', $textt);
 
   foreach ($query_no as $value) {
@@ -1318,14 +1387,14 @@ function uploadBerkas($namePost, $nmLoker)
   
   $x = explode('.', $nama);
   $ekstensi = strtolower(end($x));
-  $namas = 'Daftar_' . $namaLowongan . "_" . $namaPengirim . "_" . $date ."." . $ekstensi;
+  $namas = 'Lamaran_' . $namaLowongan . "_" . $namaPengirim . "_" . $date ."." . $ekstensi;
   $ukuran  = $_FILES[$namePost]['size'];
   $file_tmp = $_FILES[$namePost]['tmp_name'];
   
 
   if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
     if ($ukuran < 41943040) {
-      $destination_path = getcwd().DIRECTORY_SEPARATOR . 'file_data\pendaftaran' . '/';
+      $destination_path = getcwd().DIRECTORY_SEPARATOR . 'file_data\pendaftaran\lamaran' . '/';
 
       $target_path = $destination_path . $namas;
 
@@ -1339,21 +1408,122 @@ function uploadBerkas($namePost, $nmLoker)
   }
 }
 
-function insertDaftar($uploadFiles)
+function uploadSKCK($namePost, $nmLoker)
+{
+  $name = $_SESSION["ses_nama"];
+  $namaPengirim = str_replace(' ', '_', $name);
+  $namaLowongan = str_replace(' ', '_', $nmLoker);
+  
+  $date = date('Y-m-d');
+  $ekstensi_diperbolehkan  = array('jpg', 'png', 'jpeg', 'pdf');
+  $nama = $_FILES[$namePost]['name'];
+  
+  $x = explode('.', $nama);
+  $ekstensi = strtolower(end($x));
+  $namas = 'SKCK_' . $namaLowongan . "_" . $namaPengirim . "_" . $date ."." . $ekstensi;
+  $ukuran  = $_FILES[$namePost]['size'];
+  $file_tmp = $_FILES[$namePost]['tmp_name'];
+  
+
+  if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
+    if ($ukuran < 41943040) {
+      $destination_path = getcwd().DIRECTORY_SEPARATOR . 'file_data\pendaftaran\skck' . '/';
+
+      $target_path = $destination_path . $namas;
+
+      @move_uploaded_file($file_tmp, $target_path);
+      return $namas;
+    } else {
+      return;
+    }
+  } else {
+    return;
+  }
+}
+function uploadCV($namePost, $nmLoker)
+{
+  $name = $_SESSION["ses_nama"];
+  $namaPengirim = str_replace(' ', '_', $name);
+  $namaLowongan = str_replace(' ', '_', $nmLoker);
+  
+  $date = date('Y-m-d');
+  $ekstensi_diperbolehkan  = array('jpg', 'png', 'jpeg', 'pdf');
+  $nama = $_FILES[$namePost]['name'];
+  
+  $x = explode('.', $nama);
+  $ekstensi = strtolower(end($x));
+  $namas = 'CV_' . $namaLowongan . "_" . $namaPengirim . "_" . $date ."." . $ekstensi;
+  $ukuran  = $_FILES[$namePost]['size'];
+  $file_tmp = $_FILES[$namePost]['tmp_name'];
+  
+
+  if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
+    if ($ukuran < 41943040) {
+      $destination_path = getcwd().DIRECTORY_SEPARATOR . 'file_data\pendaftaran\cv' . '/';
+
+      $target_path = $destination_path . $namas;
+
+      @move_uploaded_file($file_tmp, $target_path);
+      return $namas;
+    } else {
+      return;
+    }
+  } else {
+    return;
+  }
+}
+
+function uploadFotoD($namePost, $nmLoker)
+{
+  $name = $_SESSION["ses_nama"];
+  $namaPengirim = str_replace(' ', '_', $name);
+  $namaLowongan = str_replace(' ', '_', $nmLoker);
+  
+  $date = date('Y-m-d');
+  $ekstensi_diperbolehkan  = array('jpg', 'png', 'jpeg', 'pdf');
+  $nama = $_FILES[$namePost]['name'];
+  
+  $x = explode('.', $nama);
+  $ekstensi = strtolower(end($x));
+  $namas = 'Foto_' . $namaLowongan . "_" . $namaPengirim . "_" . $date ."." . $ekstensi;
+  $ukuran  = $_FILES[$namePost]['size'];
+  $file_tmp = $_FILES[$namePost]['tmp_name'];
+  
+
+  if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
+    if ($ukuran < 41943040) {
+      $destination_path = getcwd().DIRECTORY_SEPARATOR . 'file_data\pendaftaran\foto' . '/';
+
+      $target_path = $destination_path . $namas;
+
+      @move_uploaded_file($file_tmp, $target_path);
+      return $namas;
+    } else {
+      return;
+    }
+  } else {
+    return;
+  }
+}
+
+// function insertDaftar($uploadFiles)
+function insertDaftar($uploadFiles, $uploadSkck, $uploadCv, $uploadFotoD)
 {
   global $con;
   $tgl = date('Y-m-d H:i:s');
-  // $sql_cek = "SELECT idDaftar FROM pendaftaran WHERE idLoker ='" . $_POST['idLoker'] . "' AND idAnggota = '" . $_POST['idDaftar'] . "'";
   $sql_cek = "SELECT idDaftar FROM pendaftaran_loker WHERE idLoker ='" . $_POST['idLoker'] . "' AND idAnggota = '" . $_POST['idDaftar'] . "'";
   $query = mysqli_query($con, $sql_cek);
   $row = mysqli_fetch_row($query);
   $idDaftar = $row[0];
   if($idDaftar == NULL){
             // $sql_insert = "INSERT INTO pendaftaran (`idLoker`, `idAnggota`, `berkas`, `status`, `tglDaftar`) VALUES (
-            $sql_insert = "INSERT INTO pendaftaran_loker (`idLoker`, `idAnggota`, `berkas`, `status`, `tglDaftar`) VALUES (
+            $sql_insert = "INSERT INTO pendaftaran_loker (`idLoker`, `idAnggota`, `berkas`, `skck`, `cv`, `foto`, `status`, `tglDaftar`) VALUES (
               '" . $_POST['idLoker'] . "',
               '" . $_POST['idDaftar'] . "',
               '" . $uploadFiles . "',
+              '" . $uploadSkck . "',
+              '" . $uploadCv . "',
+              '" . $uploadFotoD . "',
               '1',
               '" . $tgl . "')";
             $query_insert = mysqli_query($con, $sql_insert) or die(mysqli_connect_error());

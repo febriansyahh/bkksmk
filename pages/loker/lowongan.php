@@ -500,8 +500,8 @@ error_reporting (E_ALL ^ E_NOTICE);
   </div>
 
   <div id="daftarLoker" class="modal">
-    <div class="modal-dialog">
-      <div class="modal-content">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content ">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h6 class="modal-title">Daftar Lowongan Kerja</h6>
@@ -509,27 +509,54 @@ error_reporting (E_ALL ^ E_NOTICE);
         <div class="modal-body">
           <form action="?pages=daftarAksi" method="post" enctype="multipart/form-data">
             <div class="form-group">
-              <label>No Loker </label>
-              <input class="form-control" type="hidden" name="idLoker" id="valId" readonly>
-              <input class="form-control" type="text" name="noLoker" id="valnoLok" readonly> <br>
+              <div class="row">
+                <div class="col-4">
+                <label>No Loker </label>
+                    <input class="form-control" type="hidden" name="idLoker" id="valId" readonly>
+                    <input class="form-control" type="text" name="noLoker" id="valnoLok" readonly> <br>
+                </div>
+                <div class="col-4">
+                    <label>Perusahaan</label>
+                    <input class="form-control " type="text" name="perusahaan" id="valperusahaan" readonly>
+                </div>
+                <div class="col-4">
+                    <label>Lowongan</label>
+                    <input class="form-control " type="text" name="nmloker" id="valnmLoker" required readonly>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                    <label>Atas Nama</label>
+                    <input class="form-control" type="hidden" name="idDaftar" value="<?php echo $data_id ?>" readonly>
+                    <input class="form-control" type="text" name="atasNama" value="<?php echo $data_nama ?>" readonly>
+                </div>
+                <div class="col-6">
+                    <label>Foto</label>
+                    <input class="form-control " type="file" name="foto" required>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-4">
+                    <label>File SKCK</label>
+                    <input class="form-control " type="file" name="skck" required>
+                </div>
 
-              <label>Perusahaan</label>
-              <input class="form-control " type="text" name="perusahaan" id="valperusahaan" readonly>
+                <div class="col-4">
+                    <label>File Curiculum Vitae</label>
+                    <input class="form-control " type="file" name="cv" required>
+                </div>
 
-              <label>Lowongan</label>
-              <input class="form-control " type="text" name="nmloker" id="valnmLoker" required readonly>
-
-              <label>Atas Nama</label>
-              <input class="form-control" type="hidden" name="idDaftar" value="<?php echo $data_id ?>" readonly>
-              <input class="form-control" type="text" name="atasNama" value="<?php echo $data_nama ?>" readonly>
-
-              <label>File Pendaftaran</label>
-              <input class="form-control " type="file" name="berkasDaftar" required>
-              <span>*) Max. File : 4 MB</span> <br>
+                <div class="col-4">
+                    <label>File Berkas Lamaran</label>
+                    <input class="form-control " type="file" name="berkasDaftar" required>
+                </div>
+              </div>             
 
             </div>
 
             <div class="modal-footer">
+            <span>*) Max. File Upload : 4 MB</span> <br>
               <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
               <input class="btn btn-success" type="submit" name="btnSimpan" value="Daftar" />
             </div>

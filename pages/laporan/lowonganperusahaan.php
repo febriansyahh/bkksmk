@@ -32,10 +32,12 @@ $pdf->Cell(4.5, 0.8, 'Tanggal', 1, 0, 'C');
 $pdf->Cell(5, 0.8, 'Pengirim', 1, 1, 'C');
 $pdf->SetFont('Arial','',10);
 $no=1;
-if($tahun == 'NULL'){
-$query=mysqli_query($con,"SELECT * FROM lowongan a, user b WHERE a.usrInput=b.idUser AND a.status='3' AND b.idLevel ='4' AND a.usrInput = '$id' ORDER BY a.idLowongan DESC");
+if($bulan == 'NULL'){
+// $query=mysqli_query($con,"SELECT * FROM lowongan a, user b WHERE a.usrInput=b.idUser AND a.status='3' AND b.idLevel ='4' AND a.usrInput = '$id' ORDER BY a.idLowongan DESC");
+$query=mysqli_query($con,"SELECT * FROM lowongan a, user b WHERE a.usrInput=b.idUser AND b.idLevel ='4' AND a.usrInput = '$id' ORDER BY a.idLowongan DESC");
 }else{
-$query=mysqli_query($con,"SELECT * FROM lowongan a, user b WHERE a.usrInput=b.idUser AND a.status='3' AND b.idLevel ='4' AND a.usrInput = '$id' AND YEAR(a.tglInput) = '$tahun' ORDER BY a.idLowongan DESC");
+// $query=mysqli_query($con,"SELECT * FROM lowongan a, user b WHERE a.usrInput=b.idUser AND a.status='3' AND b.idLevel ='4' AND a.usrInput = '$id' AND YEAR(a.tglInput) = '$tahun' ORDER BY a.idLowongan DESC");
+$query=mysqli_query($con,"SELECT * FROM lowongan a, user b WHERE a.usrInput=b.idUser AND b.idLevel ='4' AND a.usrInput = '$id' AND YEAR(a.tglInput) = '$tahun' ORDER BY a.idLowongan DESC");
 }
 while($lihat=mysqli_fetch_array($query)){
 $pdf->Cell(1, 0.8, $no, 1, 0, 'L');
