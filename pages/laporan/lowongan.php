@@ -4,8 +4,11 @@ include_once("__DIR__ .  ../../../../koneksi.php");
 include_once("__DIR__ .  ../../../../fpdf/fpdf.php");
 
 if (isset($_POST['submit'])) {
-  $tahun = $_POST['tahun'];
+  $bulan = $_POST['bulan'];
+  echo $bulan;  
+  die();
   }
+  $bulan = $_POST['bulan'];
 $pdf = new FPDF("L","cm","A4");
 
 $pdf->SetMargins(2,2,2,2);

@@ -43,6 +43,12 @@ function registrasiData()
     $nisn = $row[1];
     $nama = $row[2];
 
+  // $cekIdDaftar = "SELECT `AUTO_INCREMENT` as idDaftar FROM INFORMATION_SCHEMA.TABLES
+  // WHERE TABLE_SCHEMA = 'bkkmuh' AND TABLE_NAME = 'data_anggota' ";
+  // $querys = mysqli_query($con, $cekIdDaftar);
+  // $rows = mysqli_fetch_row($querys);
+  // $idDaftar = $rows[0];
+
   $cekNisnx = "SELECT nisn FROM data_anggota WHERE nisn = '" . $_POST['nisn'] . "' ";
   $queryx = mysqli_query($con, $cekNisnx);
   $rowx = mysqli_fetch_row($queryx);
@@ -74,7 +80,6 @@ function registrasiData()
           echo "<meta http-equiv='refresh' content='0; url=index.php?page=beranda>";
         }else
             {
-              // $sql_insert = "INSERT INTO anggota (nisn, noWa, tglDaftar) VALUES (
               $sql_insert = "INSERT INTO data_anggota (nisn, noWa, tglDaftar) VALUES (
                 '" . $nisn . "',
                 '" . $_POST['no_wa'] . "',
@@ -107,16 +112,18 @@ function registrasiDatas()
 {
   global $con;
   
+  // $cekIdDaftar = "SELECT `AUTO_INCREMENT` as idDaftar FROM INFORMATION_SCHEMA.TABLES
+  // WHERE TABLE_SCHEMA = 'bkkmuh' AND TABLE_NAME = 'data_anggota' ";
+  // $querys = mysqli_query($con, $cekIdDaftar);
+  // $rows = mysqli_fetch_row($querys);
+  // $idDaftar = $rows[0];
+
   $cekNisn = "SELECT idSiswa, nisn, nama FROM siswa WHERE nisn = '" . $_POST['nisn'] . "' ";
   $query = mysqli_query($con, $cekNisn);
   $row = mysqli_fetch_row($query);
     $idDaftar = $row[0];
     $nisn = $row[1];
     $nama = $row[2];
-    // echo $idDaftar;
-    // echo $nisn;
-    // echo $nama;
-    // die();
 
   $cekNisnx = "SELECT nisn FROM data_anggota WHERE nisn = '" . $_POST['nisn'] . "' ";
   $queryx = mysqli_query($con, $cekNisnx);
@@ -142,7 +149,6 @@ function registrasiDatas()
           echo "<meta http-equiv='refresh' content='0; url=../index.php>";
         }else
             {
-              // $sql_insert = "INSERT INTO anggota (nisn, noWa, tglDaftar) VALUES (
               $sql_insert = "INSERT INTO data_anggota (nisn, noWa, tglDaftar) VALUES (
                 '" . $nisn . "',
                 '" . $_POST['no_wa'] . "',
@@ -181,7 +187,7 @@ function registrasiDatas()
   // WHERE TABLE_SCHEMA = 'bkkmuh' AND TABLE_NAME = 'perusahaan' ";
   $query = mysqli_query($con, $cekIdDaftar);
   $row = mysqli_fetch_row($query);
-    $idDaftar = $row[0];
+  $idDaftar = $row[0];
   //   echo '<pre>';
   //   print_r($idDaftar);
   //   echo '<br>';
@@ -198,7 +204,6 @@ function registrasiDatas()
     
   }else
       {
-        // $sql_insertPer = "INSERT INTO perusahaan (nmPerusahaan, email, stsPerusahaan, noTelp, tglDaftar) VALUES (
         $sql_insertPer = "INSERT INTO data_perusahaan (nmPerusahaan, email, stsPerusahaan, noTelp, tglDaftar) VALUES (
           '" . $_POST['namaper'] . "',
           '" . $_POST['email'] . "',
@@ -378,7 +383,7 @@ function getRiwayatView()
 function getRiwayatViewFilter($id)
 {
   global $con;
-  $sql = "SELECT a.idDaftar, b.nisn, b.nama, d.nmJurusan, c.perusahaan, c.nmLoker, a.status FROM pendaftaran_loker a, siswa b, lowongan c, jurusan d WHERE a.idAnggota=b.idSiswa AND a.idLoker=c.idLowongan AND b.jurusan=d.idJurusan AND c.status ='3' AND a.idAnggota = '$id' ORDER BY c.idLowongan ASC";
+  $sql = "SELECT a.idDaftar, b.nisn, b.nama, d.nmJurusan, c.perusahaan, c.nmLoker, a.status FROM pendaftaran_loker a, siswa b, lowongan c, jurusan d WHERE a.idAnggota=b.idSiswa AND a.idLoker=c.idLowongan AND b.jurusan=d.idJurusan AND c.status ='3' AND a.idDaftar = '$id' ORDER BY c.idLowongan ASC";
   $query = mysqli_query($con, $sql);
   return $query;
 }
@@ -571,7 +576,7 @@ function SelectLowongan()
 function reportLowongan()
 {
   global $con;
-  $sql = "SELECT * FROM `lowongan` ORDER BY idLowongan DESC";
+  $sql = "SELECT * FROM `lowongan` WHERE `status` = '2' OR `status`='3' ORDER BY `idLowongan` DESC";
   $query = mysqli_query($con, $sql);
   return $query;
 }
@@ -579,7 +584,7 @@ function reportLowongan()
 function reportLowongans($id)
 {
   global $con;
-  $sql = "SELECT * FROM `lowongan` WHERE MONTH(tglInput) = '$id' ORDER BY idLowongan DESC";
+  $sql = "SELECT * FROM `lowongan` WHERE MONTH(tglInput) = '$id' AND `status` = '2' OR `status`='3'  ORDER BY `idLowongan` DESC";
   $query = mysqli_query($con, $sql);
   return $query;
 }
@@ -1297,14 +1302,6 @@ function validasiHasil($id)
   $query_hasil = mysqli_query($con, $sql_hasil);
   $rows = mysqli_fetch_row($query_hasil);
   $idHasil = $rows[0];
-  
-  // echo $id;
-  // echo '<br>';
-  // echo $idHasil;
-  // die();
-
-  // $sql_no = "SELECT c.noWa FROM pendaftaran_loker a, siswa b, data_anggota c WHERE a.idAnggota=b.idSiswa AND c.nisn=b.nisn AND a.status='4' AND a.idLoker='$id'";
-  // $query_no = mysqli_query($con, $sql_no);
 
   $sql_no = "SELECT c.noWa FROM pendaftaran_loker a, siswa b, data_anggota c WHERE a.idAnggota=b.idSiswa AND c.nisn=b.nisn AND a.idLoker='$id'";
   $query_no = mysqli_query($con, $sql_no);

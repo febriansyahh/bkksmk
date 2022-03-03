@@ -98,7 +98,11 @@ error_reporting (E_ALL ^ E_NOTICE);
             <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
           </div> -->
           <div class="info">
-            <a href="#"><?php echo $data_nama ?> -
+            <?php
+             $nama = $data_nama;
+             $a = explode(" ", $nama);
+            ?>
+            <a href="#"><?php echo $a[0]; ?> -
               <?php
                     switch ($data_status) {
                       case '1':
@@ -107,7 +111,7 @@ error_reporting (E_ALL ^ E_NOTICE);
               <?php
                         break;
                       case '2':
-                        $cekAlumni = "SELECT b.idAnggota FROM user a, data_anggota b, alumni c WHERE a.idDaftar=b.idAnggota AND b.nisn=c.nisn AND a.idDaftar='$data_id'";
+                        $cekAlumni = "SELECT a.idAlumni FROM alumni a, siswa b WHERE a.nisn=b.nisn AND b.idSiswa='$data_id'";
                         $query = mysqli_query($con, $cekAlumni);
                         $row = mysqli_fetch_row($query);
 
@@ -117,7 +121,7 @@ error_reporting (E_ALL ^ E_NOTICE);
                         <?php
                         }else{
                         ?>
-              <a href="#">Anggota</a>
+              <a href="#">Anggota (Siswa)</a>
                         <?php
                         }
                         ?>

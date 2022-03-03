@@ -556,7 +556,7 @@ error_reporting (E_ALL ^ E_NOTICE);
             </div>
 
             <div class="modal-footer">
-            <span>*) Max. File Upload : 4 MB</span> <br>
+            <span>*) format file : jpg, png, pdf (Max. File Upload : 4 MB)</span> <br>
               <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
               <input class="btn btn-success" type="submit" name="btnSimpan" value="Daftar" />
             </div>

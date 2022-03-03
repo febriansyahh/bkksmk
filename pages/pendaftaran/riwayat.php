@@ -105,6 +105,8 @@ include_once("koneksi.php");
               <tbody>
                 <?php
                 $id = $_POST['nama'];
+                echo($id);
+                // die();
                 if($id != ""){
                   $a = getRiwayatViewFilter($id);
                 }else{

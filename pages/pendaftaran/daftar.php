@@ -50,13 +50,19 @@ include_once("koneksi.php");
                   </td> -->
                   <td>
                       <?php
+                      $a = "./file_data/pendaftaran/lamaran/".$data['berkas'];
+                      $b = "./file_data/pendaftaran/skck/".$data['skck'];
+                      $c = "./file_data/pendaftaran/cv/".$data['cv'];
                     if($data['status'] == '1' || $data['status'] == '2'){
                       ?>
                       <a href="?pages=valAksi&kodeGagal=<?php echo $data['idDaftar']; ?>" onclick="return confirm('Yakin untuk konfirmasi data ini ?')"
                       class='btn btn-success btn-sm' data-toggle="tooltip" data-placement="top" title="Gagal Seleksi Administrasi !"><i class="fa fa-times-circle"></i></a>
                       <a href="?pages=valAksi&kodes=<?php echo $data['idDaftar']; ?>" onclick="return confirm('Yakin untuk konfirmasi data ini ?')"
                       class='btn btn-success btn-sm' data-toggle="tooltip" data-placement="top" title="Lulus Seleksi Administrasi !"><i class="fa fa-check"></i></a>
-                      <a href=<?php echo"./file_data/pendaftaran/".$data['berkas']?> target="_blank"><i class="fa fa-download"></i></a>
+                      <a href=<?php echo"./file_data/pendaftaran/lamaran/".$data['berkas']  ?>  target="_blank"><i class="fa fa-download"></i></a>
+                      <a href="javascript:void(0)" data-toggle="modal" data-target="#download"
+                          data-id="<?php echo $data['berkas'] . "~" . $data['skck'] . "~" . $data['cv'] . "~" . $data['foto'] ?>"
+                          onclick="editableDownload(this)" class="btn btn-success btn-sm"><i class="fas fa-download"></i>Download</a>
                     <?php
                     }elseif($data['status'] == '3'){
                       ?>
@@ -388,6 +394,53 @@ include_once("koneksi.php");
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
             <input class="btn btn-success" type="submit" name="btnSimpan" value="Simpan" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div id="download" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h6 class="modal-title" style="font-family: Poppins">Berkas Lowongan</h6>
+      </div>
+      <div class="modal-body">
+        <form action="?pages=jadwalAksi" method="post" enctype="multipart/form-data">
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-6">
+              <label>File Lamaran </label><br>
+              <div id="lamaran"></div>
+              </div>
+
+              <div class="col-6">
+              <label>File Foto </label><br>
+              <div id="foto"></div>
+              </div>
+
+            </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-6">
+              <label>File CV </label><br>
+              <div id="cv"></div>
+              </div>
+
+              <div class="col-6">
+              <label>File SKCK </label><br>
+              <div id="skck"></div>
+              </div>
+
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
           </div>
         </form>
       </div>

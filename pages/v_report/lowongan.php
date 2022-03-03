@@ -168,6 +168,7 @@ include_once("koneksi.php");
               &nbsp;
               <input type="submit" class="btn btn-primary" name="btnFilter" value="Cari">
               </div>
+          </form>
           <form method='POST' action='./pages/laporan/lowongan.php'>
               <div class="input-group mb-3">
                 <label for=""> Bulan : </label> &nbsp;
@@ -219,7 +220,7 @@ include_once("koneksi.php");
               ?>
               </select>
               &nbsp;
-                <input type="submit" name="submit" formtarget="_blank" class="btn btn-primary"value="Cetak" />
+                <input type="submit" name="btnCetak" formtarget="_blank" class="btn btn-primary" value="Cetak" />
               </div>
             </form>
             <table id="example2" class="table table-bordered table-hover">

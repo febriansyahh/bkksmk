@@ -65,6 +65,16 @@ $(function Datatables() {
 
 });
 
+// $(document).ready(function() { 
+//   $('#downloadAll').click(function() {
+//       $('a.download_file > File').each(function() {
+//         $(this).trigger( "click" );
+//       });
+
+//     return false; //cancel navigation
+//   });
+// });
+
 function editableDataSiswa(param) {
   let data = $(param).data("id");
   let exp = data.split("~");
@@ -168,6 +178,22 @@ function editableJadwal(param) {
   $("#edittgl").val(exp[3]);
   $("#editwaktu").val(exp[4]);
   $("#editketerangan").val(exp[5]);
+}
+
+function editableDownload(param) {
+  let data = $(param).data("id");
+  let exp = data.split("~");
+  console.log(data);
+
+    $('#lamaran').html(`<a href="${'./file_data/pendaftaran/lamaran/' + exp[0]}" target="_blank" class="btn btn-primary btn-sm" style="width: 100%"><i class="fa fa-download"></i>Download</a>`);
+    $('#skck').html(`<a href="${'./file_data/pendaftaran/skck/' + exp[1]}" target="_blank" class="btn btn-primary btn-sm" style="width: 100%"><i class="fa fa-download"></i>Download</a>`);
+    $('#cv').html(`<a href="${'./file_data/pendaftaran/cv/' + exp[2]}" target="_blank" class="btn btn-primary btn-sm" style="width: 100%"><i class="fa fa-download"></i>Download</a>`);
+    $('#foto').html(`<a href="${'./file_data/pendaftaran/foto/' + exp[3]}" target="_blank" class="btn btn-primary btn-sm" style="width: 100%"><i class="fa fa-download"></i>Download</a>`);
+
+  $("#editLamaran").val(exp[0]);
+  $("#editSKCK").val(exp[1]);
+  $("#editCV").val(exp[2]);
+  $("#editFoto").val(exp[3]);
 }
 
 function editableHasil(param) {
