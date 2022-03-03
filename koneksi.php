@@ -584,7 +584,7 @@ function reportLowongan()
 function reportLowongans($id)
 {
   global $con;
-  $sql = "SELECT * FROM `lowongan` WHERE MONTH(tglInput) = '$id' AND `status` = '2' OR `status`='3'  ORDER BY `idLowongan` DESC";
+  $sql = "SELECT * FROM `lowongan` WHERE MONTH(tglInput) = '$id' AND (`status` = '2' OR `status`='3')  ORDER BY `idLowongan` DESC";
   $query = mysqli_query($con, $sql);
   return $query;
 }

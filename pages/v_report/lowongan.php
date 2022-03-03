@@ -15,12 +15,12 @@ include_once("koneksi.php");
           </div>
           <!-- /.card-header -->
           <div class="card-body">
-          <form method='POST' action='./pages/laporan/lowonganperusahaan.php'>
+            <form method='POST' action='./pages/laporan/lowonganperusahaan.php'>
               <div class="input-group mb-3">
                 <label for=""> Pilih Tahun : </label> &nbsp;
                 <select name="tahun" class="form-select" id="inputGroupSelect02" style="width:20%;">
-                <option value="">- Pilih -</option>
-                <?php
+                  <option value="">- Pilih -</option>
+                  <?php
                 $dt = getMonthLowonganPerusahaan($data_idUser);
                 foreach ($dt as $value) {
                   switch ($value['bulan'])
@@ -64,8 +64,8 @@ include_once("koneksi.php");
                   }
                 }
               ?>
-              </select>
-              &nbsp;
+                </select>
+                &nbsp;
                 <input type="hidden" name="idPerusahaan" class="form-class" value="<?php echo $data_idUser ?>">
                 <input type="submit" name="submit" formtarget="_blank" class="btn btn-primary" value="Cetak" />
               </div>
@@ -114,115 +114,8 @@ include_once("koneksi.php");
           </div>
           <!-- /.card-header -->
           <div class="card-body">
-          <form action="" method="post" enctype="multipart/form-data">
-              <div class="input-group mb-3">
-                <label for=""> Bulan : </label> &nbsp;
-                <select name="bulan" class="form-select" id="inputGroupSelect02" style="width:20%;">
-                <option value="" selected="selected">- Pilih -</option>
-                <?php
-                $dt = getMonthLowongan();
-                foreach ($dt as $value) {
-                  switch ($value['bulan'])
-                  {
-                    case '01' :
-                      echo '<option value="'.$value['bulan'].'">Januari</option>';
-                    break;
-                    case '02' :
-                      echo '<option value="'.$value['bulan'].'">Februari</option>';
-                    break;
-                    case '03' :
-                      echo '<option value="'.$value['bulan'].'">Maret</option>';
-                    break;
-                    case '04' :
-                      echo '<option value="'.$value['bulan'].'">April</option>';
-                    break;
-                    case '05' :
-                      echo '<option value="'.$value['bulan'].'">Mei</option>';
-                    break;
-                    case '06' :
-                      echo '<option value="'.$value['bulan'].'">Juni</option>';
-                    break;
-                    case '07' :
-                      echo '<option value="'.$value['bulan'].'">Juli</option>';
-                    break;
-                    case '08' :
-                      echo '<option value="'.$value['bulan'].'">Agustus</option>';
-                    break;
-                    case '09' :
-                      echo '<option value="'.$value['bulan'].'">September</option>';
-                    break;
-                    case '10' :
-                      echo '<option value="'.$value['bulan'].'">Oktober</option>';
-                    break;
-                    case '11' :
-                      echo '<option value="'.$value['bulan'].'">November</option>';
-                    break;
-                    case '12' :
-                      echo '<option value="'.$value['bulan'].'">Desember</option>';
-                    break;
-
-                  }
-                }
-              ?>
-              </select>
-              &nbsp;
-              <input type="submit" class="btn btn-primary" name="btnFilter" value="Cari">
-              </div>
-          </form>
-          <form method='POST' action='./pages/laporan/lowongan.php'>
-              <div class="input-group mb-3">
-                <label for=""> Bulan : </label> &nbsp;
-                <select name="bulan" class="form-select" id="inputGroupSelect02" style="width:20%;">
-                <option value="" selected="selected">- Pilih -</option>
-                <?php
-                $dt = getMonthLowongan();
-                foreach ($dt as $value) {
-                  switch ($value['bulan'])
-                  {
-                    case '01' :
-                      echo '<option value="'.$value['bulan'].'">Januari</option>';
-                    break;
-                    case '02' :
-                      echo '<option value="'.$value['bulan'].'">Februari</option>';
-                    break;
-                    case '03' :
-                      echo '<option value="'.$value['bulan'].'">Maret</option>';
-                    break;
-                    case '04' :
-                      echo '<option value="'.$value['bulan'].'">April</option>';
-                    break;
-                    case '05' :
-                      echo '<option value="'.$value['bulan'].'">Mei</option>';
-                    break;
-                    case '06' :
-                      echo '<option value="'.$value['bulan'].'">Juni</option>';
-                    break;
-                    case '07' :
-                      echo '<option value="'.$value['bulan'].'">Juli</option>';
-                    break;
-                    case '08' :
-                      echo '<option value="'.$value['bulan'].'">Agustus</option>';
-                    break;
-                    case '09' :
-                      echo '<option value="'.$value['bulan'].'">September</option>';
-                    break;
-                    case '10' :
-                      echo '<option value="'.$value['bulan'].'">Oktober</option>';
-                    break;
-                    case '11' :
-                      echo '<option value="'.$value['bulan'].'">November</option>';
-                    break;
-                    case '12' :
-                      echo '<option value="'.$value['bulan'].'">Desember</option>';
-                    break;
-                  }
-                }
-              ?>
-              </select>
-              &nbsp;
-                <input type="submit" name="btnCetak" formtarget="_blank" class="btn btn-primary" value="Cetak" />
-              </div>
-            </form>
+            <a href="" data-toggle="modal" data-target="#cari" class="btn btn-primary btn-sm"> Cari Laporan</a>
+            <a href="" data-toggle="modal" data-target="#cetak" class="btn btn-primary btn-sm"> Cetak Laporan</a>
             <table id="example2" class="table table-bordered table-hover">
               <thead>
                 <center>
@@ -279,3 +172,144 @@ include_once("koneksi.php");
   </body>
 
   </html>
+
+  <div id="cari" class="modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h6 class="modal-title" style="font-family: Poppins">Laporan Lowongan</h6>
+        </div>
+        <div class="modal-body">
+          <form action="" method="post" enctype="multipart/form-data">
+            <div class="input-group mb-3">
+              <label for=""> Bulan : </label> &nbsp;
+              <select name="bulan" class="form-select" id="inputGroupSelect02" style="width:70%;">
+                <option value="" selected="selected">- Pilih -</option>
+                <?php
+                $dt = getMonthLowongan();
+                foreach ($dt as $value) {
+                  switch ($value['bulan'])
+                  {
+                    case '01' :
+                      echo '<option value="'.$value['bulan'].'">Januari</option>';
+                    break;
+                    case '02' :
+                      echo '<option value="'.$value['bulan'].'">Februari</option>';
+                    break;
+                    case '03' :
+                      echo '<option value="'.$value['bulan'].'">Maret</option>';
+                    break;
+                    case '04' :
+                      echo '<option value="'.$value['bulan'].'">April</option>';
+                    break;
+                    case '05' :
+                      echo '<option value="'.$value['bulan'].'">Mei</option>';
+                    break;
+                    case '06' :
+                      echo '<option value="'.$value['bulan'].'">Juni</option>';
+                    break;
+                    case '07' :
+                      echo '<option value="'.$value['bulan'].'">Juli</option>';
+                    break;
+                    case '08' :
+                      echo '<option value="'.$value['bulan'].'">Agustus</option>';
+                    break;
+                    case '09' :
+                      echo '<option value="'.$value['bulan'].'">September</option>';
+                    break;
+                    case '10' :
+                      echo '<option value="'.$value['bulan'].'">Oktober</option>';
+                    break;
+                    case '11' :
+                      echo '<option value="'.$value['bulan'].'">November</option>';
+                    break;
+                    case '12' :
+                      echo '<option value="'.$value['bulan'].'">Desember</option>';
+                    break;
+
+                  }
+                }
+              ?>
+              </select>
+              &nbsp;
+              <input type="submit" class="btn btn-primary" name="btnFilter" value="Cari">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="cetak" class="modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h6 class="modal-title" style="font-family: Poppins">Laporan Lowongan</h6>
+        </div>
+        <div class="modal-body">
+          <form method='POST' action='./pages/laporan/lowongan.php'>
+            <div class="input-group mb-3">
+              <label for=""> Bulan : </label> &nbsp;
+              <select name="bulan" class="form-select" id="inputGroupSelect02" style="width:70%;">
+                <option value="" selected="selected">- Pilih -</option>
+                <?php
+                $dt = getMonthLowongan();
+                foreach ($dt as $value) {
+                  switch ($value['bulan'])
+                  {
+                    case '01' :
+                      echo '<option value="'.$value['bulan'].'">Januari</option>';
+                    break;
+                    case '02' :
+                      echo '<option value="'.$value['bulan'].'">Februari</option>';
+                    break;
+                    case '03' :
+                      echo '<option value="'.$value['bulan'].'">Maret</option>';
+                    break;
+                    case '04' :
+                      echo '<option value="'.$value['bulan'].'">April</option>';
+                    break;
+                    case '05' :
+                      echo '<option value="'.$value['bulan'].'">Mei</option>';
+                    break;
+                    case '06' :
+                      echo '<option value="'.$value['bulan'].'">Juni</option>';
+                    break;
+                    case '07' :
+                      echo '<option value="'.$value['bulan'].'">Juli</option>';
+                    break;
+                    case '08' :
+                      echo '<option value="'.$value['bulan'].'">Agustus</option>';
+                    break;
+                    case '09' :
+                      echo '<option value="'.$value['bulan'].'">September</option>';
+                    break;
+                    case '10' :
+                      echo '<option value="'.$value['bulan'].'">Oktober</option>';
+                    break;
+                    case '11' :
+                      echo '<option value="'.$value['bulan'].'">November</option>';
+                    break;
+                    case '12' :
+                      echo '<option value="'.$value['bulan'].'">Desember</option>';
+                    break;
+                  }
+                }
+              ?>
+              </select>
+              &nbsp;
+              <input type="submit" name="btnCetak" formtarget="_blank" class="btn btn-primary" value="Cetak" />
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
