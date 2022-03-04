@@ -59,7 +59,7 @@ include_once("koneksi.php");
                       class='btn btn-success btn-sm' data-toggle="tooltip" data-placement="top" title="Gagal Seleksi Administrasi !"><i class="fa fa-times-circle"></i></a>
                       <a href="?pages=valAksi&kodes=<?php echo $data['idDaftar']; ?>" onclick="return confirm('Yakin untuk konfirmasi data ini ?')"
                       class='btn btn-success btn-sm' data-toggle="tooltip" data-placement="top" title="Lulus Seleksi Administrasi !"><i class="fa fa-check"></i></a>
-                      <a href=<?php echo"./file_data/pendaftaran/lamaran/".$data['berkas']  ?>  target="_blank"><i class="fa fa-download"></i></a>
+                      <!-- <a href=<?php echo"./file_data/pendaftaran/lamaran/".$data['berkas']  ?>  target="_blank"><i class="fa fa-download"></i></a> -->
                       <a href="javascript:void(0)" data-toggle="modal" data-target="#download"
                           data-id="<?php echo $data['berkas'] . "~" . $data['skck'] . "~" . $data['cv'] . "~" . $data['foto'] ?>"
                           onclick="editableDownload(this)" class="btn btn-success btn-sm"><i class="fas fa-download"></i>Download</a>

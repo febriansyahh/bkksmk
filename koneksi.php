@@ -648,7 +648,6 @@ function ArsipOto()
   global $con;
   $date = date('Y-m-d');
   $sql = "UPDATE lowongan SET status='3' WHERE batas='$date'";
-  // $sql = "UPDATE lowongan SET status='3' WHERE batas=CURRENT_DATE()";
   $query = mysqli_query($con, $sql);
 
   return $query;
