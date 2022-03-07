@@ -107,7 +107,7 @@ error_reporting (E_ALL ^ E_NOTICE);
                     switch ($data_status) {
                       case '1':
                         ?>
-              <a href="#">Admin</a>
+              <a href="#">Staf BKK</a>
               <?php
                         break;
                       case '2':
